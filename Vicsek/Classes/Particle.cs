@@ -127,6 +127,7 @@ namespace Vicsek.Classes
 
         public void UpdSpeed()
         {
+            
             m_Speed.First = -m_Speed.First;
             m_Speed.Second = -m_Speed.Second;
         }

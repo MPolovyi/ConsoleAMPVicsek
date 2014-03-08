@@ -14,10 +14,11 @@ namespace Vicsek.Classes
 
         public IEnumerable<T> Components
         {
-            get { return new List<T>{First, Second}; }
+            get { return new List<T> {First, Second}; }
         }
 
-        public Pair(T _f, T _s) : this()
+        public Pair(T _f, T _s)
+            : this()
         {
             First = _f;
             Second = _s;
@@ -34,7 +35,7 @@ namespace Vicsek.Classes
             return new Pair<T>(a1 + b1, a2 + b2);
         }
 
-        public static Pair<T> operator -(Pair<T> A, Pair<T> B )
+        public static Pair<T> operator -(Pair<T> A, Pair<T> B)
         {
             dynamic a1 = A.First;
             dynamic a2 = A.Second;
@@ -53,9 +54,9 @@ namespace Vicsek.Classes
             //}
             //else
             //{
-                dynamic a1 = A.First;
-                dynamic a2 = A.Second;
-                return new Pair<T>(a1/B, a2/B);
+            dynamic a1 = A.First;
+            dynamic a2 = A.Second;
+            return new Pair<T>(a1/B, a2/B);
             //}
         }
 
@@ -72,7 +73,7 @@ namespace Vicsek.Classes
             throw new NotImplementedException();
         }
 
-        
+
     }
 
     internal class Position
@@ -118,6 +119,23 @@ namespace Vicsek.Classes
 
         public static bool Intersect(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
         {
+            try
+            {
+                var ip = IntersectionPoint(_a, _b, _c, _d);
+                double xA1 = _a.First, xB1 = _b.First, yA1 = _a.Second, yB1 = _b.Second;
+                double xA2 = _c.First, xB2 = _d.First, yA2 = _c.Second, yB2 = _d.Second;
+                var X = ip.First;
+                var Y = ip.Second;
+                return (Between(xA1, xB1, X) && Between(xA2, xB2, X) && Between(yA1, yB1, Y) && Between(yA2, yB2, Y));
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static Pair<double> IntersectionPoint(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
+        {
             double eps = 1E-9;
             double xA1 = _a.First, xB1 = _b.First, yA1 = _a.Second, yB1 = _b.Second;
             double xA2 = _c.First, xB2 = _d.First, yA2 = _c.Second, yB2 = _d.Second;
@@ -132,10 +150,11 @@ namespace Vicsek.Classes
 
                 double X = detX/det, Y = detY/det;
 
-                return (Between(xA1, xB1, X) && Between(xA2, xB2, X) && Between(yA1, yB1, Y) && Between(yA2, yB2, Y));
+                return new Pair<double>(X, Y);
             }
-            return false;
+            throw new Exception("I don't know where interception is because lines are parallels");
         }
+
 
         public static void Swap<T>(ref T _a, ref T _b)
         {
@@ -144,6 +163,6 @@ namespace Vicsek.Classes
             _a = c;
         }
     }
-
-
 }
+
+

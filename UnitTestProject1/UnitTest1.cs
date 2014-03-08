@@ -40,8 +40,6 @@ namespace UnitTestProject1
             
             IBorder border = new StubIBorder()
                 {
-                    CornersGet = () => new List<IPair<double>> {new Pair<double>(0, 0), new Pair<double>(10, 0)},
-
                     CheckIParticle = (_particle) =>
                         {
                             var corners = new List<IPair<double>>
@@ -87,8 +85,6 @@ namespace UnitTestProject1
 
             IBorder border = new StubIBorder()
             {
-                CornersGet = () => new List<IPair<double>> { new Pair<double>(0, 10), new Pair<double>(10, 10) },
-
                 CheckIParticle = (_particle) =>
                 {
                     var corners = new List<IPair<double>>

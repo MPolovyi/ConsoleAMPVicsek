@@ -45,10 +45,10 @@ namespace Vicsek.Classes
             {
                 particle.NextStep(Particles, Border);
             }
-
+            
             foreach (var particle in Particles)
             {
-                await Border.AsynkCheck(particle);
+                Border.Check(particle);
             }
         }
 

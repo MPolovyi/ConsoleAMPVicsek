@@ -27,13 +27,18 @@ namespace Vicsek.Classes
 
             IParticleBox box = new ParticleBox(factory, 100, stdDrawer, borderOfArea);
 
-            box.Draw();
-            for (int i = 0; i < 1000; i++)
-            {
-                Live(box);
-            }
-            
+            Run(box);
         }
+
+        private static async void Run(IParticleBox box)
+        {
+            box.Draw();
+            while(true)
+            {
+                await Task.Run(() => Live(box));
+            }
+        }
+
 
         public static void Live(IParticleBox _box)
         {
