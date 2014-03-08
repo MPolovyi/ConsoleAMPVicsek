@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Border.cs" />
+    <Compile Include="Classes\BorderBounce.cs" />
     <Compile Include="Classes\DrawerStandart.cs" />
     <Compile Include="Interfaces\IBorder.cs" />
     <Compile Include="Interfaces\IDrawer.cs" />

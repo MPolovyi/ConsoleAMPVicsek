@@ -34,8 +34,17 @@ namespace Vicsek.Classes
         {
             GetNearests(_particles);
             Interract();
+
+            double check = _border.Check(this);
             
-            m_Coordinates = m_Coordinates + m_Speed;
+            if (!double.IsNaN(check))
+            {
+                _border.Interract(this, (int) check);
+            }
+            else
+            {
+                m_Coordinates = m_Coordinates + m_Speed;    
+            }
         }
         
         public virtual IEnumerable<IParticle> GetNearests(IEnumerable<IParticle> _particles)
@@ -125,11 +134,20 @@ namespace Vicsek.Classes
             }
         }
 
-        public void UpdSpeed()
+        public void RevertSpeed()
         {
-            
             m_Speed.First = -m_Speed.First;
             m_Speed.Second = -m_Speed.Second;
+        }
+
+        public void UpdSpeed(IPair<double> _newSpd)
+        {
+            m_Speed = (Pair<double>) _newSpd;
+        }
+
+        public void UpdPosition(IPair<double> _newPos)
+        {
+            m_Coordinates = (Pair<double>) _newPos;
         }
     }
 }

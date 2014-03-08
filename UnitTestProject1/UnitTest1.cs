@@ -30,94 +30,18 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void TestParticleReflect()
+        public void TestIntersectionAngle()
         {
-            IParticle pt = new StubIParticle()
-                {
-                    CoordinatesInDoubleGet = () => new Pair<double>(5,5),
-                    SpeedInDoubleGet = () => new Pair<double>(-4,-15)
-                };
-            
-            IBorder border = new StubIBorder()
-                {
-                    CheckIParticle = (_particle) =>
-                        {
-                            var corners = new List<IPair<double>>
-                                {
-                                    new Pair<double>(0, 0),
-                                    new Pair<double>(10, 0)
-                                };
-                            for (int i = 0; i < corners.Count - 1; i++)
-                            {
-                                var pt1 = _particle.CoordinatesInDouble;
-                                var pt2 = _particle.SpeedInDouble + pt1;
+            var A = new Pair<double>(0, 1);
+            var B = new Pair<double>(2, 0);
+            var C = new Pair<double>(1, 0);
+            var D = new Pair<double>(1, 2);
 
-                                var pt3 = corners[i];
-                                var pt4 = corners[i + 1];
+            var ang = Miscelaneous.GetDegreeBetveen(A, B, C, D);
 
-                                var isIntersection = Miscelaneous.Intersect(pt1, pt2, (Pair<double>) pt3,
-                                                                            (Pair<double>) pt4);
-
-                                if (isIntersection)
-                                {
-                                    (_particle).UpdSpeed();
-                                    return true;
-                                }
-                            }
-                            return false;
-                        }
-                };
-
-            bool expectedIntersection1 = true;
-            bool actualIntersection1 = border.Check(pt);
-
-            Assert.AreEqual(expectedIntersection1, actualIntersection1);
+            Assert.AreEqual(ang, 45);
         }
 
-        [TestMethod]
-        public void TestParticleDontReflect()
-        {
-            IParticle pt = new StubIParticle()
-            {
-                CoordinatesInDoubleGet = () => new Pair<double>(5, 5),
-                SpeedInDoubleGet = () => new Pair<double>(0, 2)
-            };
-
-            IBorder border = new StubIBorder()
-            {
-                CheckIParticle = (_particle) =>
-                {
-                    var corners = new List<IPair<double>>
-                                {
-                                    new Pair<double>(0, 10),
-                                    new Pair<double>(10, 10)
-                                };
-                    for (int i = 0; i < corners.Count - 1; i++)
-                    {
-                        var pt1 = _particle.CoordinatesInDouble;
-                        var pt2 = _particle.SpeedInDouble + pt1;
-
-                        var pt3 = corners[i];
-                        var pt4 = corners[i + 1];
-
-                        var isIntersection = Miscelaneous.Intersect(pt1, pt2, (Pair<double>)pt3,
-                                                                    (Pair<double>)pt4);
-
-                        if (isIntersection)
-                        {
-                            (_particle).UpdSpeed();
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-            };
-
-            bool expectedIntersection1 = false;
-            bool actualIntersection1 = border.Check(pt);
-
-            Assert.AreEqual(expectedIntersection1, actualIntersection1);
-        }
     }
 }
 

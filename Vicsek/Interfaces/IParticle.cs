@@ -26,6 +26,9 @@ namespace Vicsek.Interfaces
         void Draw(PictureBox _bmp);
         void Draw();
 
-        void UpdSpeed();
+        void RevertSpeed();
+
+        void UpdSpeed(IPair<double> _newSpd);
+        void UpdPosition(IPair<double> _newPos);
     }
 }

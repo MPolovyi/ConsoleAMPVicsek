@@ -1,4 +1,5 @@
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Border: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.BorderBounce: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.DrawerStandart: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Pair`1: type is a value type.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Position: type is not visible to exported or assembly(Vicsek.Fakes).
@@ -12,6 +13,7 @@ E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Properties.Settings: type is sealed.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IBorder: type is an interface.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.Border: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.BorderBounce: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IDrawer: type is an interface.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.DrawerStandart: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IVector`1: type is an interface.

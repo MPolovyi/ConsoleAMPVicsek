@@ -155,6 +155,49 @@ namespace Vicsek.Classes
             throw new Exception("I don't know where interception is because lines are parallels");
         }
 
+        public static int GetDegreeBetveen(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
+        {
+            return GetDegreeBetveen(_b - _a, _d - _c);
+        }
+
+        public static int GetDegreeBetveen(Pair<double> _a, Pair<double> _b)
+        {
+            var scalarAB = _a.First*_b.First + _a.Second*_b.Second;
+
+            var ab = _a.ABS()*_b.ABS();
+
+            return (int) (180*Math.Acos(scalarAB/ab)/Math.PI);
+        }
+
+        /// <summary>
+        /// Rotates vector begins on A on degree in degrees
+        /// </summary>
+        /// <param name="_A"></param>
+        /// <param name="_B"></param>
+        /// <returns></returns>
+        public static Pair<Pair<double>> Rotate(Pair<double> _A, Pair<double> _B, int _degree)
+        {
+            Pair<double> ToRotate = new Pair<double>(0,0);
+
+            ToRotate = _B - _A;
+            var Rotated = Rotate(ToRotate, _degree);
+            
+            Rotated = Rotated + _A;
+            return new Pair<Pair<double>>(_A, Rotated);
+        }
+        
+        public static Pair<double> Rotate(Pair<double> _A, int _degree)
+        {
+
+            var cos = Math.Cos(_degree*Math.PI/180);
+            var sin = Math.Sin(_degree*Math.PI/180);
+
+            var xn = _A.First*cos - _A.Second*sin;
+            var yn = _A.First*sin + _A.Second*cos;
+
+            return new Pair<double>(xn, yn);
+            
+        }
 
         public static void Swap<T>(ref T _a, ref T _b)
         {

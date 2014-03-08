@@ -10,6 +10,7 @@ namespace Vicsek.Interfaces
     {
         List<IPair<IPair<double>>> Borders { get; }
 
-        bool Check(IParticle _particle);
+        double Check(IParticle _particle);
+        void Interract(IParticle _particle, int _index);
     }
 }
