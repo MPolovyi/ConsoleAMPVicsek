@@ -9,7 +9,7 @@ using Vicsek.Classes;
 
 namespace Vicsek.Interfaces
 {
-    interface IParticle
+    public interface IParticle
     {
         Pair<double> CoordinatesInDouble { get; }
         Point CoordinatesInPoint { get; }
@@ -20,10 +20,12 @@ namespace Vicsek.Interfaces
         IEnumerable<IParticle> GetNearests(IEnumerable<IParticle> _particles);
         double CalkDistance(IParticle _particle);
 
-        void NextStep(IEnumerable<IParticle> _particles);
+        void NextStep(IEnumerable<IParticle> _particles, IBorder _border);
         void Interract();
         void AddNoize(double _noize);
         void Draw(PictureBox _bmp);
         void Draw();
+
+        void UpdSpeed();
     }
 }

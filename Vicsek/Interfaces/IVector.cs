@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vicsek.Interfaces
 {
-    interface IVector<T>
+    public interface IVector<T>
     {
         IEnumerable<T> Components { get; }
         double ABS();

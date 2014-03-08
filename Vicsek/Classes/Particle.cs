@@ -9,7 +9,7 @@ using Vicsek.Interfaces;
 
 namespace Vicsek.Classes
 {
-    class Particle : IParticle
+    public class Particle : IParticle
     {
         private Pair<double> m_Coordinates;
         private Pair<double> m_Speed;
@@ -30,16 +30,14 @@ namespace Vicsek.Classes
         }
 
         
-        public virtual void NextStep(IEnumerable<IParticle> _particles)
+        public virtual void NextStep(IEnumerable<IParticle> _particles, IBorder _border)
         {
             GetNearests(_particles);
             Interract();
-
+            
             m_Coordinates = m_Coordinates + m_Speed;
         }
-
         
-
         public virtual IEnumerable<IParticle> GetNearests(IEnumerable<IParticle> _particles)
         {
             var nearest = new List<IParticle>();
@@ -125,6 +123,12 @@ namespace Vicsek.Classes
 
                 return new Point(x+vx, y+vy);
             }
+        }
+
+        public void UpdSpeed()
+        {
+            m_Speed.First = -m_Speed.First;
+            m_Speed.Second = -m_Speed.Second;
         }
     }
 }

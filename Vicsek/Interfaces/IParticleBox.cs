@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Vicsek.Interfaces
 {
-    interface IParticleBox
+    public interface IParticleBox
     {
         IEnumerable<IParticle> Particles { get; }
         void NextStep();

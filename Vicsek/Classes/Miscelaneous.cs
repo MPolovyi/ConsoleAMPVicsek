@@ -7,7 +7,7 @@ using Vicsek.Interfaces;
 
 namespace Vicsek.Classes
 {
-    struct Pair<T> : IPair<T>
+    public struct Pair<T> : IPair<T>
     {
         public T First { get; set; }
         public T Second { get; set; }
@@ -102,17 +102,47 @@ namespace Vicsek.Classes
         }
     }
 
-    static class Miscelaneous
+    public static class Miscelaneous
     {
-        //public static Pair<T> Average<T>(this IEnumerable<Pair<T>> _pairs)
-        //{
-            
-        //}
+        public static bool Between(double _a, double _b, double _c)
+        {
+            double eps = 1E-9;
+            return Math.Min(_a, _b) <= _c + eps && _c <= Math.Max(_a, _b) + eps;
+        }
 
-        //public static IEnumerable<Pair<T>> GetSpeeds<T>(this IEnumerable<IParticle> _particles)
-        //{
-        //    var Speeds = _particles.Select(particle => particle.Speed<T>()).ToList();
-        //}
+        public static double Det(double _a, double _b, double _c, double _d)
+        {
+            return _a*_d - _b*_c;
+        }
+
+
+        public static bool Intersect(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
+        {
+            double eps = 1E-9;
+            double xA1 = _a.First, xB1 = _b.First, yA1 = _a.Second, yB1 = _b.Second;
+            double xA2 = _c.First, xB2 = _d.First, yA2 = _c.Second, yB2 = _d.Second;
+            double c1 = yA1*xB1 - xA1*yB1, c2 = yA2*xB2 - xA2*yB2;
+
+            double det = Det(xB1 - xA1, -(yB1 - yA1), xB2 - xA2, -(yB2 - yA2));
+
+            if (Math.Abs(det - 0) > eps)
+            {
+                double detX = Det(xB1 - xA1, c1, xB2 - xA2, c2);
+                double detY = Det(c1, -(yB1 - yA1), c2, -(yB2 - yA2));
+
+                double X = detX/det, Y = detY/det;
+
+                return (Between(xA1, xB1, X) && Between(xA2, xB2, X) && Between(yA1, yB1, Y) && Between(yA2, yB2, Y));
+            }
+            return false;
+        }
+
+        public static void Swap<T>(ref T _a, ref T _b)
+        {
+            var c = _b;
+            _b = _a;
+            _a = c;
+        }
     }
 
 

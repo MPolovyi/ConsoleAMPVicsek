@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Border.cs" />
     <Compile Include="Classes\DrawerStandart.cs" />
+    <Compile Include="Interfaces\IBorder.cs" />
     <Compile Include="Interfaces\IDrawer.cs" />
     <Compile Include="Classes\Miscelaneous.cs" />
     <Compile Include="Classes\Particle.cs" />
