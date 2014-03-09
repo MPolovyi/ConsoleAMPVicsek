@@ -41,15 +41,9 @@ namespace Vicsek.Classes
 
         public async void NextStep()
         {
-            foreach (var particle in Particles)
-            {
-                particle.NextStep(Particles, Border);
-            }
+            Parallel.ForEach(Particles, _particle => _particle.NextStep(Particles, Border));
+            Parallel.ForEach(Particles, _particle => _particle.Move());
             
-            foreach (var particle in Particles)
-            {
-                Border.Check(particle);
-            }
         }
 
         public void Draw()
@@ -62,10 +56,7 @@ namespace Vicsek.Classes
             Graphics graph = _bmp.CreateGraphics();
             graph.Clear(Color.White);
 
-            foreach (var particle in Particles)
-            {
-                particle.Draw();
-            }
+            Parallel.ForEach(Particles, _particle => _particle.Draw());
         }
     }
 }

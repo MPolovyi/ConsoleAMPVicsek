@@ -29,6 +29,8 @@ namespace Vicsek.Interfaces
         void RevertSpeed();
 
         void UpdSpeed(IPair<double> _newSpd);
-        void UpdPosition(IPair<double> _newPos);
+        void UpdCoordinates(IPair<double> _newPos);
+
+        void Move();
     }
 }

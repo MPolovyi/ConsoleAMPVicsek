@@ -49,6 +49,9 @@
         <member name="P:Vicsek.Classes.Fakes.ShimMiscelaneous.RotatePairOfDoublePairOfDoubleInt32">
             <summary>Sets the shim of Miscelaneous.Rotate(Pair`1&lt;Double&gt; _A, Pair`1&lt;Double&gt; _B, Int32 _degree)</summary>
         </member>
+        <member name="P:Vicsek.Classes.Fakes.ShimMiscelaneous.StaticConstructor">
+            <summary>Sets the shim of Miscelaneous.Miscelaneous()</summary>
+        </member>
         <member name="T:Vicsek.Classes.Fakes.ShimPair`1">
             <summary>Shim type of Vicsek.Classes.Pair`1</summary>
         </member>
@@ -69,6 +72,9 @@
         </member>
         <member name="P:Vicsek.Classes.Fakes.ShimPair`1.DivisionOpPairOfT0Object">
             <summary>Sets the shim of Pair`1.op_Division(Pair`1&lt;!0&gt; A, Object B)</summary>
+        </member>
+        <member name="P:Vicsek.Classes.Fakes.ShimPair`1.MultiplyOpPairOfT0Object">
+            <summary>Sets the shim of Pair`1.op_Multiply(Pair`1&lt;!0&gt; A, Object B)</summary>
         </member>
         <member name="P:Vicsek.Classes.Fakes.ShimPair`1.SubtractionOpPairOfT0PairOfT0">
             <summary>Sets the shim of Pair`1.op_Subtraction(Pair`1&lt;!0&gt; A, Pair`1&lt;!0&gt; B)</summary>
@@ -130,6 +136,9 @@
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.Interract">
             <summary>Sets the shim of Particle.Interract()</summary>
         </member>
+        <member name="P:Vicsek.Classes.Fakes.ShimParticle.Move">
+            <summary>Sets the shim of Particle.Move()</summary>
+        </member>
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.NextStepIEnumerableOfIParticleIBorder">
             <summary>Sets the shim of Particle.NextStep(IEnumerable`1&lt;IParticle&gt; _particles, IBorder _border)</summary>
         </member>
@@ -142,8 +151,8 @@
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.SpeedInPointGet">
             <summary>Sets the shim of Particle.get_SpeedInPoint()</summary>
         </member>
-        <member name="P:Vicsek.Classes.Fakes.ShimParticle.UpdPositionIPairOfDouble">
-            <summary>Sets the shim of Particle.UpdPosition(IPair`1&lt;Double&gt; _newPos)</summary>
+        <member name="P:Vicsek.Classes.Fakes.ShimParticle.UpdCoordinatesIPairOfDouble">
+            <summary>Sets the shim of Particle.UpdCoordinates(IPair`1&lt;Double&gt; _newPos)</summary>
         </member>
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.UpdSpeedIPairOfDouble">
             <summary>Sets the shim of Particle.UpdSpeed(IPair`1&lt;Double&gt; _newSpd)</summary>
@@ -181,6 +190,9 @@
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.Interract">
             <summary>Sets the shim of Particle.Interract()</summary>
         </member>
+        <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.Move">
+            <summary>Sets the shim of Particle.Move()</summary>
+        </member>
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.NextStepIEnumerableOfIParticleIBorder">
             <summary>Sets the shim of Particle.NextStep(IEnumerable`1&lt;IParticle&gt; _particles, IBorder _border)</summary>
         </member>
@@ -193,8 +205,8 @@
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.SpeedInPointGet">
             <summary>Sets the shim of Particle.get_SpeedInPoint()</summary>
         </member>
-        <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.UpdPositionIPairOfDouble">
-            <summary>Sets the shim of Particle.UpdPosition(IPair`1&lt;Double&gt; _newPos)</summary>
+        <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.UpdCoordinatesIPairOfDouble">
+            <summary>Sets the shim of Particle.UpdCoordinates(IPair`1&lt;Double&gt; _newPos)</summary>
         </member>
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.UpdSpeedIPairOfDouble">
             <summary>Sets the shim of Particle.UpdSpeed(IPair`1&lt;Double&gt; _newSpd)</summary>
@@ -349,6 +361,9 @@
         <member name="F:Vicsek.Interfaces.Fakes.StubIParticle.Interract">
             <summary>Sets the stub of IParticle.Interract()</summary>
         </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticle.Move">
+            <summary>Sets the stub of IParticle.Move()</summary>
+        </member>
         <member name="F:Vicsek.Interfaces.Fakes.StubIParticle.NextStepIEnumerableOfIParticleIBorder">
             <summary>Sets the stub of IParticle.NextStep(IEnumerable`1&lt;IParticle&gt; _particles, IBorder _border)</summary>
         </member>
@@ -361,8 +376,8 @@
         <member name="F:Vicsek.Interfaces.Fakes.StubIParticle.SpeedInPointGet">
             <summary>Sets the stub of IParticle.get_SpeedInPoint()</summary>
         </member>
-        <member name="F:Vicsek.Interfaces.Fakes.StubIParticle.UpdPositionIPairOfDouble">
-            <summary>Sets the stub of IParticle.UpdPosition(IPair`1&lt;Double&gt; _newPos)</summary>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticle.UpdCoordinatesIPairOfDouble">
+            <summary>Sets the stub of IParticle.UpdCoordinates(IPair`1&lt;Double&gt; _newPos)</summary>
         </member>
         <member name="F:Vicsek.Interfaces.Fakes.StubIParticle.UpdSpeedIPairOfDouble">
             <summary>Sets the stub of IParticle.UpdSpeed(IPair`1&lt;Double&gt; _newSpd)</summary>
@@ -385,14 +400,17 @@
         <member name="M:Vicsek.Interfaces.Fakes.StubIParticle.v::Vicsek#Interfaces#IParticle#Interract">
             <summary>Sets the stub of IParticle.Interract()</summary>
         </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticle.v::Vicsek#Interfaces#IParticle#Move">
+            <summary>Sets the stub of IParticle.Move()</summary>
+        </member>
         <member name="M:Vicsek.Interfaces.Fakes.StubIParticle.v::Vicsek#Interfaces#IParticle#NextStep(System.Collections.Generic.IEnumerable{Vicsek.Interfaces.IParticle},Vicsek.Interfaces.IBorder)">
             <summary>Sets the stub of IParticle.NextStep(IEnumerable`1&lt;IParticle&gt; _particles, IBorder _border)</summary>
         </member>
         <member name="M:Vicsek.Interfaces.Fakes.StubIParticle.v::Vicsek#Interfaces#IParticle#RevertSpeed">
             <summary>Sets the stub of IParticle.RevertSpeed()</summary>
         </member>
-        <member name="M:Vicsek.Interfaces.Fakes.StubIParticle.v::Vicsek#Interfaces#IParticle#UpdPosition(Vicsek.Interfaces.IPair{System.Double})">
-            <summary>Sets the stub of IParticle.UpdPosition(IPair`1&lt;Double&gt; _newPos)</summary>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticle.v::Vicsek#Interfaces#IParticle#UpdCoordinates(Vicsek.Interfaces.IPair{System.Double})">
+            <summary>Sets the stub of IParticle.UpdCoordinates(IPair`1&lt;Double&gt; _newPos)</summary>
         </member>
         <member name="M:Vicsek.Interfaces.Fakes.StubIParticle.v::Vicsek#Interfaces#IParticle#UpdSpeed(Vicsek.Interfaces.IPair{System.Double})">
             <summary>Sets the stub of IParticle.UpdSpeed(IPair`1&lt;Double&gt; _newSpd)</summary>

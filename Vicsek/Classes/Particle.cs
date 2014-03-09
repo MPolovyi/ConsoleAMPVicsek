@@ -12,6 +12,9 @@ namespace Vicsek.Classes
     public class Particle : IParticle
     {
         private Pair<double> m_Coordinates;
+
+        private Pair<double> m_CoordinatesNew;
+
         private Pair<double> m_Speed;
         private IEnumerable<IParticle> m_Nearest;
         protected virtual IDrawer Drawer { get; private set; }
@@ -26,7 +29,8 @@ namespace Vicsek.Classes
 
             Random k = new Random((int) DateTime.Now.ToBinary());
             Random r = new Random(k.GetHashCode());
-            m_Speed = new Pair<double>(10 * (1 - r.NextDouble()), 10 * (1 - r.NextDouble()));
+            m_Speed = new Pair<double>(Miscelaneous.ParticleSpeed * (0.5 - r.NextDouble()), Miscelaneous.ParticleSpeed * (0.5 - r.NextDouble()));
+            m_Speed.Normalize();
         }
 
         
@@ -43,20 +47,23 @@ namespace Vicsek.Classes
             }
             else
             {
-                m_Coordinates = m_Coordinates + m_Speed;    
+                m_CoordinatesNew = m_Coordinates + m_Speed;    
             }
         }
         
         public virtual IEnumerable<IParticle> GetNearests(IEnumerable<IParticle> _particles)
         {
-            var nearest = new List<IParticle>();
-            foreach (var particle in _particles)
-            {
-                if (CalkDistance(particle) < m_InterractionRadius)
+            var particles = _particles as IList<IParticle> ?? _particles.ToList();
+            var nearest = new List<IParticle>(particles.Count());
+
+            Parallel.ForEach(particles, _particle =>
                 {
-                    nearest.Add(particle);
-                }
-            }
+                    if (CalkDistance(_particle) < m_InterractionRadius)
+                    {
+                        nearest.Add(_particle);
+                    }
+                });
+
             m_Nearest = nearest;
             return nearest;
         }
@@ -71,7 +78,7 @@ namespace Vicsek.Classes
 
         public virtual void Interract()
         {
-            var averSpd = new Pair<double>(0, 0);
+            Pair<double> averSpd;
             var cumulativeSpeed = new Pair<double>(0, 0);
 
             foreach (var particle in m_Nearest)
@@ -80,12 +87,9 @@ namespace Vicsek.Classes
             }
             averSpd = cumulativeSpeed / (double)m_Nearest.Count();
 
-            //if (Math.Abs(averSpd.ABS() - 1) > 0.1)
-            //{
-            //    averSpd.Normalize();
-            //}
+            averSpd.Normalize();
 
-            m_Speed = averSpd;
+            m_Speed = averSpd * Miscelaneous.ParticleSpeed;
         }
 
         public void AddNoize(double _noize)
@@ -127,8 +131,8 @@ namespace Vicsek.Classes
                 int x = (int)Math.Floor(CoordinatesInDouble.First);
                 int y = (int)Math.Floor(CoordinatesInDouble.Second);
 
-                int vx = (int)Math.Floor(2 * SpeedInDouble.First);
-                int vy = (int)Math.Floor(2 * SpeedInDouble.Second);
+                int vx = (int)Math.Floor(Miscelaneous.SpeedDrawMultiplayer * SpeedInDouble.First);
+                int vy = (int)Math.Floor(Miscelaneous.SpeedDrawMultiplayer * SpeedInDouble.Second);
 
                 return new Point(x+vx, y+vy);
             }
@@ -145,9 +149,14 @@ namespace Vicsek.Classes
             m_Speed = (Pair<double>) _newSpd;
         }
 
-        public void UpdPosition(IPair<double> _newPos)
+        public void UpdCoordinates(IPair<double> _newPos)
         {
-            m_Coordinates = (Pair<double>) _newPos;
+            m_CoordinatesNew = (Pair<double>) _newPos;
+        }
+
+        public void Move()
+        {
+            m_Coordinates = m_CoordinatesNew;
         }
     }
 }

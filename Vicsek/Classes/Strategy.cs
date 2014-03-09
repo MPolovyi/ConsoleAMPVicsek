@@ -17,7 +17,7 @@ namespace Vicsek.Classes
 
             IParticleFactory2D factory = new ParticleFactoryStandart(_pb.Width, _pb.Height, stdDrawer);
 
-            var borderOfArea = new Border(new List<IPair<double>>
+            var borderOfArea = new BorderTransit(new List<IPair<double>>
                                             {
                                                 new Pair<double>(0, 0),
                                                 new Pair<double>(0, _pb.Height),
@@ -25,7 +25,7 @@ namespace Vicsek.Classes
                                                 new Pair<double>(_pb.Width, 0)
                                             });
 
-            IParticleBox box = new ParticleBox(factory, 100, stdDrawer, borderOfArea);
+            IParticleBox box = new ParticleBox(factory, 10000, stdDrawer, borderOfArea);
 
             Run(box);
         }

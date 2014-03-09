@@ -20,7 +20,7 @@ namespace Vicsek.Properties
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Strategy.Init(100, pictureBox1);
+            Strategy.Init(1000, pictureBox1);
         }
     }
 }

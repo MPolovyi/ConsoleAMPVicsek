@@ -48,16 +48,16 @@ namespace Vicsek.Classes
 
         public static Pair<T> operator /(Pair<T> A, dynamic B)
         {
-            //if (typeof(B)!=typeof(int) || typeof(B)!=typeof(double))
-            //{
-            //    throw new NotImplementedException();
-            //}
-            //else
-            //{
             dynamic a1 = A.First;
             dynamic a2 = A.Second;
             return new Pair<T>(a1/B, a2/B);
-            //}
+        }
+
+        public static Pair<T> operator *(Pair<T> A, dynamic B)
+        {
+            dynamic a1 = A.First;
+            dynamic a2 = A.Second;
+            return new Pair<T>(a1 * B, a2 * B);
         }
 
         public double ABS()
@@ -68,9 +68,9 @@ namespace Vicsek.Classes
             return Math.Sqrt((double) (first*first + second*second));
         }
 
-        public double Normalize()
+        public void Normalize()
         {
-            throw new NotImplementedException();
+            this = this/(ABS());
         }
 
 
@@ -105,17 +105,8 @@ namespace Vicsek.Classes
 
     public static class Miscelaneous
     {
-        public static bool Between(double _a, double _b, double _c)
-        {
-            double eps = 1E-9;
-            return Math.Min(_a, _b) <= _c + eps && _c <= Math.Max(_a, _b) + eps;
-        }
-
-        public static double Det(double _a, double _b, double _c, double _d)
-        {
-            return _a*_d - _b*_c;
-        }
-
+        public static int ParticleSpeed = 10;
+        public static int SpeedDrawMultiplayer = 2;
 
         public static bool Intersect(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
         {
@@ -133,7 +124,7 @@ namespace Vicsek.Classes
                 return false;
             }
         }
-
+        
         public static Pair<double> IntersectionPoint(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
         {
             double eps = 1E-9;
@@ -153,6 +144,17 @@ namespace Vicsek.Classes
                 return new Pair<double>(X, Y);
             }
             throw new Exception("I don't know where interception is because lines are parallels");
+        }
+
+        public static bool Between(double _a, double _b, double _c)
+        {
+            double eps = 1E-9;
+            return Math.Min(_a, _b) <= _c + eps && _c <= Math.Max(_a, _b) + eps;
+        }
+
+        public static double Det(double _a, double _b, double _c, double _d)
+        {
+            return _a * _d - _b * _c;
         }
 
         public static int GetDegreeBetveen(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
