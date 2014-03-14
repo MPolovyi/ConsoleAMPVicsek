@@ -9,7 +9,7 @@ namespace Vicsek.Classes
 {
     class BorderBounce : Border
     {
-        public BorderBounce(List<IPair<double>> _corners) : base(_corners)
+        public BorderBounce(List<PairDouble> _corners) : base(_corners)
         {
 
         }
@@ -23,10 +23,10 @@ namespace Vicsek.Classes
             var ptBordFirst = Borders[_index].First;
             var ptBordSecond = Borders[_index].Second;
 
-            var ang = Miscelaneous.GetDegreeBetveen(ptPos, ptPosNext, (Pair<double>)ptBordFirst, (Pair<double>)ptBordSecond);
+            var ang = Miscelaneous.GetDegreeBetveen(ptPos, ptPosNext, (PairDouble)ptBordFirst, (PairDouble)ptBordSecond);
 
-            var intersectionPt = Miscelaneous.IntersectionPoint(ptPos, ptPosNext, (Pair<double>)ptBordFirst,
-                                                                (Pair<double>)ptBordSecond);
+            var intersectionPt = Miscelaneous.IntersectionPoint(ptPos, ptPosNext, (PairDouble)ptBordFirst,
+                                                                (PairDouble)ptBordSecond);
 
             if (ang > 90)
             {
@@ -37,7 +37,7 @@ namespace Vicsek.Classes
                 ang = -2 * ang;
             }
 
-            _particle.UpdCoordinates(Miscelaneous.Rotate(intersectionPt, ptPosNext, ang).Second);
+            _particle.UpdCoordinates(Miscelaneous.Rotate(intersectionPt, ptPosNext, ang));
 
             _particle.UpdSpeed(Miscelaneous.Rotate(ptSpeed, ang));
         }

@@ -11,11 +11,10 @@ namespace Vicsek.Interfaces
 {
     public interface IParticle
     {
-        Pair<double> CoordinatesInDouble { get; }
+        PairDouble CoordinatesInDouble { get; }
         Point CoordinatesInPoint { get; }
         Point SpeedInPoint { get; }
-        Pair<double> SpeedInDouble { get; }
-
+        PairDouble SpeedInDouble { get; }
 
         IEnumerable<IParticle> GetNearests(IEnumerable<IParticle> _particles);
         double CalkDistance(IParticle _particle);
@@ -28,8 +27,8 @@ namespace Vicsek.Interfaces
 
         void RevertSpeed();
 
-        void UpdSpeed(IPair<double> _newSpd);
-        void UpdCoordinates(IPair<double> _newPos);
+        void UpdSpeed(PairDouble _newSpd);
+        void UpdCoordinates(PairDouble _newPos);
 
         void Move();
     }

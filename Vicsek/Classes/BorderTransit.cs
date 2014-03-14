@@ -10,7 +10,7 @@ namespace Vicsek.Classes
     class BorderTransit : Border
     {
         private double m_SizeX, m_SizeY;
-        public BorderTransit(List<IPair<double>> _corners) : base(_corners)
+        public BorderTransit(List<PairDouble> _corners) : base(_corners)
         {
             m_SizeX = _corners[2].First;
             m_SizeY = _corners[2].Second;
@@ -20,22 +20,22 @@ namespace Vicsek.Classes
         {
             var transit = 0;
           
-            Pair<double> newPos = new Pair<double>(0,0);
+            PairDouble newPos = new PairDouble(0,0);
             if (_index == 0)
             {
-                newPos = _particle.CoordinatesInDouble +  new Pair<double>(m_SizeX, 0);
+                newPos = _particle.CoordinatesInDouble +  new PairDouble(m_SizeX, 0);
             }
             if (_index == 1)
             {
-                newPos = _particle.CoordinatesInDouble - new Pair<double>(0, m_SizeY);
+                newPos = _particle.CoordinatesInDouble - new PairDouble(0, m_SizeY);
             }
             if (_index == 2)
             {
-                newPos = _particle.CoordinatesInDouble - new Pair<double>(m_SizeX, 0);
+                newPos = _particle.CoordinatesInDouble - new PairDouble(m_SizeX, 0);
             }
             if (_index==3)
             {
-                newPos = _particle.CoordinatesInDouble + new Pair<double>(0, m_SizeY);
+                newPos = _particle.CoordinatesInDouble + new PairDouble(0, m_SizeY);
             }
             _particle.UpdCoordinates(newPos + _particle.SpeedInDouble);
         }

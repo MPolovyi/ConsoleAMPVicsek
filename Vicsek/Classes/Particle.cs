@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vicsek.Interfaces;
@@ -11,25 +10,25 @@ namespace Vicsek.Classes
 {
     public class Particle : IParticle
     {
-        private Pair<double> m_Coordinates;
+        private PairDouble m_Coordinates;
 
-        private Pair<double> m_CoordinatesNew;
+        private PairDouble m_CoordinatesNew;
 
-        private Pair<double> m_Speed;
+        private PairDouble m_Speed;
         private IEnumerable<IParticle> m_Nearest;
         protected virtual IDrawer Drawer { get; private set; }
 
-        private double m_InterractionRadius;
+        private readonly double m_InterractionRadius;
 
         public Particle(double _x, double _y, IDrawer _drawer)
         {
             Drawer = _drawer;
-            m_Coordinates = new Pair<double>(_x, _y);
+            m_Coordinates = new PairDouble(_x, _y);
             m_InterractionRadius = 5;
 
             Random k = new Random((int) DateTime.Now.ToBinary());
             Random r = new Random(k.GetHashCode());
-            m_Speed = new Pair<double>(Miscelaneous.ParticleSpeed * (0.5 - r.NextDouble()), Miscelaneous.ParticleSpeed * (0.5 - r.NextDouble()));
+            m_Speed = new PairDouble(Miscelaneous.ParticleSpeed * (0.5 - r.NextDouble()), Miscelaneous.ParticleSpeed * (0.5 - r.NextDouble()));
             m_Speed.Normalize();
         }
 
@@ -39,9 +38,9 @@ namespace Vicsek.Classes
             GetNearests(_particles);
             Interract();
 
-            double check = _border.Check(this);
+            int? check = _border.Check(this);
             
-            if (!double.IsNaN(check))
+            if (check!=null)
             {
                 _border.Interract(this, (int) check);
             }
@@ -70,31 +69,31 @@ namespace Vicsek.Classes
 
         public double CalkDistance(IParticle _particle)
         {
-            var cd1 = CoordinatesInDouble;
-            var cd2 = _particle.CoordinatesInDouble;
             double dist = (CoordinatesInDouble - _particle.CoordinatesInDouble).ABS();
             return dist;
         }
 
         public virtual void Interract()
         {
-            Pair<double> averSpd;
-            var cumulativeSpeed = new Pair<double>(0, 0);
+            var cumulativeSpeed = new PairDouble(0, 0);
 
             foreach (var particle in m_Nearest)
             {
                 cumulativeSpeed = cumulativeSpeed + particle.SpeedInDouble;
             }
-            averSpd = cumulativeSpeed / (double)m_Nearest.Count();
+            PairDouble averSpd = cumulativeSpeed / m_Nearest.Count();
 
             averSpd.Normalize();
-
+            
             m_Speed = averSpd * Miscelaneous.ParticleSpeed;
+            AddNoize(Miscelaneous.Noize);
         }
 
-        public void AddNoize(double _noize)
+        public void AddNoize(double _maxNoize)
         {
-            throw new NotImplementedException();
+            Random r = new Random((int) DateTime.Now.Ticks);
+            var rnd = 0.5-r.NextDouble();
+            UpdSpeed(Miscelaneous.Rotate(SpeedInDouble, _maxNoize * rnd));
         }
 
         public void Draw(PictureBox _bmp)
@@ -111,15 +110,15 @@ namespace Vicsek.Classes
             Drawer.Draw(this);
         }
 
-        public Pair<double> CoordinatesInDouble { get { return m_Coordinates; } }
-        public Pair<double> SpeedInDouble { get { return m_Speed; } }
+        public PairDouble CoordinatesInDouble { get { return m_Coordinates; } }
+        public PairDouble SpeedInDouble { get { return m_Speed; } }
 
         public Point CoordinatesInPoint
         {
             get
             {
-                int x = (int) Math.Floor(CoordinatesInDouble.First);
-                int y = (int) Math.Floor(CoordinatesInDouble.Second);
+                var x = (int) Math.Floor(CoordinatesInDouble.First);
+                var y = (int) Math.Floor(CoordinatesInDouble.Second);
                 return new Point(x, y);
             }
         }
@@ -128,11 +127,11 @@ namespace Vicsek.Classes
         {
             get
             {
-                int x = (int)Math.Floor(CoordinatesInDouble.First);
-                int y = (int)Math.Floor(CoordinatesInDouble.Second);
+                var x = (int)Math.Floor(CoordinatesInDouble.First);
+                var y = (int)Math.Floor(CoordinatesInDouble.Second);
 
-                int vx = (int)Math.Floor(Miscelaneous.SpeedDrawMultiplayer * SpeedInDouble.First);
-                int vy = (int)Math.Floor(Miscelaneous.SpeedDrawMultiplayer * SpeedInDouble.Second);
+                var vx = (int)Math.Floor(Miscelaneous.SpeedDrawMultiplayer * SpeedInDouble.First);
+                var vy = (int)Math.Floor(Miscelaneous.SpeedDrawMultiplayer * SpeedInDouble.Second);
 
                 return new Point(x+vx, y+vy);
             }
@@ -144,14 +143,14 @@ namespace Vicsek.Classes
             m_Speed.Second = -m_Speed.Second;
         }
 
-        public void UpdSpeed(IPair<double> _newSpd)
+        public void UpdSpeed(PairDouble _newSpd)
         {
-            m_Speed = (Pair<double>) _newSpd;
+            m_Speed = _newSpd;
         }
 
-        public void UpdCoordinates(IPair<double> _newPos)
+        public void UpdCoordinates(PairDouble _newPos)
         {
-            m_CoordinatesNew = (Pair<double>) _newPos;
+            m_CoordinatesNew = _newPos;
         }
 
         public void Move()

@@ -17,10 +17,10 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestMethod1()
         {
-            Pair<double> a1 = new Pair<double>(0, 0);
-            Pair<double> b1 = new Pair<double>(5, 2);
-            Pair<double> a2 = new Pair<double>(2, 0);
-            Pair<double> b2 = new Pair<double>(0, 5);
+            PairDouble a1 = new PairDouble(0, 0);
+            PairDouble b1 = new PairDouble(5, 2);
+            PairDouble a2 = new PairDouble(2, 0);
+            PairDouble b2 = new PairDouble(0, 5);
 
             bool areIntersectExpected = true;
 
@@ -32,10 +32,10 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestIntersectionAngle()
         {
-            var A = new Pair<double>(0, 1);
-            var B = new Pair<double>(2, 0);
-            var C = new Pair<double>(1, 0);
-            var D = new Pair<double>(1, 2);
+            var A = new PairDouble(0, 1);
+            var B = new PairDouble(2, 0);
+            var C = new PairDouble(1, 0);
+            var D = new PairDouble(1, 2);
 
             var ang = Miscelaneous.GetDegreeBetveen(A, B, C, D);
 

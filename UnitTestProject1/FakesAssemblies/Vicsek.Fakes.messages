@@ -2,9 +2,11 @@ E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.BorderBounce: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.BorderTransit: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.DrawerStandart: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.DrawerDebug: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Miscelaneous: type is sealed.
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.PairDouble: type is a value type.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Pair`1: type is a value type.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Position: type is not visible to exported or assembly(Vicsek.Fakes).
-E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Miscelaneous: type is sealed.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.ParticleBox: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Interfaces.IParticleFactory2D: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.ParticleFactoryStandart: type is not visible to exported or assembly(Vicsek.Fakes).
@@ -18,6 +20,8 @@ E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.BorderTransit: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IDrawer: type is an interface.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.DrawerStandart: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.DrawerDebug: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.PairDouble+<op_Multiply>o__SiteContainer1: type is not supported because of internal limitations.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IVector`1: type is an interface.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IPair`1: type is an interface.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.Pair`1+<ABS>o__SiteContainer11: type is not supported because of internal limitations.

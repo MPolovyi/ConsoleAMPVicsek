@@ -47,7 +47,9 @@
     <Compile Include="Classes\Border.cs" />
     <Compile Include="Classes\BorderBounce.cs" />
     <Compile Include="Classes\BorderTransit.cs" />
+    <Compile Include="Classes\DrawerDebug.cs" />
     <Compile Include="Classes\DrawerStandart.cs" />
+    <Compile Include="Classes\MiscelaneousData.cs" />
     <Compile Include="Interfaces\IBorder.cs" />
     <Compile Include="Interfaces\IDrawer.cs" />
     <Compile Include="Classes\Miscelaneous.cs" />

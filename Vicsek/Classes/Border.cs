@@ -9,19 +9,19 @@ namespace Vicsek.Classes
 {
     class Border : IBorder
     {
-        public List<IPair<IPair<double>>> Borders { get; private set; }
+        public List<IPair<PairDouble>> Borders { get; private set; }
 
-        public Border(List<IPair<double>> _corners)
+        public Border(List<PairDouble> _corners)
         {
-            Borders = new List<IPair<IPair<double>>>(_corners.Count);
+            Borders = new List<IPair<PairDouble>>(_corners.Count);
             for (int i = 0; i < _corners.Count-1; i++)
             {
-                Borders.Add(new Pair<IPair<double>>(_corners[i], _corners[i+1]));
+                Borders.Add(new Pair<PairDouble>(_corners[i], _corners[i+1]));
             }
-            Borders.Add(new Pair<IPair<double>>(_corners.Last(), _corners.First()));
+            Borders.Add(new Pair<PairDouble>(_corners.Last(), _corners.First()));
         }
         
-        public double Check(IParticle _particle)
+        public int? Check(IParticle _particle)
         {
             for (int i = 0; i < Borders.Count; i++)
             {
@@ -31,14 +31,14 @@ namespace Vicsek.Classes
                 var pt3 = Borders[i].First;
                 var pt4 = Borders[i].Second;
 
-                var isIntersection = Miscelaneous.Intersect(pt1, pt2, (Pair<double>)pt3, (Pair<double>)pt4);
+                var isIntersection = Miscelaneous.Intersect(pt1, pt2, (PairDouble)pt3, (PairDouble)pt4);
 
                 if (isIntersection)
                 {
                     return i;
                 }
             }
-            return double.NaN;
+            return null;
         }
 
         public virtual void Interract(IParticle _particle, int _index)

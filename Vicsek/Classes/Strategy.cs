@@ -17,25 +17,25 @@ namespace Vicsek.Classes
 
             IParticleFactory2D factory = new ParticleFactoryStandart(_pb.Width, _pb.Height, stdDrawer);
 
-            var borderOfArea = new BorderTransit(new List<IPair<double>>
+            var borderOfArea = new BorderTransit(new List<PairDouble>
                                             {
-                                                new Pair<double>(0, 0),
-                                                new Pair<double>(0, _pb.Height),
-                                                new Pair<double>(_pb.Width, _pb.Height),
-                                                new Pair<double>(_pb.Width, 0)
+                                                new PairDouble(0, 0),
+                                                new PairDouble(0, _pb.Height),
+                                                new PairDouble(_pb.Width, _pb.Height),
+                                                new PairDouble(_pb.Width, 0)
                                             });
 
-            IParticleBox box = new ParticleBox(factory, 10000, stdDrawer, borderOfArea);
+            IParticleBox box = new ParticleBox(factory, 1000, stdDrawer, borderOfArea);
 
             Run(box);
         }
 
-        private static async void Run(IParticleBox box)
+        private static async void Run(IParticleBox _box)
         {
-            box.Draw();
+            _box.Draw();
             while(true)
             {
-                await Task.Run(() => Live(box));
+                await Task.Run(() => Live(_box));
             }
         }
 

@@ -7,6 +7,54 @@ using Vicsek.Interfaces;
 
 namespace Vicsek.Classes
 {
+    public struct PairDouble
+    {
+        public double First { get; set; }
+        public double Second { get; set; }
+
+        public List<double> Components
+        {
+            get { return new List<double> {First, Second}; }
+        }
+
+        public PairDouble(double _f, double _s)
+            : this()
+        {
+            First = _f;
+            Second = _s;
+        }
+
+        public static PairDouble operator +(PairDouble A, PairDouble B)
+        {
+            return new PairDouble(A.First + B.First, A.Second + B.Second);
+        }
+
+        public static PairDouble operator -(PairDouble A, PairDouble B)
+        {
+            return new PairDouble(A.First - B.First, A.Second - B.Second);
+        }
+
+        public static PairDouble operator /(PairDouble A, double B)
+        {
+            return new PairDouble(A.First / B, A.Second / B);
+        }
+
+        public static PairDouble operator *(PairDouble A, dynamic B)
+        {
+            return new PairDouble(A.First * B, A.Second * B);
+        }
+
+        public double ABS()
+        {
+            return Math.Sqrt((First*First + Second*Second));
+        }
+
+        public void Normalize()
+        {
+            this = this/(ABS());
+        }
+    }
+
     public struct Pair<T> : IPair<T>
     {
         public T First { get; set; }
@@ -72,8 +120,6 @@ namespace Vicsek.Classes
         {
             this = this/(ABS());
         }
-
-
     }
 
     internal class Position
@@ -97,18 +143,17 @@ namespace Vicsek.Classes
             return m_Y;
         }
 
-        public Pair<double> ToDouble()
+        public PairDouble ToDouble()
         {
-            return new Pair<double>(m_X, m_X);
+            return new PairDouble(m_X, m_X);
         }
     }
 
-    public static class Miscelaneous
+    public static partial class Miscelaneous
     {
-        public static int ParticleSpeed = 10;
-        public static int SpeedDrawMultiplayer = 2;
 
-        public static bool Intersect(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
+
+        public static bool Intersect(PairDouble _a, PairDouble _b, PairDouble _c, PairDouble _d)
         {
             try
             {
@@ -125,7 +170,7 @@ namespace Vicsek.Classes
             }
         }
         
-        public static Pair<double> IntersectionPoint(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
+        public static PairDouble IntersectionPoint(PairDouble _a, PairDouble _b, PairDouble _c, PairDouble _d)
         {
             double eps = 1E-9;
             double xA1 = _a.First, xB1 = _b.First, yA1 = _a.Second, yB1 = _b.Second;
@@ -141,7 +186,7 @@ namespace Vicsek.Classes
 
                 double X = detX/det, Y = detY/det;
 
-                return new Pair<double>(X, Y);
+                return new PairDouble(X, Y);
             }
             throw new Exception("I don't know where interception is because lines are parallels");
         }
@@ -157,12 +202,12 @@ namespace Vicsek.Classes
             return _a * _d - _b * _c;
         }
 
-        public static int GetDegreeBetveen(Pair<double> _a, Pair<double> _b, Pair<double> _c, Pair<double> _d)
+        public static int GetDegreeBetveen(PairDouble _a, PairDouble _b, PairDouble _c, PairDouble _d)
         {
             return GetDegreeBetveen(_b - _a, _d - _c);
         }
 
-        public static int GetDegreeBetveen(Pair<double> _a, Pair<double> _b)
+        public static int GetDegreeBetveen(PairDouble _a, PairDouble _b)
         {
             var scalarAB = _a.First*_b.First + _a.Second*_b.Second;
 
@@ -177,18 +222,17 @@ namespace Vicsek.Classes
         /// <param name="_A"></param>
         /// <param name="_B"></param>
         /// <returns></returns>
-        public static Pair<Pair<double>> Rotate(Pair<double> _A, Pair<double> _B, int _degree)
+        public static PairDouble Rotate(PairDouble _A, PairDouble _B, double _degree)
         {
-            Pair<double> ToRotate = new Pair<double>(0,0);
+            PairDouble ToRotate = new PairDouble(0,0);
 
             ToRotate = _B - _A;
             var Rotated = Rotate(ToRotate, _degree);
-            
-            Rotated = Rotated + _A;
-            return new Pair<Pair<double>>(_A, Rotated);
+
+            return Rotated + _A;
         }
         
-        public static Pair<double> Rotate(Pair<double> _A, int _degree)
+        public static PairDouble Rotate(PairDouble _A, double _degree)
         {
 
             var cos = Math.Cos(_degree*Math.PI/180);
@@ -197,7 +241,7 @@ namespace Vicsek.Classes
             var xn = _A.First*cos - _A.Second*sin;
             var yn = _A.First*sin + _A.Second*cos;
 
-            return new Pair<double>(xn, yn);
+            return new PairDouble(xn, yn);
             
         }
 

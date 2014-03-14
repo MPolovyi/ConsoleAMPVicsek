@@ -11,15 +11,15 @@ namespace Vicsek.Classes
 {
     class DrawerStandart : IDrawer
     {
-        private PictureBox pBox { get; set; }
-        private int SizeX { get; set; }
-        private int SizeY { get; set; }
-        private Graphics Graph { get; set; }
-        private Graphics tempGraph { get; set; }
+        protected PictureBox pBox { get; set; }
+        protected int SizeX { get; set; }
+        protected int SizeY { get; set; }
+        protected Graphics Graph { get; set; }
+        protected Graphics tempGraph { get; set; }
 
-        private Pen PenBlack { get; set; }
-        private Pen PenBlue { get; set; }
-        private Brush BrushWhite { get; set; }
+        protected Pen PenBlack { get; set; }
+        protected Pen PenBlue { get; set; }
+        protected Brush BrushWhite { get; set; }
 
         public DrawerStandart(PictureBox _pBox)
         {
@@ -38,10 +38,28 @@ namespace Vicsek.Classes
 
         public virtual void Draw(IParticle _particle)
         {
-            var rect = new Rectangle(_particle.CoordinatesInPoint.X - 3, _particle.CoordinatesInPoint.Y - 3, 6, 6);
+            var rect = new Rectangle(particlePoint(_particle).X - 1, particlePoint(_particle).Y - 1, 2, 2);
 
             tempGraph.DrawEllipse(new Pen(Color.Black, 2), rect);
-            tempGraph.DrawLine(new Pen(Color.Blue, 2), _particle.CoordinatesInPoint, _particle.SpeedInPoint);
+            tempGraph.DrawLine(new Pen(Color.Blue, 2), particlePoint(_particle), particleSpeed(_particle));
+        }
+
+        protected virtual Point particlePoint(IParticle _particle)
+        {
+            var x = (int)Math.Floor(_particle.CoordinatesInDouble.First);
+            var y = (int)Math.Floor(_particle.CoordinatesInDouble.Second);
+            return new Point(x, y);
+        }
+
+        protected virtual Point particleSpeed(IParticle _particle)
+        {
+            var x = (int)Math.Floor(_particle.CoordinatesInDouble.First);
+            var y = (int)Math.Floor(_particle.CoordinatesInDouble.Second);
+
+            var vx = (int)Math.Floor(Miscelaneous.SpeedDrawMultiplayer * _particle.SpeedInDouble.First);
+            var vy = (int)Math.Floor(Miscelaneous.SpeedDrawMultiplayer * _particle.SpeedInDouble.Second);
+
+            return new Point(x + vx, y + vy);
         }
 
         public virtual void Draw(IParticleBox _box)
