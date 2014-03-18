@@ -22,5 +22,10 @@ namespace Vicsek.Properties
         {
             Strategy.Init(1000, pictureBox1);
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Strategy.AddParticles();
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vicsek.Interfaces
 {
-    interface IParticleFactory2D
+    public interface IParticleFactory2D
     {
         IEnumerable<IParticle> PopulateRandomDistributed(int _count);
 

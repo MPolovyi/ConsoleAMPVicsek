@@ -460,6 +460,9 @@
         <member name="M:Vicsek.Interfaces.Fakes.StubIParticleBox.#ctor">
             <summary>Initializes a new instance of type StubIParticleBox</summary>
         </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleBox.AddParticlesIParticleFactory2DInt32">
+            <summary>Sets the stub of IParticleBox.AddParticles(IParticleFactory2D factory, Int32 count)</summary>
+        </member>
         <member name="F:Vicsek.Interfaces.Fakes.StubIParticleBox.Draw">
             <summary>Sets the stub of IParticleBox.Draw()</summary>
         </member>
@@ -472,6 +475,9 @@
         <member name="F:Vicsek.Interfaces.Fakes.StubIParticleBox.ParticlesGet">
             <summary>Sets the stub of IParticleBox.get_Particles()</summary>
         </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleBox.v::Vicsek#Interfaces#IParticleBox#AddParticles(Vicsek.Interfaces.IParticleFactory2D,System.Int32)">
+            <summary>Sets the stub of IParticleBox.AddParticles(IParticleFactory2D factory, Int32 count)</summary>
+        </member>
         <member name="M:Vicsek.Interfaces.Fakes.StubIParticleBox.v::Vicsek#Interfaces#IParticleBox#Draw">
             <summary>Sets the stub of IParticleBox.Draw()</summary>
         </member>
@@ -483,6 +489,42 @@
         </member>
         <member name="P:Vicsek.Interfaces.Fakes.StubIParticleBox.v::Vicsek#Interfaces#IParticleBox#Particles">
             <summary>Sets the stub of IParticleBox.get_Particles()</summary>
+        </member>
+        <member name="T:Vicsek.Interfaces.Fakes.StubIParticleFactory2D">
+            <summary>Stub type of Vicsek.Interfaces.IParticleFactory2D</summary>
+        </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.#ctor">
+            <summary>Initializes a new instance of type StubIParticleFactory2D</summary>
+        </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.AttachBackingFieldToSizeX">
+            <summary>Attaches delegates to emulate StubIParticleFactory2D.SizeX as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.AttachBackingFieldToSizeY">
+            <summary>Attaches delegates to emulate StubIParticleFactory2D.SizeY as a property with a backing field.</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.PopulateRandomDistributedInt32">
+            <summary>Sets the stub of IParticleFactory2D.PopulateRandomDistributed(Int32 _count)</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.SizeXGet">
+            <summary>Sets the stub of IParticleFactory2D.get_SizeX()</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.SizeXSetDouble">
+            <summary>Sets the stub of IParticleFactory2D.set_SizeX(Double value)</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.SizeYGet">
+            <summary>Sets the stub of IParticleFactory2D.get_SizeY()</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.SizeYSetDouble">
+            <summary>Sets the stub of IParticleFactory2D.set_SizeY(Double value)</summary>
+        </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.v::Vicsek#Interfaces#IParticleFactory2D#PopulateRandomDistributed(System.Int32)">
+            <summary>Sets the stub of IParticleFactory2D.PopulateRandomDistributed(Int32 _count)</summary>
+        </member>
+        <member name="P:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.v::Vicsek#Interfaces#IParticleFactory2D#SizeX">
+            <summary>Sets the stub of IParticleFactory2D.get_SizeX()</summary>
+        </member>
+        <member name="P:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.v::Vicsek#Interfaces#IParticleFactory2D#SizeY">
+            <summary>Sets the stub of IParticleFactory2D.get_SizeY()</summary>
         </member>
         <member name="T:Vicsek.Interfaces.Fakes.StubIVector`1">
             <summary>Stub type of Vicsek.Interfaces.IVector`1</summary>
@@ -553,6 +595,9 @@
         <member name="P:Vicsek.Properties.Fakes.ShimMainForm.button1_ClickObjectEventArgs">
             <summary>Sets the shim of MainForm.button1_Click(Object sender, EventArgs e)</summary>
         </member>
+        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.pictureBox1_ClickObjectEventArgs">
+            <summary>Sets the shim of MainForm.pictureBox1_Click(Object sender, EventArgs e)</summary>
+        </member>
         <member name="T:Vicsek.Properties.Fakes.ShimMainForm.AllInstances">
             <summary>Define shims for all instances members</summary>
         </member>
@@ -564,6 +609,9 @@
         </member>
         <member name="P:Vicsek.Properties.Fakes.ShimMainForm.AllInstances.button1_ClickObjectEventArgs">
             <summary>Sets the shim of MainForm.button1_Click(Object sender, EventArgs e)</summary>
+        </member>
+        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.AllInstances.pictureBox1_ClickObjectEventArgs">
+            <summary>Sets the shim of MainForm.pictureBox1_Click(Object sender, EventArgs e)</summary>
         </member>
         <member name="T:Vicsek.Properties.Fakes.StubMainForm">
             <summary>Stub type of Vicsek.Properties.MainForm</summary>
