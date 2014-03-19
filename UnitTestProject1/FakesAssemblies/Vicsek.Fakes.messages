@@ -3,12 +3,15 @@ E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.BorderTransit: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.DrawerStandart: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.DrawerDebug: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.DrawerInteresting: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Miscelaneous: type is sealed.
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.ParticleFactoryStandart: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.ParticleFactoryInteresting: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.ParticleInteresting: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.PairDouble: type is a value type.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Pair`1: type is a value type.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Position: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.ParticleBox: type is not visible to exported or assembly(Vicsek.Fakes).
-E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.ParticleFactoryStandart: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Classes.Strategy: type is sealed.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Program: type is sealed.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate stub for Vicsek.Properties.Resources: type is not visible to exported or assembly(Vicsek.Fakes).
@@ -20,6 +23,13 @@ E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IDrawer: type is an interface.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.DrawerStandart: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.DrawerDebug: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.DrawerInteresting: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IParticleFactory2D: type is an interface.
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.ParticleFactoryStandart: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.ParticleFactoryInteresting: type is not visible to exported or assembly(Vicsek.Fakes).
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IParticle: type is an interface.
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.Particle+<>c__DisplayClass1: type is not supported because of internal limitations.
+E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.ParticleInteresting: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.PairDouble+<op_Multiply>o__SiteContainer1: type is not supported because of internal limitations.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IVector`1: type is an interface.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IPair`1: type is an interface.
@@ -29,12 +39,8 @@ E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.Pair`1+<op_Multiply>o__SiteContainerd: type is not supported because of internal limitations.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.Pair`1+<op_Subtraction>o__SiteContainer5: type is not supported because of internal limitations.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.Position: type is not visible to exported or assembly(Vicsek.Fakes).
-E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IParticle: type is an interface.
-E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.Particle+<>c__DisplayClass1: type is not supported because of internal limitations.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IParticleBox: type is an interface.
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.ParticleBox: type is not visible to exported or assembly(Vicsek.Fakes).
-E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Interfaces.IParticleFactory2D: type is an interface.
-E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.ParticleFactoryStandart: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Classes.Strategy: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Program: type is not visible to exported or assembly(Vicsek.Fakes).
 E:\Users\Maxim\UserData\University\4 course\Vicsek\UnitTestProject1\Fakes\Vicsek.fakes : warning : Cannot generate shim for Vicsek.Properties.Resources: type is not visible to exported or assembly(Vicsek.Fakes).

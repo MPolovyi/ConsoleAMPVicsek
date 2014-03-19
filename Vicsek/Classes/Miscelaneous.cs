@@ -24,6 +24,11 @@ namespace Vicsek.Classes
             Second = _s;
         }
 
+        public bool IsNaN()
+        {
+            return double.IsNaN(First) || double.IsNaN(Second);
+        }
+
         public static PairDouble operator +(PairDouble A, PairDouble B)
         {
             return new PairDouble(A.First + B.First, A.Second + B.Second);

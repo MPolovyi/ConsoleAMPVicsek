@@ -14,18 +14,16 @@ namespace Vicsek.Classes
 
         private PairDouble m_CoordinatesNew;
 
-        private PairDouble m_Speed;
-        private IEnumerable<IParticle> m_Nearest;
+        protected PairDouble m_Speed;
+        protected IEnumerable<IParticle> m_Nearest;
         protected virtual IDrawer Drawer { get; private set; }
 
-        private readonly double m_InterractionRadius;
-
+        
         public Particle(double _x, double _y, IDrawer _drawer)
         {
             Drawer = _drawer;
             m_CoordinatesNew = m_Coordinates = new PairDouble(_x, _y);
-            m_InterractionRadius = 5;
-
+            
             Random k = new Random((int) DateTime.Now.ToBinary());
             Random r = new Random(k.GetHashCode());
             m_Speed = new PairDouble(Miscelaneous.ParticleSpeed * (0.5 - r.NextDouble()), Miscelaneous.ParticleSpeed * (0.5 - r.NextDouble()));
@@ -46,7 +44,8 @@ namespace Vicsek.Classes
             }
             else
             {
-                m_CoordinatesNew = m_Coordinates + m_Speed;    
+                
+                m_CoordinatesNew = m_Coordinates + m_Speed;
             }
         }
         
@@ -57,7 +56,7 @@ namespace Vicsek.Classes
 
             Parallel.ForEach(particles, _particle =>
                 {
-                    if (CalkDistance(_particle) < m_InterractionRadius)
+                    if (CalkDistance(_particle) < Miscelaneous.InterractionR)
                     {
                         nearest.Add(_particle);
                     }
@@ -67,7 +66,7 @@ namespace Vicsek.Classes
             return nearest;
         }
 
-        public double CalkDistance(IParticle _particle)
+        public virtual double CalkDistance(IParticle _particle)
         {
             double dist = (CoordinatesInDouble - _particle.CoordinatesInDouble).ABS();
             return dist;
@@ -84,7 +83,12 @@ namespace Vicsek.Classes
             PairDouble averSpd = cumulativeSpeed / m_Nearest.Count();
 
             averSpd.Normalize();
-            
+
+            if (averSpd.IsNaN())
+            {
+                averSpd = new PairDouble(0, 0);
+            }
+
             m_Speed = averSpd * Miscelaneous.ParticleSpeed;
             AddNoize(Miscelaneous.Noize);
         }
