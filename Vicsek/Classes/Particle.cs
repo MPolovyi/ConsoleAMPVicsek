@@ -23,7 +23,7 @@ namespace Vicsek.Classes
         public Particle(double _x, double _y, IDrawer _drawer)
         {
             Drawer = _drawer;
-            m_Coordinates = new PairDouble(_x, _y);
+            m_CoordinatesNew = m_Coordinates = new PairDouble(_x, _y);
             m_InterractionRadius = 5;
 
             Random k = new Random((int) DateTime.Now.ToBinary());
@@ -99,9 +99,9 @@ namespace Vicsek.Classes
         public void Draw(PictureBox _bmp)
         {
             var graph = _bmp.CreateGraphics();
-            var rect = new Rectangle(CoordinatesInPoint.X - 3, CoordinatesInPoint.Y - 3, 6, 6);
+            var rect = new Rectangle(CoordinatesInPoint.X - 10, CoordinatesInPoint.Y - 10, 20, 20);
 
-            graph.DrawEllipse(new Pen(Color.Black, 2), rect);
+            graph.FillEllipse(new SolidBrush(Color.Red), rect);
             graph.DrawLine(new Pen(Color.Blue,2), CoordinatesInPoint, SpeedInPoint);
         }
 
@@ -156,6 +156,11 @@ namespace Vicsek.Classes
         public void Move()
         {
             m_Coordinates = m_CoordinatesNew;
+        }
+
+        public override string ToString()
+        {
+            return CoordinatesInPoint.ToString();
         }
     }
 }

@@ -13,16 +13,20 @@ namespace Vicsek.Classes
     {
         private static IParticleBox m_box;
         private static IParticleFactory2D m_factory2;
-        private static IParticleFactory2D m_TstFactory;
+        private static IParticleFactory2D m_tstFactory;
+
+        private static PictureBox m_pBox;
 
         public static void Init(int _steps, PictureBox _pb)
         {
             IDrawer stdDrawer = new DrawerStandart(_pb);
             IDrawer testDrawer = new DrawerDebug(_pb);
+            m_pBox = _pb;
+
 
             m_factory2 = new ParticleFactoryStandart(_pb.Width, _pb.Height, stdDrawer);
 
-            m_TstFactory = new ParticleFactoryStandart(_pb.Width, _pb.Height, testDrawer);
+            m_tstFactory = new ParticleFactoryStandart(_pb.Width, _pb.Height, testDrawer);
 
 
             var borderOfArea = new BorderTransit(new List<PairDouble>
@@ -49,13 +53,20 @@ namespace Vicsek.Classes
 
         public static void AddParticles()
         {
-            m_box.AddParticles(m_factory2, 100);
+            lock (m_box)
+            {
+                m_box.AddParticles(m_factory2, 100);
+            }
         }
 
         public static void Live(IParticleBox _box)
         {
-            _box.NextStep();
-            _box.Draw();
+            lock (_box)
+            {
+                _box.NextStep();
+                _box.Draw();
+                _box.Particles.Last().Draw(m_pBox);
+            }
         }
     }
 }

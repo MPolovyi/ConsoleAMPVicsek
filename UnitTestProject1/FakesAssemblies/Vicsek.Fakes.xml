@@ -178,6 +178,9 @@
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.SpeedInPointGet">
             <summary>Sets the shim of Particle.get_SpeedInPoint()</summary>
         </member>
+        <member name="P:Vicsek.Classes.Fakes.ShimParticle.ToString">
+            <summary>Sets the shim of Particle.ToString()</summary>
+        </member>
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.UpdCoordinatesPairDouble">
             <summary>Sets the shim of Particle.UpdCoordinates(PairDouble _newPos)</summary>
         </member>
@@ -232,6 +235,9 @@
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.SpeedInPointGet">
             <summary>Sets the shim of Particle.get_SpeedInPoint()</summary>
         </member>
+        <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.ToString01">
+            <summary>Sets the shim of Particle.ToString()</summary>
+        </member>
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.UpdCoordinatesPairDouble">
             <summary>Sets the shim of Particle.UpdCoordinates(PairDouble _newPos)</summary>
         </member>
@@ -264,6 +270,12 @@
         </member>
         <member name="F:Vicsek.Classes.Fakes.StubParticle.NextStepIEnumerableOfIParticleIBorder">
             <summary>Sets the stub of Particle.NextStep(IEnumerable`1&lt;IParticle&gt; _particles, IBorder _border)</summary>
+        </member>
+        <member name="M:Vicsek.Classes.Fakes.StubParticle.ToString">
+            <summary>Sets the stub of Particle.ToString()</summary>
+        </member>
+        <member name="F:Vicsek.Classes.Fakes.StubParticle.ToString01">
+            <summary>Sets the stub of Particle.ToString()</summary>
         </member>
         <member name="P:Vicsek.Classes.Fakes.StubParticle.CallBase">
             <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>

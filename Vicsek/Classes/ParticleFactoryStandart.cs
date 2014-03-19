@@ -28,7 +28,9 @@ namespace Vicsek.Classes
             
             for (int i = 0; i < _count; i++)
             {
-                particles.Add(new Particle(SizeX*r.NextDouble(), SizeY*r.NextDouble(), Drawer));
+                var d1 = r.NextDouble();
+                var d2 = r.NextDouble();
+                particles.Add(new Particle(SizeX*d1, SizeY*d2, Drawer));
             }
             return particles;
         }
