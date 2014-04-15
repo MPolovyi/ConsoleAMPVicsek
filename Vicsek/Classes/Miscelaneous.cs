@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vicsek.Interfaces;
 
 namespace Vicsek.Classes
@@ -26,8 +23,10 @@ namespace Vicsek.Classes
 
         public bool IsNaN()
         {
+            //TODO: mb add checks in other operations as well, for example, add check on NaN to result of "/" opartion
             return double.IsNaN(First) || double.IsNaN(Second);
         }
+
 
         public static PairDouble operator +(PairDouble A, PairDouble B)
         {
@@ -58,6 +57,7 @@ namespace Vicsek.Classes
         {
             this = this/(ABS());
         }
+
     }
 
     public struct Pair<T> : IPair<T>
@@ -126,7 +126,7 @@ namespace Vicsek.Classes
             this = this/(ABS());
         }
     }
-
+    
     internal class Position
     {
         private double m_X;
@@ -177,7 +177,7 @@ namespace Vicsek.Classes
         
         public static PairDouble IntersectionPoint(PairDouble _a, PairDouble _b, PairDouble _c, PairDouble _d)
         {
-            double eps = 1E-9;
+            const double eps = 1E-9;
             double xA1 = _a.First, xB1 = _b.First, yA1 = _a.Second, yB1 = _b.Second;
             double xA2 = _c.First, xB2 = _d.First, yA2 = _c.Second, yB2 = _d.Second;
             double c1 = yA1*xB1 - xA1*yB1, c2 = yA2*xB2 - xA2*yB2;
@@ -229,14 +229,12 @@ namespace Vicsek.Classes
         /// <returns></returns>
         public static PairDouble Rotate(PairDouble _A, PairDouble _B, double _degree)
         {
-            PairDouble ToRotate = new PairDouble(0,0);
+            PairDouble toRotate = _B - _A;
+            var rotated = Rotate(toRotate, _degree);
 
-            ToRotate = _B - _A;
-            var Rotated = Rotate(ToRotate, _degree);
-
-            return Rotated + _A;
+            return rotated + _A;
         }
-        
+
         public static PairDouble Rotate(PairDouble _A, double _degree)
         {
 
