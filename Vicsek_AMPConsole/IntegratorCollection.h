@@ -6,6 +6,7 @@ class CIntegratorCollection
 {
 protected:
 	std::vector<CVicsek2DIntegrator> m_Integrators;
+	
 
 public:
 	CVicsek2DIntegrator& operator[](int idx);

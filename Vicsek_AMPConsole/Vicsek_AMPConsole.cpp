@@ -228,6 +228,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	float size = 31.6;
 	int collSize = 5;
 	int partCount = 4096;
+	float sqrParticleCount = sqrt(4096);
+
 
 	std::vector<TaskData*> tasks;
 	for (int i = 0; i < collSize; i++)
@@ -248,32 +250,49 @@ int _tmain(int argc, _TCHAR* argv[])
 	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 	
 	file.open(buffer, std::ios::app);
-	file << "Particle count = " << partCount << " Domain size = " << size << std::endl << std::endl;
+	file << "Test of oreder_parameter-based noise changing!!! Particle count = " << partCount << " Domain size = " << size << std::endl << std::endl;
 
 	std::vector<float> averSpd;
 
 	for (int i = 0; i < 360; i++)
 	{
-		for (int j = 0; j < (noise > 180 ? 300 : 600); j++)
+		bool iterate = true;
+		float prevAverSpd = 0;
+		float currAverSpd = 0;
+		int iteration = 0;
+		while (iterate)
 		{
-			IntegratorCollection.Integrate(noise);
-			std::cout << i << " " << j << std::endl;
+			int numSteps = 50;
+			for (int j = 0; j < numSteps; j++)
+			{
+				iteration++;
+				IntegratorCollection.Integrate(noise);
+				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
+			}
+			for (int j = 0; j < 20; j++)
+			{
+				iteration++;
+				IntegratorCollection.Integrate(noise);
+				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
+
+				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
+				currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
+			}
+			if (!(abs(currAverSpd - prevAverSpd) < 1 / sqrParticleCount))
+			{
+				prevAverSpd = currAverSpd;
+				numSteps *= 2;
+			}
+			else
+			{
+				iterate = false;
+			}
 		}
-		for (int j = 0; j < 20; j++)
-		{
-			IntegratorCollection.Integrate(noise);
-			averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
-			
 
-			std::cout << i << " " << j << std::endl;
-		}
-
-		auto averS = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f);
-		averS /= averSpd.size();
-
-		file << "Veloc: " << averS << " noize: " << noise << std::endl;
+		file << "Veloc: " << currAverSpd << " noize: " << noise << std::endl;
 		averSpd.clear();
 		noise -= 1;
+		iterate = true;
 	}
 
 	return 0;
