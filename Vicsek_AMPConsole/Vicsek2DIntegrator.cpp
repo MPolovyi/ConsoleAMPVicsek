@@ -18,22 +18,22 @@ void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int par
 	array_view<float_3, 1> vel(veloc);
 
 
-		tinymt_collection<1> rnd(extent<1>(partCount), std::rand());
+	tinymt_collection<1> rnd(extent<1>(partCount), std::rand());
 
-		concurrency::parallel_for_each(pos.extent, [=](index<1> idx) restrict(amp) {
+	concurrency::parallel_for_each(pos.extent, [=](index<1> idx) restrict(amp) {
 
-			pos[idx].x = rnd[idx].next_single() * domain.x;
-			pos[idx].y = rnd[idx].next_single() * domain.y;
-			pos[idx].z = 0;
+		pos[idx].x = rnd[idx].next_single() * domain.x;
+		pos[idx].y = rnd[idx].next_single() * domain.y;
+		pos[idx].z = 0;
 
-			vel[idx].x = rnd[idx].next_single() - 0.5;
-			vel[idx].y = rnd[idx].next_single() - 0.5;
-			vel[idx].z = 0;
+		vel[idx].x = rnd[idx].next_single() - 0.5;
+		vel[idx].y = rnd[idx].next_single() - 0.5;
+		vel[idx].z = 0;
 
-			//normalize speed
-			vel[idx] *= concurrency::fast_math::rsqrt(MathHelpers::SqrLength(vel[idx]));
-		});
-	
+		//normalize speed
+		vel[idx] *= concurrency::fast_math::rsqrt(MathHelpers::SqrLength(vel[idx]));
+	});
+
 
 	array_view<float_3, 1> posView = td.DataOld->pos.section(index<1>(begin), extent<1>(end));
 	copy(pos, posView);
@@ -41,15 +41,6 @@ void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int par
 	copy(vel, velView);
 
 	auto particlesOut = *td.DataOld;
-
-	std::ofstream myfile;
-	myfile.open("example.txt", std::ios::out | std::ios::trunc);
-	for (unsigned i = 0; i < particlesOut.vel.extent.size(); i++)
-	{
-		myfile << particlesOut.vel[i].x << "  " << particlesOut.vel[i].y << "  " << particlesOut.vel[i].z << "\n";
-	}
-	myfile.close();
-
 
 	//Swap becouese we swap data before fist Integration.
 	td.Swap();
@@ -131,7 +122,7 @@ std::vector<float_2> CVicsek2DIntegrator::GetAverVeclocOnSplitsX(int splits)
 	std::vector<int> counts(splits);
 	array_view<float_2, 1> acc_veloc(veloc);
 	array_view<int, 1> acc_count(counts);
-	int numParticles = m_Task.DataNew->size();
+	int numParticles = m_Task.DataOld->size();
 	extent<1> computeDomain(numParticles);
 
 	const float_2 domainSize = m_DomainSize;
@@ -154,6 +145,7 @@ std::vector<float_2> CVicsek2DIntegrator::GetAverVeclocOnSplitsX(int splits)
 		acc_veloc[idx] += vel;
 		acc_count[idx] += 1;
  	});
+
 	parallel_for_each(acc_veloc.extent, [=](index<1> idx) restrict(amp) {
 		acc_veloc[idx] /= (acc_count[idx] > 0 ? acc_count[idx] : 1);
 	});

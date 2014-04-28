@@ -36,4 +36,32 @@ namespace Vicsek2DMath
 			pos.y += domainSize.y;
 		}
 	}
+
+	void BorderCheckMoovingTopY(float_2& pos, float_2& vel, const float_2 domainSize) restrict(amp)
+	{
+		//domainSize.x < pos.x
+		if (concurrency::direct3d::step(domainSize.x, pos.x))
+		{
+			pos.x -= domainSize.x;
+		}
+		//pos.x < 0
+		if (concurrency::direct3d::step(pos.x, 0))
+		{
+			pos.x += domainSize.x;
+		}
+		//domainSize.y < pos.y
+		if (concurrency::direct3d::step(domainSize.y, pos.y))
+		{
+			int dist = pos.y - domainSize.y;
+			pos.y -= 2*dist;
+			vel += float_2(1, 0);
+			MathHelpers::NormalizeVector(vel);
+		}
+		//pos.y < 0
+		if (concurrency::direct3d::step(pos.y, 0))
+		{
+			pos.y = -pos.y;
+			vel.y = -vel.y;
+		}
+	}
 }

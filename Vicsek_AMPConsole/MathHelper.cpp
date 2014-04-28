@@ -113,6 +113,7 @@ namespace MathHelpers
 
 		return CountAverageVector(arr, vectors.size());
 	}
+
 	float_3 CountAverageVector(array<float_3>& src, uint count)
 	{
 		return AccumulateValue(src, count) / count;
@@ -125,7 +126,7 @@ namespace MathHelpers
 		// Using array as temporary memory.
 		auto element_count = count;
 		// Takes care of the sum of tail elements.
-		float_3 tail_sum(0.f, 0.f, 0.f);
+		float_3 tail_sum(0.f);
 		//if ((element_count % window_width) != 0 && element_count > window_width)
 		//{
 		//	tail_sum = std::accumulate(src.begin() + ((element_count - 1) / window_width) * window_width, src.end(), 0.f);
@@ -137,7 +138,7 @@ namespace MathHelpers
 		for (unsigned s = element_count / window_width; s > 0; s /= window_width)
 		{
 			parallel_for_each(extent<1>(s), [=, &src](index<1> idx) restrict(amp) {
-				float_3 sum(0.f, 0.f, 0.f);
+				float_3 sum(0.f);
 				for (unsigned i = 0; i < window_width; i++)
 				{
 					sum += src[idx + i * s];
@@ -162,6 +163,133 @@ namespace MathHelpers
 
 		// Perform any remaining reduction on the CPU.
 		std::vector<float_3> result(prev_s);
+		copy(src.section(0, prev_s), result.begin());
+		av_tail_sum.synchronize();
+
+		return std::accumulate(result.begin(), result.end(), tail_sum);
+	}
+
+	float_2 CountAverageVector(std::vector<float_2>& vectors)
+	{
+		array<float_2, 1> arr(vectors.size());
+		copy(vectors.begin(), vectors.end(), arr);
+
+		return CountAverageVector(arr, vectors.size());
+	}
+
+	float_2 CountAverageVector(array<float_2>& src, uint count)
+	{
+		return AccumulateValue(src, count) / count;
+	}
+
+	float_2 AccumulateValue(array<float_2>& src, uint count)
+	{
+		const unsigned window_width = 8;
+
+		// Using array as temporary memory.
+		auto element_count = count;
+		// Takes care of the sum of tail elements.
+		float_2 tail_sum(0.f);
+		//if ((element_count % window_width) != 0 && element_count > window_width)
+		//{
+		//	tail_sum = std::accumulate(src.begin() + ((element_count - 1) / window_width) * window_width, src.end(), 0.f);
+		//}
+		array_view<float_2, 1> av_tail_sum(1, &tail_sum);
+
+		// Each thread reduces window_width elements.
+		unsigned prev_s = element_count;
+		for (unsigned s = element_count / window_width; s > 0; s /= window_width)
+		{
+			parallel_for_each(extent<1>(s), [=, &src](index<1> idx) restrict(amp) {
+				float_2 sum(0.f);
+				for (unsigned i = 0; i < window_width; i++)
+				{
+					sum += src[idx + i * s];
+				}
+				src[idx] = sum;
+
+				// Reduce the tail in cases where the number of elements is not divisible.
+				// Note: execution of this section may negatively affect the performance.
+				// In production code the problem size passed to the reduction should
+				// be a power of the window_width. Please refer to the blog post for more
+				// information.
+				if ((idx[0] == s - 1) && ((s % window_width) != 0) && (s > window_width))
+				{
+					for (unsigned i = ((s - 1) / window_width) * window_width; i < s; i++)
+					{
+						av_tail_sum[0] += src[i];
+					}
+				}
+			});
+			prev_s = s;
+		}
+
+		// Perform any remaining reduction on the CPU.
+		std::vector<float_2> result(prev_s);
+		copy(src.section(0, prev_s), result.begin());
+		av_tail_sum.synchronize();
+
+		return std::accumulate(result.begin(), result.end(), tail_sum);
+	}
+
+	float CountAverageVector(std::vector<float>& vectors)
+	{
+		array<float, 1> arr(vectors.size());
+		copy(vectors.begin(), vectors.end(), arr);
+
+		return CountAverageVector(arr, vectors.size());
+	}
+
+	float CountAverageVector(array<float>& src, uint count)
+	{
+
+		return AccumulateValue(src, count) / count;
+	}
+
+	float AccumulateValue(array<float>& src, uint count)
+	{
+		const unsigned window_width = 8;
+
+		// Using array as temporary memory.
+		auto element_count = count;
+		// Takes care of the sum of tail elements.
+		float tail_sum(0.f);
+		//if ((element_count % window_width) != 0 && element_count > window_width)
+		//{
+		//	tail_sum = std::accumulate(src.begin() + ((element_count - 1) / window_width) * window_width, src.end(), 0.f);
+		//}
+		array_view<float, 1> av_tail_sum(1, &tail_sum);
+
+		// Each thread reduces window_width elements.
+		unsigned prev_s = element_count;
+		for (unsigned s = element_count / window_width; s > 0; s /= window_width)
+		{
+			parallel_for_each(extent<1>(s), [=, &src](index<1> idx) restrict(amp) {
+				float sum(0.f);
+				for (unsigned i = 0; i < window_width; i++)
+				{
+					sum += src[idx + i * s];
+				}
+				src[idx] = sum;
+
+				// Reduce the tail in cases where the number of elements is not divisible.
+				// Note: execution of this section may negatively affect the performance.
+				// In production code the problem size passed to the reduction should
+				// be a power of the window_width. Please refer to the blog post for more
+				// information.
+				if ((idx[0] == s - 1) && ((s % window_width) != 0) && (s > window_width))
+				{
+					for (unsigned i = ((s - 1) / window_width) * window_width; i < s; i++)
+					{
+						av_tail_sum[0] += src[i];
+					}
+				}
+			});
+			prev_s = s;
+		}
+
+		// Perform any remaining reduction on the CPU.
+		std::vector<float> result(prev_s);
 		copy(src.section(0, prev_s), result.begin());
 		av_tail_sum.synchronize();
 

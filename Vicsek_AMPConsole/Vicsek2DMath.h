@@ -3,6 +3,7 @@
 #include <amp.h>
 #include <amp_math.h>
 #include <amp_graphics.h>
+#include "MathHelper.h"
 
 using namespace concurrency;
 using namespace concurrency::graphics;
@@ -15,5 +16,5 @@ namespace Vicsek2DMath
 
 	void BorderCheckTransitional(float_2& pos, float_2& vel, const float_2 domainSize) restrict(amp);
 
-
+	void BorderCheckMoovingTopY(float_2& pos, float_2& vel, const float_2 domainSize) restrict(amp);
 }

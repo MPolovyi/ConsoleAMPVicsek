@@ -27,4 +27,10 @@ namespace MathHelpers
 	float_3		CountAverageVector(std::vector<float_3>& vectors);
 	float_3		CountAverageVector(array<float_3>& src, uint count);
 	float_3		AccumulateValue(array<float_3>& src, uint count);
+	float_2		CountAverageVector(std::vector<float_2>& vectors);
+	float_2		CountAverageVector(array<float_2>& src, uint count);
+	float_2		AccumulateValue(array<float_2>& src, uint count);
+	float		CountAverageVector(std::vector<float>& vectors);
+	float		CountAverageVector(array<float>& src, uint count);
+	float		AccumulateValue(array<float>& src, uint count);
 }

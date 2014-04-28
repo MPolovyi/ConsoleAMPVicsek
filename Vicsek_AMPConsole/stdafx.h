@@ -15,3 +15,8 @@
 // TODO: reference additional headers your program requires here
 #include "Vicsek2DIntegrator.h"
 #include <iostream>
+
+#include <fstream>
+#include <numeric>
+
+#include "IntegratorCollection.h"
