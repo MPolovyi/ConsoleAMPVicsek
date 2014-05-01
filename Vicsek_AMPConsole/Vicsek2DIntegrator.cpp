@@ -20,6 +20,7 @@ void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int par
 	array_view<float_3, 1> pos(posit);
 	array_view<float_3, 1> vel(veloc);
 
+	tinymt_collection<1> random(extent<1>(1000), 123);
 	tinymt_collection<1> rnd(extent<1>(partCount), std::rand());
 
 	concurrency::parallel_for_each(pos.extent, [=](index<1> idx) restrict(amp) {
