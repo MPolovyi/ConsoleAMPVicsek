@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonStructs.h" />
+    <ClInclude Include="DataCollection.h" />
     <ClInclude Include="Integrator.h" />
     <ClInclude Include="Integrator2D.h" />
     <ClInclude Include="IntegratorCollection.h" />

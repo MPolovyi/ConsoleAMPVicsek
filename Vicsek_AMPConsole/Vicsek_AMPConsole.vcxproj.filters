@@ -54,6 +54,9 @@
     <ClInclude Include="Rand\xxamp_tinymt_precalc_dc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataCollection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vicsek_AMPConsole.cpp">

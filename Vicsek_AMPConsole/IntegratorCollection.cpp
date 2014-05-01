@@ -52,17 +52,19 @@ std::vector<float_2> CIntegratorCollection::GetAverageVeloc()
 
 std::vector<float> CIntegratorCollection::GetAnsambleAveragedVeclocOnSplitsX(int splits)
 {
-	std::vector<float> ret;
-	auto tmp = GetAverVeclocOnSplitsX(splits);
+	std::vector<float> ret(splits);
+	std::vector<std::vector<float_2>> tmp = GetAverVeclocOnSplitsX(splits);
+
 	for (int i = 0; i < splits; i++)
 	{
-		std::vector<float> tmpAbs(tmp[i].size());
-		for (int j = 0; j < tmp[i].size(); j++)
+		auto si = tmp.size();
+		for (int j = 0; j < si; j++)
 		{
-			tmpAbs[j] = MathHelpers::Length(tmp[i][j]);
+			ret[i] += MathHelpers::Length(tmp[j][i]);
 		}
-		ret.push_back(MathHelpers::CountAverageVector(tmpAbs));
+		ret[i] /= si;
 	}
+
 	return ret;
 }
 

@@ -109,7 +109,8 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 		MathHelpers::NormalizeVector(vel);
 
 		pos += vel * deltaTime;
-		Vicsek2DMath::BorderCheckTransitional(pos, vel, domainSize);
+		
+		Vicsek2DMath::BorderCheckMoovingTopY(pos, vel, domainSize);
 
 		particlesOut.pos[idxGlobal].xy = pos;
 		particlesOut.vel[idxGlobal].xy = vel;

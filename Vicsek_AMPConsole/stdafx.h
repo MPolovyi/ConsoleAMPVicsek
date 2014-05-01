@@ -19,3 +19,4 @@
 #include <numeric>
 
 #include "IntegratorCollection.h"
+#include "DataCollection.h"
