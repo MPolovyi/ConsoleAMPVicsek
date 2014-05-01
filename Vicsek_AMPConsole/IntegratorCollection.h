@@ -5,13 +5,12 @@
 class CIntegratorCollection
 {
 protected:
-	std::vector<CVicsek2DIntegrator> m_Integrators;
+	std::vector<std::shared_ptr<CIntegrator2D>> m_Integrators;
 	
-
 public:
-	CVicsek2DIntegrator& operator[](int idx);
-
-	CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain) ;
+	CIntegrator2D& operator[](int idx);
+	CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain, std::vector<std::shared_ptr<CIntegrator2D>> integrators);
+	//CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain);
 
 	bool Integrate(float noise);
 

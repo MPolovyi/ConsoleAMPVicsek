@@ -3,65 +3,82 @@
 
 #include "stdafx.h"
 
-void RunCollectionIntegrator(int domainSize, int collSize)
+void RunCollectionIntegrator(float domainSize, int collSize)
 {
+	float size = domainSize;
+	int partCount = 4096;
+	float sqrParticleCount = sqrt(4096);
+
 	std::vector<TaskData*> tasks;
 	for (int i = 0; i < collSize; i++)
 	{
-		tasks.push_back(new TaskData(domainSize*domainSize, accelerator(accelerator::default_accelerator).default_view, accelerator(accelerator::default_accelerator)));
+		tasks.push_back(new TaskData(partCount, accelerator(accelerator::default_accelerator).default_view, accelerator(accelerator::default_accelerator)));
 	}
-	CIntegratorCollection IntegratorCollection(tasks, float_2(domainSize, domainSize));
 
-	float noise = 180;
+	std::vector<std::shared_ptr<CIntegrator2D>> integrs;
+	for (int i = 0; i < tasks.size(); i++)
+	{
+		integrs.push_back(std::make_shared<CVicsek2DIntegrator>());
+	}
+
+	CIntegratorCollection IntegratorCollection(tasks, float_2(size, size), integrs);
+
+	float noise = 360;
 
 	std::fstream file;
-	file.open("Velocities.txt", std::ios::app);
-	std::vector<float> averSpd(20);
 
-	for (int i = 0; i < 180; i++)
+	time_t rawtime;
+	struct tm timeinfo;
+	char buffer[256];
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
+
+	file.open(buffer, std::ios::app);
+	file << "Test of oreder_parameter-based noise changing!!! Particle count = " << partCount << " Domain size = " << size << std::endl << std::endl;
+
+	std::vector<float> averSpd;
+
+	for (int i = 0; i < 360; i++)
 	{
-		for (int j = 0; j < 100; j++)
+		bool iterate = true;
+		float prevAverSpd = 0;
+		float currAverSpd = 0;
+		int iteration = 0;
+		while (iterate)
 		{
-			IntegratorCollection.Integrate(noise);
-			std::cout << i << " " << j << std::endl;
-		}
-		for (int j = 0; j < 20; j++)
-		{
-			IntegratorCollection.Integrate(noise);
-			averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
-			std::cout << i << " " << j << std::endl;
+			int numSteps = 50;
+			for (int j = 0; j < numSteps; j++)
+			{
+				iteration++;
+				IntegratorCollection.Integrate(noise);
+				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
+			}
+			for (int j = 0; j < 20; j++)
+			{
+				iteration++;
+				IntegratorCollection.Integrate(noise);
+				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
+
+				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
+				currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
+			}
+			if (!(abs(currAverSpd - prevAverSpd) < 1 / sqrParticleCount))
+			{
+				prevAverSpd = currAverSpd;
+				numSteps *= 2;
+			}
+			else
+			{
+				iterate = false;
+			}
 		}
 
-		auto averS = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f);
-		averS /= averSpd.size();
-
-		file << "Veloc: " << averS << " noize: " << noise << std::endl;
+		file << "Veloc: " << currAverSpd << " noize: " << noise << std::endl;
 		averSpd.clear();
-		noise -= 0.5;
+		noise -= 1;
+		iterate = true;
 	}
-
-	for (int i = 0; i < 180; i++)
-	{
-		for (int j = 0; j < 200; j++)
-		{
-			IntegratorCollection.Integrate(noise);
-			std::cout << i << " " << j << std::endl;
-		}
-		for (int j = 0; j < 20; j++)
-		{
-			IntegratorCollection.Integrate(noise);
-			averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
-			std::cout << i << " " << j << std::endl;
-		}
-
-		auto averS = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f);
-		averS /= averSpd.size();
-
-		file << "Veloc: " << averS << " noize: " << noise << std::endl;
-		averSpd.clear();
-		noise -= 0.5;
-	}
-	file.close();
 }
 
 void RunIntegrator(int size)
@@ -225,75 +242,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	accelerator::set_default(accelerator::direct3d_warp);
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 	
-	float size = 31.6;
-	int collSize = 5;
-	int partCount = 4096;
-	float sqrParticleCount = sqrt(4096);
+	RunCollectionIntegrator(32, 5);
 
-
-	std::vector<TaskData*> tasks;
-	for (int i = 0; i < collSize; i++)
-	{
-		tasks.push_back(new TaskData(partCount, accelerator(accelerator::default_accelerator).default_view, accelerator(accelerator::default_accelerator)));
-	}
-	CIntegratorCollection IntegratorCollection(tasks, float_2(size, size));
-
-	float noise = 360;
-
-	std::fstream file;
-
-	time_t rawtime;
-	struct tm timeinfo;
-	char buffer[256];
-	time(&rawtime);
-	localtime_s(&timeinfo, &rawtime);
-	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
-	
-	file.open(buffer, std::ios::app);
-	file << "Test of oreder_parameter-based noise changing!!! Particle count = " << partCount << " Domain size = " << size << std::endl << std::endl;
-
-	std::vector<float> averSpd;
-
-	for (int i = 0; i < 360; i++)
-	{
-		bool iterate = true;
-		float prevAverSpd = 0;
-		float currAverSpd = 0;
-		int iteration = 0;
-		while (iterate)
-		{
-			int numSteps = 50;
-			for (int j = 0; j < numSteps; j++)
-			{
-				iteration++;
-				IntegratorCollection.Integrate(noise);
-				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
-			}
-			for (int j = 0; j < 20; j++)
-			{
-				iteration++;
-				IntegratorCollection.Integrate(noise);
-				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
-
-				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
-				currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
-			}
-			if (!(abs(currAverSpd - prevAverSpd) < 1 / sqrParticleCount))
-			{
-				prevAverSpd = currAverSpd;
-				numSteps *= 2;
-			}
-			else
-			{
-				iterate = false;
-			}
-		}
-
-		file << "Veloc: " << currAverSpd << " noize: " << noise << std::endl;
-		averSpd.clear();
-		noise -= 1;
-		iterate = true;
-	}
 
 	return 0;
 }

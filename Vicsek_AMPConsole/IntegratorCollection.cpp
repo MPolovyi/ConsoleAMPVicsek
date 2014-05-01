@@ -1,11 +1,20 @@
 #include "IntegratorCollection.h"
 
 
-CIntegratorCollection::CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain)
+//CIntegratorCollection::CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain)
+//{
+//	m_Integrators = *std::make_unique<std::vector<CIntegrator2D>>(tds.size());
+//	for (int i = 0; i < tds.size(); i++)
+//	{
+//		m_Integrators.push_back(CVicsek2DIntegrator(*tds[i], domain));
+//	}
+//}
+
+CIntegratorCollection::CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain, std::vector<std::shared_ptr<CIntegrator2D>> integrators) : m_Integrators(integrators)
 {
 	for (int i = 0; i < tds.size(); i++)
 	{
-		m_Integrators.push_back(CVicsek2DIntegrator(*tds[i], domain));
+		m_Integrators[i]->Init(*tds[i], domain);
 	}
 }
 
@@ -13,7 +22,7 @@ bool CIntegratorCollection::Integrate(float noise)
 {
 	for (int i = 0; i < m_Integrators.size(); i++)
 	{
-		m_Integrators[i].Integrate(noise);
+		m_Integrators[i]->Integrate(noise);
 	}
 	return true;
 }
@@ -36,7 +45,7 @@ std::vector<float_2> CIntegratorCollection::GetAverageVeloc()
 	std::vector<float_2> ret;
 	for (int i = 0; i < m_Integrators.size(); i++)
 	{
-		ret.push_back(m_Integrators[i].GetAverageVeloc());
+		ret.push_back(m_Integrators[i]->GetAverageVeloc());
 	}
 	return ret;
 }
@@ -62,14 +71,14 @@ std::vector<std::vector<float_2>> CIntegratorCollection::GetAverVeclocOnSplitsX(
 	std::vector<std::vector<float_2>> ret;
 	for (int i = 0; i < m_Integrators.size(); i++)
 	{
-		ret.push_back(m_Integrators[i].GetAverVeclocOnSplitsX(splits));
+		ret.push_back(m_Integrators[i]->GetAverVeclocOnSplitsX(splits));
 	}
 	return ret;
 }
 
-CVicsek2DIntegrator& CIntegratorCollection::operator[] (int idx)
+CIntegrator2D& CIntegratorCollection::operator[] (int idx)
 {
-	return m_Integrators[idx];
+	return *m_Integrators[idx];
 }
 
 CIntegratorCollection::~CIntegratorCollection()

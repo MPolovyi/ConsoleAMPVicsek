@@ -13,9 +13,3 @@
 
 
 // TODO: reference additional headers your program requires here
-#include <iostream>
-
-#include <fstream>
-#include <numeric>
-
-#include "IntegratorCollection.h"
