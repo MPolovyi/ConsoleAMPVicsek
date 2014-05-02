@@ -13,8 +13,13 @@ public:
 	{ width = a; height = b; }
 };
 
+
+
 class Rectangle : public Polygon
 {
+protected:
+	int a;
+	static abc ab;
 public:
 	int area()
 	{ return width*height; }
@@ -27,13 +32,22 @@ public:
 	{ return width*height / 2; }
 };
 
+template<int T>
+ABC<T>::~ABC()
+{}
+
+template<int T>
+abc ABC<T>::s = { 10, T, T, 10 };
+
 int _tmain(int argc, _TCHAR* argv[])
 {
+	ABC<5> ab;
+
 	Rectangle rect;
 	Triangle trgl;
 	Polygon * ppoly1 = &rect;
 	Polygon * ppoly2 = &trgl;
 	ppoly1->set_values(4, 5);
 	ppoly2->set_values(4, 5);
-}
 
+}
