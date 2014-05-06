@@ -2,9 +2,14 @@
 //
 
 #include "stdafx.h"
+#include "cvmarkersobj.h"
+#include "Viscek2DKulinskIntegrator.h"
 
 void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 {
+	concurrency::diagnostic::marker_series NextIterationMarker(_T("NextIteration"));
+	concurrency::diagnostic::marker_series NextNoizeIterationMarker(_T("NextIteration"));
+	concurrency::diagnostic::marker_series NextVelocAppendIterationMarker(_T("NextIteration"));
 	float size = domainSize;
 	int partCount = 256 * (particleSize / 256);
 	float sqrParticleCount = sqrt(partCount);
@@ -45,6 +50,8 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 
 	for (int i = 0; i < 360; i++)
 	{
+		NextNoizeIterationMarker.write_flag(1, L"BEFORE noise %2.2f iteration", noise);
+
 		bool iterate = true;
 		float prevAverSpd = 0;
 		float currAverSpd = 0;
@@ -55,31 +62,37 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 			for (int j = 0; j < numSteps; j++)
 			{
 				iteration++;
+				NextIterationMarker.write_flag(1, L"BEFORE iteration N %d", j);
 				IntegratorCollection.Integrate(noise);
+				NextIterationMarker.write_flag(1, L"AFTER iteratin N %d", j);
 				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
 			}
 			for (int j = 0; j < 20; j++)
 			{
 				iteration++;
 				IntegratorCollection.Integrate(noise);
+				NextVelocAppendIterationMarker.write_flag(1, L"BEFORE veloc count and append N %d", j);
 				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
-
+				NextVelocAppendIterationMarker.write_flag(1, L"AFTER veloc count and append N %d", j);
 				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
 			}
 			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
-			if (!(abs(currAverSpd - prevAverSpd) < 1 / sqrParticleCount))
+
+			if (!( abs(currAverSpd - prevAverSpd) < (1 / sqrParticleCount) ))
 			{
 				prevAverSpd = currAverSpd;
 				numSteps *= 2;
+				averSpd.clear();
 			}
 			else
 			{
 				iterate = false;
 			}
 		}
+		NextNoizeIterationMarker.write_flag(1, L"AFTER noise %2.2f iteration", noise);
 		dataCollection.AddAverSpeed(currAverSpd, noise);
 		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSplitsX(100), noise);
-			
+		NextNoizeIterationMarker.write_flag(1, L"AFTER noise AND SLICES VELOCITY COUNT + APPEND %2.2f iteration", noise);
 		averSpd.clear();
 		noise -= 1;
 		iterate = true;
@@ -248,7 +261,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	accelerator::set_default(accelerator::direct3d_warp);
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 	
-	RunCollectionIntegrator(150, 5, 9984);
+	RunCollectionIntegrator(31.2, 5, 4096);
 
 	return 0;
 }

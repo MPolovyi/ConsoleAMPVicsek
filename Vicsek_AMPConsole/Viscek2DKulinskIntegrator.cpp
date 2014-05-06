@@ -1,55 +1,7 @@
-#include "Vicsek2DIntegrator.h"
+#include "Viscek2DKulinskIntegrator.h"
 #include "Rand\amp_tinymt_rng.h"
-#include <fstream>
 
-
-void CVicsek2DIntegrator::Init(TaskData& td, float_2 domain)
-{
-	CIntegrator2D::Init(td, domain);
-	PopulateTaskData(td, domain, td.DataNew->size());
-};
-
-void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int partCount)
-{
-	index<1> begin(0);
-	extent<1> end(partCount);
-
-	std::vector<float_3> posit(partCount);
-	std::vector<float_3> veloc(partCount);
-
-	array_view<float_3, 1> pos(posit);
-	array_view<float_3, 1> vel(veloc);
-
-	tinymt_collection<1> random(extent<1>(1000), 123);
-	tinymt_collection<1> rnd(extent<1>(partCount), std::rand());
-
-	concurrency::parallel_for_each(pos.extent, [=](index<1> idx) restrict(amp) {
-
-		pos[idx].x = rnd[idx].next_single() * domain.x;
-		pos[idx].y = rnd[idx].next_single() * domain.y;
-		pos[idx].z = 0;
-
-		vel[idx].x = rnd[idx].next_single() - 0.5;
-		vel[idx].y = rnd[idx].next_single() - 0.5;
-		vel[idx].z = 0;
-
-		//normalize speed
-		vel[idx] *= concurrency::fast_math::rsqrt(MathHelpers::SqrLength(vel[idx]));
-	});
-
-
-	array_view<float_3, 1> posView = td.DataOld->pos.section(index<1>(begin), extent<1>(end));
-	copy(pos, posView);
-	array_view<float_3, 1> velView = td.DataOld->vel.section(index<1>(begin), extent<1>(end));
-	copy(vel, velView);
-
-	auto particlesOut = *td.DataOld;
-
-	//Swap becouese we swap data before fist Integration.
-	td.Swap();
-}
-
-bool CVicsek2DIntegrator::RealIntegrate(float noise)
+bool CViscek2DKulinskIntegrator::RealIntegrate(float noise)
 {
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
@@ -63,7 +15,7 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 	//initialization of random generator;
 
 	tinymt_collection<1> rnd(computeDomain, std::rand());
-	
+
 	const ParticlesAmp& particlesIn = *m_Task->DataOld;
 	const ParticlesAmp& particlesOut = *m_Task->DataNew;
 
@@ -110,11 +62,15 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 		MathHelpers::NormalizeVector(vel);
 
 		pos += vel * deltaTime;
-		
-		Vicsek2DMath::BorderCheckTransitional(pos, vel, domainSize);
+
+		Vicsek2DMath::BorderCheckMoovingTopY(pos, vel, domainSize);
 
 		particlesOut.pos[idxGlobal].xy = pos;
 		particlesOut.vel[idxGlobal].xy = vel;
 	});
 	return true;
 }
+
+
+CViscek2DKulinskIntegrator::~CViscek2DKulinskIntegrator()
+{}

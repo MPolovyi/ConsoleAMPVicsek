@@ -106,7 +106,6 @@ typedef  _tinymt_dc_32 tinymt_dc;
 #endif 
 
 
-
 /// This is the class implementing tinyMT engine
 class tinymt
 {

@@ -30,4 +30,3 @@ protected:
 	int m_IntR = 1;
 	static const int s_TileSize = 256;
 };
-

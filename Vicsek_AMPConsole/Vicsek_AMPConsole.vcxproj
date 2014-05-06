@@ -54,6 +54,7 @@
       <SDLCheck>true</SDLCheck>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <DebugInformationFormat>None</DebugInformationFormat>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\iopxv54d.2a0\SDK\Native\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -71,6 +72,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <MinimalRebuild>true</MinimalRebuild>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\iopxv54d.2a0\SDK\Native\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -86,6 +88,7 @@
   <ItemGroup>
     <ClInclude Include="CommonStructs.h" />
     <ClInclude Include="DataCollection.h" />
+    <ClInclude Include="DataCollectionGPU.h" />
     <ClInclude Include="Integrator.h" />
     <ClInclude Include="Integrator2D.h" />
     <ClInclude Include="IntegratorCollection.h" />
@@ -96,15 +99,18 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Vicsek2DIntegrator.h" />
     <ClInclude Include="Vicsek2DMath.h" />
+    <ClInclude Include="Viscek2DKulinskIntegrator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="amp_tinymt_rng.cpp" />
+    <ClCompile Include="DataCollectionGPU.cpp" />
     <ClCompile Include="Integrator2D.cpp" />
     <ClCompile Include="IntegratorCollection.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Vicsek2DIntegrator.cpp" />
     <ClCompile Include="Vicsek2DMath.cpp" />
     <ClCompile Include="Vicsek_AMPConsole.cpp" />
+    <ClCompile Include="Viscek2DKulinskIntegrator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

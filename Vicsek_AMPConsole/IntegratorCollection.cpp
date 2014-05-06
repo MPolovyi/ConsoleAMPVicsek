@@ -1,6 +1,6 @@
 #include "IntegratorCollection.h"
-
-
+#include <ppl.h>
+#include <concurrent_vector.h>
 //CIntegratorCollection::CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain)
 //{
 //	m_Integrators = *std::make_unique<std::vector<CIntegrator2D>>(tds.size());
@@ -37,16 +37,15 @@ float CIntegratorCollection::GetAnsambleAveragedABSVeloc()
 		velAbs[i] = MathHelpers::Length(vel[i]);
 	}
 
-	return MathHelpers::CountAverageVector(velAbs);
+	return std::accumulate(velAbs.begin(), velAbs.end(), 0.0f)/velAbs.size();
 }
 
 std::vector<float_2> CIntegratorCollection::GetAverageVeloc()
 {
-	std::vector<float_2> ret;
-	for (int i = 0; i < m_Integrators.size(); i++)
-	{
-		ret.push_back(m_Integrators[i]->GetAverageVeloc());
-	}
+	std::vector<float_2> ret(m_Integrators.size());
+	concurrency::parallel_for(size_t(0), m_Integrators.size(), [&](size_t i) {
+		ret[i] = m_Integrators[i]->GetAverageVeloc();
+	});
 	return ret;
 }
 
@@ -70,11 +69,10 @@ std::vector<float> CIntegratorCollection::GetAnsambleAveragedVeclocOnSplitsX(int
 
 std::vector<std::vector<float_2>> CIntegratorCollection::GetAverVeclocOnSplitsX(int splits)
 {
-	std::vector<std::vector<float_2>> ret;
-	for (int i = 0; i < m_Integrators.size(); i++)
-	{
-		ret.push_back(m_Integrators[i]->GetAverVeclocOnSplitsX(splits));
-	}
+	std::vector<std::vector<float_2>> ret(m_Integrators.size());
+	concurrency::parallel_for(size_t(0), m_Integrators.size(), [&](size_t i) {
+		ret[i] = m_Integrators[i]->GetAverVeclocOnSplitsX(splits);
+	});
 	return ret;
 }
 
