@@ -1,7 +1,6 @@
 #pragma once
 #include "CommonStructs.h"
 
-
 class IIntegrator
 {
 public:
@@ -16,7 +15,8 @@ public:
 	bool Integrate(float noise)
 	{
 		m_Task->Swap();
-		return RealIntegrate(noise);
+		auto a = RealIntegrate(noise);
+		return a;
 	}
 protected:
 	virtual bool RealIntegrate(float noise) { return false; };

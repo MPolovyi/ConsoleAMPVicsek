@@ -1,5 +1,5 @@
 #include "Vicsek2DIntegrator.h"
-#include "Rand\amp_tinymt_rng.h"
+
 #include <fstream>
 
 
@@ -20,9 +20,9 @@ void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int par
 	array_view<float_3, 1> pos(posit);
 	array_view<float_3, 1> vel(veloc);
 
-	tinymt_collection<1> random(extent<1>(1000), 123);
-	tinymt_collection<1> rnd(extent<1>(partCount), std::rand());
+	m_Rnd = tinymt_collection<1>(extent<1>(partCount), std::rand());
 
+	const tinymt_collection<1>& rnd = this->m_Rnd;
 	concurrency::parallel_for_each(pos.extent, [=](index<1> idx) restrict(amp) {
 
 		pos[idx].x = rnd[idx].next_single() * domain.x;
@@ -51,6 +51,7 @@ void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int par
 
 bool CVicsek2DIntegrator::RealIntegrate(float noise)
 {
+	
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
 	const int numTiles = numParticles / s_TileSize;
@@ -61,11 +62,9 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 	const float_2 domainSize = m_DomainSize;
 	const float intR = m_IntR*m_IntR;
 	//initialization of random generator;
-
-	tinymt_collection<1> rnd(computeDomain, std::rand());
-	
 	const ParticlesAmp& particlesIn = *m_Task->DataOld;
 	const ParticlesAmp& particlesOut = *m_Task->DataNew;
+	const tinymt_collection<1>& rnd = this->m_Rnd;
 
 	concurrency::parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
 

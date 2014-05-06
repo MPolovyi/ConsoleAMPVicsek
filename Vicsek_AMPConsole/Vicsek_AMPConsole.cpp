@@ -5,11 +5,12 @@
 #include "cvmarkersobj.h"
 #include "Viscek2DKulinskIntegrator.h"
 
-void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
+void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSize)
 {
+	accelerator::set_default(accelerator::direct3d_warp);
 	concurrency::diagnostic::marker_series NextIterationMarker(_T("NextIteration"));
-	concurrency::diagnostic::marker_series NextNoizeIterationMarker(_T("NextIteration"));
-	concurrency::diagnostic::marker_series NextVelocAppendIterationMarker(_T("NextIteration"));
+	concurrency::diagnostic::marker_series NextNoizeIterationMarker(_T("NextNoizeIterationMarker"));
+	concurrency::diagnostic::marker_series NextVelocAppendIterationMarker(_T("NextVelocAppendIterationMarker"));
 	float size = domainSize;
 	int partCount = 256 * (particleSize / 256);
 	float sqrParticleCount = sqrt(partCount);
@@ -42,7 +43,6 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 
 	sprintf_s(bufferComment, "Particle count = %d Domain size = %5.2f", partCount, size);
 
-	
 	CDataCollection dataCollection;
 
 	std::vector<float> averSpd;
@@ -77,8 +77,8 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
 			}
 			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
-
-			if (!( abs(currAverSpd - prevAverSpd) < (1 / sqrParticleCount) ))
+			std::cout << "Current average speed" << currAverSpd << std::endl;
+			if (!(abs(currAverSpd - prevAverSpd) < (1 / sqrParticleCount)))
 			{
 				prevAverSpd = currAverSpd;
 				numSteps *= 2;
@@ -96,6 +96,89 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 		averSpd.clear();
 		noise -= 1;
 		iterate = true;
+	}
+	dataCollection.WriteOnDisk(buffer, buffer2, bufferComment);
+}
+
+void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
+{
+	float size = domainSize;
+	int partCount = 256 * (particleSize / 256);
+	float sqrParticleCount = sqrt(partCount);
+
+	std::vector<TaskData*> tasks;
+	for (int i = 0; i < collSize; i++)
+	{
+		tasks.push_back(new TaskData(partCount, accelerator(accelerator::default_accelerator).default_view, accelerator(accelerator::default_accelerator)));
+	}
+
+	std::vector<std::shared_ptr<CIntegrator2D>> integrs;
+	for (int i = 0; i < tasks.size(); i++)
+	{
+		integrs.push_back(std::make_shared<CVicsek2DIntegrator>());
+	}
+
+	CIntegratorCollection IntegratorCollection(tasks, float_2(size, size), integrs);
+
+	float noise = 360;
+
+	time_t rawtime;
+	struct tm timeinfo;
+	char buffer[256];
+	char buffer2[256];
+	char bufferComment[256];
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
+	strftime(buffer2, 256, "SplitsVelocities_%d.%m_%H.%M.%S.txt", &timeinfo);
+
+	sprintf_s(bufferComment, "Particle count = %d Domain size = %5.2f", partCount, size);
+
+	CDataCollection dataCollection;
+
+	std::vector<float> averSpd;
+	std::vector<float> averSpdOnSlices;
+
+	for (int i = 0; i < 360; i++)
+	{
+		bool iterate = true;
+		float prevAverSpd = 0;
+		float currAverSpd = 0;
+		int iteration = 0;
+		while (iterate)
+		{
+			int numSteps = 50;
+			for (int j = 0; j < numSteps; j++)
+			{
+				iteration++;
+				IntegratorCollection.Integrate(noise);
+			}
+			for (int j = 0; j < 20; j++)
+			{
+				iteration++;
+				IntegratorCollection.Integrate(noise);
+				//averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
+			}
+			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
+			averSpd.clear();
+			if (!(abs(currAverSpd - prevAverSpd) < (1 / sqrParticleCount)))
+			{
+				prevAverSpd = currAverSpd;
+				numSteps *= 2;
+			}
+			else
+			{
+				iterate = false;
+			}
+			iterate = false;
+		}
+		//dataCollection.AddAverSpeed(currAverSpd, noise);
+		IntegratorCollection.Integrate(noise);
+		//dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSplitsX(100), noise);
+		noise -= 1;
+		iterate = true;
+
+		std::cout << noise << std::endl;
 	}
 	dataCollection.WriteOnDisk(buffer, buffer2, bufferComment);
 }
@@ -155,7 +238,6 @@ void RunIntegrator(int size)
 			averSpd.push_back(MathHelpers::SqrLength(Integrator.GetAverageVeloc()));
 			std::cout << i << " " << j << std::endl;
 			std::cout << "Veloc: " << MathHelpers::SqrLength(Integrator.GetAverageVeloc()) << " noize: " << s_Noise << std::endl;
-
 		}
 		file << std::endl;
 		file << std::endl;
@@ -207,7 +289,7 @@ int StepsToEq(int size)
 	}
 
 	noise = 10;
-	for (int  i = 0; i < 100; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		Integrator.Integrate(noise);
 		aver = MathHelpers::Length(Integrator.GetAverageVeloc());
@@ -258,13 +340,9 @@ int StepsToEq(int size)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	accelerator::set_default(accelerator::direct3d_warp);
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
-	
+
 	RunCollectionIntegrator(31.2, 5, 4096);
 
 	return 0;
 }
-
-
-
