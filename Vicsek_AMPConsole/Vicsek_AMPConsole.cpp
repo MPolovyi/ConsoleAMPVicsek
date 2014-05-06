@@ -65,7 +65,6 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
 
 				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
-				
 			}
 			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
 			if (!(abs(currAverSpd - prevAverSpd) < 1 / sqrParticleCount))
@@ -249,7 +248,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	accelerator::set_default(accelerator::direct3d_warp);
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 	
-	RunCollectionIntegrator(100, 5, 9984);
+	RunCollectionIntegrator(150, 5, 9984);
 
 	return 0;
 }

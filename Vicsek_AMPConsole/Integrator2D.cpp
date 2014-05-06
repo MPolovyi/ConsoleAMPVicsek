@@ -1,4 +1,5 @@
 #include "Integrator2D.h"
+#include "Rand/amp_tinymt_rng.h"
 
 //Splits computation domain on <splits> areas, parallel to X axis, and computes average velocity on each.
 std::vector<float_2> CIntegrator2D::GetAverVeclocOnSplitsX(int splits)
