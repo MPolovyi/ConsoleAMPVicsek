@@ -157,7 +157,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 			{
 				iteration++;
 				IntegratorCollection.Integrate(noise);
-				//averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
+				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
 			}
 			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
 			averSpd.clear();
@@ -172,9 +172,9 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 			}
 			iterate = false;
 		}
-		//dataCollection.AddAverSpeed(currAverSpd, noise);
+		dataCollection.AddAverSpeed(currAverSpd, noise);
 		IntegratorCollection.Integrate(noise);
-		//dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSplitsX(100), noise);
+		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSplitsX(100), noise);
 		noise -= 1;
 		iterate = true;
 
@@ -342,7 +342,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(31.2, 5, 4096);
+	RunCollectionIntegrator(31.2, 1, 4096);
 
 	return 0;
 }

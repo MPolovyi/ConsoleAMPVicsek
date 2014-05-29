@@ -103,7 +103,7 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 			ti.barrier.wait();
 		}
 
-		MathHelpers::RotateVector2D(vel, noise * (0.5 - rnd[ti.local].next_single()));
+		MathHelpers::RotateVector2D(vel, noise * (0.5 - rnd[ti.global].next_single()));
 
 		vel *= dampingFactor;
 		MathHelpers::NormalizeVector(vel);
