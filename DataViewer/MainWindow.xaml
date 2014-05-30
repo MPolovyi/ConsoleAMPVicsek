@@ -3,14 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="650" Width="850">
     <Canvas>
-        <StackPanel Orientation="Horizontal" Height="25" Margin="15, 15, 0, 0">
-            <Button x:Name="OpenButton" Width="80" Content="Open" Click="OpenButton_Click"/>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Height="25" Margin="15, 15, 0, 0">
+                <Button x:Name="OpenAllButton" Width="80" Content="Open" Click="OpenAllButton_Click" />
+                <Button Name="OpenSpdByTimeButton" Width="auto" Content="Open Spd By Noise" Margin="20, 0, 0 ,0" Click="OpenSpdByNoiseButton_Click"></Button>
+                <Button Name="OpenSpdByHeightButton" Width="auto" Content="Open Spd By Height" Margin="20, 0, 0, 0" Click="OpenSpdByHeightButton_Click"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="25" Margin="15, 15, 0, 0">
+                <Label Name="SimDataLabel"></Label>
+                <Label Name="NoiseLabel" HorizontalAlignment="Right" Margin="0, 0, 10, 0"></Label>
+            </StackPanel>
         </StackPanel>
-        <StackPanel x:Name="ImgPanel" Orientation="Horizontal" Canvas.Left="25" Canvas.Top="50" Width="800" Height="500">
-            <Path x:Name="MyPath"></Path>
-            <Image x:Name="TimeFlowImage" Width="395"></Image>
-            <Image x:Name="HeigthDependance" Width="395" Margin="10, 0, 0, 0"></Image>
+        <StackPanel x:Name="ImgPanel" Orientation="Horizontal" Canvas.Left="25" Canvas.Top="100" Width="800" Height="496">
+            <Path x:Name="MyPath" Height="auto" Width="390" Margin="0, 0, 10,0"></Path>
+            <Path x:Name="MyPath2" Height="auto" Width="390" Margin="10, 0, 0, 0"></Path>
         </StackPanel>
-        <Button Width="80" Height="25" Canvas.Left="733" Canvas.Top="571">Close</Button>
+        <Button Content="Normalize" Height="25" Width="80" Canvas.Left="728" Canvas.Top="539" Click="Button_Click"></Button>
+        <Slider ValueChanged="RangeBase_OnValueChanged" Maximum="359" SmallChange="1" Width="194" Canvas.Left="614" Canvas.Top="569"></Slider>
     </Canvas>
 </Window>
