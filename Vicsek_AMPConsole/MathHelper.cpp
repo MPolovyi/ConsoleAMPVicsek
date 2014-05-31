@@ -162,8 +162,7 @@ namespace MathHelpers
 			
 			prev_s = s;
 		}
-		wchar_t str[256];
-		swprintf_s(str, L"prev_s, %d", prev_s);
+
 		// Perform any remaining reduction on the CPU.
 		std::vector<float_3> result(prev_s);
 		copy(src.section(0, prev_s), result.begin());
