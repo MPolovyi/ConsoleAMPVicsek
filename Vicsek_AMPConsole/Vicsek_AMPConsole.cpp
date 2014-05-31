@@ -67,14 +67,18 @@ void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSiz
 				IntegratorCollection.Integrate(noise);
 				NextIterationMarker.write_flag(1, L"AFTER iteratin N %d", j);				
 			}
+
+			concurrency::diagnostic::marker_series averagingSeries;
+			concurrency::diagnostic::span* averagingSpan = new concurrency::diagnostic::span(averagingSeries, 1, L"Averaging span");
 			for (int j = 0; j < 20; j++)
 			{
 				iteration++;
 				IntegratorCollection.Integrate(noise);
-				NextVelocAppendIterationMarker.write_flag(1, L"BEFORE veloc count and append N %d", j);
+				averagingSeries.write_flag(1, L"BEFORE veloc count and append N %d", j);
 				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
-				NextVelocAppendIterationMarker.write_flag(1, L"AFTER veloc count and append N %d", j);
+				averagingSeries.write_flag(1, L"AFTER veloc count and append N %d", j);
 			}
+			delete averagingSpan;
 			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
 			if (!(abs(currAverSpd - prevAverSpd) < (1 / sqrParticleCount)))
 			{
