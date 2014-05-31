@@ -60,6 +60,9 @@
     <ClInclude Include="Viscek2DKulinskIntegrator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Reduction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vicsek_AMPConsole.cpp">

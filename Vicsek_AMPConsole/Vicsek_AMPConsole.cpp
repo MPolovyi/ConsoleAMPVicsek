@@ -5,6 +5,7 @@
 #include "cvmarkersobj.h"
 #include "Viscek2DKulinskIntegrator.h"
 
+
 void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSize)
 {
 	accelerator::set_default(accelerator::direct3d_warp);
@@ -64,8 +65,7 @@ void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSiz
 				iteration++;
 				NextIterationMarker.write_flag(1, L"BEFORE iteration N %d", j);
 				IntegratorCollection.Integrate(noise);
-				NextIterationMarker.write_flag(1, L"AFTER iteratin N %d", j);
-				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
+				NextIterationMarker.write_flag(1, L"AFTER iteratin N %d", j);				
 			}
 			for (int j = 0; j < 20; j++)
 			{
@@ -74,10 +74,8 @@ void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSiz
 				NextVelocAppendIterationMarker.write_flag(1, L"BEFORE veloc count and append N %d", j);
 				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
 				NextVelocAppendIterationMarker.write_flag(1, L"AFTER veloc count and append N %d", j);
-				std::cout << "noise = " << noise << " iteration = " << iteration << std::endl;
 			}
 			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
-			std::cout << "Current average speed" << currAverSpd << std::endl;
 			if (!(abs(currAverSpd - prevAverSpd) < (1 / sqrParticleCount)))
 			{
 				prevAverSpd = currAverSpd;
@@ -96,6 +94,8 @@ void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSiz
 		averSpd.clear();
 		noise -= 1;
 		iterate = true;
+
+		std::cout << noise << std::endl;
 	}
 	dataCollection.WriteOnDisk(buffer, buffer2, bufferComment);
 }
@@ -336,6 +336,73 @@ int StepsToEq(int size)
 		a++;
 	}
 	return a;
+}
+
+
+
+//----------------------------------------------------------------------------
+// Program entry point.
+//----------------------------------------------------------------------------
+int TestReductions()
+{
+	accelerator default_device;
+	std::wcout << "Using device : " << default_device.get_description() << std::endl;
+	if (default_device == accelerator(accelerator::direct3d_ref))
+		std::cout << "WARNING!! Running on very slow emulator! Only use this accelerator for debugging." << std::endl;
+
+	// Make sure that elements can be split into tiles so the number of
+	// tiles in any dimension is less than 65536. Here we we have
+	// element_count == 16777216 so the number of tiles:
+	// tile_count = element_count / tile_size == 32768 < 65536
+	unsigned element_count = 16 * 1024 * 1024;
+
+	std::vector<float> source(element_count);
+	for (unsigned i = 0; i < element_count; ++i)
+	{
+		// Element range is limited to avoid overflow or underflow
+		source[i] = (i & 0xf) * 0.01f;
+	}
+
+	// The data is generated in a pattern and its sum can be computed by the following formula
+	const float expected_result = ((element_count / 16) * ((15 * 16) / 2)) * 0.01f;
+
+	std::cout << "Running kernels..." << std::endl;
+
+	const unsigned tile_size = 512;
+
+	typedef float(*ReductionFunction)(array<float, 1>&, size_t);
+
+	typedef std::pair<ReductionFunction, std::string> user_pair;
+
+	std::vector<user_pair> functions;
+	functions.push_back(user_pair(MathHelpers::CReduction::reduction_simple_1, "reduction_simple_1"));
+	functions.push_back(user_pair(MathHelpers::CReduction::reduction_simple_2, "reduction_simple_2"));
+	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_1<tile_size>, "reduction_tiled_1"));
+	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_2<tile_size>, "reduction_tiled_2"));
+	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_3<tile_size>, "reduction_tiled_3"));
+	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_4<tile_size>, "reduction_tiled_4"));
+	
+	array<float, 1> arr_1(element_count, source.begin());
+
+	for (const auto& func : functions)
+	{
+		concurrency::diagnostic::marker_series series;
+		concurrency::diagnostic::span *flagSpan = new concurrency::diagnostic::span(series, 1, _T("Function span"));
+		series.write_flag(_T("Before function."));
+		float result = func.first(arr_1, source.size());
+		series.write_flag(L"After function");
+		delete flagSpan;
+
+		if (MathHelpers::CReduction::fp_equal(result, expected_result, 0.05f))
+		{
+			std::cout << "SUCCESS: " << func.second << "." << std::endl;
+		}
+		else
+		{
+			std::cout << "FAILED: " << func.second << " expected " << expected_result << " but found " << result << "!" << std::endl;
+		}
+	}
+	return 1;
 }
 
 int _tmain(int argc, _TCHAR* argv[])

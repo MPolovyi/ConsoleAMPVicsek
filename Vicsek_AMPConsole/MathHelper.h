@@ -5,7 +5,7 @@
 #include <amp.h>
 #include <amp_math.h>
 #include <amp_graphics.h>
-
+#include "Reduction.h"
 using namespace concurrency;
 using namespace concurrency::graphics;
 

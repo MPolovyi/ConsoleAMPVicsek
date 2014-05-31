@@ -39,5 +39,5 @@ std::vector<float_2> CIntegrator2D::GetAverVeclocOnSplitsX(int splits)
 
 float_2 CIntegrator2D::GetAverageVeloc()
 {
-	return MathHelpers::CountAverageVector(m_Task->DataOld->vel, m_Task->DataOld->size()).xy;
+	return MathHelpers::AccumulateValue(m_Task->DataOld->vel, m_Task->DataOld->size()).xy;
 }
