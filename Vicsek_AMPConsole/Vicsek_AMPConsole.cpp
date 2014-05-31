@@ -342,7 +342,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(31.2, 1, 4096);
+	RunTestCollectionIntegrator(16, 1, 1024);
 
 	return 0;
 }
