@@ -403,7 +403,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(16, 1, 512);
+	RunCollectionIntegrator(32, 10, 4096);
 
 	return 0;
 }

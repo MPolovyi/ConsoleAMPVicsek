@@ -63,7 +63,26 @@ namespace DataViewer
                 var tempList = new List<string>(tmp);
                 var tempDouble = Convert.ToDouble(tempList.Last());
                 tempList.Remove(tempList.Last());
-                ret.Add(new Tuple<List<double>, double>(tempList.ConvertAll(Convert.ToDouble), tempDouble));
+                try
+                {
+                    ret.Add(new Tuple<List<double>, double>(tempList.ConvertAll(Convert.ToDouble), tempDouble));
+                }
+                catch (FormatException)
+                {
+                    List<double> tmpDoubleList = new List<double>(tempList.Count);
+                    foreach (var str1 in tempList)
+                    {
+                        try
+                        {
+                            tmpDoubleList.Add(Convert.ToDouble(str1));
+                        }
+                        catch (FormatException)
+                        {
+                            tmpDoubleList.Add(0);
+                        }
+                    }
+                }
+                
             }
             fs.BaseStream.Seek(0, SeekOrigin.Begin);
             return ret;
