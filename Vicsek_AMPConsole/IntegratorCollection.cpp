@@ -1,6 +1,7 @@
 #include "IntegratorCollection.h"
 #include <ppl.h>
 #include <concurrent_vector.h>
+#include "cvmarkersobj.h"
 //CIntegratorCollection::CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain)
 //{
 //	m_Integrators = *std::make_unique<std::vector<CIntegrator2D>>(tds.size());
@@ -30,7 +31,6 @@ bool CIntegratorCollection::Integrate(float noise)
 float CIntegratorCollection::GetAnsambleAveragedABSVeloc()
 {
 	auto vel = GetAverageVeloc();
-	
 	std::vector<float> velAbs(vel.size());
 	for (int i = 0; i < vel.size(); i++)
 	{

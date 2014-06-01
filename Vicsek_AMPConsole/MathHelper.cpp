@@ -117,7 +117,7 @@ namespace MathHelpers
 
 	float_3 CountAverageVector(array<float_3>& src, uint count)
 	{
-		return AccumulateValue(src, count) / count;
+		return CReduction::reduction_tiled_4<512>(src, count) / count;
 	}
 
 	float_3 AccumulateValue(array<float_3>& src, uint count)

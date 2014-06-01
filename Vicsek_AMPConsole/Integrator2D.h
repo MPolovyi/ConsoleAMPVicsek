@@ -28,5 +28,5 @@ protected:
 
 	float_2 m_DomainSize;
 	int m_IntR = 1;
-	static const int s_TileSize = 256;
+	static const int s_TileSize = 512;
 };
