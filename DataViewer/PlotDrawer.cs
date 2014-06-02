@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -12,8 +11,8 @@ namespace DataViewer
             double minValueY, double maxValueY, double stepY,
             Path path)
         {
-            double graphStepX = ((rightBottom.X - leftTop.X)/(maxValueX - minValueX))*stepX;
-            double graphStepY = ((rightBottom.Y - leftTop.Y)/(maxValueY - minValueY))*stepY;
+            double graphStepX = ((rightBottom.X - leftTop.X) / (maxValueX - minValueX)) * stepX;
+            double graphStepY = ((rightBottom.Y - leftTop.Y) / (maxValueY - minValueY)) * stepY;
             DrawHorisontalLines(leftTop, rightBottom, graphStepY, path);
             DrawVerticalLines(leftTop, rightBottom, graphStepX, path);
         }

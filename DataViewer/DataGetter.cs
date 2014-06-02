@@ -82,7 +82,6 @@ namespace DataViewer
                         }
                     }
                 }
-                
             }
             fs.BaseStream.Seek(0, SeekOrigin.Begin);
             return ret;

@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 
 namespace DataViewer
@@ -39,7 +35,7 @@ namespace DataViewer
         private void DrawSpdByHeight(List<Tuple<List<double>, double>> ansv, string comment)
         {
             var tmp = new List<Tuple<List<Tuple<double, double>>, double>>();
-            for (int i = 0; i < ansv[0].Item1.Count ; i++)
+            for (int i = 0; i < ansv[0].Item1.Count; i++)
             {
                 var tempList = new List<Tuple<double, double>>();
                 for (int j = 0; j < ansv.Count; j++)
@@ -53,9 +49,9 @@ namespace DataViewer
 
         private void DrawSpdByNoise(List<Tuple<double, double>> ansv, string comment)
         {
-            _plot1.AddPlotSeries(ansv, comment, (ansv.Max(item => item.Item1) - ansv.Min(item=>item.Item1))/10, 0.1);
+            _plot1.AddPlotSeries(ansv, comment, (ansv.Max(item => item.Item1) - ansv.Min(item => item.Item1)) / 10, 0.1);
         }
-        
+
         private void LoadSpdByHeightFile(OpenFileDialog openDlg)
         {
             if (true == openDlg.ShowDialog())

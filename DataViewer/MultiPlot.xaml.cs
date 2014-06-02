@@ -24,7 +24,8 @@ namespace DataViewer
             InitializeComponent();
         }
 
-        public MultiPlot(double height, double width) : this()
+        public MultiPlot(double height, double width)
+            : this()
         {
             MyCanvas.Height = height;
             MyCanvas.Width = width;
@@ -71,11 +72,11 @@ namespace DataViewer
                 }
             };
             var segment = new PolyBezierSegment();
-            double scaleY = MyCanvas.Height/ansv.Max(item => item.Item2);
-            double scaleX = MyCanvas.Width/ansv.Max(item => item.Item1);
+            double scaleY = MyCanvas.Height / ansv.Max(item => item.Item2);
+            double scaleX = MyCanvas.Width / ansv.Max(item => item.Item1);
             for (int i = ansv.Count - 1; i >= 0; i--)
             {
-                segment.Points.Add(new Point(ansv[i].Item1*scaleX, MyCanvas.Height - ansv[i].Item2*scaleY));
+                segment.Points.Add(new Point(ansv[i].Item1 * scaleX, MyCanvas.Height - ansv[i].Item2 * scaleY));
             }
             var fig = new PathFigure();
             fig.Segments.Add(segment);
@@ -91,7 +92,7 @@ namespace DataViewer
             var tmpPath = new Path
             {
                 Height = MyCanvas.Height,
-                Width = MyCanvas.Width/2 - 10,
+                Width = MyCanvas.Width / 2 - 10,
                 Stroke = Brushes.Black,
                 StrokeThickness = 1
             };

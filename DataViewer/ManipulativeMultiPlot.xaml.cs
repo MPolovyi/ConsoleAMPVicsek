@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DataViewer
@@ -33,7 +27,8 @@ namespace DataViewer
             InitializeComponent();
         }
 
-        public ManipulativeMultiPlot(double height, double width) : this()
+        public ManipulativeMultiPlot(double height, double width)
+            : this()
         {
             MyCanvas.Height = height;
             MyCanvas.Width = width;
@@ -144,13 +139,13 @@ namespace DataViewer
             foreach (var serie in _XandYandParam)
             {
                 var tmp = from tuple in serie
-                    where Math.Abs(tuple.Item2 - _index) < double.Epsilon
-                    select tuple.Item1;
+                          where Math.Abs(tuple.Item2 - _index) < double.Epsilon
+                          select tuple.Item1;
                 tmpSeries.AddRange(tmp);
             }
 
             //Preserve slider and lable!
-            MyCanvas.Children.RemoveRange(4, MyCanvas.Children.Count-4);
+            MyCanvas.Children.RemoveRange(4, MyCanvas.Children.Count - 4);
             foreach (var tmp in tmpSeries)
             {
                 MyCanvas.Children.Add(GenerateSeriesPath(tmp));
