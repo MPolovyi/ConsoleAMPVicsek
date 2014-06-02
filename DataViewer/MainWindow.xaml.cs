@@ -36,7 +36,7 @@ namespace DataViewer
             ImgPanel.Children.Add(_plot2);
         }
 
-        private void DrawSpdByHeight(List<Tuple<List<double>, double>> ansv, int index)
+        private void DrawSpdByHeight(List<Tuple<List<double>, double>> ansv, string comment)
         {
             var tmp = new List<Tuple<List<Tuple<double, double>>, double>>();
             for (int i = 0; i < ansv[0].Item1.Count ; i++)
@@ -48,61 +48,14 @@ namespace DataViewer
                 }
                 tmp.Add(new Tuple<List<Tuple<double, double>>, double>(tempList, i));
             }
-            _plot2.AddPlotSeries(tmp, "Test plot", 0.1, 20);
+            _plot2.AddPlotSeries(tmp, comment, 0.1, 20);
         }
 
-        private void DrawSpdByNoise(List<Tuple<double, double>> ansv)
+        private void DrawSpdByNoise(List<Tuple<double, double>> ansv, string comment)
         {
-            _plot1.AddPlotSeries(ansv, "TestPlot", (ansv.Max(item => item.Item1) - ansv.Min(item=>item.Item1))/10, 0.1);
+            _plot1.AddPlotSeries(ansv, comment, (ansv.Max(item => item.Item1) - ansv.Min(item=>item.Item1))/10, 0.1);
         }
-
-        private Canvas CreatePlot(List<Tuple<double, double>> ansv)
-        {
-            var canvas = new Canvas()
-            {
-                Height = ImgPanel.Height,
-                Width = ImgPanel.Width/2 - 10,
-                Margin = new Thickness(0, 0, 10, 0)
-            };
-            var myPath = new System.Windows.Shapes.Path
-            {
-                Height = ImgPanel.Height,
-                Width = ImgPanel.Width/2 - 10,
-                Margin = new Thickness(0, 0, 10, 0),
-                Stroke = Brushes.Red,
-                StrokeThickness = 1
-            };
-            
-            var segment = new PolyBezierSegment();
-            double scaleY = ImgPanel.Height/ansv.Max(item => item.Item1);
-            double scaleX = myPath.Width/ansv.Count;
-            for (int i = ansv.Count - 1; i >= 0; i--)
-            {
-                segment.Points.Add(new Point(ansv[i].Item2*scaleX, ImgPanel.Height - ansv[i].Item1*scaleY));
-            }
-            var fig = new PathFigure();
-            fig.Segments.Add(segment);
-            fig.StartPoint = segment.Points.First();
-            var geom = new PathGeometry();
-            geom.Figures.Add(fig);
-            myPath.Data = geom;
-            var tmpPath = new System.Windows.Shapes.Path
-            {
-                Height = ImgPanel.Height,
-                Width = ImgPanel.Width/2 - 10,
-                Margin = new Thickness(0, 0, 10, 0),
-                Stroke = Brushes.Black,
-                StrokeThickness = 1
-            };
-            _drawer.DrawLines(new Point(0, 0), new Point(myPath.Width, ImgPanel.Height),
-                0, 360, 30,
-                0, 1, 0.1,
-                tmpPath);
-            canvas.Children.Add(myPath);
-            canvas.Children.Add(tmpPath);
-            return canvas;
-        }
-
+        
         private void LoadSpdByHeightFile(OpenFileDialog openDlg)
         {
             if (true == openDlg.ShowDialog())
@@ -110,8 +63,7 @@ namespace DataViewer
                 var dataFromFile = new StreamReader(openDlg.FileName);
                 _speedByHeight = _getter.GetSpeedByHeight(dataFromFile);
                 _spdByHLoaded = true;
-                DrawSpdByHeight(_speedByHeight, 0);
-                SimDataLabel.Content = _getter.GetSimParams(dataFromFile);
+                DrawSpdByHeight(_speedByHeight, _getter.GetSimParams(dataFromFile));
             }
         }
 
@@ -121,8 +73,7 @@ namespace DataViewer
             {
                 var dataFromFile = new StreamReader(openDlg.FileName);
                 _speedByTime = _getter.GetSpeedByNoise(dataFromFile);
-                DrawSpdByNoise(_speedByTime);
-                SimDataLabel.Content = _getter.GetSimParams(dataFromFile);
+                DrawSpdByNoise(_speedByTime, _getter.GetSimParams(dataFromFile));
             }
         }
 
@@ -147,15 +98,6 @@ namespace DataViewer
             LoadSpdByNoiseFile(openDlg);
         }
 
-        private void RangeBase_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            int index = Convert.ToInt32(e.NewValue);
-            if (_spdByHLoaded)
-            {
-                DrawSpdByHeight(_speedByHeight, index);
-            }
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (_spdByHLoaded)
@@ -169,11 +111,6 @@ namespace DataViewer
                     }
                 }
             }
-        }
-
-        private void AddSpdByNoiseButton_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

@@ -37,13 +37,14 @@ namespace DataViewer
         {
             MyCanvas.Height = height;
             MyCanvas.Width = width;
+            MySlider.Width = width - 20;
         }
 
         public void AddPlotSeries(List<Tuple<List<Tuple<double, double>>, double>> ansv, string comment, double stepX = 1, double stepY = 1)
         {
             _seriesComments.Add(comment);
             AddPlotSeries(ansv, _firstLoaded ? _stepX : stepX, _firstLoaded ? _stepY : stepY);
-            ActiveLabel.Content = comment;
+            MyActiveLabel.Content = comment;
             _firstLoaded = true;
         }
 
@@ -79,8 +80,23 @@ namespace DataViewer
                 Height = MyCanvas.Height,
                 Width = MyCanvas.Width,
                 Stroke = Brushes.Black,
-                StrokeThickness = 1
+                StrokeThickness = 3
             };
+
+            myPath.MouseLeftButtonUp += (sender, args) =>
+            {
+                if (Equals((sender as Path).Stroke, Brushes.Black))
+                {
+                    (sender as Path).Stroke = Brushes.Red;
+                    MyActiveLabel.Content = _seriesComments[MyCanvas.Children.IndexOf(sender as Path) - 4];
+                }
+                else
+                {
+                    (sender as Path).Stroke = Brushes.Black;
+                    MyActiveLabel.Content = "Select plot for further info";
+                }
+            };
+
             if (ansv == null) return myPath;
             var segment = new PolyBezierSegment();
             double scaleY = MyCanvas.Height / ansv.Max(item => item.Item2);
@@ -122,6 +138,7 @@ namespace DataViewer
 
         private void Redraw()
         {
+            MyParamLabel.Content = _index;
             List<List<Tuple<double, double>>> tmpSeries = new List<List<Tuple<double, double>>>();
 
             foreach (var serie in _XandYandParam)
@@ -131,10 +148,9 @@ namespace DataViewer
                     select tuple.Item1;
                 tmpSeries.AddRange(tmp);
             }
-            var grid = MyCanvas.Children[0];
 
             //Preserve slider and lable!
-            MyCanvas.Children.RemoveRange(3, MyCanvas.Children.Count-3);
+            MyCanvas.Children.RemoveRange(4, MyCanvas.Children.Count-4);
             foreach (var tmp in tmpSeries)
             {
                 MyCanvas.Children.Add(GenerateSeriesPath(tmp));

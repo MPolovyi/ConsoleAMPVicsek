@@ -55,9 +55,21 @@ namespace DataViewer
                 Height = MyCanvas.Height,
                 Width = MyCanvas.Width,
                 Stroke = Brushes.Black,
-                StrokeThickness = 1
+                StrokeThickness = 3
             };
-
+            myPath.MouseLeftButtonUp += (sender, args) =>
+            {
+                if (Equals((sender as Path).Stroke, Brushes.Black))
+                {
+                    (sender as Path).Stroke = Brushes.Red;
+                    ActiveLabel.Content = _seriesComments[MyCanvas.Children.IndexOf(sender as Path) - 2];
+                }
+                else
+                {
+                    (sender as Path).Stroke = Brushes.Black;
+                    ActiveLabel.Content = "Select plot for further info";
+                }
+            };
             var segment = new PolyBezierSegment();
             double scaleY = MyCanvas.Height/ansv.Max(item => item.Item2);
             double scaleX = MyCanvas.Width/ansv.Max(item => item.Item1);
