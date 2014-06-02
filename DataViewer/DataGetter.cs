@@ -35,7 +35,7 @@ namespace DataViewer
                 string veloc = dotRegex.Replace(notNumbers.Replace(strs[i].Split('=')[1], ""), ",");
                 string noise = dotRegex.Replace(notNumbers.Replace(strs[i].Split('=')[2], ""), ",");
 
-                velocAndNoise.Add(new Tuple<double, double>(Convert.ToDouble(veloc), Convert.ToDouble(noise)));
+                velocAndNoise.Add(new Tuple<double, double>(Convert.ToDouble(noise), Convert.ToDouble(veloc)));
             }
             fs.BaseStream.Seek(0, SeekOrigin.Begin);
             return velocAndNoise;
@@ -43,7 +43,7 @@ namespace DataViewer
 
         public List<Tuple<List<double>, double>> GetSpeedByHeight(StreamReader fs)
         {
-            List<string> strs = new List<string>();
+            var strs = new List<string>();
             while (!fs.EndOfStream)
             {
                 Regex dataRegex = new Regex(@"Noise = \d");

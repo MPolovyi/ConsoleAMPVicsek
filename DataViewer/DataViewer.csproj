@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DynamicDataDisplay.Silverlight">
-      <HintPath>..\..\..\..\Programming\DynamicDataDisplay\DynamicDataDisplay.Silverlight.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -69,8 +66,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ManipulativeMultiPlot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MultiPlot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManipulativeMultiPlot.xaml.cs">
+      <DependentUpon>ManipulativeMultiPlot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MultiPlot.xaml.cs">
+      <DependentUpon>MultiPlot.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PlotDrawer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
