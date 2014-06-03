@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Shapes;
 
 namespace DataViewer
@@ -13,6 +14,7 @@ namespace DataViewer
     /// </summary>
     public partial class MultiPlot : UserControl
     {
+        private List<List<Tuple<double, double>>> _loadedSeries = new List<List<Tuple<double, double>>>();
         private PlotDrawer _drawer = new PlotDrawer();
         private List<string> _seriesComments = new List<string>();
         private double _stepX = 1;
@@ -37,6 +39,7 @@ namespace DataViewer
             AddPlotSeries(ansv, _firstLoaded ? _stepX : stepX, _firstLoaded ? _stepY : stepY);
             ActiveLabel.Content = comment;
             _firstLoaded = true;
+            _loadedSeries.Add(ansv);
         }
 
         private void AddPlotSeries(List<Tuple<double, double>> ansv, double stepX, double stepY)
@@ -63,7 +66,7 @@ namespace DataViewer
                 if (Equals((sender as Path).Stroke, Brushes.Black))
                 {
                     (sender as Path).Stroke = Brushes.Red;
-                    ActiveLabel.Content = _seriesComments[MyCanvas.Children.IndexOf(sender as Path) - 2];
+                    ActiveLabel.Content = _seriesComments[MyCanvas.Children.IndexOf(sender as Path) - 3];
                 }
                 else
                 {
@@ -101,6 +104,30 @@ namespace DataViewer
                 minY, maxY, stepY,
                 tmpPath);
             MyCanvas.Children.Insert(0, tmpPath);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (_loadedSeries.Count >= 2)
+            {
+                var data = from series in _loadedSeries
+                    from t1 in series
+                    group t1 by t1.Item1
+                    into grp
+                    select grp;
+
+                var tmp = data.Select(it => new Tuple<double, double>(it.Key, it.Average(z => z.Item2))).ToList();
+
+                _loadedSeries.Insert(0, tmp);
+            }
+            Redraw();
+        }
+
+        private void Redraw()
+        {
+            MyCanvas.Children.RemoveRange(3, MyCanvas.Children.Count - 3);
+            _seriesComments.RemoveAll(it => true);
+            AddPlotSeries(_loadedSeries[0], "Averaged veloc on all data loaded previously");
         }
     }
 }

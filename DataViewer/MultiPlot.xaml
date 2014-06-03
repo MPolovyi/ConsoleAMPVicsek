@@ -7,6 +7,7 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Height="auto" Width="auto">
     <Canvas Name="MyCanvas" x:FieldModifier="protected" Background="White">
+        <Button Canvas.Bottom="10" Canvas.Left="10" Click="Button_Click">Aver.</Button>
         <Label Name="ActiveLabel" Canvas.Right="10" Canvas.Top="10" x:FieldModifier="private"></Label>
     </Canvas>
 </UserControl>
