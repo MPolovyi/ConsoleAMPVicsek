@@ -50,10 +50,10 @@ std::vector<float_2> CIntegratorCollection::GetAverageVeloc()
 	return ret;
 }
 
-std::vector<float> CIntegratorCollection::GetAnsambleAveragedVeclocOnSplitsX(int splits)
+std::vector<float> CIntegratorCollection::GetAnsambleAveragedVeclocOnSlicesX(int splits)
 {
 	std::vector<float> ret(splits);
-	std::vector<std::vector<float_2>> tmp = GetAverVeclocOnSplitsX(splits);
+	std::vector<std::vector<float_2>> tmp = GetAverVeclocOnSlicesX(splits);
 
 	for (int i = 0; i < splits; i++)
 	{
@@ -68,11 +68,37 @@ std::vector<float> CIntegratorCollection::GetAnsambleAveragedVeclocOnSplitsX(int
 	return ret;
 }
 
-std::vector<std::vector<float_2>> CIntegratorCollection::GetAverVeclocOnSplitsX(int splits)
+std::vector<std::vector<float>> CIntegratorCollection::GetAverDencityOnSlicesX(int splits)
+{
+	std::vector<std::vector<float>> ret(m_Integrators.size());
+	concurrency::parallel_for(size_t(0), m_Integrators.size(), [&](size_t i) {
+		ret[i] = m_Integrators[i]->GetAverDencityOnSlicesX(splits);
+	});
+	return ret;
+}
+
+std::vector<float> CIntegratorCollection::GetAnsambleAveragedDencityOnSlicesX(int splits)
+{
+	std::vector<float> ret(splits);
+	std::vector<std::vector<float>> tmp = GetAverDencityOnSlicesX(splits);
+
+	for (int i = 0; i < splits; i++)
+	{
+		auto si = tmp.size();
+		for (int j = 0; j < si; j++)
+		{
+			ret[i] += tmp[j][i];
+		}
+		ret[i] /= si;
+	}
+	return ret;
+}
+
+std::vector<std::vector<float_2>> CIntegratorCollection::GetAverVeclocOnSlicesX(int splits)
 {
 	std::vector<std::vector<float_2>> ret(m_Integrators.size());
 	concurrency::parallel_for(size_t(0), m_Integrators.size(), [&](size_t i) {
-		ret[i] = m_Integrators[i]->GetAverVeclocOnSplitsX(splits);
+		ret[i] = m_Integrators[i]->GetAverVeclocOnSlicesX(splits);
 	});
 	return ret;
 }

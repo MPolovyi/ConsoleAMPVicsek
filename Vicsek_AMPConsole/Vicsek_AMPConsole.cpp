@@ -94,7 +94,7 @@ void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSiz
 		}
 		NextNoizeIterationMarker.write_flag(1, L"AFTER noise %2.2f iteration", noise);
 		dataCollection.AddAverSpeed(currAverSpd, noise);
-		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSplitsX(100), noise);
+		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(100), noise);
 		NextNoizeIterationMarker.write_flag(1, L"AFTER noise AND SLICES VELOCITY COUNT + APPEND %2.2f iteration", noise);
 		averSpd.clear();
 		noise -= 1;
@@ -131,11 +131,13 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 	struct tm timeinfo;
 	char buffer[256];
 	char buffer2[256];
+	char buffer3[256];
 	std::string bufferComment = "";
 	time(&rawtime);
 	localtime_s(&timeinfo, &rawtime);
 	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 	strftime(buffer2, 256, "SplitsVelocities_%d.%m_%H.%M.%S.txt", &timeinfo);
+	strftime(buffer2, 256, "SplitsDensities_%d.%m_%H.%M.%S.txt", &timeinfo);
 
 	IntegratorCollection.WriteComment(bufferComment);
 
@@ -179,13 +181,16 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 		}
 		dataCollection.AddAverSpeed(currAverSpd, noise);
 		IntegratorCollection.Integrate(noise);
-		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSplitsX(100), noise);
+		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(100), noise);
+		IntegratorCollection.Integrate(noise);
+		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(100), noise);
+		
 		noise -= 1;
 		iterate = true;
 
 		std::cout << noise << std::endl;
 	}
-	dataCollection.WriteOnDisk(buffer, buffer2, IntegratorCollection.WriteComment(bufferComment));
+	dataCollection.WriteOnDisk(buffer, buffer2, buffer3, IntegratorCollection.WriteComment(bufferComment));
 }
 
 void RunIntegrator(int size)
@@ -403,7 +408,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(87.5, 5, 15360);
+	RunCollectionIntegrator(22.6, 25, 1024);
 
 	return 0;
 }
