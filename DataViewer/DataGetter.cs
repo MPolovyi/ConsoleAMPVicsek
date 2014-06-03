@@ -65,7 +65,7 @@ namespace DataViewer
                 tempList.Remove(tempList.Last());
                 try
                 {
-                    ret.Add(new Tuple<List<double>, double>(tempList.ConvertAll(Convert.ToDouble), tempDouble));
+                    ret.Insert(0, new Tuple<List<double>, double>(tempList.ConvertAll(Convert.ToDouble), tempDouble));
                 }
                 catch (FormatException)
                 {
@@ -81,6 +81,7 @@ namespace DataViewer
                             tmpDoubleList.Add(0);
                         }
                     }
+                    ret.Insert(0, new Tuple<List<double>, double>(tmpDoubleList, tempDouble));
                 }
             }
             fs.BaseStream.Seek(0, SeekOrigin.Begin);

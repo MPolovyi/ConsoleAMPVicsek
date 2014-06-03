@@ -83,7 +83,7 @@ namespace DataViewer
                 if (Equals((sender as Path).Stroke, Brushes.Black))
                 {
                     (sender as Path).Stroke = Brushes.Red;
-                    MyActiveLabel.Content = _seriesComments[MyCanvas.Children.IndexOf(sender as Path) - 4];
+                    MyActiveLabel.Content = _seriesComments[MyCanvas.Children.IndexOf(sender as Path) - 5];
                 }
                 else
                 {
@@ -145,11 +145,37 @@ namespace DataViewer
             }
 
             //Preserve slider and lable!
-            MyCanvas.Children.RemoveRange(4, MyCanvas.Children.Count - 4);
+            MyCanvas.Children.RemoveRange(5, MyCanvas.Children.Count - 5);
             foreach (var tmp in tmpSeries)
             {
                 MyCanvas.Children.Add(GenerateSeriesPath(tmp));
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<Tuple<List<Tuple<double, double>>, double>> dataNew = new List<Tuple<List<Tuple<double, double>>, double>>();
+            // ReSharper disable InconsistentNaming
+            var tmp1 = from series in _XandYandParam
+                from XandYandP in series
+                group XandYandP by XandYandP.Item2
+                into groupByParam
+                select groupByParam;
+
+            foreach (var data in tmp1)
+            {
+                var tmp = from a1 in data
+                    from a2 in a1.Item1
+                    group a2 by a2.Item2
+                    into groupXandY
+                    select new Tuple<double, double>(groupXandY.Average(z => z.Item1), groupXandY.Key);
+                dataNew.Add(new Tuple<List<Tuple<double, double>>, double>(tmp.ToList(), data.Key));
+            }
+            
+            _XandYandParam.Insert(0, dataNew);
+            _XandYandParam.RemoveRange(1, _XandYandParam.Count-1);
+            Redraw();
+// ReSharper restore InconsistentNaming
         }
     }
 }
