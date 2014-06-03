@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,8 +51,11 @@
     <Compile Include="Classes\BorderBounce.cs" />
     <Compile Include="Classes\BorderTransit.cs" />
     <Compile Include="Classes\DrawerDebug.cs" />
+    <Compile Include="Classes\DrawerInteresting.cs" />
     <Compile Include="Classes\DrawerStandart.cs" />
     <Compile Include="Classes\MiscelaneousData.cs" />
+    <Compile Include="Classes\ParticleFactoryInteresting.cs" />
+    <Compile Include="Classes\ParticleInteresting.cs" />
     <Compile Include="Interfaces\IBorder.cs" />
     <Compile Include="Interfaces\IDrawer.cs" />
     <Compile Include="Classes\Miscelaneous.cs" />

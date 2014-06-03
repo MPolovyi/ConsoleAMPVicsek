@@ -11,14 +11,21 @@ namespace Vicsek.Classes
 {
     class ParticleBox : IParticleBox
     {
-        public IEnumerable<IParticle> Particles { get; private set; }
+        private List<IParticle> m_Particles;
+
+        public IEnumerable<IParticle> Particles
+        {
+            get { return m_Particles.AsEnumerable(); }
+            private set { m_Particles = value.ToList(); }
+        }
+
         private IDrawer Drawer { get; set; }
         private IBorder Border { get; set; }
 
 
         public ParticleBox(IEnumerable<IParticle> _particles)
         {
-            Particles = _particles;
+            m_Particles = _particles.ToList();
         }
         
         public ParticleBox(IParticleFactory2D _factory, int _count)
@@ -43,7 +50,12 @@ namespace Vicsek.Classes
         {
             Parallel.ForEach(Particles, _particle => _particle.NextStep(Particles, Border));
             Parallel.ForEach(Particles, _particle => _particle.Move());
-            
+        }
+
+        public void AddParticles(IParticleFactory2D factory, int count = 1)
+        {
+            var pt = factory.PopulateRandomDistributed(count);
+            Particles = Particles.Concat(pt);
         }
 
         public void Draw()

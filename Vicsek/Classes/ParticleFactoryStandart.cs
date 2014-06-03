@@ -12,7 +12,7 @@ namespace Vicsek.Classes
         public double SizeX { get; set; }
         public double SizeY { get; set; }
 
-        private IDrawer Drawer { get; set; }
+        protected IDrawer Drawer { get; set; }
 
         public ParticleFactoryStandart(double _X, double _Y, IDrawer _drawer)
         {
@@ -21,14 +21,16 @@ namespace Vicsek.Classes
             SizeY = _Y;
         }
         
-        public IEnumerable<IParticle> PopulateRandomDistributed(int _count)
+        public virtual IEnumerable<IParticle> PopulateRandomDistributed(int _count)
         {
             List<Particle> particles = new List<Particle>(_count);
             Random r = new Random((int) DateTime.Now.ToBinary());
             
             for (int i = 0; i < _count; i++)
             {
-                particles.Add(new Particle(SizeX*r.NextDouble(), SizeY*r.NextDouble(), Drawer));
+                var d1 = r.NextDouble();
+                var d2 = r.NextDouble();
+                particles.Add(new Particle(SizeX*d1, SizeY*d2, Drawer));
             }
             return particles;
         }

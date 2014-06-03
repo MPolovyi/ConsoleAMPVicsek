@@ -8,8 +8,13 @@ namespace Vicsek.Classes
 {
     public static partial class Miscelaneous
     {
-        public const int ParticleSpeed = 10;
-        public const int SpeedDrawMultiplayer = 4;
-        public const int Noize = 10;
+        public static double ParticleSpeed = 1;
+        public static int SpeedDrawMultiplayer = 8;
+        public static int Noize = 0;
+        public static double InterractionR = 500;
+
+
+        public static int ParticleCount = 1;
+
     }
 }

@@ -11,11 +11,24 @@ namespace Vicsek.Classes
 {
     static class Strategy
     {
-        public static void Init(int _steps, PictureBox _pb)
+        private static IParticleBox m_box;
+        private static IParticleFactory2D m_factory2;
+        private static IParticleFactory2D m_tstFactory;
+
+        private static PictureBox m_pBox;
+
+        public static void Init(PictureBox _pb)
         {
             IDrawer stdDrawer = new DrawerStandart(_pb);
+            IDrawer testDrawer = new DrawerDebug(_pb);
+            IDrawer interstingDrawer = new DrawerInteresting(_pb);
+            m_pBox = _pb;
 
-            IParticleFactory2D factory = new ParticleFactoryStandart(_pb.Width, _pb.Height, stdDrawer);
+
+            m_factory2 = new ParticleFactoryStandart(_pb.Width, _pb.Height, stdDrawer);
+
+            m_tstFactory = new ParticleFactoryInteresting(_pb.Width, _pb.Height, interstingDrawer);
+
 
             var borderOfArea = new BorderTransit(new List<PairDouble>
                                             {
@@ -25,9 +38,9 @@ namespace Vicsek.Classes
                                                 new PairDouble(_pb.Width, 0)
                                             });
 
-            IParticleBox box = new ParticleBox(factory, 1000, stdDrawer, borderOfArea);
+            m_box = new ParticleBox(m_factory2, Miscelaneous.ParticleCount, stdDrawer, borderOfArea);
 
-            Run(box);
+            Run(m_box);
         }
 
         private static async void Run(IParticleBox _box)
@@ -39,11 +52,30 @@ namespace Vicsek.Classes
             }
         }
 
+        public static void AddParticles(int count)
+        {
+            lock (m_box)
+            {
+                m_box.AddParticles(m_factory2, count);
+            }
+        }
+
+        public static void AddParticlesInteresting(int count)
+        {
+            lock (m_box)
+            {
+                m_box.AddParticles(m_tstFactory, count);
+            }
+        }
 
         public static void Live(IParticleBox _box)
         {
-            _box.NextStep();
-            _box.Draw();
+            lock (_box)
+            {
+                _box.NextStep();
+                _box.Draw();
+                _box.Particles.Last().Draw(m_pBox);
+            }
         }
     }
 }

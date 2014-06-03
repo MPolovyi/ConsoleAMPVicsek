@@ -20,7 +20,7 @@ namespace Vicsek.Classes
         {
             var rect = new Rectangle(particlePoint(_particle).X - 2, particlePoint(_particle).Y - 2, 2, 2);
             
-            tempGraph.DrawEllipse(new Pen(Color.Black, 2), rect);
+            tempGraph.DrawEllipse(new Pen(Color.Red, 2), rect);
             tempGraph.DrawLine(new Pen(Color.Blue, 2), particlePoint(_particle), particleSpeed(_particle));
         }
 

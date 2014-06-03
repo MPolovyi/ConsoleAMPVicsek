@@ -15,6 +15,6 @@ namespace Vicsek.Interfaces
 
         void Draw();
         void Draw(PictureBox _bmp);
-
+        void AddParticles(IParticleFactory2D factory, int count = 1);
     }
 }

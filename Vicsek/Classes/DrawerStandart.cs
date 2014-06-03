@@ -14,8 +14,8 @@ namespace Vicsek.Classes
         protected PictureBox pBox { get; set; }
         protected int SizeX { get; set; }
         protected int SizeY { get; set; }
-        protected Graphics Graph { get; set; }
-        protected Graphics tempGraph { get; set; }
+        protected static Graphics Graph { get; set; }
+        protected static Graphics tempGraph { get; set; }
 
         protected Pen PenBlack { get; set; }
         protected Pen PenBlue { get; set; }

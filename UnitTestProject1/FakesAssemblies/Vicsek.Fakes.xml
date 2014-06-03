@@ -49,6 +49,9 @@
         <member name="P:Vicsek.Classes.Fakes.ShimMiscelaneous.RotatePairDoublePairDoubleDouble">
             <summary>Sets the shim of Miscelaneous.Rotate(PairDouble _A, PairDouble _B, Double _degree)</summary>
         </member>
+        <member name="P:Vicsek.Classes.Fakes.ShimMiscelaneous.StaticConstructor">
+            <summary>Sets the shim of Miscelaneous.Miscelaneous()</summary>
+        </member>
         <member name="T:Vicsek.Classes.Fakes.ShimPair`1">
             <summary>Shim type of Vicsek.Classes.Pair`1</summary>
         </member>
@@ -178,6 +181,9 @@
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.SpeedInPointGet">
             <summary>Sets the shim of Particle.get_SpeedInPoint()</summary>
         </member>
+        <member name="P:Vicsek.Classes.Fakes.ShimParticle.ToString">
+            <summary>Sets the shim of Particle.ToString()</summary>
+        </member>
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.UpdCoordinatesPairDouble">
             <summary>Sets the shim of Particle.UpdCoordinates(PairDouble _newPos)</summary>
         </member>
@@ -232,6 +238,9 @@
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.SpeedInPointGet">
             <summary>Sets the shim of Particle.get_SpeedInPoint()</summary>
         </member>
+        <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.ToString01">
+            <summary>Sets the shim of Particle.ToString()</summary>
+        </member>
         <member name="P:Vicsek.Classes.Fakes.ShimParticle.AllInstances.UpdCoordinatesPairDouble">
             <summary>Sets the shim of Particle.UpdCoordinates(PairDouble _newPos)</summary>
         </member>
@@ -243,6 +252,12 @@
         </member>
         <member name="M:Vicsek.Classes.Fakes.StubParticle.#ctor(System.Double,System.Double,Vicsek.Interfaces.IDrawer)">
             <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Vicsek.Classes.Fakes.StubParticle.CalkDistance(Vicsek.Interfaces.IParticle)">
+            <summary>Sets the stub of Particle.CalkDistance(IParticle _particle)</summary>
+        </member>
+        <member name="F:Vicsek.Classes.Fakes.StubParticle.CalkDistanceIParticle">
+            <summary>Sets the stub of Particle.CalkDistance(IParticle _particle)</summary>
         </member>
         <member name="M:Vicsek.Classes.Fakes.StubParticle.GetNearests(System.Collections.Generic.IEnumerable{Vicsek.Interfaces.IParticle})">
             <summary>Sets the stub of Particle.GetNearests(IEnumerable`1&lt;IParticle&gt; _particles)</summary>
@@ -265,6 +280,12 @@
         <member name="F:Vicsek.Classes.Fakes.StubParticle.NextStepIEnumerableOfIParticleIBorder">
             <summary>Sets the stub of Particle.NextStep(IEnumerable`1&lt;IParticle&gt; _particles, IBorder _border)</summary>
         </member>
+        <member name="M:Vicsek.Classes.Fakes.StubParticle.ToString">
+            <summary>Sets the stub of Particle.ToString()</summary>
+        </member>
+        <member name="F:Vicsek.Classes.Fakes.StubParticle.ToString01">
+            <summary>Sets the stub of Particle.ToString()</summary>
+        </member>
         <member name="P:Vicsek.Classes.Fakes.StubParticle.CallBase">
             <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
         </member>
@@ -273,6 +294,1464 @@
         </member>
         <member name="P:Vicsek.Classes.Fakes.StubParticle.InstanceObserver">
             <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:Vicsek.Forms.Fakes.ShimMainForm">
+            <summary>Shim type of Vicsek.Forms.MainForm</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.#ctor(Vicsek.Forms.MainForm)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.Bind(System.ComponentModel.IComponent)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.Bind(System.ComponentModel.ISynchronizeInvoke)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.Bind(System.Windows.Forms.IBindableComponent)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.Bind(System.Windows.Forms.IContainerControl)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.Bind(System.Windows.Forms.IDropTarget)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.Bind(System.Windows.Forms.IWin32Window)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.ShimMainForm.Bind(System.IDisposable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.Constructor">
+            <summary>Sets the shim of MainForm.MainForm()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.DisposeBoolean">
+            <summary>Sets the shim of MainForm.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.Init">
+            <summary>Sets the shim of MainForm.Init()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.InitData">
+            <summary>Sets the shim of MainForm.InitData()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.InitEvents">
+            <summary>Sets the shim of MainForm.InitEvents()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.InitParticleCountTextBox">
+            <summary>Sets the shim of MainForm.InitParticleCount(TextBox _textBox)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.InitRadiusTextBox">
+            <summary>Sets the shim of MainForm.InitRadius(TextBox _textBox)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.InitSpeedTextBox">
+            <summary>Sets the shim of MainForm.InitSpeed(TextBox _textBox)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.InitializeComponent">
+            <summary>Sets the shim of MainForm.InitializeComponent()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.UpdNoizeTextBox">
+            <summary>Sets the shim of MainForm.UpdNoize(TextBox _textBox)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm._InitEventsb__0ObjectKeyEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__0(Object _sender, KeyEventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm._InitEventsb__1ObjectEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__1(Object _sender, EventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm._InitEventsb__2ObjectKeyEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__2(Object _sender, KeyEventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm._InitEventsb__3ObjectKeyEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__3(Object _sender, KeyEventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm._InitEventsb__4ObjectEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__4(Object _sender, EventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm._InitEventsb__5ObjectKeyEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__5(Object _sender, KeyEventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm._InitEventsb__6ObjectEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__6(Object _sender, EventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.button1_ClickObjectEventArgs">
+            <summary>Sets the shim of MainForm.button1_Click(Object sender, EventArgs e)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.button2_ClickObjectEventArgs">
+            <summary>Sets the shim of MainForm.button2_Click(Object sender, EventArgs e)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.onTextBoxParticleCountOnKeyUpObjectKeyEventArgs">
+            <summary>Sets the shim of MainForm.onTextBoxParticleCountOnKeyUp(Object _sender, KeyEventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.pictureBox1_ClickObjectEventArgs">
+            <summary>Sets the shim of MainForm.pictureBox1_Click(Object sender, EventArgs e)</summary>
+        </member>
+        <member name="T:Vicsek.Forms.Fakes.ShimMainForm.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.DisposeBoolean">
+            <summary>Sets the shim of MainForm.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.Init">
+            <summary>Sets the shim of MainForm.Init()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.InitData">
+            <summary>Sets the shim of MainForm.InitData()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.InitEvents">
+            <summary>Sets the shim of MainForm.InitEvents()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.InitParticleCountTextBox">
+            <summary>Sets the shim of MainForm.InitParticleCount(TextBox _textBox)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.InitRadiusTextBox">
+            <summary>Sets the shim of MainForm.InitRadius(TextBox _textBox)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.InitSpeedTextBox">
+            <summary>Sets the shim of MainForm.InitSpeed(TextBox _textBox)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.InitializeComponent">
+            <summary>Sets the shim of MainForm.InitializeComponent()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.UpdNoizeTextBox">
+            <summary>Sets the shim of MainForm.UpdNoize(TextBox _textBox)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances._InitEventsb__0ObjectKeyEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__0(Object _sender, KeyEventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances._InitEventsb__1ObjectEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__1(Object _sender, EventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances._InitEventsb__3ObjectKeyEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__3(Object _sender, KeyEventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances._InitEventsb__4ObjectEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__4(Object _sender, EventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances._InitEventsb__5ObjectKeyEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__5(Object _sender, KeyEventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances._InitEventsb__6ObjectEventArgs">
+            <summary>Sets the shim of MainForm.&lt;InitEvents&gt;b__6(Object _sender, EventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.button1_ClickObjectEventArgs">
+            <summary>Sets the shim of MainForm.button1_Click(Object sender, EventArgs e)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.button2_ClickObjectEventArgs">
+            <summary>Sets the shim of MainForm.button2_Click(Object sender, EventArgs e)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.onTextBoxParticleCountOnKeyUpObjectKeyEventArgs">
+            <summary>Sets the shim of MainForm.onTextBoxParticleCountOnKeyUp(Object _sender, KeyEventArgs _args)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.ShimMainForm.AllInstances.pictureBox1_ClickObjectEventArgs">
+            <summary>Sets the shim of MainForm.pictureBox1_Click(Object sender, EventArgs e)</summary>
+        </member>
+        <member name="T:Vicsek.Forms.Fakes.StubMainForm">
+            <summary>Stub type of Vicsek.Forms.MainForm</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AdjustFormScrollbars(System.Boolean)">
+            <summary>Sets the stub of Form.AdjustFormScrollbars(Boolean displayScrollbars)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AdjustFormScrollbarsBoolean">
+            <summary>Sets the stub of Form.AdjustFormScrollbars(Boolean displayScrollbars)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AllowDropGet">
+            <summary>Sets the stub of Control.get_AllowDrop()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AllowDropSetBoolean">
+            <summary>Sets the stub of Control.set_AllowDrop(Boolean value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AnchorGet">
+            <summary>Sets the stub of Control.get_Anchor()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AnchorSetAnchorStyles">
+            <summary>Sets the stub of Control.set_Anchor(AnchorStyles value)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToAllowDrop">
+            <summary>Attaches delegates to emulate StubMainForm.AllowDrop as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToAnchor">
+            <summary>Attaches delegates to emulate StubMainForm.Anchor as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToAutoScaleBaseSize">
+            <summary>Attaches delegates to emulate StubMainForm.AutoScaleBaseSize as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToAutoScroll">
+            <summary>Attaches delegates to emulate StubMainForm.AutoScroll as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToAutoScrollOffset">
+            <summary>Attaches delegates to emulate StubMainForm.AutoScrollOffset as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToAutoSize">
+            <summary>Attaches delegates to emulate StubMainForm.AutoSize as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToAutoValidate">
+            <summary>Attaches delegates to emulate StubMainForm.AutoValidate as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToBackColor">
+            <summary>Attaches delegates to emulate StubMainForm.BackColor as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToBackgroundImage">
+            <summary>Attaches delegates to emulate StubMainForm.BackgroundImage as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToBackgroundImageLayout">
+            <summary>Attaches delegates to emulate StubMainForm.BackgroundImageLayout as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToBindingContext">
+            <summary>Attaches delegates to emulate StubMainForm.BindingContext as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToContextMenu">
+            <summary>Attaches delegates to emulate StubMainForm.ContextMenu as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToContextMenuStrip">
+            <summary>Attaches delegates to emulate StubMainForm.ContextMenuStrip as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToCursor">
+            <summary>Attaches delegates to emulate StubMainForm.Cursor as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToDock">
+            <summary>Attaches delegates to emulate StubMainForm.Dock as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToDoubleBuffered">
+            <summary>Attaches delegates to emulate StubMainForm.DoubleBuffered as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToFont">
+            <summary>Attaches delegates to emulate StubMainForm.Font as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToForeColor">
+            <summary>Attaches delegates to emulate StubMainForm.ForeColor as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToImeModeBase">
+            <summary>Attaches delegates to emulate StubMainForm.ImeModeBase as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToMaximumSize">
+            <summary>Attaches delegates to emulate StubMainForm.MaximumSize as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToMinimumSize">
+            <summary>Attaches delegates to emulate StubMainForm.MinimumSize as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToRightToLeft">
+            <summary>Attaches delegates to emulate StubMainForm.RightToLeft as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToRightToLeftLayout">
+            <summary>Attaches delegates to emulate StubMainForm.RightToLeftLayout as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToSite">
+            <summary>Attaches delegates to emulate StubMainForm.Site as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.AttachBackingFieldToText">
+            <summary>Attaches delegates to emulate StubMainForm.Text as a property with a backing field.</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoScaleBaseSizeGet">
+            <summary>Sets the stub of Form.get_AutoScaleBaseSize()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoScaleBaseSizeSetSize">
+            <summary>Sets the stub of Form.set_AutoScaleBaseSize(Size value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoScrollGet">
+            <summary>Sets the stub of Form.get_AutoScroll()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoScrollOffsetGet">
+            <summary>Sets the stub of Control.get_AutoScrollOffset()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoScrollOffsetSetPoint">
+            <summary>Sets the stub of Control.set_AutoScrollOffset(Point value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoScrollSetBoolean">
+            <summary>Sets the stub of Form.set_AutoScroll(Boolean value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoSizeGet">
+            <summary>Sets the stub of Form.get_AutoSize()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoSizeSetBoolean">
+            <summary>Sets the stub of Form.set_AutoSize(Boolean value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoValidateGet">
+            <summary>Sets the stub of Form.get_AutoValidate()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.AutoValidateSetAutoValidate">
+            <summary>Sets the stub of Form.set_AutoValidate(AutoValidate value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.BackColorGet">
+            <summary>Sets the stub of Form.get_BackColor()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.BackColorSetColor">
+            <summary>Sets the stub of Form.set_BackColor(Color value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.BackgroundImageGet">
+            <summary>Sets the stub of Control.get_BackgroundImage()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.BackgroundImageLayoutGet">
+            <summary>Sets the stub of Control.get_BackgroundImageLayout()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.BackgroundImageLayoutSetImageLayout">
+            <summary>Sets the stub of Control.set_BackgroundImageLayout(ImageLayout value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.BackgroundImageSetImage">
+            <summary>Sets the stub of Control.set_BackgroundImage(Image value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.BindingContextGet">
+            <summary>Sets the stub of ContainerControl.get_BindingContext()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.BindingContextSetBindingContext">
+            <summary>Sets the stub of ContainerControl.set_BindingContext(BindingContext value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.CanEnableImeGet">
+            <summary>Sets the stub of ContainerControl.get_CanEnableIme()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.CanRaiseEventsGet">
+            <summary>Sets the stub of Control.get_CanRaiseEvents()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ContextMenuGet">
+            <summary>Sets the stub of Control.get_ContextMenu()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ContextMenuSetContextMenu">
+            <summary>Sets the stub of Control.set_ContextMenu(ContextMenu value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ContextMenuStripGet">
+            <summary>Sets the stub of Control.get_ContextMenuStrip()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ContextMenuStripSetContextMenuStrip">
+            <summary>Sets the stub of Control.set_ContextMenuStrip(ContextMenuStrip value)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.CreateAccessibilityInstance">
+            <summary>Sets the stub of Control.CreateAccessibilityInstance()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.CreateAccessibilityInstance01">
+            <summary>Sets the stub of Control.CreateAccessibilityInstance()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.CreateControlsInstance">
+            <summary>Sets the stub of Form.CreateControlsInstance()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.CreateControlsInstance01">
+            <summary>Sets the stub of Form.CreateControlsInstance()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.CreateHandle">
+            <summary>Sets the stub of Form.CreateHandle()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.CreateHandle01">
+            <summary>Sets the stub of Form.CreateHandle()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.CreateParamsGet">
+            <summary>Sets the stub of Form.get_CreateParams()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.CursorGet">
+            <summary>Sets the stub of Control.get_Cursor()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.CursorSetCursor">
+            <summary>Sets the stub of Control.set_Cursor(Cursor value)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.DefWndProc(System.Windows.Forms.Message@)">
+            <summary>Sets the stub of Form.DefWndProc(Message&amp; m)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DefWndProcMessageRef">
+            <summary>Sets the stub of Form.DefWndProc(Message&amp; m)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DefaultCursorGet">
+            <summary>Sets the stub of Control.get_DefaultCursor()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DefaultImeModeGet">
+            <summary>Sets the stub of Form.get_DefaultImeMode()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DefaultMarginGet">
+            <summary>Sets the stub of Control.get_DefaultMargin()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DefaultMaximumSizeGet">
+            <summary>Sets the stub of Control.get_DefaultMaximumSize()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DefaultMinimumSizeGet">
+            <summary>Sets the stub of Control.get_DefaultMinimumSize()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DefaultPaddingGet">
+            <summary>Sets the stub of Control.get_DefaultPadding()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DefaultSizeGet">
+            <summary>Sets the stub of Form.get_DefaultSize()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.DestroyHandle">
+            <summary>Sets the stub of Control.DestroyHandle()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DestroyHandle01">
+            <summary>Sets the stub of Control.DestroyHandle()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DisplayRectangleGet">
+            <summary>Sets the stub of ScrollableControl.get_DisplayRectangle()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.Dispose(System.Boolean)">
+            <summary>Sets the stub of MainForm.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DisposeBoolean">
+            <summary>Sets the stub of MainForm.Dispose(Boolean disposing)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DockGet">
+            <summary>Sets the stub of Control.get_Dock()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DockSetDockStyle">
+            <summary>Sets the stub of Control.set_Dock(DockStyle value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DoubleBufferedGet">
+            <summary>Sets the stub of Control.get_DoubleBuffered()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.DoubleBufferedSetBoolean">
+            <summary>Sets the stub of Control.set_DoubleBuffered(Boolean value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.FocusedGet">
+            <summary>Sets the stub of Control.get_Focused()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.FontGet">
+            <summary>Sets the stub of Control.get_Font()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.FontSetFont">
+            <summary>Sets the stub of Control.set_Font(Font value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ForeColorGet">
+            <summary>Sets the stub of Control.get_ForeColor()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ForeColorSetColor">
+            <summary>Sets the stub of Control.set_ForeColor(Color value)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.GetAccessibilityObjectById(System.Int32)">
+            <summary>Sets the stub of Control.GetAccessibilityObjectById(Int32 objectId)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.GetAccessibilityObjectByIdInt32">
+            <summary>Sets the stub of Control.GetAccessibilityObjectById(Int32 objectId)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.GetPreferredSize(System.Drawing.Size)">
+            <summary>Sets the stub of Control.GetPreferredSize(Size proposedSize)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.GetPreferredSizeSize">
+            <summary>Sets the stub of Control.GetPreferredSize(Size proposedSize)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.GetScaledBounds(System.Drawing.Rectangle,System.Drawing.SizeF,System.Windows.Forms.BoundsSpecified)">
+            <summary>Sets the stub of Form.GetScaledBounds(Rectangle bounds, SizeF factor, BoundsSpecified specified)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.GetScaledBoundsRectangleSizeFBoundsSpecified">
+            <summary>Sets the stub of Form.GetScaledBounds(Rectangle bounds, SizeF factor, BoundsSpecified specified)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.GetService(System.Type)">
+            <summary>Sets the stub of Component.GetService(Type service)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.GetServiceType">
+            <summary>Sets the stub of Component.GetService(Type service)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ImeModeBaseGet">
+            <summary>Sets the stub of Control.get_ImeModeBase()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ImeModeBaseSetImeMode">
+            <summary>Sets the stub of Control.set_ImeModeBase(ImeMode value)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.InitLayout">
+            <summary>Sets the stub of Control.InitLayout()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.InitLayout01">
+            <summary>Sets the stub of Control.InitLayout()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.InitializeStub">
+            <summary>Initializes a new instance of type StubMainForm</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.IsInputChar(System.Char)">
+            <summary>Sets the stub of Control.IsInputChar(Char charCode)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.IsInputCharChar">
+            <summary>Sets the stub of Control.IsInputChar(Char charCode)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.IsInputKey(System.Windows.Forms.Keys)">
+            <summary>Sets the stub of Control.IsInputKey(Keys keyData)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.IsInputKeyKeys">
+            <summary>Sets the stub of Control.IsInputKey(Keys keyData)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.LayoutEngineGet">
+            <summary>Sets the stub of Control.get_LayoutEngine()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.MaximumSizeGet">
+            <summary>Sets the stub of Form.get_MaximumSize()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.MaximumSizeSetSize">
+            <summary>Sets the stub of Form.set_MaximumSize(Size value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.MinimumSizeGet">
+            <summary>Sets the stub of Form.get_MinimumSize()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.MinimumSizeSetSize">
+            <summary>Sets the stub of Form.set_MinimumSize(Size value)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.NotifyInvalidate(System.Drawing.Rectangle)">
+            <summary>Sets the stub of Control.NotifyInvalidate(Rectangle invalidatedArea)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.NotifyInvalidateRectangle">
+            <summary>Sets the stub of Control.NotifyInvalidate(Rectangle invalidatedArea)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnActivated(System.EventArgs)">
+            <summary>Sets the stub of Form.OnActivated(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnActivatedEventArgs">
+            <summary>Sets the stub of Form.OnActivated(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnAutoSizeChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnAutoSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnAutoSizeChangedEventArgs">
+            <summary>Sets the stub of Control.OnAutoSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnAutoValidateChanged(System.EventArgs)">
+            <summary>Sets the stub of ContainerControl.OnAutoValidateChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnAutoValidateChangedEventArgs">
+            <summary>Sets the stub of ContainerControl.OnAutoValidateChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnBackColorChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnBackColorChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnBackColorChangedEventArgs">
+            <summary>Sets the stub of Control.OnBackColorChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnBackgroundImageChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnBackgroundImageChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnBackgroundImageChangedEventArgs">
+            <summary>Sets the stub of Form.OnBackgroundImageChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnBackgroundImageLayoutChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnBackgroundImageLayoutChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnBackgroundImageLayoutChangedEventArgs">
+            <summary>Sets the stub of Form.OnBackgroundImageLayoutChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnBindingContextChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnBindingContextChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnBindingContextChangedEventArgs">
+            <summary>Sets the stub of Control.OnBindingContextChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnCausesValidationChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnCausesValidationChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnCausesValidationChangedEventArgs">
+            <summary>Sets the stub of Control.OnCausesValidationChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnChangeUICues(System.Windows.Forms.UICuesEventArgs)">
+            <summary>Sets the stub of Control.OnChangeUICues(UICuesEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnChangeUICuesUICuesEventArgs">
+            <summary>Sets the stub of Control.OnChangeUICues(UICuesEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnClick(System.EventArgs)">
+            <summary>Sets the stub of Control.OnClick(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnClickEventArgs">
+            <summary>Sets the stub of Control.OnClick(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnClientSizeChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnClientSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnClientSizeChangedEventArgs">
+            <summary>Sets the stub of Control.OnClientSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnClosed(System.EventArgs)">
+            <summary>Sets the stub of Form.OnClosed(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnClosedEventArgs">
+            <summary>Sets the stub of Form.OnClosed(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnClosing(System.ComponentModel.CancelEventArgs)">
+            <summary>Sets the stub of Form.OnClosing(CancelEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnClosingCancelEventArgs">
+            <summary>Sets the stub of Form.OnClosing(CancelEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnContextMenuChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnContextMenuChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnContextMenuChangedEventArgs">
+            <summary>Sets the stub of Control.OnContextMenuChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnContextMenuStripChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnContextMenuStripChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnContextMenuStripChangedEventArgs">
+            <summary>Sets the stub of Control.OnContextMenuStripChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnControlAdded(System.Windows.Forms.ControlEventArgs)">
+            <summary>Sets the stub of Control.OnControlAdded(ControlEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnControlAddedControlEventArgs">
+            <summary>Sets the stub of Control.OnControlAdded(ControlEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnControlRemoved(System.Windows.Forms.ControlEventArgs)">
+            <summary>Sets the stub of Control.OnControlRemoved(ControlEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnControlRemovedControlEventArgs">
+            <summary>Sets the stub of Control.OnControlRemoved(ControlEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnCreateControl">
+            <summary>Sets the stub of Form.OnCreateControl()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnCreateControl01">
+            <summary>Sets the stub of Form.OnCreateControl()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnCursorChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnCursorChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnCursorChangedEventArgs">
+            <summary>Sets the stub of Control.OnCursorChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnDeactivate(System.EventArgs)">
+            <summary>Sets the stub of Form.OnDeactivate(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnDeactivateEventArgs">
+            <summary>Sets the stub of Form.OnDeactivate(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnDockChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnDockChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnDockChangedEventArgs">
+            <summary>Sets the stub of Control.OnDockChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnDoubleClick(System.EventArgs)">
+            <summary>Sets the stub of Control.OnDoubleClick(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnDoubleClickEventArgs">
+            <summary>Sets the stub of Control.OnDoubleClick(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnDragDrop(System.Windows.Forms.DragEventArgs)">
+            <summary>Sets the stub of Control.OnDragDrop(DragEventArgs drgevent)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnDragDropDragEventArgs">
+            <summary>Sets the stub of Control.OnDragDrop(DragEventArgs drgevent)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnDragEnter(System.Windows.Forms.DragEventArgs)">
+            <summary>Sets the stub of Control.OnDragEnter(DragEventArgs drgevent)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnDragEnterDragEventArgs">
+            <summary>Sets the stub of Control.OnDragEnter(DragEventArgs drgevent)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnDragLeave(System.EventArgs)">
+            <summary>Sets the stub of Control.OnDragLeave(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnDragLeaveEventArgs">
+            <summary>Sets the stub of Control.OnDragLeave(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnDragOver(System.Windows.Forms.DragEventArgs)">
+            <summary>Sets the stub of Control.OnDragOver(DragEventArgs drgevent)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnDragOverDragEventArgs">
+            <summary>Sets the stub of Control.OnDragOver(DragEventArgs drgevent)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnEnabledChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnEnabledChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnEnabledChangedEventArgs">
+            <summary>Sets the stub of Form.OnEnabledChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnEnter(System.EventArgs)">
+            <summary>Sets the stub of Form.OnEnter(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnEnterEventArgs">
+            <summary>Sets the stub of Form.OnEnter(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnFontChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnFontChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnFontChangedEventArgs">
+            <summary>Sets the stub of Form.OnFontChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnForeColorChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnForeColorChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnForeColorChangedEventArgs">
+            <summary>Sets the stub of Control.OnForeColorChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnFormClosed(System.Windows.Forms.FormClosedEventArgs)">
+            <summary>Sets the stub of Form.OnFormClosed(FormClosedEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnFormClosedFormClosedEventArgs">
+            <summary>Sets the stub of Form.OnFormClosed(FormClosedEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnFormClosing(System.Windows.Forms.FormClosingEventArgs)">
+            <summary>Sets the stub of Form.OnFormClosing(FormClosingEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnFormClosingFormClosingEventArgs">
+            <summary>Sets the stub of Form.OnFormClosing(FormClosingEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnGiveFeedback(System.Windows.Forms.GiveFeedbackEventArgs)">
+            <summary>Sets the stub of Control.OnGiveFeedback(GiveFeedbackEventArgs gfbevent)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnGiveFeedbackGiveFeedbackEventArgs">
+            <summary>Sets the stub of Control.OnGiveFeedback(GiveFeedbackEventArgs gfbevent)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnGotFocus(System.EventArgs)">
+            <summary>Sets the stub of Control.OnGotFocus(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnGotFocusEventArgs">
+            <summary>Sets the stub of Control.OnGotFocus(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnHandleCreated(System.EventArgs)">
+            <summary>Sets the stub of Form.OnHandleCreated(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnHandleCreatedEventArgs">
+            <summary>Sets the stub of Form.OnHandleCreated(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnHandleDestroyed(System.EventArgs)">
+            <summary>Sets the stub of Form.OnHandleDestroyed(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnHandleDestroyedEventArgs">
+            <summary>Sets the stub of Form.OnHandleDestroyed(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnHelpButtonClicked(System.ComponentModel.CancelEventArgs)">
+            <summary>Sets the stub of Form.OnHelpButtonClicked(CancelEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnHelpButtonClickedCancelEventArgs">
+            <summary>Sets the stub of Form.OnHelpButtonClicked(CancelEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnHelpRequested(System.Windows.Forms.HelpEventArgs)">
+            <summary>Sets the stub of Control.OnHelpRequested(HelpEventArgs hevent)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnHelpRequestedHelpEventArgs">
+            <summary>Sets the stub of Control.OnHelpRequested(HelpEventArgs hevent)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnImeModeChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnImeModeChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnImeModeChangedEventArgs">
+            <summary>Sets the stub of Control.OnImeModeChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnInputLanguageChanged(System.Windows.Forms.InputLanguageChangedEventArgs)">
+            <summary>Sets the stub of Form.OnInputLanguageChanged(InputLanguageChangedEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnInputLanguageChangedInputLanguageChangedEventArgs">
+            <summary>Sets the stub of Form.OnInputLanguageChanged(InputLanguageChangedEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnInputLanguageChanging(System.Windows.Forms.InputLanguageChangingEventArgs)">
+            <summary>Sets the stub of Form.OnInputLanguageChanging(InputLanguageChangingEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnInputLanguageChangingInputLanguageChangingEventArgs">
+            <summary>Sets the stub of Form.OnInputLanguageChanging(InputLanguageChangingEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnInvalidated(System.Windows.Forms.InvalidateEventArgs)">
+            <summary>Sets the stub of Control.OnInvalidated(InvalidateEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnInvalidatedInvalidateEventArgs">
+            <summary>Sets the stub of Control.OnInvalidated(InvalidateEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnKeyDown(System.Windows.Forms.KeyEventArgs)">
+            <summary>Sets the stub of Control.OnKeyDown(KeyEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnKeyDownKeyEventArgs">
+            <summary>Sets the stub of Control.OnKeyDown(KeyEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnKeyPress(System.Windows.Forms.KeyPressEventArgs)">
+            <summary>Sets the stub of Control.OnKeyPress(KeyPressEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnKeyPressKeyPressEventArgs">
+            <summary>Sets the stub of Control.OnKeyPress(KeyPressEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <summary>Sets the stub of Control.OnKeyUp(KeyEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnKeyUpKeyEventArgs">
+            <summary>Sets the stub of Control.OnKeyUp(KeyEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnLayout(System.Windows.Forms.LayoutEventArgs)">
+            <summary>Sets the stub of Form.OnLayout(LayoutEventArgs levent)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnLayoutLayoutEventArgs">
+            <summary>Sets the stub of Form.OnLayout(LayoutEventArgs levent)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnLeave(System.EventArgs)">
+            <summary>Sets the stub of Control.OnLeave(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnLeaveEventArgs">
+            <summary>Sets the stub of Control.OnLeave(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnLoad(System.EventArgs)">
+            <summary>Sets the stub of Form.OnLoad(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnLoadEventArgs">
+            <summary>Sets the stub of Form.OnLoad(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnLocationChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnLocationChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnLocationChangedEventArgs">
+            <summary>Sets the stub of Control.OnLocationChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnLostFocus(System.EventArgs)">
+            <summary>Sets the stub of Control.OnLostFocus(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnLostFocusEventArgs">
+            <summary>Sets the stub of Control.OnLostFocus(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMarginChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnMarginChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMarginChangedEventArgs">
+            <summary>Sets the stub of Control.OnMarginChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMaximizedBoundsChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnMaximizedBoundsChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMaximizedBoundsChangedEventArgs">
+            <summary>Sets the stub of Form.OnMaximizedBoundsChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMaximumSizeChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnMaximumSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMaximumSizeChangedEventArgs">
+            <summary>Sets the stub of Form.OnMaximumSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMdiChildActivate(System.EventArgs)">
+            <summary>Sets the stub of Form.OnMdiChildActivate(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMdiChildActivateEventArgs">
+            <summary>Sets the stub of Form.OnMdiChildActivate(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMenuComplete(System.EventArgs)">
+            <summary>Sets the stub of Form.OnMenuComplete(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMenuCompleteEventArgs">
+            <summary>Sets the stub of Form.OnMenuComplete(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMenuStart(System.EventArgs)">
+            <summary>Sets the stub of Form.OnMenuStart(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMenuStartEventArgs">
+            <summary>Sets the stub of Form.OnMenuStart(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMinimumSizeChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnMinimumSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMinimumSizeChangedEventArgs">
+            <summary>Sets the stub of Form.OnMinimumSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseCaptureChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnMouseCaptureChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseCaptureChangedEventArgs">
+            <summary>Sets the stub of Control.OnMouseCaptureChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseClick(System.Windows.Forms.MouseEventArgs)">
+            <summary>Sets the stub of Control.OnMouseClick(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseClickMouseEventArgs">
+            <summary>Sets the stub of Control.OnMouseClick(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseDoubleClick(System.Windows.Forms.MouseEventArgs)">
+            <summary>Sets the stub of Control.OnMouseDoubleClick(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseDoubleClickMouseEventArgs">
+            <summary>Sets the stub of Control.OnMouseDoubleClick(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>Sets the stub of Control.OnMouseDown(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseDownMouseEventArgs">
+            <summary>Sets the stub of Control.OnMouseDown(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseEnter(System.EventArgs)">
+            <summary>Sets the stub of Control.OnMouseEnter(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseEnterEventArgs">
+            <summary>Sets the stub of Control.OnMouseEnter(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseHover(System.EventArgs)">
+            <summary>Sets the stub of Control.OnMouseHover(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseHoverEventArgs">
+            <summary>Sets the stub of Control.OnMouseHover(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseLeave(System.EventArgs)">
+            <summary>Sets the stub of Control.OnMouseLeave(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseLeaveEventArgs">
+            <summary>Sets the stub of Control.OnMouseLeave(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>Sets the stub of Control.OnMouseMove(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseMoveMouseEventArgs">
+            <summary>Sets the stub of Control.OnMouseMove(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>Sets the stub of Control.OnMouseUp(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseUpMouseEventArgs">
+            <summary>Sets the stub of Control.OnMouseUp(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">
+            <summary>Sets the stub of ScrollableControl.OnMouseWheel(MouseEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMouseWheelMouseEventArgs">
+            <summary>Sets the stub of ScrollableControl.OnMouseWheel(MouseEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnMove(System.EventArgs)">
+            <summary>Sets the stub of Control.OnMove(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnMoveEventArgs">
+            <summary>Sets the stub of Control.OnMove(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnNotifyMessage(System.Windows.Forms.Message)">
+            <summary>Sets the stub of Control.OnNotifyMessage(Message m)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnNotifyMessageMessage">
+            <summary>Sets the stub of Control.OnNotifyMessage(Message m)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnPaddingChanged(System.EventArgs)">
+            <summary>Sets the stub of ScrollableControl.OnPaddingChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnPaddingChangedEventArgs">
+            <summary>Sets the stub of ScrollableControl.OnPaddingChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>Sets the stub of Form.OnPaint(PaintEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
+            <summary>Sets the stub of ScrollableControl.OnPaintBackground(PaintEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnPaintBackgroundPaintEventArgs">
+            <summary>Sets the stub of ScrollableControl.OnPaintBackground(PaintEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnPaintPaintEventArgs">
+            <summary>Sets the stub of Form.OnPaint(PaintEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentBackColorChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnParentBackColorChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentBackColorChangedEventArgs">
+            <summary>Sets the stub of Control.OnParentBackColorChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentBackgroundImageChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnParentBackgroundImageChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentBackgroundImageChangedEventArgs">
+            <summary>Sets the stub of Control.OnParentBackgroundImageChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentBindingContextChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnParentBindingContextChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentBindingContextChangedEventArgs">
+            <summary>Sets the stub of Control.OnParentBindingContextChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentChanged(System.EventArgs)">
+            <summary>Sets the stub of ContainerControl.OnParentChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentChangedEventArgs">
+            <summary>Sets the stub of ContainerControl.OnParentChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentCursorChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnParentCursorChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentCursorChangedEventArgs">
+            <summary>Sets the stub of Control.OnParentCursorChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentEnabledChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnParentEnabledChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentEnabledChangedEventArgs">
+            <summary>Sets the stub of Control.OnParentEnabledChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentFontChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnParentFontChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentFontChangedEventArgs">
+            <summary>Sets the stub of Control.OnParentFontChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentForeColorChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnParentForeColorChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentForeColorChangedEventArgs">
+            <summary>Sets the stub of Control.OnParentForeColorChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentRightToLeftChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnParentRightToLeftChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentRightToLeftChangedEventArgs">
+            <summary>Sets the stub of Control.OnParentRightToLeftChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnParentVisibleChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnParentVisibleChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnParentVisibleChangedEventArgs">
+            <summary>Sets the stub of Control.OnParentVisibleChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnPreviewKeyDown(System.Windows.Forms.PreviewKeyDownEventArgs)">
+            <summary>Sets the stub of Control.OnPreviewKeyDown(PreviewKeyDownEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnPreviewKeyDownPreviewKeyDownEventArgs">
+            <summary>Sets the stub of Control.OnPreviewKeyDown(PreviewKeyDownEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnPrint(System.Windows.Forms.PaintEventArgs)">
+            <summary>Sets the stub of Control.OnPrint(PaintEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnPrintPaintEventArgs">
+            <summary>Sets the stub of Control.OnPrint(PaintEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnQueryContinueDrag(System.Windows.Forms.QueryContinueDragEventArgs)">
+            <summary>Sets the stub of Control.OnQueryContinueDrag(QueryContinueDragEventArgs qcdevent)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnQueryContinueDragQueryContinueDragEventArgs">
+            <summary>Sets the stub of Control.OnQueryContinueDrag(QueryContinueDragEventArgs qcdevent)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnRegionChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnRegionChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnRegionChangedEventArgs">
+            <summary>Sets the stub of Control.OnRegionChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnResize(System.EventArgs)">
+            <summary>Sets the stub of Form.OnResize(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnResizeBegin(System.EventArgs)">
+            <summary>Sets the stub of Form.OnResizeBegin(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnResizeBeginEventArgs">
+            <summary>Sets the stub of Form.OnResizeBegin(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnResizeEnd(System.EventArgs)">
+            <summary>Sets the stub of Form.OnResizeEnd(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnResizeEndEventArgs">
+            <summary>Sets the stub of Form.OnResizeEnd(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnResizeEventArgs">
+            <summary>Sets the stub of Form.OnResize(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnRightToLeftChanged(System.EventArgs)">
+            <summary>Sets the stub of ScrollableControl.OnRightToLeftChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnRightToLeftChangedEventArgs">
+            <summary>Sets the stub of ScrollableControl.OnRightToLeftChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnRightToLeftLayoutChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnRightToLeftLayoutChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnRightToLeftLayoutChangedEventArgs">
+            <summary>Sets the stub of Form.OnRightToLeftLayoutChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnScroll(System.Windows.Forms.ScrollEventArgs)">
+            <summary>Sets the stub of ScrollableControl.OnScroll(ScrollEventArgs se)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnScrollScrollEventArgs">
+            <summary>Sets the stub of ScrollableControl.OnScroll(ScrollEventArgs se)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnShown(System.EventArgs)">
+            <summary>Sets the stub of Form.OnShown(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnShownEventArgs">
+            <summary>Sets the stub of Form.OnShown(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnSizeChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnSizeChangedEventArgs">
+            <summary>Sets the stub of Control.OnSizeChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnStyleChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnStyleChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnStyleChangedEventArgs">
+            <summary>Sets the stub of Form.OnStyleChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnSystemColorsChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnSystemColorsChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnSystemColorsChangedEventArgs">
+            <summary>Sets the stub of Control.OnSystemColorsChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnTabIndexChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnTabIndexChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnTabIndexChangedEventArgs">
+            <summary>Sets the stub of Control.OnTabIndexChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnTabStopChanged(System.EventArgs)">
+            <summary>Sets the stub of Control.OnTabStopChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnTabStopChangedEventArgs">
+            <summary>Sets the stub of Control.OnTabStopChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnTextChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnTextChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnTextChangedEventArgs">
+            <summary>Sets the stub of Form.OnTextChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnValidated(System.EventArgs)">
+            <summary>Sets the stub of Control.OnValidated(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnValidatedEventArgs">
+            <summary>Sets the stub of Control.OnValidated(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnValidating(System.ComponentModel.CancelEventArgs)">
+            <summary>Sets the stub of Control.OnValidating(CancelEventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnValidatingCancelEventArgs">
+            <summary>Sets the stub of Control.OnValidating(CancelEventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.OnVisibleChanged(System.EventArgs)">
+            <summary>Sets the stub of Form.OnVisibleChanged(EventArgs e)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.OnVisibleChangedEventArgs">
+            <summary>Sets the stub of Form.OnVisibleChanged(EventArgs e)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.PreProcessMessage(System.Windows.Forms.Message@)">
+            <summary>Sets the stub of Control.PreProcessMessage(Message&amp; msg)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.PreProcessMessageMessageRef">
+            <summary>Sets the stub of Control.PreProcessMessage(Message&amp; msg)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
+            <summary>Sets the stub of Form.ProcessCmdKey(Message&amp; msg, Keys keyData)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ProcessCmdKeyMessageRefKeys">
+            <summary>Sets the stub of Form.ProcessCmdKey(Message&amp; msg, Keys keyData)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ProcessDialogChar(System.Char)">
+            <summary>Sets the stub of Form.ProcessDialogChar(Char charCode)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ProcessDialogCharChar">
+            <summary>Sets the stub of Form.ProcessDialogChar(Char charCode)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>Sets the stub of Form.ProcessDialogKey(Keys keyData)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ProcessDialogKeyKeys">
+            <summary>Sets the stub of Form.ProcessDialogKey(Keys keyData)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ProcessKeyEventArgs(System.Windows.Forms.Message@)">
+            <summary>Sets the stub of Control.ProcessKeyEventArgs(Message&amp; m)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ProcessKeyEventArgsMessageRef">
+            <summary>Sets the stub of Control.ProcessKeyEventArgs(Message&amp; m)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ProcessKeyMessage(System.Windows.Forms.Message@)">
+            <summary>Sets the stub of Control.ProcessKeyMessage(Message&amp; m)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ProcessKeyMessageMessageRef">
+            <summary>Sets the stub of Control.ProcessKeyMessage(Message&amp; m)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ProcessKeyPreview(System.Windows.Forms.Message@)">
+            <summary>Sets the stub of Form.ProcessKeyPreview(Message&amp; m)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ProcessKeyPreviewMessageRef">
+            <summary>Sets the stub of Form.ProcessKeyPreview(Message&amp; m)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ProcessMnemonic(System.Char)">
+            <summary>Sets the stub of Form.ProcessMnemonic(Char charCode)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ProcessMnemonicChar">
+            <summary>Sets the stub of Form.ProcessMnemonic(Char charCode)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ProcessTabKey(System.Boolean)">
+            <summary>Sets the stub of Form.ProcessTabKey(Boolean forward)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ProcessTabKeyBoolean">
+            <summary>Sets the stub of Form.ProcessTabKey(Boolean forward)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.Refresh">
+            <summary>Sets the stub of Control.Refresh()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.Refresh01">
+            <summary>Sets the stub of Control.Refresh()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ResetBackColor">
+            <summary>Sets the stub of Control.ResetBackColor()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ResetBackColor01">
+            <summary>Sets the stub of Control.ResetBackColor()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ResetCursor">
+            <summary>Sets the stub of Control.ResetCursor()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ResetCursor01">
+            <summary>Sets the stub of Control.ResetCursor()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ResetFont">
+            <summary>Sets the stub of Control.ResetFont()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ResetFont01">
+            <summary>Sets the stub of Control.ResetFont()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ResetForeColor">
+            <summary>Sets the stub of Control.ResetForeColor()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ResetForeColor01">
+            <summary>Sets the stub of Control.ResetForeColor()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ResetRightToLeft">
+            <summary>Sets the stub of Control.ResetRightToLeft()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ResetRightToLeft01">
+            <summary>Sets the stub of Control.ResetRightToLeft()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ResetText">
+            <summary>Sets the stub of Control.ResetText()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ResetText01">
+            <summary>Sets the stub of Control.ResetText()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.RightToLeftGet">
+            <summary>Sets the stub of Control.get_RightToLeft()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.RightToLeftLayoutGet">
+            <summary>Sets the stub of Form.get_RightToLeftLayout()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.RightToLeftLayoutSetBoolean">
+            <summary>Sets the stub of Form.set_RightToLeftLayout(Boolean value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.RightToLeftSetRightToLeft">
+            <summary>Sets the stub of Control.set_RightToLeft(RightToLeft value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ScaleChildrenGet">
+            <summary>Sets the stub of Control.get_ScaleChildren()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ScaleControl(System.Drawing.SizeF,System.Windows.Forms.BoundsSpecified)">
+            <summary>Sets the stub of Form.ScaleControl(SizeF factor, BoundsSpecified specified)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ScaleControlSizeFBoundsSpecified">
+            <summary>Sets the stub of Form.ScaleControl(SizeF factor, BoundsSpecified specified)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ScaleCore(System.Single,System.Single)">
+            <summary>Sets the stub of Form.ScaleCore(Single x, Single y)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ScaleCoreSingleSingle">
+            <summary>Sets the stub of Form.ScaleCore(Single x, Single y)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ScrollToControl(System.Windows.Forms.Control)">
+            <summary>Sets the stub of ScrollableControl.ScrollToControl(Control activeControl)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ScrollToControlControl">
+            <summary>Sets the stub of ScrollableControl.ScrollToControl(Control activeControl)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.Select(System.Boolean,System.Boolean)">
+            <summary>Sets the stub of Form.Select(Boolean directed, Boolean forward)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.SelectBooleanBoolean">
+            <summary>Sets the stub of Form.Select(Boolean directed, Boolean forward)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.SetBoundsCore(System.Int32,System.Int32,System.Int32,System.Int32,System.Windows.Forms.BoundsSpecified)">
+            <summary>Sets the stub of Form.SetBoundsCore(Int32 x, Int32 y, Int32 width, Int32 height, BoundsSpecified specified)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.SetBoundsCoreInt32Int32Int32Int32BoundsSpecified">
+            <summary>Sets the stub of Form.SetBoundsCore(Int32 x, Int32 y, Int32 width, Int32 height, BoundsSpecified specified)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.SetClientSizeCore(System.Int32,System.Int32)">
+            <summary>Sets the stub of Form.SetClientSizeCore(Int32 x, Int32 y)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.SetClientSizeCoreInt32Int32">
+            <summary>Sets the stub of Form.SetClientSizeCore(Int32 x, Int32 y)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.SetVisibleCore(System.Boolean)">
+            <summary>Sets the stub of Form.SetVisibleCore(Boolean value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.SetVisibleCoreBoolean">
+            <summary>Sets the stub of Form.SetVisibleCore(Boolean value)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ShowFocusCuesGet">
+            <summary>Sets the stub of Control.get_ShowFocusCues()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ShowKeyboardCuesGet">
+            <summary>Sets the stub of Control.get_ShowKeyboardCues()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ShowWithoutActivationGet">
+            <summary>Sets the stub of Form.get_ShowWithoutActivation()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.SiteGet">
+            <summary>Sets the stub of Control.get_Site()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.SiteSetISite">
+            <summary>Sets the stub of Control.set_Site(ISite value)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.SizeFromClientSize(System.Drawing.Size)">
+            <summary>Sets the stub of Control.SizeFromClientSize(Size clientSize)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.SizeFromClientSizeSize">
+            <summary>Sets the stub of Control.SizeFromClientSize(Size clientSize)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.TextGet">
+            <summary>Sets the stub of Form.get_Text()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.TextSetString">
+            <summary>Sets the stub of Form.set_Text(String value)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ToString">
+            <summary>Sets the stub of Form.ToString()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ToString01">
+            <summary>Sets the stub of Form.ToString()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.UpdateDefaultButton">
+            <summary>Sets the stub of Form.UpdateDefaultButton()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.UpdateDefaultButton01">
+            <summary>Sets the stub of Form.UpdateDefaultButton()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ValidateChildren">
+            <summary>Sets the stub of Form.ValidateChildren()</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.ValidateChildren(System.Windows.Forms.ValidationConstraints)">
+            <summary>Sets the stub of Form.ValidateChildren(ValidationConstraints validationConstraints)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ValidateChildren01">
+            <summary>Sets the stub of Form.ValidateChildren()</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.ValidateChildrenValidationConstraints">
+            <summary>Sets the stub of Form.ValidateChildren(ValidationConstraints validationConstraints)</summary>
+        </member>
+        <member name="M:Vicsek.Forms.Fakes.StubMainForm.WndProc(System.Windows.Forms.Message@)">
+            <summary>Sets the stub of Form.WndProc(Message&amp; m)</summary>
+        </member>
+        <member name="F:Vicsek.Forms.Fakes.StubMainForm.WndProcMessageRef">
+            <summary>Sets the stub of Form.WndProc(Message&amp; m)</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.AllowDrop">
+            <summary>Sets the stub of Control.get_AllowDrop()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.Anchor">
+            <summary>Sets the stub of Control.get_Anchor()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.AutoScaleBaseSize">
+            <summary>Sets the stub of Form.get_AutoScaleBaseSize()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.AutoScroll">
+            <summary>Sets the stub of Form.get_AutoScroll()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.AutoScrollOffset">
+            <summary>Sets the stub of Control.get_AutoScrollOffset()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.AutoSize">
+            <summary>Sets the stub of Form.get_AutoSize()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.AutoValidate">
+            <summary>Sets the stub of Form.get_AutoValidate()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.BackColor">
+            <summary>Sets the stub of Form.get_BackColor()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.BackgroundImage">
+            <summary>Sets the stub of Control.get_BackgroundImage()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.BackgroundImageLayout">
+            <summary>Sets the stub of Control.get_BackgroundImageLayout()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.BindingContext">
+            <summary>Sets the stub of ContainerControl.get_BindingContext()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.CanEnableIme">
+            <summary>Sets the stub of ContainerControl.get_CanEnableIme()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.CanRaiseEvents">
+            <summary>Sets the stub of Control.get_CanRaiseEvents()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.ContextMenu">
+            <summary>Sets the stub of Control.get_ContextMenu()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.ContextMenuStrip">
+            <summary>Sets the stub of Control.get_ContextMenuStrip()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.CreateParams">
+            <summary>Sets the stub of Form.get_CreateParams()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.Cursor">
+            <summary>Sets the stub of Control.get_Cursor()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.DefaultCursor">
+            <summary>Sets the stub of Control.get_DefaultCursor()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.DefaultImeMode">
+            <summary>Sets the stub of Form.get_DefaultImeMode()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.DefaultMargin">
+            <summary>Sets the stub of Control.get_DefaultMargin()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.DefaultMaximumSize">
+            <summary>Sets the stub of Control.get_DefaultMaximumSize()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.DefaultMinimumSize">
+            <summary>Sets the stub of Control.get_DefaultMinimumSize()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.DefaultPadding">
+            <summary>Sets the stub of Control.get_DefaultPadding()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.DefaultSize">
+            <summary>Sets the stub of Form.get_DefaultSize()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.DisplayRectangle">
+            <summary>Sets the stub of ScrollableControl.get_DisplayRectangle()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.Dock">
+            <summary>Sets the stub of Control.get_Dock()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.DoubleBuffered">
+            <summary>Sets the stub of Control.get_DoubleBuffered()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.Focused">
+            <summary>Sets the stub of Control.get_Focused()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.Font">
+            <summary>Sets the stub of Control.get_Font()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.ForeColor">
+            <summary>Sets the stub of Control.get_ForeColor()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.ImeModeBase">
+            <summary>Sets the stub of Control.get_ImeModeBase()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.LayoutEngine">
+            <summary>Sets the stub of Control.get_LayoutEngine()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.MaximumSize">
+            <summary>Sets the stub of Form.get_MaximumSize()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.MinimumSize">
+            <summary>Sets the stub of Form.get_MinimumSize()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.RightToLeft">
+            <summary>Sets the stub of Control.get_RightToLeft()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.RightToLeftLayout">
+            <summary>Sets the stub of Form.get_RightToLeftLayout()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.ScaleChildren">
+            <summary>Sets the stub of Control.get_ScaleChildren()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.ShowFocusCues">
+            <summary>Sets the stub of Control.get_ShowFocusCues()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.ShowKeyboardCues">
+            <summary>Sets the stub of Control.get_ShowKeyboardCues()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.ShowWithoutActivation">
+            <summary>Sets the stub of Form.get_ShowWithoutActivation()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.Site">
+            <summary>Sets the stub of Control.get_Site()</summary>
+        </member>
+        <member name="P:Vicsek.Forms.Fakes.StubMainForm.Text">
+            <summary>Sets the stub of Form.get_Text()</summary>
         </member>
         <member name="T:Vicsek.Interfaces.Fakes.StubIBorder">
             <summary>Stub type of Vicsek.Interfaces.IBorder</summary>
@@ -460,6 +1939,9 @@
         <member name="M:Vicsek.Interfaces.Fakes.StubIParticleBox.#ctor">
             <summary>Initializes a new instance of type StubIParticleBox</summary>
         </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleBox.AddParticlesIParticleFactory2DInt32">
+            <summary>Sets the stub of IParticleBox.AddParticles(IParticleFactory2D factory, Int32 count)</summary>
+        </member>
         <member name="F:Vicsek.Interfaces.Fakes.StubIParticleBox.Draw">
             <summary>Sets the stub of IParticleBox.Draw()</summary>
         </member>
@@ -472,6 +1954,9 @@
         <member name="F:Vicsek.Interfaces.Fakes.StubIParticleBox.ParticlesGet">
             <summary>Sets the stub of IParticleBox.get_Particles()</summary>
         </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleBox.v::Vicsek#Interfaces#IParticleBox#AddParticles(Vicsek.Interfaces.IParticleFactory2D,System.Int32)">
+            <summary>Sets the stub of IParticleBox.AddParticles(IParticleFactory2D factory, Int32 count)</summary>
+        </member>
         <member name="M:Vicsek.Interfaces.Fakes.StubIParticleBox.v::Vicsek#Interfaces#IParticleBox#Draw">
             <summary>Sets the stub of IParticleBox.Draw()</summary>
         </member>
@@ -483,6 +1968,42 @@
         </member>
         <member name="P:Vicsek.Interfaces.Fakes.StubIParticleBox.v::Vicsek#Interfaces#IParticleBox#Particles">
             <summary>Sets the stub of IParticleBox.get_Particles()</summary>
+        </member>
+        <member name="T:Vicsek.Interfaces.Fakes.StubIParticleFactory2D">
+            <summary>Stub type of Vicsek.Interfaces.IParticleFactory2D</summary>
+        </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.#ctor">
+            <summary>Initializes a new instance of type StubIParticleFactory2D</summary>
+        </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.AttachBackingFieldToSizeX">
+            <summary>Attaches delegates to emulate StubIParticleFactory2D.SizeX as a property with a backing field.</summary>
+        </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.AttachBackingFieldToSizeY">
+            <summary>Attaches delegates to emulate StubIParticleFactory2D.SizeY as a property with a backing field.</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.PopulateRandomDistributedInt32">
+            <summary>Sets the stub of IParticleFactory2D.PopulateRandomDistributed(Int32 _count)</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.SizeXGet">
+            <summary>Sets the stub of IParticleFactory2D.get_SizeX()</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.SizeXSetDouble">
+            <summary>Sets the stub of IParticleFactory2D.set_SizeX(Double value)</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.SizeYGet">
+            <summary>Sets the stub of IParticleFactory2D.get_SizeY()</summary>
+        </member>
+        <member name="F:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.SizeYSetDouble">
+            <summary>Sets the stub of IParticleFactory2D.set_SizeY(Double value)</summary>
+        </member>
+        <member name="M:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.v::Vicsek#Interfaces#IParticleFactory2D#PopulateRandomDistributed(System.Int32)">
+            <summary>Sets the stub of IParticleFactory2D.PopulateRandomDistributed(Int32 _count)</summary>
+        </member>
+        <member name="P:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.v::Vicsek#Interfaces#IParticleFactory2D#SizeX">
+            <summary>Sets the stub of IParticleFactory2D.get_SizeX()</summary>
+        </member>
+        <member name="P:Vicsek.Interfaces.Fakes.StubIParticleFactory2D.v::Vicsek#Interfaces#IParticleFactory2D#SizeY">
+            <summary>Sets the stub of IParticleFactory2D.get_SizeY()</summary>
         </member>
         <member name="T:Vicsek.Interfaces.Fakes.StubIVector`1">
             <summary>Stub type of Vicsek.Interfaces.IVector`1</summary>
@@ -501,1365 +2022,6 @@
         </member>
         <member name="P:Vicsek.Interfaces.Fakes.StubIVector`1.v::Vicsek#Interfaces#IVector{T}#Components">
             <summary>Sets the stub of IVector`1.get_Components()</summary>
-        </member>
-        <member name="T:Vicsek.Properties.Fakes.ShimMainForm">
-            <summary>Shim type of Vicsek.Properties.MainForm</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.#ctor">
-            <summary>Initializes a new shim instance</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.#ctor(Vicsek.Properties.MainForm)">
-            <summary>Initializes a new shim for the given instance</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.BehaveAsCurrent">
-            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.BehaveAsNotImplemented">
-            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.Bind(System.ComponentModel.IComponent)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.Bind(System.ComponentModel.ISynchronizeInvoke)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.Bind(System.Windows.Forms.IBindableComponent)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.Bind(System.Windows.Forms.IContainerControl)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.Bind(System.Windows.Forms.IDropTarget)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.Bind(System.Windows.Forms.IWin32Window)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.ShimMainForm.Bind(System.IDisposable)">
-            <summary>Binds the members of the interface to the shim.</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.Behavior">
-            <summary>Assigns the behavior for all methods of the shimmed type</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.Constructor">
-            <summary>Sets the shim of MainForm.MainForm()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.DisposeBoolean">
-            <summary>Sets the shim of MainForm.Dispose(Boolean disposing)</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.InitializeComponent">
-            <summary>Sets the shim of MainForm.InitializeComponent()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.button1_ClickObjectEventArgs">
-            <summary>Sets the shim of MainForm.button1_Click(Object sender, EventArgs e)</summary>
-        </member>
-        <member name="T:Vicsek.Properties.Fakes.ShimMainForm.AllInstances">
-            <summary>Define shims for all instances members</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.AllInstances.DisposeBoolean">
-            <summary>Sets the shim of MainForm.Dispose(Boolean disposing)</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.AllInstances.InitializeComponent">
-            <summary>Sets the shim of MainForm.InitializeComponent()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.ShimMainForm.AllInstances.button1_ClickObjectEventArgs">
-            <summary>Sets the shim of MainForm.button1_Click(Object sender, EventArgs e)</summary>
-        </member>
-        <member name="T:Vicsek.Properties.Fakes.StubMainForm">
-            <summary>Stub type of Vicsek.Properties.MainForm</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.#ctor">
-            <summary>Initializes a new instance</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AdjustFormScrollbars(System.Boolean)">
-            <summary>Sets the stub of Form.AdjustFormScrollbars(Boolean displayScrollbars)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AdjustFormScrollbarsBoolean">
-            <summary>Sets the stub of Form.AdjustFormScrollbars(Boolean displayScrollbars)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AllowDropGet">
-            <summary>Sets the stub of Control.get_AllowDrop()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AllowDropSetBoolean">
-            <summary>Sets the stub of Control.set_AllowDrop(Boolean value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AnchorGet">
-            <summary>Sets the stub of Control.get_Anchor()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AnchorSetAnchorStyles">
-            <summary>Sets the stub of Control.set_Anchor(AnchorStyles value)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToAllowDrop">
-            <summary>Attaches delegates to emulate StubMainForm.AllowDrop as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToAnchor">
-            <summary>Attaches delegates to emulate StubMainForm.Anchor as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToAutoScaleBaseSize">
-            <summary>Attaches delegates to emulate StubMainForm.AutoScaleBaseSize as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToAutoScroll">
-            <summary>Attaches delegates to emulate StubMainForm.AutoScroll as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToAutoScrollOffset">
-            <summary>Attaches delegates to emulate StubMainForm.AutoScrollOffset as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToAutoSize">
-            <summary>Attaches delegates to emulate StubMainForm.AutoSize as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToAutoValidate">
-            <summary>Attaches delegates to emulate StubMainForm.AutoValidate as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToBackColor">
-            <summary>Attaches delegates to emulate StubMainForm.BackColor as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToBackgroundImage">
-            <summary>Attaches delegates to emulate StubMainForm.BackgroundImage as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToBackgroundImageLayout">
-            <summary>Attaches delegates to emulate StubMainForm.BackgroundImageLayout as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToBindingContext">
-            <summary>Attaches delegates to emulate StubMainForm.BindingContext as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToContextMenu">
-            <summary>Attaches delegates to emulate StubMainForm.ContextMenu as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToContextMenuStrip">
-            <summary>Attaches delegates to emulate StubMainForm.ContextMenuStrip as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToCursor">
-            <summary>Attaches delegates to emulate StubMainForm.Cursor as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToDock">
-            <summary>Attaches delegates to emulate StubMainForm.Dock as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToDoubleBuffered">
-            <summary>Attaches delegates to emulate StubMainForm.DoubleBuffered as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToFont">
-            <summary>Attaches delegates to emulate StubMainForm.Font as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToForeColor">
-            <summary>Attaches delegates to emulate StubMainForm.ForeColor as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToImeModeBase">
-            <summary>Attaches delegates to emulate StubMainForm.ImeModeBase as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToMaximumSize">
-            <summary>Attaches delegates to emulate StubMainForm.MaximumSize as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToMinimumSize">
-            <summary>Attaches delegates to emulate StubMainForm.MinimumSize as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToRightToLeft">
-            <summary>Attaches delegates to emulate StubMainForm.RightToLeft as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToRightToLeftLayout">
-            <summary>Attaches delegates to emulate StubMainForm.RightToLeftLayout as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToSite">
-            <summary>Attaches delegates to emulate StubMainForm.Site as a property with a backing field.</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.AttachBackingFieldToText">
-            <summary>Attaches delegates to emulate StubMainForm.Text as a property with a backing field.</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoScaleBaseSizeGet">
-            <summary>Sets the stub of Form.get_AutoScaleBaseSize()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoScaleBaseSizeSetSize">
-            <summary>Sets the stub of Form.set_AutoScaleBaseSize(Size value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoScrollGet">
-            <summary>Sets the stub of Form.get_AutoScroll()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoScrollOffsetGet">
-            <summary>Sets the stub of Control.get_AutoScrollOffset()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoScrollOffsetSetPoint">
-            <summary>Sets the stub of Control.set_AutoScrollOffset(Point value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoScrollSetBoolean">
-            <summary>Sets the stub of Form.set_AutoScroll(Boolean value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoSizeGet">
-            <summary>Sets the stub of Form.get_AutoSize()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoSizeSetBoolean">
-            <summary>Sets the stub of Form.set_AutoSize(Boolean value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoValidateGet">
-            <summary>Sets the stub of Form.get_AutoValidate()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.AutoValidateSetAutoValidate">
-            <summary>Sets the stub of Form.set_AutoValidate(AutoValidate value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.BackColorGet">
-            <summary>Sets the stub of Form.get_BackColor()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.BackColorSetColor">
-            <summary>Sets the stub of Form.set_BackColor(Color value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.BackgroundImageGet">
-            <summary>Sets the stub of Control.get_BackgroundImage()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.BackgroundImageLayoutGet">
-            <summary>Sets the stub of Control.get_BackgroundImageLayout()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.BackgroundImageLayoutSetImageLayout">
-            <summary>Sets the stub of Control.set_BackgroundImageLayout(ImageLayout value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.BackgroundImageSetImage">
-            <summary>Sets the stub of Control.set_BackgroundImage(Image value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.BindingContextGet">
-            <summary>Sets the stub of ContainerControl.get_BindingContext()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.BindingContextSetBindingContext">
-            <summary>Sets the stub of ContainerControl.set_BindingContext(BindingContext value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.CanEnableImeGet">
-            <summary>Sets the stub of ContainerControl.get_CanEnableIme()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.CanRaiseEventsGet">
-            <summary>Sets the stub of Control.get_CanRaiseEvents()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ContextMenuGet">
-            <summary>Sets the stub of Control.get_ContextMenu()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ContextMenuSetContextMenu">
-            <summary>Sets the stub of Control.set_ContextMenu(ContextMenu value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ContextMenuStripGet">
-            <summary>Sets the stub of Control.get_ContextMenuStrip()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ContextMenuStripSetContextMenuStrip">
-            <summary>Sets the stub of Control.set_ContextMenuStrip(ContextMenuStrip value)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.CreateAccessibilityInstance">
-            <summary>Sets the stub of Control.CreateAccessibilityInstance()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.CreateAccessibilityInstance01">
-            <summary>Sets the stub of Control.CreateAccessibilityInstance()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.CreateControlsInstance">
-            <summary>Sets the stub of Form.CreateControlsInstance()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.CreateControlsInstance01">
-            <summary>Sets the stub of Form.CreateControlsInstance()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.CreateHandle">
-            <summary>Sets the stub of Form.CreateHandle()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.CreateHandle01">
-            <summary>Sets the stub of Form.CreateHandle()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.CreateParamsGet">
-            <summary>Sets the stub of Form.get_CreateParams()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.CursorGet">
-            <summary>Sets the stub of Control.get_Cursor()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.CursorSetCursor">
-            <summary>Sets the stub of Control.set_Cursor(Cursor value)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.DefWndProc(System.Windows.Forms.Message@)">
-            <summary>Sets the stub of Form.DefWndProc(Message&amp; m)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DefWndProcMessageRef">
-            <summary>Sets the stub of Form.DefWndProc(Message&amp; m)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DefaultCursorGet">
-            <summary>Sets the stub of Control.get_DefaultCursor()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DefaultImeModeGet">
-            <summary>Sets the stub of Form.get_DefaultImeMode()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DefaultMarginGet">
-            <summary>Sets the stub of Control.get_DefaultMargin()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DefaultMaximumSizeGet">
-            <summary>Sets the stub of Control.get_DefaultMaximumSize()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DefaultMinimumSizeGet">
-            <summary>Sets the stub of Control.get_DefaultMinimumSize()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DefaultPaddingGet">
-            <summary>Sets the stub of Control.get_DefaultPadding()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DefaultSizeGet">
-            <summary>Sets the stub of Form.get_DefaultSize()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.DestroyHandle">
-            <summary>Sets the stub of Control.DestroyHandle()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DestroyHandle01">
-            <summary>Sets the stub of Control.DestroyHandle()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DisplayRectangleGet">
-            <summary>Sets the stub of ScrollableControl.get_DisplayRectangle()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.Dispose(System.Boolean)">
-            <summary>Sets the stub of MainForm.Dispose(Boolean disposing)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DisposeBoolean">
-            <summary>Sets the stub of MainForm.Dispose(Boolean disposing)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DockGet">
-            <summary>Sets the stub of Control.get_Dock()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DockSetDockStyle">
-            <summary>Sets the stub of Control.set_Dock(DockStyle value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DoubleBufferedGet">
-            <summary>Sets the stub of Control.get_DoubleBuffered()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.DoubleBufferedSetBoolean">
-            <summary>Sets the stub of Control.set_DoubleBuffered(Boolean value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.FocusedGet">
-            <summary>Sets the stub of Control.get_Focused()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.FontGet">
-            <summary>Sets the stub of Control.get_Font()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.FontSetFont">
-            <summary>Sets the stub of Control.set_Font(Font value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ForeColorGet">
-            <summary>Sets the stub of Control.get_ForeColor()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ForeColorSetColor">
-            <summary>Sets the stub of Control.set_ForeColor(Color value)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.GetAccessibilityObjectById(System.Int32)">
-            <summary>Sets the stub of Control.GetAccessibilityObjectById(Int32 objectId)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.GetAccessibilityObjectByIdInt32">
-            <summary>Sets the stub of Control.GetAccessibilityObjectById(Int32 objectId)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.GetPreferredSize(System.Drawing.Size)">
-            <summary>Sets the stub of Control.GetPreferredSize(Size proposedSize)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.GetPreferredSizeSize">
-            <summary>Sets the stub of Control.GetPreferredSize(Size proposedSize)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.GetScaledBounds(System.Drawing.Rectangle,System.Drawing.SizeF,System.Windows.Forms.BoundsSpecified)">
-            <summary>Sets the stub of Form.GetScaledBounds(Rectangle bounds, SizeF factor, BoundsSpecified specified)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.GetScaledBoundsRectangleSizeFBoundsSpecified">
-            <summary>Sets the stub of Form.GetScaledBounds(Rectangle bounds, SizeF factor, BoundsSpecified specified)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.GetService(System.Type)">
-            <summary>Sets the stub of Component.GetService(Type service)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.GetServiceType">
-            <summary>Sets the stub of Component.GetService(Type service)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ImeModeBaseGet">
-            <summary>Sets the stub of Control.get_ImeModeBase()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ImeModeBaseSetImeMode">
-            <summary>Sets the stub of Control.set_ImeModeBase(ImeMode value)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.InitLayout">
-            <summary>Sets the stub of Control.InitLayout()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.InitLayout01">
-            <summary>Sets the stub of Control.InitLayout()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.InitializeStub">
-            <summary>Initializes a new instance of type StubMainForm</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.IsInputChar(System.Char)">
-            <summary>Sets the stub of Control.IsInputChar(Char charCode)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.IsInputCharChar">
-            <summary>Sets the stub of Control.IsInputChar(Char charCode)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.IsInputKey(System.Windows.Forms.Keys)">
-            <summary>Sets the stub of Control.IsInputKey(Keys keyData)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.IsInputKeyKeys">
-            <summary>Sets the stub of Control.IsInputKey(Keys keyData)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.LayoutEngineGet">
-            <summary>Sets the stub of Control.get_LayoutEngine()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.MaximumSizeGet">
-            <summary>Sets the stub of Form.get_MaximumSize()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.MaximumSizeSetSize">
-            <summary>Sets the stub of Form.set_MaximumSize(Size value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.MinimumSizeGet">
-            <summary>Sets the stub of Form.get_MinimumSize()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.MinimumSizeSetSize">
-            <summary>Sets the stub of Form.set_MinimumSize(Size value)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.NotifyInvalidate(System.Drawing.Rectangle)">
-            <summary>Sets the stub of Control.NotifyInvalidate(Rectangle invalidatedArea)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.NotifyInvalidateRectangle">
-            <summary>Sets the stub of Control.NotifyInvalidate(Rectangle invalidatedArea)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnActivated(System.EventArgs)">
-            <summary>Sets the stub of Form.OnActivated(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnActivatedEventArgs">
-            <summary>Sets the stub of Form.OnActivated(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnAutoSizeChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnAutoSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnAutoSizeChangedEventArgs">
-            <summary>Sets the stub of Control.OnAutoSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnAutoValidateChanged(System.EventArgs)">
-            <summary>Sets the stub of ContainerControl.OnAutoValidateChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnAutoValidateChangedEventArgs">
-            <summary>Sets the stub of ContainerControl.OnAutoValidateChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnBackColorChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnBackColorChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnBackColorChangedEventArgs">
-            <summary>Sets the stub of Control.OnBackColorChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnBackgroundImageChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnBackgroundImageChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnBackgroundImageChangedEventArgs">
-            <summary>Sets the stub of Form.OnBackgroundImageChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnBackgroundImageLayoutChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnBackgroundImageLayoutChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnBackgroundImageLayoutChangedEventArgs">
-            <summary>Sets the stub of Form.OnBackgroundImageLayoutChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnBindingContextChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnBindingContextChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnBindingContextChangedEventArgs">
-            <summary>Sets the stub of Control.OnBindingContextChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnCausesValidationChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnCausesValidationChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnCausesValidationChangedEventArgs">
-            <summary>Sets the stub of Control.OnCausesValidationChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnChangeUICues(System.Windows.Forms.UICuesEventArgs)">
-            <summary>Sets the stub of Control.OnChangeUICues(UICuesEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnChangeUICuesUICuesEventArgs">
-            <summary>Sets the stub of Control.OnChangeUICues(UICuesEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnClick(System.EventArgs)">
-            <summary>Sets the stub of Control.OnClick(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnClickEventArgs">
-            <summary>Sets the stub of Control.OnClick(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnClientSizeChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnClientSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnClientSizeChangedEventArgs">
-            <summary>Sets the stub of Control.OnClientSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnClosed(System.EventArgs)">
-            <summary>Sets the stub of Form.OnClosed(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnClosedEventArgs">
-            <summary>Sets the stub of Form.OnClosed(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnClosing(System.ComponentModel.CancelEventArgs)">
-            <summary>Sets the stub of Form.OnClosing(CancelEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnClosingCancelEventArgs">
-            <summary>Sets the stub of Form.OnClosing(CancelEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnContextMenuChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnContextMenuChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnContextMenuChangedEventArgs">
-            <summary>Sets the stub of Control.OnContextMenuChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnContextMenuStripChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnContextMenuStripChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnContextMenuStripChangedEventArgs">
-            <summary>Sets the stub of Control.OnContextMenuStripChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnControlAdded(System.Windows.Forms.ControlEventArgs)">
-            <summary>Sets the stub of Control.OnControlAdded(ControlEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnControlAddedControlEventArgs">
-            <summary>Sets the stub of Control.OnControlAdded(ControlEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnControlRemoved(System.Windows.Forms.ControlEventArgs)">
-            <summary>Sets the stub of Control.OnControlRemoved(ControlEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnControlRemovedControlEventArgs">
-            <summary>Sets the stub of Control.OnControlRemoved(ControlEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnCreateControl">
-            <summary>Sets the stub of Form.OnCreateControl()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnCreateControl01">
-            <summary>Sets the stub of Form.OnCreateControl()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnCursorChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnCursorChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnCursorChangedEventArgs">
-            <summary>Sets the stub of Control.OnCursorChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnDeactivate(System.EventArgs)">
-            <summary>Sets the stub of Form.OnDeactivate(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnDeactivateEventArgs">
-            <summary>Sets the stub of Form.OnDeactivate(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnDockChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnDockChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnDockChangedEventArgs">
-            <summary>Sets the stub of Control.OnDockChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnDoubleClick(System.EventArgs)">
-            <summary>Sets the stub of Control.OnDoubleClick(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnDoubleClickEventArgs">
-            <summary>Sets the stub of Control.OnDoubleClick(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnDragDrop(System.Windows.Forms.DragEventArgs)">
-            <summary>Sets the stub of Control.OnDragDrop(DragEventArgs drgevent)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnDragDropDragEventArgs">
-            <summary>Sets the stub of Control.OnDragDrop(DragEventArgs drgevent)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnDragEnter(System.Windows.Forms.DragEventArgs)">
-            <summary>Sets the stub of Control.OnDragEnter(DragEventArgs drgevent)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnDragEnterDragEventArgs">
-            <summary>Sets the stub of Control.OnDragEnter(DragEventArgs drgevent)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnDragLeave(System.EventArgs)">
-            <summary>Sets the stub of Control.OnDragLeave(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnDragLeaveEventArgs">
-            <summary>Sets the stub of Control.OnDragLeave(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnDragOver(System.Windows.Forms.DragEventArgs)">
-            <summary>Sets the stub of Control.OnDragOver(DragEventArgs drgevent)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnDragOverDragEventArgs">
-            <summary>Sets the stub of Control.OnDragOver(DragEventArgs drgevent)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnEnabledChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnEnabledChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnEnabledChangedEventArgs">
-            <summary>Sets the stub of Form.OnEnabledChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnEnter(System.EventArgs)">
-            <summary>Sets the stub of Form.OnEnter(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnEnterEventArgs">
-            <summary>Sets the stub of Form.OnEnter(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnFontChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnFontChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnFontChangedEventArgs">
-            <summary>Sets the stub of Form.OnFontChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnForeColorChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnForeColorChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnForeColorChangedEventArgs">
-            <summary>Sets the stub of Control.OnForeColorChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnFormClosed(System.Windows.Forms.FormClosedEventArgs)">
-            <summary>Sets the stub of Form.OnFormClosed(FormClosedEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnFormClosedFormClosedEventArgs">
-            <summary>Sets the stub of Form.OnFormClosed(FormClosedEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnFormClosing(System.Windows.Forms.FormClosingEventArgs)">
-            <summary>Sets the stub of Form.OnFormClosing(FormClosingEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnFormClosingFormClosingEventArgs">
-            <summary>Sets the stub of Form.OnFormClosing(FormClosingEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnGiveFeedback(System.Windows.Forms.GiveFeedbackEventArgs)">
-            <summary>Sets the stub of Control.OnGiveFeedback(GiveFeedbackEventArgs gfbevent)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnGiveFeedbackGiveFeedbackEventArgs">
-            <summary>Sets the stub of Control.OnGiveFeedback(GiveFeedbackEventArgs gfbevent)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnGotFocus(System.EventArgs)">
-            <summary>Sets the stub of Control.OnGotFocus(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnGotFocusEventArgs">
-            <summary>Sets the stub of Control.OnGotFocus(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnHandleCreated(System.EventArgs)">
-            <summary>Sets the stub of Form.OnHandleCreated(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnHandleCreatedEventArgs">
-            <summary>Sets the stub of Form.OnHandleCreated(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnHandleDestroyed(System.EventArgs)">
-            <summary>Sets the stub of Form.OnHandleDestroyed(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnHandleDestroyedEventArgs">
-            <summary>Sets the stub of Form.OnHandleDestroyed(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnHelpButtonClicked(System.ComponentModel.CancelEventArgs)">
-            <summary>Sets the stub of Form.OnHelpButtonClicked(CancelEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnHelpButtonClickedCancelEventArgs">
-            <summary>Sets the stub of Form.OnHelpButtonClicked(CancelEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnHelpRequested(System.Windows.Forms.HelpEventArgs)">
-            <summary>Sets the stub of Control.OnHelpRequested(HelpEventArgs hevent)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnHelpRequestedHelpEventArgs">
-            <summary>Sets the stub of Control.OnHelpRequested(HelpEventArgs hevent)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnImeModeChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnImeModeChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnImeModeChangedEventArgs">
-            <summary>Sets the stub of Control.OnImeModeChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnInputLanguageChanged(System.Windows.Forms.InputLanguageChangedEventArgs)">
-            <summary>Sets the stub of Form.OnInputLanguageChanged(InputLanguageChangedEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnInputLanguageChangedInputLanguageChangedEventArgs">
-            <summary>Sets the stub of Form.OnInputLanguageChanged(InputLanguageChangedEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnInputLanguageChanging(System.Windows.Forms.InputLanguageChangingEventArgs)">
-            <summary>Sets the stub of Form.OnInputLanguageChanging(InputLanguageChangingEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnInputLanguageChangingInputLanguageChangingEventArgs">
-            <summary>Sets the stub of Form.OnInputLanguageChanging(InputLanguageChangingEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnInvalidated(System.Windows.Forms.InvalidateEventArgs)">
-            <summary>Sets the stub of Control.OnInvalidated(InvalidateEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnInvalidatedInvalidateEventArgs">
-            <summary>Sets the stub of Control.OnInvalidated(InvalidateEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnKeyDown(System.Windows.Forms.KeyEventArgs)">
-            <summary>Sets the stub of Control.OnKeyDown(KeyEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnKeyDownKeyEventArgs">
-            <summary>Sets the stub of Control.OnKeyDown(KeyEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnKeyPress(System.Windows.Forms.KeyPressEventArgs)">
-            <summary>Sets the stub of Control.OnKeyPress(KeyPressEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnKeyPressKeyPressEventArgs">
-            <summary>Sets the stub of Control.OnKeyPress(KeyPressEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnKeyUp(System.Windows.Forms.KeyEventArgs)">
-            <summary>Sets the stub of Control.OnKeyUp(KeyEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnKeyUpKeyEventArgs">
-            <summary>Sets the stub of Control.OnKeyUp(KeyEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnLayout(System.Windows.Forms.LayoutEventArgs)">
-            <summary>Sets the stub of Form.OnLayout(LayoutEventArgs levent)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnLayoutLayoutEventArgs">
-            <summary>Sets the stub of Form.OnLayout(LayoutEventArgs levent)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnLeave(System.EventArgs)">
-            <summary>Sets the stub of Control.OnLeave(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnLeaveEventArgs">
-            <summary>Sets the stub of Control.OnLeave(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnLoad(System.EventArgs)">
-            <summary>Sets the stub of Form.OnLoad(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnLoadEventArgs">
-            <summary>Sets the stub of Form.OnLoad(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnLocationChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnLocationChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnLocationChangedEventArgs">
-            <summary>Sets the stub of Control.OnLocationChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnLostFocus(System.EventArgs)">
-            <summary>Sets the stub of Control.OnLostFocus(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnLostFocusEventArgs">
-            <summary>Sets the stub of Control.OnLostFocus(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMarginChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnMarginChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMarginChangedEventArgs">
-            <summary>Sets the stub of Control.OnMarginChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMaximizedBoundsChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnMaximizedBoundsChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMaximizedBoundsChangedEventArgs">
-            <summary>Sets the stub of Form.OnMaximizedBoundsChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMaximumSizeChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnMaximumSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMaximumSizeChangedEventArgs">
-            <summary>Sets the stub of Form.OnMaximumSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMdiChildActivate(System.EventArgs)">
-            <summary>Sets the stub of Form.OnMdiChildActivate(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMdiChildActivateEventArgs">
-            <summary>Sets the stub of Form.OnMdiChildActivate(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMenuComplete(System.EventArgs)">
-            <summary>Sets the stub of Form.OnMenuComplete(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMenuCompleteEventArgs">
-            <summary>Sets the stub of Form.OnMenuComplete(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMenuStart(System.EventArgs)">
-            <summary>Sets the stub of Form.OnMenuStart(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMenuStartEventArgs">
-            <summary>Sets the stub of Form.OnMenuStart(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMinimumSizeChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnMinimumSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMinimumSizeChangedEventArgs">
-            <summary>Sets the stub of Form.OnMinimumSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseCaptureChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnMouseCaptureChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseCaptureChangedEventArgs">
-            <summary>Sets the stub of Control.OnMouseCaptureChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseClick(System.Windows.Forms.MouseEventArgs)">
-            <summary>Sets the stub of Control.OnMouseClick(MouseEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseClickMouseEventArgs">
-            <summary>Sets the stub of Control.OnMouseClick(MouseEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseDoubleClick(System.Windows.Forms.MouseEventArgs)">
-            <summary>Sets the stub of Control.OnMouseDoubleClick(MouseEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseDoubleClickMouseEventArgs">
-            <summary>Sets the stub of Control.OnMouseDoubleClick(MouseEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
-            <summary>Sets the stub of Control.OnMouseDown(MouseEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseDownMouseEventArgs">
-            <summary>Sets the stub of Control.OnMouseDown(MouseEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseEnter(System.EventArgs)">
-            <summary>Sets the stub of Control.OnMouseEnter(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseEnterEventArgs">
-            <summary>Sets the stub of Control.OnMouseEnter(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseHover(System.EventArgs)">
-            <summary>Sets the stub of Control.OnMouseHover(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseHoverEventArgs">
-            <summary>Sets the stub of Control.OnMouseHover(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseLeave(System.EventArgs)">
-            <summary>Sets the stub of Control.OnMouseLeave(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseLeaveEventArgs">
-            <summary>Sets the stub of Control.OnMouseLeave(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
-            <summary>Sets the stub of Control.OnMouseMove(MouseEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseMoveMouseEventArgs">
-            <summary>Sets the stub of Control.OnMouseMove(MouseEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
-            <summary>Sets the stub of Control.OnMouseUp(MouseEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseUpMouseEventArgs">
-            <summary>Sets the stub of Control.OnMouseUp(MouseEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMouseWheel(System.Windows.Forms.MouseEventArgs)">
-            <summary>Sets the stub of ScrollableControl.OnMouseWheel(MouseEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMouseWheelMouseEventArgs">
-            <summary>Sets the stub of ScrollableControl.OnMouseWheel(MouseEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnMove(System.EventArgs)">
-            <summary>Sets the stub of Control.OnMove(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnMoveEventArgs">
-            <summary>Sets the stub of Control.OnMove(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnNotifyMessage(System.Windows.Forms.Message)">
-            <summary>Sets the stub of Control.OnNotifyMessage(Message m)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnNotifyMessageMessage">
-            <summary>Sets the stub of Control.OnNotifyMessage(Message m)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnPaddingChanged(System.EventArgs)">
-            <summary>Sets the stub of ScrollableControl.OnPaddingChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnPaddingChangedEventArgs">
-            <summary>Sets the stub of ScrollableControl.OnPaddingChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnPaint(System.Windows.Forms.PaintEventArgs)">
-            <summary>Sets the stub of Form.OnPaint(PaintEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnPaintBackground(System.Windows.Forms.PaintEventArgs)">
-            <summary>Sets the stub of ScrollableControl.OnPaintBackground(PaintEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnPaintBackgroundPaintEventArgs">
-            <summary>Sets the stub of ScrollableControl.OnPaintBackground(PaintEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnPaintPaintEventArgs">
-            <summary>Sets the stub of Form.OnPaint(PaintEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentBackColorChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnParentBackColorChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentBackColorChangedEventArgs">
-            <summary>Sets the stub of Control.OnParentBackColorChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentBackgroundImageChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnParentBackgroundImageChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentBackgroundImageChangedEventArgs">
-            <summary>Sets the stub of Control.OnParentBackgroundImageChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentBindingContextChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnParentBindingContextChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentBindingContextChangedEventArgs">
-            <summary>Sets the stub of Control.OnParentBindingContextChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentChanged(System.EventArgs)">
-            <summary>Sets the stub of ContainerControl.OnParentChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentChangedEventArgs">
-            <summary>Sets the stub of ContainerControl.OnParentChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentCursorChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnParentCursorChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentCursorChangedEventArgs">
-            <summary>Sets the stub of Control.OnParentCursorChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentEnabledChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnParentEnabledChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentEnabledChangedEventArgs">
-            <summary>Sets the stub of Control.OnParentEnabledChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentFontChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnParentFontChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentFontChangedEventArgs">
-            <summary>Sets the stub of Control.OnParentFontChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentForeColorChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnParentForeColorChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentForeColorChangedEventArgs">
-            <summary>Sets the stub of Control.OnParentForeColorChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentRightToLeftChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnParentRightToLeftChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentRightToLeftChangedEventArgs">
-            <summary>Sets the stub of Control.OnParentRightToLeftChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnParentVisibleChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnParentVisibleChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnParentVisibleChangedEventArgs">
-            <summary>Sets the stub of Control.OnParentVisibleChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnPreviewKeyDown(System.Windows.Forms.PreviewKeyDownEventArgs)">
-            <summary>Sets the stub of Control.OnPreviewKeyDown(PreviewKeyDownEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnPreviewKeyDownPreviewKeyDownEventArgs">
-            <summary>Sets the stub of Control.OnPreviewKeyDown(PreviewKeyDownEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnPrint(System.Windows.Forms.PaintEventArgs)">
-            <summary>Sets the stub of Control.OnPrint(PaintEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnPrintPaintEventArgs">
-            <summary>Sets the stub of Control.OnPrint(PaintEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnQueryContinueDrag(System.Windows.Forms.QueryContinueDragEventArgs)">
-            <summary>Sets the stub of Control.OnQueryContinueDrag(QueryContinueDragEventArgs qcdevent)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnQueryContinueDragQueryContinueDragEventArgs">
-            <summary>Sets the stub of Control.OnQueryContinueDrag(QueryContinueDragEventArgs qcdevent)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnRegionChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnRegionChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnRegionChangedEventArgs">
-            <summary>Sets the stub of Control.OnRegionChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnResize(System.EventArgs)">
-            <summary>Sets the stub of Form.OnResize(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnResizeBegin(System.EventArgs)">
-            <summary>Sets the stub of Form.OnResizeBegin(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnResizeBeginEventArgs">
-            <summary>Sets the stub of Form.OnResizeBegin(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnResizeEnd(System.EventArgs)">
-            <summary>Sets the stub of Form.OnResizeEnd(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnResizeEndEventArgs">
-            <summary>Sets the stub of Form.OnResizeEnd(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnResizeEventArgs">
-            <summary>Sets the stub of Form.OnResize(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnRightToLeftChanged(System.EventArgs)">
-            <summary>Sets the stub of ScrollableControl.OnRightToLeftChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnRightToLeftChangedEventArgs">
-            <summary>Sets the stub of ScrollableControl.OnRightToLeftChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnRightToLeftLayoutChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnRightToLeftLayoutChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnRightToLeftLayoutChangedEventArgs">
-            <summary>Sets the stub of Form.OnRightToLeftLayoutChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnScroll(System.Windows.Forms.ScrollEventArgs)">
-            <summary>Sets the stub of ScrollableControl.OnScroll(ScrollEventArgs se)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnScrollScrollEventArgs">
-            <summary>Sets the stub of ScrollableControl.OnScroll(ScrollEventArgs se)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnShown(System.EventArgs)">
-            <summary>Sets the stub of Form.OnShown(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnShownEventArgs">
-            <summary>Sets the stub of Form.OnShown(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnSizeChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnSizeChangedEventArgs">
-            <summary>Sets the stub of Control.OnSizeChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnStyleChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnStyleChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnStyleChangedEventArgs">
-            <summary>Sets the stub of Form.OnStyleChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnSystemColorsChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnSystemColorsChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnSystemColorsChangedEventArgs">
-            <summary>Sets the stub of Control.OnSystemColorsChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnTabIndexChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnTabIndexChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnTabIndexChangedEventArgs">
-            <summary>Sets the stub of Control.OnTabIndexChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnTabStopChanged(System.EventArgs)">
-            <summary>Sets the stub of Control.OnTabStopChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnTabStopChangedEventArgs">
-            <summary>Sets the stub of Control.OnTabStopChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnTextChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnTextChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnTextChangedEventArgs">
-            <summary>Sets the stub of Form.OnTextChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnValidated(System.EventArgs)">
-            <summary>Sets the stub of Control.OnValidated(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnValidatedEventArgs">
-            <summary>Sets the stub of Control.OnValidated(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnValidating(System.ComponentModel.CancelEventArgs)">
-            <summary>Sets the stub of Control.OnValidating(CancelEventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnValidatingCancelEventArgs">
-            <summary>Sets the stub of Control.OnValidating(CancelEventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.OnVisibleChanged(System.EventArgs)">
-            <summary>Sets the stub of Form.OnVisibleChanged(EventArgs e)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.OnVisibleChangedEventArgs">
-            <summary>Sets the stub of Form.OnVisibleChanged(EventArgs e)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.PreProcessMessage(System.Windows.Forms.Message@)">
-            <summary>Sets the stub of Control.PreProcessMessage(Message&amp; msg)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.PreProcessMessageMessageRef">
-            <summary>Sets the stub of Control.PreProcessMessage(Message&amp; msg)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ProcessCmdKey(System.Windows.Forms.Message@,System.Windows.Forms.Keys)">
-            <summary>Sets the stub of Form.ProcessCmdKey(Message&amp; msg, Keys keyData)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ProcessCmdKeyMessageRefKeys">
-            <summary>Sets the stub of Form.ProcessCmdKey(Message&amp; msg, Keys keyData)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ProcessDialogChar(System.Char)">
-            <summary>Sets the stub of Form.ProcessDialogChar(Char charCode)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ProcessDialogCharChar">
-            <summary>Sets the stub of Form.ProcessDialogChar(Char charCode)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ProcessDialogKey(System.Windows.Forms.Keys)">
-            <summary>Sets the stub of Form.ProcessDialogKey(Keys keyData)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ProcessDialogKeyKeys">
-            <summary>Sets the stub of Form.ProcessDialogKey(Keys keyData)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ProcessKeyEventArgs(System.Windows.Forms.Message@)">
-            <summary>Sets the stub of Control.ProcessKeyEventArgs(Message&amp; m)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ProcessKeyEventArgsMessageRef">
-            <summary>Sets the stub of Control.ProcessKeyEventArgs(Message&amp; m)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ProcessKeyMessage(System.Windows.Forms.Message@)">
-            <summary>Sets the stub of Control.ProcessKeyMessage(Message&amp; m)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ProcessKeyMessageMessageRef">
-            <summary>Sets the stub of Control.ProcessKeyMessage(Message&amp; m)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ProcessKeyPreview(System.Windows.Forms.Message@)">
-            <summary>Sets the stub of Form.ProcessKeyPreview(Message&amp; m)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ProcessKeyPreviewMessageRef">
-            <summary>Sets the stub of Form.ProcessKeyPreview(Message&amp; m)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ProcessMnemonic(System.Char)">
-            <summary>Sets the stub of Form.ProcessMnemonic(Char charCode)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ProcessMnemonicChar">
-            <summary>Sets the stub of Form.ProcessMnemonic(Char charCode)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ProcessTabKey(System.Boolean)">
-            <summary>Sets the stub of Form.ProcessTabKey(Boolean forward)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ProcessTabKeyBoolean">
-            <summary>Sets the stub of Form.ProcessTabKey(Boolean forward)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.Refresh">
-            <summary>Sets the stub of Control.Refresh()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.Refresh01">
-            <summary>Sets the stub of Control.Refresh()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ResetBackColor">
-            <summary>Sets the stub of Control.ResetBackColor()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ResetBackColor01">
-            <summary>Sets the stub of Control.ResetBackColor()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ResetCursor">
-            <summary>Sets the stub of Control.ResetCursor()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ResetCursor01">
-            <summary>Sets the stub of Control.ResetCursor()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ResetFont">
-            <summary>Sets the stub of Control.ResetFont()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ResetFont01">
-            <summary>Sets the stub of Control.ResetFont()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ResetForeColor">
-            <summary>Sets the stub of Control.ResetForeColor()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ResetForeColor01">
-            <summary>Sets the stub of Control.ResetForeColor()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ResetRightToLeft">
-            <summary>Sets the stub of Control.ResetRightToLeft()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ResetRightToLeft01">
-            <summary>Sets the stub of Control.ResetRightToLeft()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ResetText">
-            <summary>Sets the stub of Control.ResetText()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ResetText01">
-            <summary>Sets the stub of Control.ResetText()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.RightToLeftGet">
-            <summary>Sets the stub of Control.get_RightToLeft()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.RightToLeftLayoutGet">
-            <summary>Sets the stub of Form.get_RightToLeftLayout()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.RightToLeftLayoutSetBoolean">
-            <summary>Sets the stub of Form.set_RightToLeftLayout(Boolean value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.RightToLeftSetRightToLeft">
-            <summary>Sets the stub of Control.set_RightToLeft(RightToLeft value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ScaleChildrenGet">
-            <summary>Sets the stub of Control.get_ScaleChildren()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ScaleControl(System.Drawing.SizeF,System.Windows.Forms.BoundsSpecified)">
-            <summary>Sets the stub of Form.ScaleControl(SizeF factor, BoundsSpecified specified)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ScaleControlSizeFBoundsSpecified">
-            <summary>Sets the stub of Form.ScaleControl(SizeF factor, BoundsSpecified specified)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ScaleCore(System.Single,System.Single)">
-            <summary>Sets the stub of Form.ScaleCore(Single x, Single y)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ScaleCoreSingleSingle">
-            <summary>Sets the stub of Form.ScaleCore(Single x, Single y)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ScrollToControl(System.Windows.Forms.Control)">
-            <summary>Sets the stub of ScrollableControl.ScrollToControl(Control activeControl)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ScrollToControlControl">
-            <summary>Sets the stub of ScrollableControl.ScrollToControl(Control activeControl)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.Select(System.Boolean,System.Boolean)">
-            <summary>Sets the stub of Form.Select(Boolean directed, Boolean forward)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.SelectBooleanBoolean">
-            <summary>Sets the stub of Form.Select(Boolean directed, Boolean forward)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.SetBoundsCore(System.Int32,System.Int32,System.Int32,System.Int32,System.Windows.Forms.BoundsSpecified)">
-            <summary>Sets the stub of Form.SetBoundsCore(Int32 x, Int32 y, Int32 width, Int32 height, BoundsSpecified specified)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.SetBoundsCoreInt32Int32Int32Int32BoundsSpecified">
-            <summary>Sets the stub of Form.SetBoundsCore(Int32 x, Int32 y, Int32 width, Int32 height, BoundsSpecified specified)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.SetClientSizeCore(System.Int32,System.Int32)">
-            <summary>Sets the stub of Form.SetClientSizeCore(Int32 x, Int32 y)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.SetClientSizeCoreInt32Int32">
-            <summary>Sets the stub of Form.SetClientSizeCore(Int32 x, Int32 y)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.SetVisibleCore(System.Boolean)">
-            <summary>Sets the stub of Form.SetVisibleCore(Boolean value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.SetVisibleCoreBoolean">
-            <summary>Sets the stub of Form.SetVisibleCore(Boolean value)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ShowFocusCuesGet">
-            <summary>Sets the stub of Control.get_ShowFocusCues()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ShowKeyboardCuesGet">
-            <summary>Sets the stub of Control.get_ShowKeyboardCues()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ShowWithoutActivationGet">
-            <summary>Sets the stub of Form.get_ShowWithoutActivation()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.SiteGet">
-            <summary>Sets the stub of Control.get_Site()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.SiteSetISite">
-            <summary>Sets the stub of Control.set_Site(ISite value)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.SizeFromClientSize(System.Drawing.Size)">
-            <summary>Sets the stub of Control.SizeFromClientSize(Size clientSize)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.SizeFromClientSizeSize">
-            <summary>Sets the stub of Control.SizeFromClientSize(Size clientSize)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.TextGet">
-            <summary>Sets the stub of Form.get_Text()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.TextSetString">
-            <summary>Sets the stub of Form.set_Text(String value)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ToString">
-            <summary>Sets the stub of Form.ToString()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ToString01">
-            <summary>Sets the stub of Form.ToString()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.UpdateDefaultButton">
-            <summary>Sets the stub of Form.UpdateDefaultButton()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.UpdateDefaultButton01">
-            <summary>Sets the stub of Form.UpdateDefaultButton()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ValidateChildren">
-            <summary>Sets the stub of Form.ValidateChildren()</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.ValidateChildren(System.Windows.Forms.ValidationConstraints)">
-            <summary>Sets the stub of Form.ValidateChildren(ValidationConstraints validationConstraints)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ValidateChildren01">
-            <summary>Sets the stub of Form.ValidateChildren()</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.ValidateChildrenValidationConstraints">
-            <summary>Sets the stub of Form.ValidateChildren(ValidationConstraints validationConstraints)</summary>
-        </member>
-        <member name="M:Vicsek.Properties.Fakes.StubMainForm.WndProc(System.Windows.Forms.Message@)">
-            <summary>Sets the stub of Form.WndProc(Message&amp; m)</summary>
-        </member>
-        <member name="F:Vicsek.Properties.Fakes.StubMainForm.WndProcMessageRef">
-            <summary>Sets the stub of Form.WndProc(Message&amp; m)</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.AllowDrop">
-            <summary>Sets the stub of Control.get_AllowDrop()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.Anchor">
-            <summary>Sets the stub of Control.get_Anchor()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.AutoScaleBaseSize">
-            <summary>Sets the stub of Form.get_AutoScaleBaseSize()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.AutoScroll">
-            <summary>Sets the stub of Form.get_AutoScroll()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.AutoScrollOffset">
-            <summary>Sets the stub of Control.get_AutoScrollOffset()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.AutoSize">
-            <summary>Sets the stub of Form.get_AutoSize()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.AutoValidate">
-            <summary>Sets the stub of Form.get_AutoValidate()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.BackColor">
-            <summary>Sets the stub of Form.get_BackColor()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.BackgroundImage">
-            <summary>Sets the stub of Control.get_BackgroundImage()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.BackgroundImageLayout">
-            <summary>Sets the stub of Control.get_BackgroundImageLayout()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.BindingContext">
-            <summary>Sets the stub of ContainerControl.get_BindingContext()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.CallBase">
-            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.CanEnableIme">
-            <summary>Sets the stub of ContainerControl.get_CanEnableIme()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.CanRaiseEvents">
-            <summary>Sets the stub of Control.get_CanRaiseEvents()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.ContextMenu">
-            <summary>Sets the stub of Control.get_ContextMenu()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.ContextMenuStrip">
-            <summary>Sets the stub of Control.get_ContextMenuStrip()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.CreateParams">
-            <summary>Sets the stub of Form.get_CreateParams()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.Cursor">
-            <summary>Sets the stub of Control.get_Cursor()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.DefaultCursor">
-            <summary>Sets the stub of Control.get_DefaultCursor()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.DefaultImeMode">
-            <summary>Sets the stub of Form.get_DefaultImeMode()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.DefaultMargin">
-            <summary>Sets the stub of Control.get_DefaultMargin()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.DefaultMaximumSize">
-            <summary>Sets the stub of Control.get_DefaultMaximumSize()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.DefaultMinimumSize">
-            <summary>Sets the stub of Control.get_DefaultMinimumSize()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.DefaultPadding">
-            <summary>Sets the stub of Control.get_DefaultPadding()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.DefaultSize">
-            <summary>Sets the stub of Form.get_DefaultSize()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.DisplayRectangle">
-            <summary>Sets the stub of ScrollableControl.get_DisplayRectangle()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.Dock">
-            <summary>Sets the stub of Control.get_Dock()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.DoubleBuffered">
-            <summary>Sets the stub of Control.get_DoubleBuffered()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.Focused">
-            <summary>Sets the stub of Control.get_Focused()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.Font">
-            <summary>Sets the stub of Control.get_Font()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.ForeColor">
-            <summary>Sets the stub of Control.get_ForeColor()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.ImeModeBase">
-            <summary>Sets the stub of Control.get_ImeModeBase()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.InstanceBehavior">
-            <summary>Gets or sets the instance behavior.</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.InstanceObserver">
-            <summary>Gets or sets the instance observer.</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.LayoutEngine">
-            <summary>Sets the stub of Control.get_LayoutEngine()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.MaximumSize">
-            <summary>Sets the stub of Form.get_MaximumSize()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.MinimumSize">
-            <summary>Sets the stub of Form.get_MinimumSize()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.RightToLeft">
-            <summary>Sets the stub of Control.get_RightToLeft()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.RightToLeftLayout">
-            <summary>Sets the stub of Form.get_RightToLeftLayout()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.ScaleChildren">
-            <summary>Sets the stub of Control.get_ScaleChildren()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.ShowFocusCues">
-            <summary>Sets the stub of Control.get_ShowFocusCues()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.ShowKeyboardCues">
-            <summary>Sets the stub of Control.get_ShowKeyboardCues()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.ShowWithoutActivation">
-            <summary>Sets the stub of Form.get_ShowWithoutActivation()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.Site">
-            <summary>Sets the stub of Control.get_Site()</summary>
-        </member>
-        <member name="P:Vicsek.Properties.Fakes.StubMainForm.Text">
-            <summary>Sets the stub of Form.get_Text()</summary>
         </member>
     </members>
 </doc>
