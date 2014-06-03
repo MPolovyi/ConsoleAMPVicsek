@@ -45,7 +45,7 @@ void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int par
 
 	auto particlesOut = *td.DataOld;
 
-	//Swap becouese we swap data before fist Integration.
+	//Swap becouse we swap data before fist Integration.
 	td.Swap();
 }
 
@@ -116,4 +116,9 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 		particlesOut.vel[idxGlobal].xy = vel;
 	});
 	return true;
+}
+
+std::string CVicsek2DIntegrator::GetComment()
+{
+	return "Standard Vicsek aldorithm, transitional borders";
 }

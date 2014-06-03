@@ -13,5 +13,7 @@ public:
 	~CViscek2DKulinskIntegrator();
 
 	virtual bool RealIntegrate(float noise) override;
+protected:
+	virtual std::string GetComment() override;
 };
 

@@ -14,6 +14,8 @@ public:
 
 	bool Integrate(float noise);
 
+	std::string WriteComment(std::string str);
+
 	//TODO: add uniform usage for 2D and 3D classes?
 	float GetAnsambleAveragedABSVeloc();
 	std::vector<float_2> GetAverageVeloc();

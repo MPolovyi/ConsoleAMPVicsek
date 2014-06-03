@@ -1,6 +1,6 @@
 #include "Integrator2D.h"
 #include "Rand/amp_tinymt_rng.h"
-
+#include <sstream>
 //Splits computation domain on <splits> areas, parallel to X axis, and computes average velocity on each.
 std::vector<float_2> CIntegrator2D::GetAverVeclocOnSplitsX(int splits)
 {
@@ -35,6 +35,13 @@ std::vector<float_2> CIntegrator2D::GetAverVeclocOnSplitsX(int splits)
 		acc_veloc[idx] /= (acc_count[idx] > 0 ? acc_count[idx] : 1);
 	});
 	return veloc;
+}
+
+std::string CIntegrator2D::WriteComment()
+{
+	std::ostringstream oss;
+	oss << "; Particle count = " << m_Task->DataNew->size() << "; Domain size = " << m_DomainSize.x << " " << GetComment();
+	return oss.str();
 }
 
 float_2 CIntegrator2D::GetAverageVeloc()

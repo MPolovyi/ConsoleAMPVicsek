@@ -19,8 +19,9 @@ public:
 		m_Task = &td;
 		m_DomainSize = domain;
 	};
-	
+	std::string WriteComment();
 protected:
+	virtual std::string GetComment() { return ""; };
 	virtual bool RealIntegrate(float noise) override
 	{
 		return false;

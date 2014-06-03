@@ -1,6 +1,7 @@
 #include "IntegratorCollection.h"
 #include <ppl.h>
 #include <concurrent_vector.h>
+#include <sstream>
 #include "cvmarkersobj.h"
 //CIntegratorCollection::CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain)
 //{
@@ -74,6 +75,13 @@ std::vector<std::vector<float_2>> CIntegratorCollection::GetAverVeclocOnSplitsX(
 		ret[i] = m_Integrators[i]->GetAverVeclocOnSplitsX(splits);
 	});
 	return ret;
+}
+
+std::string CIntegratorCollection::WriteComment(std::string str)
+{
+	std::ostringstream oss;
+	oss << "Averaging on " << m_Integrators.size() << m_Integrators[0]->WriteComment();
+	return oss.str();
 }
 
 CIntegrator2D& CIntegratorCollection::operator[] (int idx)

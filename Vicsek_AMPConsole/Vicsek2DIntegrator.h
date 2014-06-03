@@ -7,9 +7,6 @@ class CVicsek2DIntegrator :
 	public CIntegrator2D
 {
 public:
-	concurrency::diagnostic::marker_series VicsekIntegrate = { _T("VicsekIntegrate") };
-
-
 	CVicsek2DIntegrator() : CIntegrator2D() {};
 
 	CVicsek2DIntegrator(TaskData& td, float_2 domain) : CIntegrator2D(td, domain)
@@ -19,8 +16,8 @@ public:
 	~CVicsek2DIntegrator() {};
 	
 	virtual void Init(TaskData& td, float_2 domain) override;
-	
 protected:
+	virtual std::string GetComment() override;
 	virtual bool RealIntegrate(float noise) override;
 	virtual void PopulateTaskData(TaskData& td, float_2 domain, int partCount);
 

@@ -36,13 +36,13 @@ void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSiz
 	struct tm timeinfo;
 	char buffer[256];
 	char buffer2[256];
-	char bufferComment[256];
+	std::string bufferComment = "";
 	time(&rawtime);
 	localtime_s(&timeinfo, &rawtime);
 	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 	strftime(buffer2, 256, "SplitsVelocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 
-	sprintf_s(bufferComment, "Particle count = %d Domain size = %5.2f", partCount, size);
+	IntegratorCollection.WriteComment(bufferComment);
 
 	CDataCollection dataCollection;
 
@@ -120,7 +120,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 	std::vector<std::shared_ptr<CIntegrator2D>> integrs;
 	for (int i = 0; i < tasks.size(); i++)
 	{
-		integrs.push_back(std::make_shared<CVicsek2DIntegrator>());
+		integrs.push_back(std::make_shared<CViscek2DKulinskIntegrator>());
 	}
 
 	CIntegratorCollection IntegratorCollection(tasks, float_2(size, size), integrs);
@@ -131,13 +131,13 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 	struct tm timeinfo;
 	char buffer[256];
 	char buffer2[256];
-	char bufferComment[256];
+	std::string bufferComment = "";
 	time(&rawtime);
 	localtime_s(&timeinfo, &rawtime);
 	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 	strftime(buffer2, 256, "SplitsVelocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 
-	sprintf_s(bufferComment, "Particle count = %d Domain size = %5.2f", partCount, size);
+	IntegratorCollection.WriteComment(bufferComment);
 
 	CDataCollection dataCollection;
 
@@ -185,7 +185,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 
 		std::cout << noise << std::endl;
 	}
-	dataCollection.WriteOnDisk(buffer, buffer2, bufferComment);
+	dataCollection.WriteOnDisk(buffer, buffer2, IntegratorCollection.WriteComment(bufferComment));
 }
 
 void RunIntegrator(int size)
@@ -403,7 +403,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(32, 10, 4096);
+	RunCollectionIntegrator(180, 2, 65536);
 
 	return 0;
 }

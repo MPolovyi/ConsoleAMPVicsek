@@ -578,7 +578,6 @@ namespace MathHelpers
 			// if we would require source to have even number of elements.
 			float_3 tail_sum(0);
 			array_view<float_3, 1> av_tail_sum(1, &tail_sum);
-
 			// Each thread reduces two elements.
 			for (unsigned s = element_count / 2; s > 0; s /= 2)
 			{
@@ -595,9 +594,22 @@ namespace MathHelpers
 
 			// Copy the results back to CPU.
 			std::vector<float_3> result(1);
-			copy(a.section(0, 1), result.begin());
-			av_tail_sum.synchronize();
-
+			try
+			{
+				copy(a.section(0, 1), result.begin());
+			}
+			catch (std::exception ex)
+			{
+				std::cout << ex.what() << std::endl;
+			}
+			try
+			{
+				av_tail_sum.synchronize();
+			}
+			catch (std::exception ex)
+			{
+				std::cout << ex.what() << std::endl;
+			}
 			return result[0] + tail_sum;
 		}
 

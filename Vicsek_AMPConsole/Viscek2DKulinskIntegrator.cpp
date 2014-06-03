@@ -71,6 +71,10 @@ bool CViscek2DKulinskIntegrator::RealIntegrate(float noise)
 	return true;
 }
 
+std::string CViscek2DKulinskIntegrator::GetComment()
+{
+	return "Top moves 1";
+}
 
 CViscek2DKulinskIntegrator::~CViscek2DKulinskIntegrator()
 {}

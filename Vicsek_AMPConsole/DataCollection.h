@@ -42,7 +42,7 @@ public:
 		m_SliceXAverSpd.push_back(std::make_pair(SliceAverspd, noise));
 	};
 
-	void WriteOnDisk(char* SpeedFileName, char* SlicesFileName, char* Comment)
+	void WriteOnDisk(char* SpeedFileName, char* SlicesFileName, std::string Comment)
 	{
 		std::fstream file;
 
