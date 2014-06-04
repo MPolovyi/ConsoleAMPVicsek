@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -15,6 +16,44 @@ namespace DataViewer
             double graphStepY = ((rightBottom.Y - leftTop.Y) / (maxValueY - minValueY)) * stepY;
             DrawHorisontalLines(leftTop, rightBottom, graphStepY, path);
             DrawVerticalLines(leftTop, rightBottom, graphStepX, path);
+            DrawTextLabels(leftTop, rightBottom, minValueX, stepX, graphStepX, minValueY, stepY, graphStepY, path);
+        }
+
+        private void DrawTextLabels(Point leftTop, Point rightBottom,
+            double minValueX, double stepX, double graphStepX,
+            double minValueY, double stepY, double graphStepY,
+            Path path)
+        {
+            double x = leftTop.X + 10;
+            double y = leftTop.Y + 15;
+            var geometryGroup = new GeometryGroup();
+            
+            while (y <= rightBottom.Y)
+            {
+                var text = new FormattedText(minValueY.ToString("##.###"),
+                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                    new Typeface("Arial"), 10,
+                    Brushes.Black);
+                geometryGroup.Children.Add(text.BuildGeometry(new Point(10, rightBottom.Y - y)));
+                y += graphStepY;
+                minValueY += stepY;
+            }
+
+            y = rightBottom.Y - 15;
+            while (x <= rightBottom.X)
+            {
+                var text = new FormattedText(minValueX.ToString("###"),
+                    CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
+                    new Typeface("Arial"), 10,
+                    Brushes.Black);
+                geometryGroup.Children.Add(text.BuildGeometry(new Point(rightBottom.X - x, y)));
+                x += graphStepX;
+                minValueX += stepX;
+            }
+            if (path.Data != null)
+                geometryGroup.Children.Add(path.Data);
+
+            path.Data = geometryGroup;
         }
 
         private void DrawHorisontalLines(Point leftTop, Point rightBottom, double step, Path path)

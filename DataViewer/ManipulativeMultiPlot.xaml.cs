@@ -119,8 +119,8 @@ namespace DataViewer
                 StrokeThickness = 1
             };
             _drawer.DrawLines(new Point(0, 0), new Point(MyCanvas.Width, MyCanvas.Height),
-                minX, maxX, stepX,
-                minY, maxY, stepY,
+                0, maxX, stepX,
+                0, maxY, stepY,
                 tmpPath);
             MyCanvas.Children.Insert(0, tmpPath);
         }
