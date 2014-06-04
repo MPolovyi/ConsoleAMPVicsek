@@ -4,7 +4,7 @@ using System.Windows.Shapes;
 
 namespace DataViewer
 {
-    internal class PlotDrawer
+    internal class GridDrawer
     {
         public void DrawLines(Point leftTop, Point rightBottom,
             double minValueX, double maxValueX, double stepX,
@@ -19,14 +19,14 @@ namespace DataViewer
 
         private void DrawHorisontalLines(Point leftTop, Point rightBottom, double step, Path path)
         {
-            double y = rightBottom.Y;
+            double y = leftTop.Y;
             var geometryGroup = new GeometryGroup();
 
-            while (y >= leftTop.Y)
+            while (y <= rightBottom.Y)
             {
-                var geom = new LineGeometry(new Point(leftTop.X, y), new Point(rightBottom.X, y));
+                var geom = new LineGeometry(new Point(leftTop.X, rightBottom.Y - y), new Point(rightBottom.X, rightBottom.Y - y));
                 geometryGroup.Children.Add(geom);
-                y -= step;
+                y += step;
             }
             if (path.Data != null)
                 geometryGroup.Children.Add(path.Data);

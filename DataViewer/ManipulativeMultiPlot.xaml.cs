@@ -15,7 +15,7 @@ namespace DataViewer
     public partial class ManipulativeMultiPlot : UserControl
     {
         private double _index = 0;
-        private PlotDrawer _drawer = new PlotDrawer();
+        private GridDrawer _drawer = new GridDrawer();
         private List<string> _seriesComments = new List<string>();
         private List<List<Tuple<List<Tuple<double, double>>, double>>> _XandYandParam = new List<List<Tuple<List<Tuple<double, double>>, double>>>();
         private double _stepX = 1;

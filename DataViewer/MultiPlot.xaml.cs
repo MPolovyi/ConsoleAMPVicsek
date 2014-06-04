@@ -15,7 +15,7 @@ namespace DataViewer
     public partial class MultiPlot : UserControl
     {
         private List<List<Tuple<double, double>>> _loadedSeries = new List<List<Tuple<double, double>>>();
-        private PlotDrawer _drawer = new PlotDrawer();
+        private GridDrawer _drawer = new GridDrawer();
         private List<string> _seriesComments = new List<string>();
         private double _stepX = 1;
         private double _stepY = 1;
