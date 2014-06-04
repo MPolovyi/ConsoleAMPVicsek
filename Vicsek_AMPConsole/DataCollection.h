@@ -7,10 +7,10 @@ using std::vector;
 using std::pair;
 class CDataCollection
 {
-
 protected:
 	vector<pair<float, float>> m_AverSpd;
 	vector<pair<vector<float>, float>> m_SliceXAverSpd;
+	vector<pair<vector<float>, float>> m_SliceXAverRho;
 
 public:
 	vector<float> GetAverSpeed()
@@ -27,6 +27,7 @@ public:
 	{
 		m_AverSpd.push_back(std::make_pair(AverSpd, noise));
 	};
+
 	vector<vector<float>> GetAverSpeedOnSlices()
 	{
 		vector<vector<float>> tmp;
@@ -37,9 +38,15 @@ public:
 		}
 		return tmp;
 	};
-	void AddAverSpeedOnSlices(vector<float> SliceAverspd, float noise)
+
+	void AddAverSpeedOnSlices(vector<float> SliceAverSpd, float noise)
 	{
-		m_SliceXAverSpd.push_back(std::make_pair(SliceAverspd, noise));
+		m_SliceXAverSpd.push_back(std::make_pair(SliceAverSpd, noise));
+	};
+
+	void AddAverRhoOnSlices(vector<float> SliceAverRho, float noise)
+	{
+		m_SliceXAverRho.push_back(std::make_pair(SliceAverRho, noise));
 	};
 
 	void WriteOnDisk(char* SpeedFileName, char* SlicesFileName, std::string Comment)
@@ -68,7 +75,26 @@ public:
 		file.close();
 	};
 
+	void WriteOnDisk(char* SpeedFileName, char* SlicesFileName, char* SlicesRhoFilename, std::string Comment)
+	{
+		WriteOnDisk(SpeedFileName, SlicesFileName, Comment);
+		
+		std::fstream file;
+
+		file.open(SlicesRhoFilename, std::ios::app);
+		file << Comment << std::endl << std::endl;
+		for (int i = 0; i < m_SliceXAverRho[0].first.size(); i++)
+		{
+			for (int j = 0; j < m_SliceXAverRho.size(); j++)
+			{
+				file << m_SliceXAverRho[j].first[i] << "   ";
+			}
+			file << " Noise = " << m_SliceXAverRho[i].second;
+			file << std::endl;
+		}
+		file.close();
+	};
+
 	CDataCollection() {};
 	~CDataCollection() {};
 };
-

@@ -11,7 +11,8 @@ public:
 	CIntegrator2D(TaskData& td, float_2 domain) : IIntegrator(td), m_DomainSize(domain)	{};
 	~CIntegrator2D() {};
 
-	std::vector<float_2> GetAverVeclocOnSplitsX(int splits);
+	std::vector<float> GetAverDencityOnSlicesX(int splits);
+	std::vector<float_2> GetAverVeclocOnSlicesX(int splits);
 	float_2 GetAverageVeloc();
 	static float s_Noise;
 	virtual void Init(TaskData& td, float_2 domain) 
