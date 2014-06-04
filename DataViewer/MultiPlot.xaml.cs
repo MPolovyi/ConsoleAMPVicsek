@@ -49,6 +49,7 @@ namespace DataViewer
             if (!_firstLoaded)
                 DrawGrid(ansv.Min(item => item.Item1), ansv.Max(item => item.Item1), stepX,
                     ansv.Min(item => item.Item2), ansv.Max(item => item.Item2), stepY);
+
             MyCanvas.Children.Add(GenerateSeriesPath(ansv));
         }
 
@@ -95,7 +96,7 @@ namespace DataViewer
             var tmpPath = new Path
             {
                 Height = MyCanvas.Height,
-                Width = MyCanvas.Width / 2 - 10,
+                Width = MyCanvas.Width,
                 Stroke = Brushes.Black,
                 StrokeThickness = 1
             };

@@ -114,7 +114,7 @@ namespace DataViewer
             var tmpPath = new Path
             {
                 Height = MyCanvas.Height,
-                Width = MyCanvas.Width / 2 - 10,
+                Width = MyCanvas.Width,
                 Stroke = Brushes.Black,
                 StrokeThickness = 1
             };
