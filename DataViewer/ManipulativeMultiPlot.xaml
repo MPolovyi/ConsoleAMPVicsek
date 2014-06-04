@@ -7,6 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Canvas Name="MyCanvas" x:FieldModifier="protected" Background="White">
+        <Button Canvas.Right="10" Canvas.Top="128" Click="Button_Click">Aver.</Button>
         <Label Name="MyActiveLabel" Canvas.Right="10" Canvas.Top="10" x:FieldModifier="private" Background="DarkBlue" Foreground="Cyan" FontSize="14"></Label>
         <Label Name="MyParamLabel" Canvas.Right="10" Canvas.Bottom="40" Background="DarkBlue" Foreground="Cyan"></Label>
         <Slider Name="MySlider" Canvas.Right="10" Canvas.Bottom="10" Width="150" SmallChange="1" ValueChanged="MySlider_OnValueChanged"></Slider>
