@@ -15,7 +15,7 @@ namespace DataViewer
     public partial class MultiPlot : UserControl
     {
         private List<List<Tuple<double, double>>> _loadedSeries = new List<List<Tuple<double, double>>>();
-        private PlotDrawer _drawer = new PlotDrawer();
+        private GridDrawer _drawer = new GridDrawer();
         private List<string> _seriesComments = new List<string>();
         private double _stepX = 1;
         private double _stepY = 1;
@@ -39,7 +39,6 @@ namespace DataViewer
             AddPlotSeries(ansv, _firstLoaded ? _stepX : stepX, _firstLoaded ? _stepY : stepY);
             ActiveLabel.Content = comment;
             _firstLoaded = true;
-            _loadedSeries.Add(ansv);
         }
 
         private void AddPlotSeries(List<Tuple<double, double>> ansv, double stepX, double stepY)
@@ -49,6 +48,7 @@ namespace DataViewer
             if (!_firstLoaded)
                 DrawGrid(ansv.Min(item => item.Item1), ansv.Max(item => item.Item1), stepX,
                     ansv.Min(item => item.Item2), ansv.Max(item => item.Item2), stepY);
+
             MyCanvas.Children.Add(GenerateSeriesPath(ansv));
         }
 
@@ -77,7 +77,7 @@ namespace DataViewer
             var segment = new PolyBezierSegment();
             double scaleY = MyCanvas.Height / ansv.Max(item => item.Item2);
             double scaleX = MyCanvas.Width / ansv.Max(item => item.Item1);
-            for (int i = ansv.Count - 1; i >= 0; i--)
+            for (int i = 0; i < ansv.Count; i++)
             {
                 segment.Points.Add(new Point(ansv[i].Item1 * scaleX, MyCanvas.Height - ansv[i].Item2 * scaleY));
             }
@@ -95,14 +95,16 @@ namespace DataViewer
             var tmpPath = new Path
             {
                 Height = MyCanvas.Height,
-                Width = MyCanvas.Width / 2 - 10,
+                Width = MyCanvas.Width,
                 Stroke = Brushes.Black,
                 StrokeThickness = 1
             };
+
             _drawer.DrawLines(new Point(0, 0), new Point(MyCanvas.Width, MyCanvas.Height),
-                minX, maxX, stepX,
-                minY, maxY, stepY,
+                0, maxX, stepX,
+                0, maxY, stepY,
                 tmpPath);
+
             MyCanvas.Children.Insert(0, tmpPath);
         }
 

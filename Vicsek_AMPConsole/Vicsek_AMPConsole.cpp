@@ -137,7 +137,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 	localtime_s(&timeinfo, &rawtime);
 	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 	strftime(buffer2, 256, "SplitsVelocities_%d.%m_%H.%M.%S.txt", &timeinfo);
-	strftime(buffer2, 256, "SplitsDensities_%d.%m_%H.%M.%S.txt", &timeinfo);
+	strftime(buffer3, 256, "SplitsDensities_%d.%m_%H.%M.%S.txt", &timeinfo);
 
 	IntegratorCollection.WriteComment(bufferComment);
 
@@ -191,6 +191,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 		std::cout << noise << std::endl;
 	}
 	dataCollection.WriteOnDisk(buffer, buffer2, buffer3, IntegratorCollection.WriteComment(bufferComment));
+	std::cout << "Computation finished.";
 }
 
 void RunIntegrator(int size)
@@ -408,7 +409,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(22.6, 25, 1024);
+	RunCollectionIntegrator(39, 20, 3072);
 
 	return 0;
 }

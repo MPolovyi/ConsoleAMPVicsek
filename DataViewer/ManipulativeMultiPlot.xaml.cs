@@ -15,7 +15,7 @@ namespace DataViewer
     public partial class ManipulativeMultiPlot : UserControl
     {
         private double _index = 0;
-        private PlotDrawer _drawer = new PlotDrawer();
+        private GridDrawer _drawer = new GridDrawer();
         private List<string> _seriesComments = new List<string>();
         private List<List<Tuple<List<Tuple<double, double>>, double>>> _XandYandParam = new List<List<Tuple<List<Tuple<double, double>>, double>>>();
         private double _stepX = 1;
@@ -83,7 +83,7 @@ namespace DataViewer
                 if (Equals((sender as Path).Stroke, Brushes.Black))
                 {
                     (sender as Path).Stroke = Brushes.Red;
-                    MyActiveLabel.Content = _seriesComments[MyCanvas.Children.IndexOf(sender as Path) - 4];
+                    MyActiveLabel.Content = _seriesComments[MyCanvas.Children.IndexOf(sender as Path) - 5];
                 }
                 else
                 {
@@ -114,13 +114,13 @@ namespace DataViewer
             var tmpPath = new Path
             {
                 Height = MyCanvas.Height,
-                Width = MyCanvas.Width / 2 - 10,
+                Width = MyCanvas.Width,
                 Stroke = Brushes.Black,
                 StrokeThickness = 1
             };
             _drawer.DrawLines(new Point(0, 0), new Point(MyCanvas.Width, MyCanvas.Height),
-                minX, maxX, stepX,
-                minY, maxY, stepY,
+                0, maxX, stepX,
+                0, maxY, stepY,
                 tmpPath);
             MyCanvas.Children.Insert(0, tmpPath);
         }
@@ -145,11 +145,37 @@ namespace DataViewer
             }
 
             //Preserve slider and lable!
-            MyCanvas.Children.RemoveRange(4, MyCanvas.Children.Count - 4);
+            MyCanvas.Children.RemoveRange(5, MyCanvas.Children.Count - 5);
             foreach (var tmp in tmpSeries)
             {
                 MyCanvas.Children.Add(GenerateSeriesPath(tmp));
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<Tuple<List<Tuple<double, double>>, double>> dataNew = new List<Tuple<List<Tuple<double, double>>, double>>();
+            // ReSharper disable InconsistentNaming
+            var tmp1 = from series in _XandYandParam
+                from XandYandP in series
+                group XandYandP by XandYandP.Item2
+                into groupByParam
+                select groupByParam;
+
+            foreach (var data in tmp1)
+            {
+                var tmp = from a1 in data
+                    from a2 in a1.Item1
+                    group a2 by a2.Item2
+                    into groupXandY
+                    select new Tuple<double, double>(groupXandY.Average(z => z.Item1), groupXandY.Key);
+                dataNew.Add(new Tuple<List<Tuple<double, double>>, double>(tmp.ToList(), data.Key));
+            }
+            
+            _XandYandParam.Insert(0, dataNew);
+            _XandYandParam.RemoveRange(1, _XandYandParam.Count-1);
+            Redraw();
+// ReSharper restore InconsistentNaming
         }
     }
 }
