@@ -39,7 +39,6 @@ namespace DataViewer
             AddPlotSeries(ansv, _firstLoaded ? _stepX : stepX, _firstLoaded ? _stepY : stepY);
             ActiveLabel.Content = comment;
             _firstLoaded = true;
-            _loadedSeries.Add(ansv);
         }
 
         private void AddPlotSeries(List<Tuple<double, double>> ansv, double stepX, double stepY)
@@ -78,7 +77,7 @@ namespace DataViewer
             var segment = new PolyBezierSegment();
             double scaleY = MyCanvas.Height / ansv.Max(item => item.Item2);
             double scaleX = MyCanvas.Width / ansv.Max(item => item.Item1);
-            for (int i = ansv.Count - 1; i >= 0; i--)
+            for (int i = 0; i < ansv.Count; i++)
             {
                 segment.Points.Add(new Point(ansv[i].Item1 * scaleX, MyCanvas.Height - ansv[i].Item2 * scaleY));
             }
