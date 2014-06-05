@@ -93,7 +93,7 @@ namespace DataViewer
             };
 
             if (ansv == null) return myPath;
-            var segment = new PolyBezierSegment();
+            var segment = new PolyLineSegment();
             double scaleY = MyCanvas.Height / ansv.Max(item => item.Item2);
             double scaleX = MyCanvas.Width / ansv.Max(item => item.Item1);
             for (int i = ansv.Count - 1; i >= 0; i--)
@@ -133,7 +133,7 @@ namespace DataViewer
 
         private void Redraw()
         {
-            MyParamLabel.Content = _index;
+            MyParamLabel.Content = 360 - _index;
             List<List<Tuple<double, double>>> tmpSeries = new List<List<Tuple<double, double>>>();
 
             foreach (var serie in _XandYandParam)

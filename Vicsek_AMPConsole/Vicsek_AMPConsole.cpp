@@ -181,9 +181,9 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 		}
 		dataCollection.AddAverSpeed(currAverSpd, noise);
 		IntegratorCollection.Integrate(noise);
-		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(20), noise);
+		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(10), noise);
 		IntegratorCollection.Integrate(noise);
-		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(20), noise);
+		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(10), noise);
 		
 		noise -= 1;
 		iterate = true;
@@ -409,7 +409,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(39, 20, 3072);
+	RunCollectionIntegrator(22.5, 50, 1024);
 
 	return 0;
 }
