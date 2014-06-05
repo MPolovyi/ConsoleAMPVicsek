@@ -15,8 +15,6 @@
             </StackPanel>
         </StackPanel>
         <StackPanel x:Name="ImgPanel" Orientation="Horizontal" Canvas.Left="25" Canvas.Top="100" Width="800" Height="496">
-            <!--<Path x:Name="MyPath" Height="auto" Width="390" Margin="0, 0, 10,0"></Path>-->
-            <!--<Path x:Name="MyPath2" Height="auto" Width="390" Margin="10, 0, 0, 0"></Path>-->
         </StackPanel>
     </Canvas>
 </Window>

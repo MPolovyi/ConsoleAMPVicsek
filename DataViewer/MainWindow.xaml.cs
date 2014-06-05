@@ -17,7 +17,6 @@ namespace DataViewer
         private List<Tuple<List<double>, double>> _speedByHeight = new List<Tuple<List<double>, double>>();
         private List<Tuple<double, double>> _speedByTime = new List<Tuple<double, double>>();
         private DataGetter _getter = new DataGetter();
-        private PlotDrawer _drawer = new PlotDrawer();
         private MultiPlot _plot1;
         private ManipulativeMultiPlot _plot2;
 

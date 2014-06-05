@@ -15,7 +15,7 @@ namespace DataViewer
     public partial class ManipulativeMultiPlot : UserControl
     {
         private double _index = 0;
-        private PlotDrawer _drawer = new PlotDrawer();
+        private GridDrawer _drawer = new GridDrawer();
         private List<string> _seriesComments = new List<string>();
         private List<List<Tuple<List<Tuple<double, double>>, double>>> _XandYandParam = new List<List<Tuple<List<Tuple<double, double>>, double>>>();
         private double _stepX = 1;
@@ -114,13 +114,13 @@ namespace DataViewer
             var tmpPath = new Path
             {
                 Height = MyCanvas.Height,
-                Width = MyCanvas.Width / 2 - 10,
+                Width = MyCanvas.Width,
                 Stroke = Brushes.Black,
                 StrokeThickness = 1
             };
             _drawer.DrawLines(new Point(0, 0), new Point(MyCanvas.Width, MyCanvas.Height),
-                minX, maxX, stepX,
-                minY, maxY, stepY,
+                0, maxX, stepX,
+                0, maxY, stepY,
                 tmpPath);
             MyCanvas.Children.Insert(0, tmpPath);
         }

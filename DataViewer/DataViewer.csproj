@@ -82,7 +82,7 @@
     <Compile Include="MultiPlot.xaml.cs">
       <DependentUpon>MultiPlot.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PlotDrawer.cs" />
+    <Compile Include="GridDrawer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
