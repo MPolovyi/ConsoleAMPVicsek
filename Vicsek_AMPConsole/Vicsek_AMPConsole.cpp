@@ -181,9 +181,9 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 		}
 		dataCollection.AddAverSpeed(currAverSpd, noise);
 		IntegratorCollection.Integrate(noise);
-		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(100), noise);
+		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(20), noise);
 		IntegratorCollection.Integrate(noise);
-		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(100), noise);
+		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(20), noise);
 		
 		noise -= 1;
 		iterate = true;

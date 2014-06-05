@@ -60,9 +60,9 @@ std::vector<float> CIntegrator2D::GetAverDencityOnSlicesX(int splits)
 		auto idx = index<1>((int)(domainSize.y / pos.y));
 		acc_count[idx] += 1;
 	});
-
+	const float sliceVolume = (domainSize.y / splits) * domainSize.x;
 	parallel_for_each(acc_dens.extent, [=](index<1> idx) restrict(amp) {
-		acc_dens[idx] = acc_count[idx] / (domainSize.y / splits) ;
+		acc_dens[idx] = acc_count[idx] /  sliceVolume;
 	});
 	return dens;
 }

@@ -12,10 +12,6 @@ namespace DataViewer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool _spdByHLoaded;
-
-        private List<Tuple<List<double>, double>> _speedByHeight = new List<Tuple<List<double>, double>>();
-        private List<Tuple<double, double>> _speedByTime = new List<Tuple<double, double>>();
         private DataGetter _getter = new DataGetter();
         private MultiPlot _plot1;
         private ManipulativeMultiPlot _plot2;
@@ -56,9 +52,8 @@ namespace DataViewer
             if (true == openDlg.ShowDialog())
             {
                 var dataFromFile = new StreamReader(openDlg.FileName);
-                _speedByHeight = _getter.GetSpeedByHeight(dataFromFile);
-                _spdByHLoaded = true;
-                DrawSpdByHeight(_speedByHeight, _getter.GetSimParams(dataFromFile));
+                var speedByHeight = _getter.GetSpeedByHeight(dataFromFile);
+                DrawSpdByHeight(speedByHeight, _getter.GetSimParams(dataFromFile));
             }
         }
 
@@ -67,8 +62,8 @@ namespace DataViewer
             if (true == openDlg.ShowDialog())
             {
                 var dataFromFile = new StreamReader(openDlg.FileName);
-                _speedByTime = _getter.GetSpeedByNoise(dataFromFile);
-                DrawSpdByNoise(_speedByTime, _getter.GetSimParams(dataFromFile));
+                var speedByTime = _getter.GetSpeedByNoise(dataFromFile);
+                DrawSpdByNoise(speedByTime, _getter.GetSimParams(dataFromFile));
             }
         }
 
@@ -93,18 +88,19 @@ namespace DataViewer
             LoadSpdByNoiseFile(openDlg);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpenNormRhoByHeightButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_spdByHLoaded)
+            var openDlg = new OpenFileDialog { Filter = "Text Files |*.txt" };
+            LoadNormRhoByHeightFile(openDlg);
+        }
+
+        private void LoadNormRhoByHeightFile(OpenFileDialog openDlg)
+        {
+            if (true == openDlg.ShowDialog())
             {
-                for (int i = 0; i < _speedByHeight[0].Item1.Count; i++)
-                {
-                    double max = _speedByHeight.Max(item => item.Item1[i]);
-                    foreach (var tuple in _speedByHeight)
-                    {
-                        tuple.Item1[i] /= max;
-                    }
-                }
+                var dataFromFile = new StreamReader(openDlg.FileName);
+                var rhoByHeight = _getter.GetNormRhoByHeight(dataFromFile);
+                DrawSpdByHeight(rhoByHeight, _getter.GetSimParams(dataFromFile));
             }
         }
     }
