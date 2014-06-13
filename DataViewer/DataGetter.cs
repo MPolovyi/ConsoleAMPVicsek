@@ -87,5 +87,13 @@ namespace DataViewer
             fs.BaseStream.Seek(0, SeekOrigin.Begin);
             return ret;
         }
+
+        public List<Tuple<List<double>, double>> GetNormRhoByHeight(StreamReader dataFromFile)
+        {
+            var tmp = GetSpeedByHeight(dataFromFile);
+            var maxRho = tmp.Max(it => it.Item1.Max());
+            return
+                tmp.ConvertAll(it => new Tuple<List<double>, double>(it.Item1.ConvertAll(inIt => inIt/maxRho), it.Item2));
+        }
     }
 }

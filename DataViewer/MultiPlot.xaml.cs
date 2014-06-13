@@ -74,7 +74,7 @@ namespace DataViewer
                     ActiveLabel.Content = "Select plot for further info";
                 }
             };
-            var segment = new PolyBezierSegment();
+            var segment = new PolyLineSegment();
             double scaleY = MyCanvas.Height / ansv.Max(item => item.Item2);
             double scaleX = MyCanvas.Width / ansv.Max(item => item.Item1);
             for (int i = 0; i < ansv.Count; i++)
