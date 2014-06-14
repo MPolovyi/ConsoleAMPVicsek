@@ -296,4 +296,18 @@ namespace MathHelpers
 
 		return std::accumulate(result.begin(), result.end(), tail_sum);
 	}
+
+	float Dispercion(std::vector<float>& src)
+	{
+		float disper = 0;
+		float summ = 0;
+		for (size_t i = 0; i < src.size(); i++)
+		{
+			disper += src[i] * src[i];
+			summ += src[i];
+		}
+		disper = (disper + (summ * summ) / src.size()) / src.size();
+
+		return disper;
+	}
 }

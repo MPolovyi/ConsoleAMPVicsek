@@ -127,6 +127,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 
 	float noise = 360;
 
+	
 	time_t rawtime;
 	struct tm timeinfo;
 	char buffer[256];
@@ -146,11 +147,18 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 	std::vector<float> averSpd;
 	std::vector<float> averSpdOnSlices;
 
-	for (int i = 0; i < 360; i++)
+	std::vector<float> averDispers;
+	std::vector<int> numStepsInIter = { 0 };
+	
+	while (noise > 0)
 	{
 		bool iterate = true;
 		float prevAverSpd = 0;
 		float currAverSpd = 0;
+
+		float prevDisper = 0;
+		float currDisper = 0;
+
 		int iteration = 0;
 		while (iterate)
 		{
@@ -165,26 +173,39 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 				iteration++;
 				IntegratorCollection.Integrate(noise);
 				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
+				IntegratorCollection.Integrate(noise);
+				auto velocOnSlices = IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(15);
+				IntegratorCollection.Integrate(noise);
+				averDispers.push_back(MathHelpers::Dispercion(velocOnSlices));
 			}
+
 			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
 			averSpd.clear();
-			if (!(abs(currAverSpd - prevAverSpd) < (1 / sqrParticleCount)))
+
+			currDisper = std::accumulate(averDispers.begin(), averDispers.end(), 0.0f) / averDispers.size();
+			averDispers.clear();
+			std::cout << "Dispercion = " << abs(currDisper - prevDisper) - (1 / sqrParticleCount) << std::endl;
+			//std::cout << "Velocity = " << abs(currAverSpd - prevAverSpd) - (1 / sqrParticleCount) << std::endl;
+
+			if ((abs(currDisper - prevDisper) > (1 / sqrParticleCount)))
 			{
+				prevDisper = currDisper;
 				prevAverSpd = currAverSpd;
 				numSteps *= 2;
+				numStepsInIter[numStepsInIter.size() - 1] += numSteps;
 			}
 			else
 			{
 				iterate = false;
+				numStepsInIter.push_back(0);
 			}
-			iterate = false;
 		}
 		dataCollection.AddAverSpeed(currAverSpd, noise);
 		IntegratorCollection.Integrate(noise);
-		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(10), noise);
+		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(15), noise);
 		IntegratorCollection.Integrate(noise);
-		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(10), noise);
-		
+		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(15), noise);
+
 		noise -= 1;
 		iterate = true;
 
@@ -192,7 +213,13 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 	}
 	dataCollection.WriteOnDisk(buffer, buffer2, buffer3, IntegratorCollection.WriteComment(bufferComment));
 	std::cout << "Computation finished.";
+	for (auto a : numStepsInIter)
+	{
+		std::cout << "Steps: " << a << std::endl;
+	}
+	std::wcout << L"AverageSteps: " << std::accumulate(numStepsInIter.begin(), numStepsInIter.end(), 0.0f) / numStepsInIter.size();
 }
+
 
 void RunIntegrator(int size)
 {
@@ -349,7 +376,6 @@ int StepsToEq(int size)
 	return a;
 }
 
-
 int TestReductions()
 {
 	accelerator default_device;
@@ -409,7 +435,8 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(22.5, 50, 1024);
-
+	RunCollectionIntegrator(22.6, 50, 1024);
+	char a;
+	std::cin >> a;
 	return 0;
 }

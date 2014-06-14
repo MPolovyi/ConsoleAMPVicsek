@@ -22,10 +22,9 @@ CIntegratorCollection::CIntegratorCollection(std::vector<TaskData*> tds, float_2
 
 bool CIntegratorCollection::Integrate(float noise)
 {
-	for (int i = 0; i < m_Integrators.size(); i++)
-	{
+	concurrency::parallel_for(size_t(0), m_Integrators.size(), [&](size_t i) {
 		m_Integrators[i]->Integrate(noise);
-	}
+	});
 	return true;
 }
 

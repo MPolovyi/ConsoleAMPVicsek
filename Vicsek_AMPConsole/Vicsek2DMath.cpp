@@ -49,6 +49,8 @@ namespace Vicsek2DMath
 		{
 			pos.x += domainSize.x;
 		}
+
+		//check. possible interract simulatenously with particle-particle interraction, and not on touch but being in interraction radius
 		//domainSize.y < pos.y
 		if (concurrency::direct3d::step(domainSize.y, pos.y))
 		{
