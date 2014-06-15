@@ -15,7 +15,8 @@ std::vector<float_2> CIntegrator2D::GetAverVeclocOnSlicesX(int splits)
 	//initialization of random generator;
 
 	const ParticlesAmp& particlesIn = *m_Task->DataOld;
-
+	const float sliceHeight = domainSize.y / splits;
+	
 	parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
 
 		tile_static float_3 tilePosMemory[s_TileSize];
@@ -25,7 +26,15 @@ std::vector<float_2> CIntegrator2D::GetAverVeclocOnSlicesX(int splits)
 
 		float_2 pos = particlesIn.pos[idxGlobal].xy;
 		float_2 vel = particlesIn.vel[idxGlobal].xy;
-		auto idx = index<1>((int)(domainSize.y / pos.y));
+
+		int partSlice = int(pos.y / sliceHeight);
+		
+		if (partSlice > splits)
+			partSlice--;
+		if (partSlice < 0)
+			partSlice++;
+
+		auto idx = index<1>(partSlice);
 		acc_veloc[idx] += vel;
 		acc_count[idx] += 1;
 	});
@@ -47,8 +56,9 @@ std::vector<float> CIntegrator2D::GetAverDencityOnSlicesX(int splits)
 
 	const float_2 domainSize = m_DomainSize;
 	//initialization of random generator;
-
+	
 	const ParticlesAmp& particlesIn = *m_Task->DataOld;
+	const float sliceHeight = domainSize.y / splits;
 
 	parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
 
@@ -57,10 +67,19 @@ std::vector<float> CIntegrator2D::GetAverDencityOnSlicesX(int splits)
 		int idxGlobal = ti.global[0];
 
 		float_2 pos = particlesIn.pos[idxGlobal].xy;
-		auto idx = index<1>((int)(domainSize.y / pos.y));
+		int partSlice = int(pos.y / sliceHeight);
+
+		if (partSlice > splits)
+			partSlice--;
+		if (partSlice < 0)
+			partSlice++;
+
+		auto idx = index<1>(partSlice);
+
 		acc_count[idx] += 1;
 	});
-	const float sliceVolume = (domainSize.y / splits) * domainSize.x;
+	const float sliceVolume = sliceHeight * domainSize.x;
+	
 	parallel_for_each(acc_dens.extent, [=](index<1> idx) restrict(amp) {
 		acc_dens[idx] = acc_count[idx] /  sliceVolume;
 	});
