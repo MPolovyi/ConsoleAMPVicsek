@@ -10,7 +10,7 @@ public:
 	{
 		PopulateTaskData(td, domain, td.DataNew->size());
 	};
-	~CViscek2DKulinskIntegrator();
+	~CViscek2DKulinskIntegrator() {};
 
 	virtual bool RealIntegrate(float noise) override;
 protected:

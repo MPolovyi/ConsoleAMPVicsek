@@ -15,6 +15,6 @@ namespace Vicsek2DMath
 							 float softeningSquared, float intR2) restrict(amp);
 
 	void BorderCheckTransitional(float_2& pos, float_2& vel, const float_2 domainSize) restrict(amp);
-
 	void BorderCheckMoovingTopY(float_2& pos, float_2& vel, const float_2 domainSize) restrict(amp);
+	void BorderCheckStoppedTopY(float_2& pos, float_2& vel, const float_2 domainSize, float rndTop, float rndBottom) restrict(amp);
 }

@@ -104,6 +104,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Vicsek2DIntegrator.h" />
     <ClInclude Include="Vicsek2DMath.h" />
+    <ClInclude Include="VicsekStoppedTop.h" />
     <ClInclude Include="Viscek2DKulinskIntegrator.h" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +115,7 @@
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Vicsek2DIntegrator.cpp" />
     <ClCompile Include="Vicsek2DMath.cpp" />
+    <ClCompile Include="VicsekStoppedTop.cpp" />
     <ClCompile Include="Vicsek_AMPConsole.cpp" />
     <ClCompile Include="Viscek2DKulinskIntegrator.cpp" />
   </ItemGroup>

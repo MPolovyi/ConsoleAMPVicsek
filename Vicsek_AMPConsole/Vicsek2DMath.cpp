@@ -52,9 +52,9 @@ namespace Vicsek2DMath
 
 		//check. possible interract simulatenously with particle-particle interraction, and not on touch but being in interraction radius
 		//domainSize.y < pos.y
-		if (concurrency::direct3d::step(domainSize.y, pos.y))
+		if (concurrency::direct3d::step(domainSize.y-1, pos.y))
 		{
-			int dist = pos.y - domainSize.y;
+			float dist = pos.y - domainSize.y;
 			pos.y -= 2*dist;
 			vel += float_2(1, 0);
 			MathHelpers::NormalizeVector(vel);
@@ -64,6 +64,39 @@ namespace Vicsek2DMath
 		{
 			pos.y = -pos.y;
 			vel.y = -vel.y;
+		}
+	}
+
+	void BorderCheckStoppedTopY(float_2& pos, float_2& vel, const float_2 domainSize, float rndTop, float rndBottom) restrict(amp)
+	{
+		//domainSize.x < pos.x
+		if (concurrency::direct3d::step(domainSize.x, pos.x))
+		{
+			pos.x -= domainSize.x;
+		}
+		//pos.x < 0
+		if (concurrency::direct3d::step(pos.x, 0))
+		{
+			pos.x += domainSize.x;
+		}
+
+		//check. possible interract simulatenously with particle-particle interraction, and not on touch but being in interraction radius
+		//domainSize.y < pos.y
+		if (concurrency::direct3d::step(domainSize.y-1, pos.y))
+		{
+			float dist = pos.y - domainSize.y;
+			pos.y -= 2 * dist;
+			vel.y = -vel.y;
+			vel.x *= rndTop;
+			MathHelpers::NormalizeVector(vel);
+		}
+		//pos.y < 0
+		if (concurrency::direct3d::step(pos.y, 1))
+		{
+			pos.y = -pos.y;
+			vel.y = -vel.y;
+			vel.x *= rndBottom;
+			MathHelpers::NormalizeVector(vel);
 		}
 	}
 }

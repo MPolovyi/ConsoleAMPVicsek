@@ -75,6 +75,3 @@ std::string CViscek2DKulinskIntegrator::GetComment()
 {
 	return "Top moves 1";
 }
-
-CViscek2DKulinskIntegrator::~CViscek2DKulinskIntegrator()
-{}

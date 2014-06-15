@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "cvmarkersobj.h"
 #include "Viscek2DKulinskIntegrator.h"
-
+#include "VicsekStoppedTop.h"
 
 void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSize)
 {
@@ -212,11 +212,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 		std::cout << noise << std::endl;
 	}
 	dataCollection.WriteOnDisk(buffer, buffer2, buffer3, IntegratorCollection.WriteComment(bufferComment));
-	std::cout << "Computation finished.";
-	for (auto a : numStepsInIter)
-	{
-		std::cout << "Steps: " << a << std::endl;
-	}
+	std::cout << "Computation finished." << std::endl;
 	std::wcout << L"AverageSteps: " << std::accumulate(numStepsInIter.begin(), numStepsInIter.end(), 0.0f) / numStepsInIter.size();
 }
 
@@ -435,8 +431,6 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(22.6, 50, 1024);
-	char a;
-	std::cin >> a;
+	RunCollectionIntegrator(45.2, 1, 4096);
 	return 0;
 }
