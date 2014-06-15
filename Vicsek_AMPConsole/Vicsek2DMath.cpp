@@ -99,4 +99,35 @@ namespace Vicsek2DMath
 			MathHelpers::NormalizeVector(vel);
 		}
 	}
+
+	void BorderCheckMoveTopMoveBottom(float_2& pos, float_2& vel, const float_2 domainSize, float rndTop, float rndBottom) restrict(amp)
+	{
+		//domainSize.x < pos.x
+		if (concurrency::direct3d::step(domainSize.x, pos.x))
+		{
+			pos.x -= domainSize.x;
+		}
+		//pos.x < 0
+		if (concurrency::direct3d::step(pos.x, 0))
+		{
+			pos.x += domainSize.x;
+		}
+
+		//check. possible interract simulatenously with particle-particle interraction, and not on touch but being in interraction radius
+		//domainSize.y < pos.y
+		if (concurrency::direct3d::step(domainSize.y - 1, pos.y))
+		{
+			float dist = pos.y - domainSize.y;
+			pos.y -= 2 * dist;
+			vel += float_2(1, 0);
+			MathHelpers::NormalizeVector(vel);
+		}
+		//pos.y < 1
+		if (concurrency::direct3d::step(pos.y, 1))
+		{
+			pos.y = -pos.y;
+			vel += float_2(-1, 0);
+			MathHelpers::NormalizeVector(vel);
+		}
+	}
 }

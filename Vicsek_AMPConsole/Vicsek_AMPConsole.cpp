@@ -120,7 +120,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 	std::vector<std::shared_ptr<CIntegrator2D>> integrs;
 	for (int i = 0; i < tasks.size(); i++)
 	{
-		integrs.push_back(std::make_shared<CViscek2DKulinskIntegrator>());
+		integrs.push_back(std::make_shared<CVicsekStoppedTop>());
 	}
 
 	CIntegratorCollection IntegratorCollection(tasks, float_2(size, size), integrs);
@@ -160,9 +160,10 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 		float currDisper = 0;
 
 		int iteration = 0;
+		
+		int numSteps = 100;
 		while (iterate)
 		{
-			int numSteps = 50;
 			for (int j = 0; j < numSteps; j++)
 			{
 				iteration++;
@@ -184,10 +185,10 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 
 			currDisper = std::accumulate(averDispers.begin(), averDispers.end(), 0.0f) / averDispers.size();
 			averDispers.clear();
-			std::cout << "Dispercion = " << abs(currDisper - prevDisper) - (1 / sqrParticleCount) << std::endl;
+			std::cout << "Dispercion = " << abs(currDisper - prevDisper) - (1 / sqrParticleCount) << " Steps = " << numSteps << std::endl;
 			//std::cout << "Velocity = " << abs(currAverSpd - prevAverSpd) - (1 / sqrParticleCount) << std::endl;
 
-			if ((abs(currDisper - prevDisper) > (1 / sqrParticleCount)))
+			if ((abs(currDisper - prevDisper) > (1 / sqrParticleCount)) && numSteps < 25000)
 			{
 				prevDisper = currDisper;
 				prevAverSpd = currAverSpd;
@@ -207,6 +208,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(15), noise);
 
 		noise -= 1;
+		prevDisper = 0;
 		iterate = true;
 
 		std::cout << noise << std::endl;
@@ -431,6 +433,6 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(45.2, 1, 4096);
+	RunCollectionIntegrator(16, 5, 1024);
 	return 0;
 }

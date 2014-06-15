@@ -9,17 +9,25 @@ plt.subplots_adjust(left=0.25, bottom=0.25)
 spdByH = [OpenSpdByH()]
 
 x = np.arange(0, spdByH[0]['xMax'], spdByH[0]['xStep'])
-
-mainPlot = plt.plot(x, spdByH[0]['data'][0], lw=2, label=spdByH[0]['comment'])
+ax.set_xlabel('h', fontsize=16)
+ax.set_ylabel('v', fontsize=16)
+ax.set_title(spdByH[0]['comment'])
+plt.plot(x, spdByH[0]['data'][360-1], lw=2, label=u"noise = 0")
 plt.axis([0, spdByH[0]['xMax'], 0, spdByH[0]['yMax']])
 mainAxes = plt.gca()
 
 axcolor = 'lightgoldenrodyellow'
-axNoise = plt.axes([0.25, 0.1, 0.65, 0.03], axisbg=axcolor)
-sNoise = Slider(axNoise, 'Noise', 1, spdByH[0]['paramRange'], valinit=0)
 
+'''axNoise = plt.axes([0.25, 0.1, 0.65, 0.03], axisbg=axcolor)
+sNoise = Slider(axNoise, 'Noise', 1, spdByH[0]['paramRange'], valinit=0)'''
 
-def update(val):
+plt.sca(mainAxes)
+plt.axis([0, spdByH[0]['xMax'], 0, spdByH[0]['yMax']])
+plt.plot(x, spdByH[0]['data'][360-73], lw=2, label=u"noise = 72")
+plt.plot(x, spdByH[0]['data'][360-145], lw=2, label=u"noise = 144")
+plt.plot(x, spdByH[0]['data'][360-289], lw=2, label=u"noise = 288")
+plt.plot(x, spdByH[0]['data'][360-360], lw=2, label=u"noise = 360")
+'''def update(val):
     index = int(round(sNoise.val - spdByH[0]['paramRange'], 0))
     for i in range(0, mainPlot.__len__()):
         varIndex = index
@@ -45,6 +53,7 @@ def addButtonClick(event):
     mainPlot.append(plt.plot(x, tmp['data'][0], lw=2, label=tmp['comment'])[0])
 
 
-button.on_clicked(addButtonClick)
-plt.legend(loc='upper center', shadow=True)
+button.on_clicked(addButtonClick)'''
+
+leg = plt.legend(loc='upper center', shadow=True)
 plt.show()
