@@ -120,7 +120,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 	std::vector<std::shared_ptr<CIntegrator2D>> integrs;
 	for (int i = 0; i < tasks.size(); i++)
 	{
-		integrs.push_back(std::make_shared<CVicsekStoppedTop>());
+		integrs.push_back(std::make_shared<CViscek2DKulinskIntegrator>());
 	}
 
 	CIntegratorCollection IntegratorCollection(tasks, float_2(size, size), integrs);
@@ -433,6 +433,6 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(16, 5, 1024);
+	RunCollectionIntegrator(32, 10, 4096);
 	return 0;
 }
