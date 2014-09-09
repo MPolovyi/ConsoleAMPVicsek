@@ -72,7 +72,7 @@ namespace Vicsek.Classes
             {
                 diff.First -= Miscelaneous.Width;
             }
-            if (diff.Second > Miscelaneous.Height - Miscelaneous.InterractionR)
+            if (!Miscelaneous.RestrictingBoards && diff.Second > Miscelaneous.Height - Miscelaneous.InterractionR)
             {
                 diff.Second -= Miscelaneous.Height;
             }

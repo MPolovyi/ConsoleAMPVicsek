@@ -15,6 +15,8 @@ namespace Vicsek.Classes
         public static double Width = 512;
         public static double Height = 512;
 
+        public static bool RestrictingBoards = true;
+
         public static int ParticleCount = 1;
 
     }

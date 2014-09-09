@@ -244,7 +244,6 @@ namespace Vicsek.Classes
             var yn = _A.First*sin + _A.Second*cos;
 
             return new PairDouble(xn, yn);
-            
         }
 
         public static void Swap<T>(ref T _a, ref T _b)
