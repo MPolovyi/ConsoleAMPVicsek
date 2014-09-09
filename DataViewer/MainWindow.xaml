@@ -9,6 +9,7 @@
                 <Button Width="120" Content="Open Spd By Height" Margin="15, 0, 0, 0" Click="OpenSpdByHeightButton_Click"></Button>
                 <Button Width="120" Content="Open Normalized Rho By Height" Margin="15, 0, 0, 0" Click="OpenNormRhoByHeightButton_Click"></Button>
                 <Button Width="80" Content="Open" Click="OpenAllButton_Click" Margin="15, 0, 0 ,0" />
+                <Button Width="80" Content="Save" Click="SaveAllButton_Click" Margin="15, 0, 0 ,0" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="25" Margin="15, 10, 0, 0">
                 <Label Name="SimDataLabel" x:FieldModifier="private"></Label>

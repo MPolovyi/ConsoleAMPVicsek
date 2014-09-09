@@ -73,5 +73,5 @@ bool CVicsekStoppedTop::RealIntegrate(float noise)
 
 std::string CVicsekStoppedTop::GetComment()
 {
-	return "Top moves 1, Bottom moves -1";
+	return "Top moves 1, Bottom slovers particles in x direction";
 }

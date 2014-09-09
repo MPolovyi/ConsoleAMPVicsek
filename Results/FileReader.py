@@ -21,8 +21,8 @@ def OpenSpdByH(domSize=None):
     data = [np.fromiter(item, dtype=np.float) for item in tmpData]
     ret['data'] = data
     ret['yMax'] = max([max(it) for it in data])
-    ret['xMax'] = float(domSize)
     ret['xStep'] = float(domSize) / len(data[0])
+    ret['xMax'] = float(domSize) - (ret['xStep']/2)
     ret['paramRange'] = len(data)
 
     return ret

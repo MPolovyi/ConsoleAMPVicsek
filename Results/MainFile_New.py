@@ -8,9 +8,9 @@ plt.subplots_adjust(left=0.25, bottom=0.25)
 
 spdByH = [OpenSpdByH()]
 
-x = np.arange(0, spdByH[0]['xMax'], spdByH[0]['xStep'])
-ax.set_xlabel('h', fontsize=16)
-ax.set_ylabel('v', fontsize=16)
+x = np.arange(spdByH[0]['xMax'], 0, -(spdByH[0]['xStep']))
+ax.set_xlabel('h', fontsize=32)
+ax.set_ylabel('v', fontsize=32)
 ax.set_title(spdByH[0]['comment'])
 plt.plot(x, spdByH[0]['data'][360-1], lw=2, label=u"noise = 0")
 plt.axis([0, spdByH[0]['xMax'], 0, spdByH[0]['yMax']])

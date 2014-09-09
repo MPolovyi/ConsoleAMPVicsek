@@ -35,9 +35,12 @@ namespace DataViewer
                 string veloc = dotRegex.Replace(notNumbers.Replace(strs[i].Split('=')[1], ""), ",");
                 string noise = dotRegex.Replace(notNumbers.Replace(strs[i].Split('=')[2], ""), ",");
 
-                velocAndNoise.Add(new Tuple<double, double>(Convert.ToDouble(noise), Convert.ToDouble(veloc)));
+                velocAndNoise.Add(new Tuple<double, double>(
+                    Convert.ToDouble(noise),
+                    Convert.ToDouble(veloc)));
             }
             fs.BaseStream.Seek(0, SeekOrigin.Begin);
+
             return velocAndNoise;
         }
 

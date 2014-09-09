@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.TextFormatting;
-using System.Windows.Shapes;
+using Microsoft.Win32;
+using Path = System.Windows.Shapes.Path;
 
 namespace DataViewer
 {
@@ -36,6 +38,7 @@ namespace DataViewer
         public void AddPlotSeries(List<Tuple<double, double>> ansv, string comment, double stepX = 1, double stepY = 1)
         {
             _seriesComments.Add(comment);
+            _loadedSeries.Add(ansv);
             AddPlotSeries(ansv, _firstLoaded ? _stepX : stepX, _firstLoaded ? _stepY : stepY);
             ActiveLabel.Content = comment;
             _firstLoaded = true;
@@ -45,6 +48,7 @@ namespace DataViewer
         {
             _stepX = stepX;
             _stepY = stepY;
+
             if (!_firstLoaded)
                 DrawGrid(ansv.Min(item => item.Item1), ansv.Max(item => item.Item1), stepX,
                     ansv.Min(item => item.Item2), ansv.Max(item => item.Item2), stepY);
@@ -123,6 +127,38 @@ namespace DataViewer
                 _loadedSeries.Insert(0, tmp);
             }
             Redraw();
+        }
+
+        public void Save(SaveFileDialog dlg)
+        {
+            if (true)// == dlg.ShowDialog())
+            {
+                var file = new StreamWriter("F:\\TempFile.txt");
+
+                file.WriteLineAsync(_seriesComments[0]);
+                file.WriteLine();
+
+                for (int i = 0; i < _loadedSeries[0].Count; i++)
+                {
+                    var item = _loadedSeries[0][i];
+                    file.WriteLine("Velocity = {0} Noise = {1}", item.Item2, item.Item1*Math.PI/180);
+                }
+
+                file.Close();
+
+                file = new StreamWriter("F:\\SimpleTempFile.txt");
+
+                file.WriteLineAsync(_seriesComments[0]);
+                file.WriteLine();
+
+                for (int i = 0; i < _loadedSeries[0].Count; i++)
+                {
+                    var item = _loadedSeries[0][i];
+                    file.WriteLine("{0} {1}", item.Item2, item.Item1 * Math.PI / 180);
+                }
+
+                file.Close();
+            }
         }
 
         private void Redraw()

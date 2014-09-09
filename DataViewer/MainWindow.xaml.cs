@@ -103,5 +103,12 @@ namespace DataViewer
                 DrawSpdByHeight(rhoByHeight, _getter.GetSimParams(dataFromFile));
             }
         }
+
+        private void SaveAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            var openDlg = new SaveFileDialog { Filter = "Text Files |*.txt" };
+
+            _plot1.Save(openDlg);
+        }
     }
 }

@@ -32,8 +32,8 @@ namespace DataViewer
             {
                 var text = new FormattedText(minValueY.ToString(minValueY > 2 ? "###" : "##.###"),
                     CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
-                    new Typeface("Arial"), 10,
-                    Brushes.Black);
+                    new Typeface("Arial"), 12,
+                    Brushes.Red);
                 geometryGroup.Children.Add(text.BuildGeometry(new Point(10, rightBottom.Y - y)));
                 y += graphStepY;
                 minValueY += stepY;
@@ -42,10 +42,10 @@ namespace DataViewer
             y = rightBottom.Y - 15;
             while (x <= rightBottom.X)
             {
-                var text = new FormattedText(minValueX.ToString(minValueX > 2 ? "###" : "##.###"),
+                var text = new FormattedText(minValueX.ToString(minValueX > 7 ? "###" : "##.###"),
                     CultureInfo.CurrentCulture, FlowDirection.LeftToRight,
-                    new Typeface("Arial"), 10,
-                    Brushes.Black);
+                    new Typeface("Arial"), 12,
+                    Brushes.Red);
                 geometryGroup.Children.Add(text.BuildGeometry(new Point(x, y)));
                 x += graphStepX;
                 minValueX += stepX;

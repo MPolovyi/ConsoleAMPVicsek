@@ -188,11 +188,10 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 			std::cout << "Dispercion = " << abs(currDisper - prevDisper) - (1 / sqrParticleCount) << " Steps = " << numSteps << std::endl;
 			//std::cout << "Velocity = " << abs(currAverSpd - prevAverSpd) - (1 / sqrParticleCount) << std::endl;
 
-			if ((abs(currDisper - prevDisper) > (1 / sqrParticleCount)) && numSteps < 25000)
+			if ((abs(currDisper - prevDisper) > (1 / sqrParticleCount)) && numStepsInIter[numStepsInIter.size() - 1] < 5000)
 			{
 				prevDisper = currDisper;
 				prevAverSpd = currAverSpd;
-				numSteps *= 2;
 				numStepsInIter[numStepsInIter.size() - 1] += numSteps;
 			}
 			else
@@ -433,6 +432,6 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunCollectionIntegrator(32, 10, 4096);
+	RunCollectionIntegrator(64, 10, 4096);
 	return 0;
 }
