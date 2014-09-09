@@ -57,7 +57,6 @@ namespace Vicsek.Classes
         {
             this = this/(ABS());
         }
-
     }
 
     public struct Pair<T> : IPair<T>
