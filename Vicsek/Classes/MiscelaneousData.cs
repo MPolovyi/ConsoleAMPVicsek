@@ -10,14 +10,13 @@ namespace Vicsek.Classes
     {
         public static double ParticleSpeed = 1;
         public static int SpeedDrawMultiplayer = 8;
-        public static int Noize = 0;
-        public static double InterractionR = 500;
+        public static int Noize = 180;
+        public static double InterractionR = 20;
         public static double Width = 512;
         public static double Height = 512;
 
         public static bool RestrictingBoards = true;
 
         public static int ParticleCount = 1;
-
     }
 }

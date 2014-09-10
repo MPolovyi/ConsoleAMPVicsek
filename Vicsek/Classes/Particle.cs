@@ -68,7 +68,7 @@ namespace Vicsek.Classes
         public virtual double CalkDistance(IParticle _particle)
         {
             var diff = CoordinatesInDouble - _particle.CoordinatesInDouble;
-            if (diff.First > (Miscelaneous.Width - Miscelaneous.InterractionR))
+            if (diff.First > (Miscelaneous.Width - 2 * Miscelaneous.InterractionR))
             {
                 diff.First -= Miscelaneous.Width;
             }
