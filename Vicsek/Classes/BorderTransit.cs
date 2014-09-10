@@ -9,17 +9,14 @@ namespace Vicsek.Classes
 {
     class BorderTransit : Border
     {
-        private double m_SizeX, m_SizeY;
         public BorderTransit(List<PairDouble> _corners) : base(_corners)
         {
-            m_SizeX = _corners[2].First;
-            m_SizeY = _corners[2].Second;
+
         }
 
         public override void Interract(IParticle _particle, int _index)
         {
-            var transit = 0;
-          
+         
             PairDouble newPos = new PairDouble(0,0);
             if (_index == 0)
             {

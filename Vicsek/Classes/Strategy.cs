@@ -30,7 +30,7 @@ namespace Vicsek.Classes
             m_tstFactory = new ParticleFactoryInteresting(_pb.Width, _pb.Height, interstingDrawer);
 
 
-            var borderOfArea = new BorderTransit(new List<PairDouble>
+            var borderOfArea = new BorderBounce(new List<PairDouble>
                                             {
                                                 new PairDouble(0, 0),
                                                 new PairDouble(0, _pb.Height),
