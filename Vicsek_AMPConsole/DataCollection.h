@@ -11,6 +11,8 @@ protected:
 	vector<pair<float, float>> m_AverSpd;
 	vector<pair<vector<float>, float>> m_SliceXAverSpd;
 	vector<pair<vector<float>, float>> m_SliceXAverRho;
+	
+	vector<pair<vector<float>, int>> m_MultyCollData;
 
 public:
 	vector<float> GetAverSpeed()

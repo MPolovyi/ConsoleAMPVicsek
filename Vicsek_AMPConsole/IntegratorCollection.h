@@ -26,6 +26,8 @@ public:
 	std::vector<float> GetAnsambleAveragedDencityOnSlicesX(int splits);
 	std::vector<std::vector<float>> GetAverDencityOnSlicesX(int splits);
 
+	void WriteParticleDataOnDisc(char* FileName);
+
 	~CIntegratorCollection();
 };
 

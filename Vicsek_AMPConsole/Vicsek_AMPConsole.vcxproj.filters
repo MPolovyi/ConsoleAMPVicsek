@@ -66,6 +66,9 @@
     <ClInclude Include="VicsekStoppedTop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Vicsek2DChepizhkoIntegrator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vicsek_AMPConsole.cpp">
@@ -96,6 +99,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="VicsekStoppedTop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vicsek2DChepizhkoIntegrator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

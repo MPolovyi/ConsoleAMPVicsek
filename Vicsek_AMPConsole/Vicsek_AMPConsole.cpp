@@ -5,6 +5,34 @@
 #include "cvmarkersobj.h"
 #include "Viscek2DKulinskIntegrator.h"
 #include "VicsekStoppedTop.h"
+void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSize);
+void RunCollectionIntegrator(float domainSize, int collSize, int particleSize);
+void RunIntegrator(int size);
+int StepsToEq(int size);
+int TestReductions();
+
+void RunManyIntegrators(float domainSize, int collSize, int particleSize);
+void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particleSize, float noise);
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	accelerator::set_default(accelerator::direct3d_warp);
+	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
+
+	RunManyIntegrators(100, 100, 10240);
+	char a;
+	std::cin >> a;
+	return 0;
+}
+
+void RunManyIntegrators(float domainSize, int collSize, int particleSize)
+{
+	for (size_t i = 0; i < 100; i++)
+	{
+		RunCollectionIntegratorOneNoise(domainSize, 1, particleSize, 156);
+		std::cout << std::endl << "INTEGRATING "<<i<<" CONFIGURATION FINISHED, START NEXT" << std::endl;
+	}
+}
 
 void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSize)
 {
@@ -108,7 +136,7 @@ void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSiz
 void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 {
 	float size = domainSize;
-	int partCount = 256 * (particleSize / 256);
+	int partCount = 512 * (particleSize / 512);
 	float sqrParticleCount = sqrt(partCount);
 
 	std::vector<TaskData*> tasks;
@@ -127,18 +155,19 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 
 	float noise = 360;
 
-	
 	time_t rawtime;
 	struct tm timeinfo;
 	char buffer[256];
 	char buffer2[256];
 	char buffer3[256];
+	char buffer4[256];
 	std::string bufferComment = "";
 	time(&rawtime);
 	localtime_s(&timeinfo, &rawtime);
 	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 	strftime(buffer2, 256, "SplitsVelocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 	strftime(buffer3, 256, "SplitsDensities_%d.%m_%H.%M.%S.txt", &timeinfo);
+	strftime(buffer4, 256, "ParticleVelocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 
 	IntegratorCollection.WriteComment(bufferComment);
 
@@ -149,7 +178,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 
 	std::vector<float> averDispers;
 	std::vector<int> numStepsInIter = { 0 };
-	
+
 	while (noise > 0)
 	{
 		bool iterate = true;
@@ -160,7 +189,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 		float currDisper = 0;
 
 		int iteration = 0;
-		
+
 		int numSteps = 100;
 		while (iterate)
 		{
@@ -186,7 +215,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 			currDisper = std::accumulate(averDispers.begin(), averDispers.end(), 0.0f) / averDispers.size();
 			averDispers.clear();
 			std::cout << "Dispercion = " << abs(currDisper - prevDisper) - (1 / sqrParticleCount) << " Steps = " << numSteps << std::endl;
-			//std::cout << "Velocity = " << abs(currAverSpd - prevAverSpd) - (1 / sqrParticleCount) << std::endl;
+			std::cout << "Velocity = " << abs(currAverSpd - prevAverSpd) - (1 / sqrParticleCount) << std::endl;
 
 			if ((abs(currDisper - prevDisper) > (1 / sqrParticleCount)) && numStepsInIter[numStepsInIter.size() - 1] < 5000)
 			{
@@ -217,6 +246,116 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 	std::wcout << L"AverageSteps: " << std::accumulate(numStepsInIter.begin(), numStepsInIter.end(), 0.0f) / numStepsInIter.size();
 }
 
+void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particleSize, float noise = 180)
+{
+	float size = domainSize;
+	int partCount = 512 * (particleSize / 512);
+	float sqrParticleCount = sqrt(partCount);
+
+	std::vector<TaskData*> tasks;
+	for (int i = 0; i < collSize; i++)
+	{
+		tasks.push_back(new TaskData(partCount, accelerator(accelerator::default_accelerator).default_view, accelerator(accelerator::default_accelerator)));
+	}
+
+	std::vector<std::shared_ptr<CIntegrator2D>> integrs;
+	for (int i = 0; i < tasks.size(); i++)
+	{
+		integrs.push_back(std::make_shared<CVicsekStoppedTop>());
+	}
+
+	CIntegratorCollection IntegratorCollection(tasks, float_2(size, size), integrs);
+
+	time_t rawtime;
+	struct tm timeinfo;
+	char buffer[256];
+	char buffer2[256];
+	char buffer3[256];
+	char buffer4[256];
+	std::string bufferComment = "";
+	time(&rawtime);
+	localtime_s(&timeinfo, &rawtime);
+	strftime(buffer, 256, "Velocities_%d.%m_%H.%M.%S.txt", &timeinfo);
+	strftime(buffer2, 256, "SplitsVelocities_%d.%m_%H.%M.%S.txt", &timeinfo);
+	strftime(buffer3, 256, "SplitsDensities_%d.%m_%H.%M.%S.txt", &timeinfo);
+	strftime(buffer4, 256, "ParticleData_%d.%m_%H.%M.%S.txt", &timeinfo);
+
+
+	IntegratorCollection.WriteComment(bufferComment);
+
+	CDataCollection dataCollection;
+
+	std::vector<float> averSpd;
+	std::vector<float> averSpdOnSlices;
+
+	std::vector<float> averDispers;
+	std::vector<int> numStepsInIter = { 0 };
+	auto tmpNoise = noise - 1;
+	while (noise > tmpNoise)
+	{
+		bool iterate = true;
+		float prevAverSpd = 0;
+		float currAverSpd = 0;
+
+		float prevDisper = 0;
+		float currDisper = 0;
+
+		int iteration = 0;
+
+		int numSteps = 100;
+		while (iterate)
+		{
+			for (int j = 0; j < numSteps; j++)
+			{
+				iteration++;
+				IntegratorCollection.Integrate(noise);
+			}
+			for (int j = 0; j < 20; j++)
+			{
+				iteration++;
+				IntegratorCollection.Integrate(noise);
+				averSpd.push_back(IntegratorCollection.GetAnsambleAveragedABSVeloc());
+				IntegratorCollection.Integrate(noise);
+				auto velocOnSlices = IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(15);
+				IntegratorCollection.Integrate(noise);
+				averDispers.push_back(MathHelpers::Dispercion(velocOnSlices));
+			}
+
+			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
+			averSpd.clear();
+
+			currDisper = std::accumulate(averDispers.begin(), averDispers.end(), 0.0f) / averDispers.size();
+			averDispers.clear();
+			std::cout << "Dispercion = " << abs(currDisper - prevDisper) - (1 / sqrParticleCount) << " Steps = " << numSteps << std::endl;
+			std::cout << "Velocity = " << abs(currAverSpd - prevAverSpd) - (1 / sqrParticleCount) << std::endl;
+
+			if ((abs(currDisper - prevDisper) > (1 / sqrParticleCount)) && numStepsInIter[numStepsInIter.size() - 1] < 5000)
+			{
+				prevDisper = currDisper;
+				prevAverSpd = currAverSpd;
+				numStepsInIter[numStepsInIter.size() - 1] += numSteps;
+			}
+			else
+			{
+				iterate = false;
+				numStepsInIter.push_back(0);
+			}
+		}
+		dataCollection.AddAverSpeed(currAverSpd, noise);
+		IntegratorCollection.Integrate(noise);
+		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(15), noise);
+		IntegratorCollection.Integrate(noise);
+		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(15), noise);
+		IntegratorCollection.Integrate(noise);
+		IntegratorCollection.WriteParticleDataOnDisc(buffer4);
+		IntegratorCollection.Integrate(noise);
+
+		noise -= 1;
+	}
+	dataCollection.WriteOnDisk(buffer, buffer2, buffer3, IntegratorCollection.WriteComment(bufferComment));
+	std::cout << "Computation finished." << std::endl;
+	std::wcout << L"AverageSteps: " << std::accumulate(numStepsInIter.begin(), numStepsInIter.end(), 0.0f) / numStepsInIter.size();
+}
 
 void RunIntegrator(int size)
 {
@@ -386,7 +525,7 @@ int TestReductions()
 	// tile_count = element_count / tile_size == 32768 < 65536
 	unsigned element_count = 16 * 1024 * 1024;
 
-		std::vector<float_3> source(element_count);
+	std::vector<float_3> source(element_count);
 	for (unsigned i = 0; i < element_count; ++i)
 	{
 		// Element range is limited to avoid overflow or underflow
@@ -411,7 +550,7 @@ int TestReductions()
 	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_2<tile_size>, "reduction_tiled_2"));
 	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_3<tile_size>, "reduction_tiled_3"));
 	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_4<tile_size>, "reduction_tiled_4"));
-	
+
 	array<float_3, 1> arr_1(element_count, source.begin());
 
 	for (const auto& func : functions)
@@ -422,16 +561,8 @@ int TestReductions()
 		float_3 result = func.first(arr_1, source.size());
 		series.write_flag(L"After function");
 		delete flagSpan;
-		
+
 		//std::cout << "SUCCESS: " << func.second << "." << "  " << result.x << std::endl;
 	}
 	return 1;
-}
-
-int _tmain(int argc, _TCHAR* argv[])
-{
-	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
-
-	RunCollectionIntegrator(64, 10, 4096);
-	return 0;
 }

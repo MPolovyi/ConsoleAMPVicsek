@@ -1,70 +1,24 @@
-#include "Vicsek2DIntegrator.h"
+#include "Vicsek2DChepizhkoIntegrator.h"
 
-#include <fstream>
+#include "Rand\amp_tinymt_rng.h"
 
-
-void CVicsek2DIntegrator::Init(TaskData& td, float_2 domain)
+bool CVicsek2DChepizhkoIntegrator::RealIntegrate(float noise)
 {
-	CIntegrator2D::Init(td, domain);
-	PopulateTaskData(td, domain, td.DataNew->size());
-};
-
-void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int partCount)
-{
-	index<1> begin(0);
-	extent<1> end(partCount);
-
-	std::vector<float_3> posit(partCount);
-	std::vector<float_3> veloc(partCount);
-
-	array_view<float_3, 1> pos(posit);
-	array_view<float_3, 1> vel(veloc);
-
-	m_Rnd = tinymt_collection<1>(extent<1>(partCount), std::rand());
-
-	const tinymt_collection<1>& rnd = this->m_Rnd;
-	concurrency::parallel_for_each(pos.extent, [=](index<1> idx) restrict(amp) {
-
-		pos[idx].x = rnd[idx].next_single() * domain.x;
-		pos[idx].y = rnd[idx].next_single() * domain.y;
-		pos[idx].z = 0;
-
-		vel[idx].x = rnd[idx].next_single() - 0.5;
-		vel[idx].y = rnd[idx].next_single() - 0.5;
-		vel[idx].z = 0;
-
-		//normalize speed
-		vel[idx] *= concurrency::fast_math::rsqrt(MathHelpers::SqrLength(vel[idx]));
-	});
-
-
-	array_view<float_3, 1> posView = td.DataOld->pos.section(index<1>(begin), extent<1>(end));
-	copy(pos, posView);
-	array_view<float_3, 1> velView = td.DataOld->vel.section(index<1>(begin), extent<1>(end));
-	copy(vel, velView);
-
-	auto particlesOut = *td.DataOld;
-
-	//Swap becouse we swap data before fist Integration.
-	td.Swap();
-}
-
-bool CVicsek2DIntegrator::RealIntegrate(float noise)
-{
-	
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
 	const int numTiles = numParticles / s_TileSize;
-	const float doubleIntR = 2* m_IntR;
+	const float doubleIntR = m_IntR;
 	const float dampingFactor = 0.9995f;
 	const float deltaTime = 0.1;
 
 	const float_2 domainSize = m_DomainSize;
 	const float intR2 = m_IntR*m_IntR;
 	//initialization of random generator;
+
+	tinymt_collection<1> rnd(computeDomain, std::rand());
+
 	const ParticlesAmp& particlesIn = *m_Task->DataOld;
 	const ParticlesAmp& particlesOut = *m_Task->DataNew;
-	const tinymt_collection<1>& rnd = this->m_Rnd;
 
 	concurrency::parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
 
@@ -109,8 +63,8 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 		MathHelpers::NormalizeVector(vel);
 
 		pos += vel * deltaTime;
-		
-		Vicsek2DMath::BorderCheckTransitional(pos, vel, domainSize);
+
+		Vicsek2DMath::BorderCheckMoovingTopY(pos, vel, domainSize);
 
 		particlesOut.pos[idxGlobal].xy = pos;
 		particlesOut.vel[idxGlobal].xy = vel;
@@ -118,7 +72,8 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 	return true;
 }
 
-std::string CVicsek2DIntegrator::GetComment()
+std::string CVicsek2DChepizhkoIntegrator::GetComment()
 {
-	return "Standard Vicsek aldorithm, transitional borders";
+	return "Top moves 1, computations made by Chepizhko algorithm";
 }
+

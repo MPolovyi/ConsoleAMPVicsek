@@ -97,3 +97,25 @@ float_2 CIntegrator2D::GetAverageVeloc()
 {
 	return MathHelpers::CountAverageVector(m_Task->DataOld->vel, m_Task->DataOld->size()).xy;
 }
+
+std::string CIntegrator2D::GetParticleDataJSON()
+{
+	std::vector<float_3> pos;
+	pos.reserve(m_Task->DataOld->size());
+	concurrency::copy(m_Task->DataOld->pos, pos.begin());
+	std::vector<float_3> vel;
+	vel.reserve(m_Task->DataOld->size());
+	concurrency::copy(m_Task->DataOld->vel, vel.begin());
+	
+	std::ostringstream oss;
+	oss << "[";
+	oss << std::endl;
+	
+	for (size_t i = 0; i < m_Task->DataOld->size(); i++)
+	{
+		oss << "{" << std::endl << "\"pos\" : " << "[" << pos[i].x << ", " << pos[i].y << "],"  << std::endl <<
+			"\"vel\" : " << "[" << vel[i].x << ", " << vel[i].y << "]" << std::endl << "}," << std::endl;
+	}
+	oss << "]";
+	return oss.str();
+}

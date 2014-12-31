@@ -21,6 +21,7 @@ public:
 		m_DomainSize = domain;
 	};
 	std::string WriteComment();
+	std::string GetParticleDataJSON();
 protected:
 	virtual std::string GetComment() { return ""; };
 	virtual bool RealIntegrate(float noise) override

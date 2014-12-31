@@ -2,6 +2,7 @@
 #include <ppl.h>
 #include <concurrent_vector.h>
 #include <sstream>
+#include <fstream>
 #include "cvmarkersobj.h"
 //CIntegratorCollection::CIntegratorCollection(std::vector<TaskData*> tds, float_2 domain)
 //{
@@ -63,7 +64,7 @@ std::vector<float> CIntegratorCollection::GetAnsambleAveragedVeclocOnSlicesX(int
 		}
 		ret[i] /= si;
 	}
-
+	
 	return ret;
 }
 
@@ -107,6 +108,28 @@ std::string CIntegratorCollection::WriteComment(std::string str)
 	std::ostringstream oss;
 	oss << "Averaging on " << m_Integrators.size() << m_Integrators[0]->WriteComment();
 	return oss.str();
+}
+
+void CIntegratorCollection::WriteParticleDataOnDisc(char* FileName)
+{
+	std::ostringstream oss;
+			
+	int i = 0;
+	for (auto& integrator : m_Integrators)
+	{
+		std::string str;
+		str += std::to_string(i);
+		str += "_";
+		str.append(FileName);
+		
+		std::fstream file;
+		file.open(str, std::ios::app);
+
+		file << integrator->WriteComment();
+		file << std::endl << std::endl;
+		file << integrator->GetParticleDataJSON();
+		file.close();
+	}
 }
 
 CIntegrator2D& CIntegratorCollection::operator[] (int idx)

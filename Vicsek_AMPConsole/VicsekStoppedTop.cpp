@@ -6,12 +6,12 @@ bool CVicsekStoppedTop::RealIntegrate(float noise)
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
 	const int numTiles = numParticles / s_TileSize;
-	const float softeningSquared = 0.0000015625f;
+	const float doubleIntR = m_IntR;
 	const float dampingFactor = 0.9995f;
 	const float deltaTime = 0.1;
 
 	const float_2 domainSize = m_DomainSize;
-	const float intR = m_IntR*m_IntR;
+	const float intR2 = m_IntR*m_IntR;
 	//initialization of random generator;
 
 	tinymt_collection<1> rnd(computeDomain, std::rand());
@@ -46,10 +46,10 @@ bool CVicsekStoppedTop::RealIntegrate(float noise)
 			// 4 is the sweet spot - increasing further adds no perf improvement while decreasing reduces perf
 			for (int j = 0; j < s_TileSize;)
 			{
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, doubleIntR, intR2, domainSize);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, doubleIntR, intR2, domainSize);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, doubleIntR, intR2, domainSize);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, doubleIntR, intR2, domainSize);
 			}
 
 			// Wait for all threads to finish reading tile memory before allowing a new tile to start.
@@ -63,7 +63,7 @@ bool CVicsekStoppedTop::RealIntegrate(float noise)
 
 		pos += vel * deltaTime;
 
-		Vicsek2DMath::BorderCheckMoveTopMoveBottom(pos, vel, domainSize, rnd[ti.local].next_single(), rnd[ti.local].next_single());
+		Vicsek2DMath::BorderCheckStoppedBottomMovingTopY(pos, vel, domainSize, rnd[ti.local].next_single(), rnd[ti.local].next_single());
 
 		particlesOut.pos[idxGlobal].xy = pos;
 		particlesOut.vel[idxGlobal].xy = vel;

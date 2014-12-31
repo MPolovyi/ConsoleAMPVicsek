@@ -1,4 +1,0 @@
-Averaging on 15; Particle count = 4096; Domain size = 45.25 Top moves 1
-
-Velocity = 0.0146466 Noise = 360
-Velocity = 0.0133665 Noise = 359
