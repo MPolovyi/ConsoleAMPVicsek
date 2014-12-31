@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vicsek", "Vicsek\Vicsek.csproj", "{A25FE5DA-FBBA-4FB5-8F8D-F59D38BE8E60}"
 EndProject
@@ -80,6 +80,7 @@ Global
 		{CE66B723-B055-4E38-9537-DC0DC2DEBE4A}.Profile|Win32.Build.0 = Release|Win32
 		{CE66B723-B055-4E38-9537-DC0DC2DEBE4A}.Profile|x64.ActiveCfg = Release|Win32
 		{CE66B723-B055-4E38-9537-DC0DC2DEBE4A}.Release|Any CPU.ActiveCfg = Release|Win32
+		{CE66B723-B055-4E38-9537-DC0DC2DEBE4A}.Release|Any CPU.Build.0 = Release|Win32
 		{CE66B723-B055-4E38-9537-DC0DC2DEBE4A}.Release|Mixed Platforms.ActiveCfg = Release|Win32
 		{CE66B723-B055-4E38-9537-DC0DC2DEBE4A}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{CE66B723-B055-4E38-9537-DC0DC2DEBE4A}.Release|Win32.ActiveCfg = Release|Win32

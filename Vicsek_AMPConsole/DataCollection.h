@@ -3,6 +3,10 @@
 #include <amp_short_vectors.h>
 #include <fstream>
 
+#include "../rapidjson/include/rapidjson/prettywriter.h"
+#include "../rapidjson/include/rapidjson/filewritestream.h"
+#include <cstdio>
+
 using std::vector;
 using std::pair;
 class CDataCollection
@@ -52,15 +56,34 @@ public:
 	};
 
 	void WriteOnDisk(char* SpeedFileName, char* SlicesFileName, std::string Comment)
-	{
+	{	
 		std::fstream file;
+		rapidjson::StringBuffer s;
+		rapidjson::PrettyWriter<rapidjson::StringBuffer> wr(s);
+		
+		wr.StartObject();
 
-		file.open(SpeedFileName, std::ios::app);
-		file << Comment << std::endl << std::endl;
+		wr.String("Comment");
+		wr.String(Comment.c_str());
+
+		wr.String("Velocity_vs_Noise");
+
+		wr.StartArray();
 		for (auto a : m_AverSpd)
 		{
-			file << "Velocity = " << a.first << " Noise = " << a.second << std::endl;
+			wr.StartObject();
+			wr.String("Velocity");
+			wr.Double(a.first);
+			wr.String("Noise");
+			wr.Double(a.second);
+			wr.EndObject();
 		}
+		wr.EndArray();
+		wr.EndObject();
+
+		file.open(SpeedFileName, std::ios::app);
+
+		file << s.GetString();
 		file.close();
 
 		file.open(SlicesFileName, std::ios::app);
