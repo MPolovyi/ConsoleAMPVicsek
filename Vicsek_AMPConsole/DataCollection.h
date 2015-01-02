@@ -119,7 +119,7 @@ public:
 			wr.StartArray();
 			for (int j = 0; j < m_SliceXAverSpd.size(); j++)
 			{
-				wr.Double(0);
+				wr.Double(m_SliceXAverSpd[i].second);
 			}
 			wr.EndArray();
 			wr.EndObject();
@@ -138,18 +138,49 @@ public:
 		WriteOnDisk(SpeedFileName, SlicesFileName, Comment);
 		
 		std::fstream file;
+		rapidjson::StringBuffer s;
+		rapidjson::PrettyWriter<rapidjson::StringBuffer> wr(s);
 
-		file.open(SlicesRhoFilename, std::ios::app);
-		file << Comment << std::endl << std::endl;
+		wr.StartObject();
+
+		wr.String("Comment");
+		wr.String(Comment.c_str());
+		wr.String("Data");
+
+		wr.StartArray();
 		for (int i = 0; i < m_SliceXAverRho[0].first.size(); i++)
 		{
+			wr.StartObject();
+			wr.String("Noise");
+			wr.Double(m_SliceXAverSpd[i].second);
+			wr.String("Dencity_vs_Height");
+
+			wr.StartObject();
+			wr.String("Dencity");
+			wr.StartArray();
 			for (int j = 0; j < m_SliceXAverRho.size(); j++)
 			{
-				file << m_SliceXAverRho[j].first[i] << "   ";
+				wr.Double(m_SliceXAverRho[j].first[i]);
 			}
-			file << " Noise = " << m_SliceXAverRho[i].second;
-			file << std::endl;
+			wr.EndArray();
+
+			wr.String("Height");
+			wr.StartArray();
+			for (int j = 0; j < m_SliceXAverRho.size(); j++)
+			{
+				wr.Double(m_SliceXAverRho[i].second);
+			}
+			wr.EndArray();
+			wr.EndObject();
+			wr.EndObject();
 		}
+		wr.EndArray();
+		wr.EndObject();
+
+		std::fstream file;
+
+		file.open(SlicesRhoFilename, std::ios::app);
+		file << s.GetString();
 		file.close();
 	};
 
