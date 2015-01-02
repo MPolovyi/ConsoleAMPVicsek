@@ -177,8 +177,6 @@ public:
 		wr.EndArray();
 		wr.EndObject();
 
-		std::fstream file;
-
 		file.open(SlicesRhoFilename, std::ios::app);
 		file << s.GetString();
 		file.close();
