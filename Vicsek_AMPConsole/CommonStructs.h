@@ -92,3 +92,18 @@ public:
 		std::swap(DataOld, DataNew);
 	}
 };
+
+enum BorderCondition
+{
+	Slip,
+	NoSlip,
+	Transitional,
+	Moving
+};
+
+struct SimulationStats
+{
+	float_2 DomainSize;
+	BorderCondition Borders[4];
+	float ParticleVelocity;
+};
