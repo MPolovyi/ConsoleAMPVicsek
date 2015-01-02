@@ -56,47 +56,80 @@ public:
 	};
 
 	void WriteOnDisk(char* SpeedFileName, char* SlicesFileName, std::string Comment)
-	{	
+	{
 		std::fstream file;
 		rapidjson::StringBuffer s;
 		rapidjson::PrettyWriter<rapidjson::StringBuffer> wr(s);
-		
+
+		wr.StartObject();
+
+			wr.String("Comment");
+			wr.String(Comment.c_str());
+
+			wr.String("Velocity_vs_Noise");
+			wr.StartObject();
+				wr.String("Velocity");
+				wr.StartArray();
+				for (auto a : m_AverSpd)
+				{
+					wr.Double(a.first);
+				}
+				wr.EndArray();
+
+				wr.String("Noise");
+				wr.StartArray();
+				for (auto a : m_AverSpd)
+				{
+					wr.Double(a.second);
+				}
+				wr.EndArray();
+			wr.EndObject();
+		wr.EndObject();
+
+		file.open(SpeedFileName, std::ios::app);
+		file << s.GetString();
+		file.close();
+
+		s.Clear();
+
 		wr.StartObject();
 
 		wr.String("Comment");
 		wr.String(Comment.c_str());
-
-		wr.String("Velocity_vs_Noise");
+		wr.String("Data");
 
 		wr.StartArray();
-		for (auto a : m_AverSpd)
+		for (int i = 0; i < m_SliceXAverSpd[0].first.size(); i++)
 		{
 			wr.StartObject();
-			wr.String("Velocity");
-			wr.Double(a.first);
 			wr.String("Noise");
-			wr.Double(a.second);
+			wr.Double(m_SliceXAverSpd[i].second);
+			wr.String("Velocity_vs_Height");
+
+			wr.StartObject();
+			wr.String("Velocity");
+			wr.StartArray();
+			for (int j = 0; j < m_SliceXAverSpd.size(); j++)
+			{
+				wr.Double(m_SliceXAverSpd[j].first[i]);
+			}
+			wr.EndArray();
+
+			wr.String("Height");
+			wr.StartArray();
+			for (int j = 0; j < m_SliceXAverSpd.size(); j++)
+			{
+				wr.Double(0);
+			}
+			wr.EndArray();
+			wr.EndObject();
 			wr.EndObject();
 		}
 		wr.EndArray();
 		wr.EndObject();
 
-		file.open(SpeedFileName, std::ios::app);
-
-		file << s.GetString();
-		file.close();
-
 		file.open(SlicesFileName, std::ios::app);
-		file << Comment << std::endl << std::endl;
-		for (int i = 0; i < m_SliceXAverSpd[0].first.size(); i++)
-		{
-			for (int j = 0; j < m_SliceXAverSpd.size(); j++)
-			{
-				file << m_SliceXAverSpd[j].first[i] << "   ";
-			}
-			file << " Noise = " << m_SliceXAverSpd[i].second;
-			file << std::endl;
-		}
+		file << s.GetString();
 		file.close();
 	};
 
