@@ -27,7 +27,9 @@
 #include <assert.h>
 
 using namespace concurrency;
+using concurrency::graphics::float_2;
 using concurrency::graphics::float_3;
+
 namespace MathHelpers
 {
 	//----------------------------------------------------------------------------
