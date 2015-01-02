@@ -1,3 +1,6 @@
 [submodule "Thesis"]
 	path = Thesis
 	url = https://github.com/Mr-Destiny/Thesis.git
+[submodule "rapidjson"]
+	path = rapidjson
+	url = https://github.com/miloyip/rapidjson

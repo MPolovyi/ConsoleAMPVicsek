@@ -19,7 +19,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	accelerator::set_default(accelerator::direct3d_warp);
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunManyIntegrators(100, 100, 10240);
+	RunManyIntegrators(100, 100, 2048);
 	char a;
 	std::cin >> a;
 	return 0;
@@ -290,7 +290,7 @@ void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particl
 
 	std::vector<float> averDispers;
 	std::vector<int> numStepsInIter = { 0 };
-	auto tmpNoise = noise - 1;
+	auto tmpNoise = noise - 10;
 	while (noise > tmpNoise)
 	{
 		bool iterate = true;
