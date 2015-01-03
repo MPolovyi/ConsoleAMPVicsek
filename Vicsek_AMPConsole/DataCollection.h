@@ -99,7 +99,8 @@ public:
 		wr.String("Data");
 
 		wr.StartArray();
-		for (int i = 0; i < m_SliceXAverSpd[0].first.size(); i++)
+
+		for (int i = 0; i < m_SliceXAverSpd.size(); i++)
 		{
 			wr.StartObject();
 			wr.String("Noise");
@@ -109,7 +110,7 @@ public:
 			wr.StartObject();
 			wr.String("Velocity");
 			wr.StartArray();
-			for (int j = 0; j < m_SliceXAverSpd.size(); j++)
+			for (int j = 0; j < m_SliceXAverSpd[0].first.size(); j++)
 			{
 				wr.Double(m_SliceXAverSpd[j].first[i]);
 			}
@@ -117,7 +118,7 @@ public:
 
 			wr.String("Height");
 			wr.StartArray();
-			for (int j = 0; j < m_SliceXAverSpd.size(); j++)
+			for (int j = 0; j < m_SliceXAverSpd[0].first.size(); j++)
 			{
 				wr.Double(m_SliceXAverSpd[i].second);
 			}
@@ -148,7 +149,7 @@ public:
 		wr.String("Data");
 
 		wr.StartArray();
-		for (int i = 0; i < m_SliceXAverRho[0].first.size(); i++)
+		for (int i = 0; i < m_SliceXAverRho.size(); i++)
 		{
 			wr.StartObject();
 			wr.String("Noise");
@@ -158,7 +159,7 @@ public:
 			wr.StartObject();
 			wr.String("Dencity");
 			wr.StartArray();
-			for (int j = 0; j < m_SliceXAverRho.size(); j++)
+			for (int j = 0; j < m_SliceXAverRho[0].first.size(); j++)
 			{
 				wr.Double(m_SliceXAverRho[j].first[i]);
 			}
@@ -166,7 +167,7 @@ public:
 
 			wr.String("Height");
 			wr.StartArray();
-			for (int j = 0; j < m_SliceXAverRho.size(); j++)
+			for (int j = 0; j < m_SliceXAverRho[0].first.size(); j++)
 			{
 				wr.Double(m_SliceXAverRho[i].second);
 			}
