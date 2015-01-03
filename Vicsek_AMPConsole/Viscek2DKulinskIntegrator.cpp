@@ -6,12 +6,12 @@ bool CViscek2DKulinskIntegrator::RealIntegrate(float noise)
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
 	const int numTiles = numParticles / s_TileSize;
-	const float doubleIntR = m_IntR;
+	const float doubleIntR = m_Stats.InterractionRadius;
 	const float dampingFactor = 0.9995f;
 	const float deltaTime = 0.1;
 
-	const float_2 domainSize = m_DomainSize;
-	const float intR2 = m_IntR*m_IntR;
+	const float_2 domainSize = m_Stats.DomainSize;
+	const float intR2 = m_Stats.InterractionRadius*m_Stats.InterractionRadius;
 	//initialization of random generator;
 
 	tinymt_collection<1> rnd(computeDomain, std::rand());

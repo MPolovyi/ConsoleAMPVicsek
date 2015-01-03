@@ -137,6 +137,7 @@
     <ClInclude Include="Rand\amp_rand_collection.h" />
     <ClInclude Include="Rand\amp_tinymt_rng.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="UniversalIntegrator.h" />
     <ClInclude Include="Vicsek2DChepizhkoIntegrator.h" />
     <ClInclude Include="Vicsek2DIntegrator.h" />
     <ClInclude Include="Vicsek2DMath.h" />
@@ -148,6 +149,7 @@
     <ClCompile Include="Integrator2D.cpp" />
     <ClCompile Include="IntegratorCollection.cpp" />
     <ClCompile Include="MathHelper.cpp" />
+    <ClCompile Include="UniversalIntegrator.cpp" />
     <ClCompile Include="Vicsek2DChepizhkoIntegrator.cpp" />
     <ClCompile Include="Vicsek2DIntegrator.cpp" />
     <ClCompile Include="Vicsek2DMath.cpp" />

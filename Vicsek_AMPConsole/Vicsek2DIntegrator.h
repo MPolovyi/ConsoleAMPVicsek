@@ -9,13 +9,13 @@ class CVicsek2DIntegrator :
 public:
 	CVicsek2DIntegrator() : CIntegrator2D() {};
 
-	CVicsek2DIntegrator(TaskData& td, float_2 domain) : CIntegrator2D(td, domain)
+	CVicsek2DIntegrator(TaskData& td, SimulationStats stats) : CIntegrator2D(td, stats)
 	{
-		PopulateTaskData(td, domain, td.DataNew->size());
+		PopulateTaskData(td, stats.DomainSize, td.DataNew->size());
 	};
 	~CVicsek2DIntegrator() {};
 	
-	virtual void Init(TaskData& td, float_2 domain) override;
+	virtual void Init(TaskData& td, SimulationStats stats) override;
 protected:
 	virtual std::string GetComment() override;
 	virtual bool RealIntegrate(float noise) override;

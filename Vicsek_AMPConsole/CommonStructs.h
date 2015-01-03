@@ -103,7 +103,9 @@ enum BorderCondition
 
 struct SimulationStats
 {
-	float_2 DomainSize;
+	float_2			DomainSize;
 	BorderCondition Borders[4];
-	float ParticleVelocity;
+	float			ParticleVelocity;
+	float			InterractionRadius;
+	int				ParticleCount;
 };

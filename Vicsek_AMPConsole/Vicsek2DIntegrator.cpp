@@ -3,10 +3,10 @@
 #include <fstream>
 
 
-void CVicsek2DIntegrator::Init(TaskData& td, float_2 domain)
+void CVicsek2DIntegrator::Init(TaskData& td, SimulationStats stats)
 {
-	CIntegrator2D::Init(td, domain);
-	PopulateTaskData(td, domain, td.DataNew->size());
+	CIntegrator2D::Init(td, stats);
+	PopulateTaskData(td, stats.DomainSize, td.DataNew->size());
 };
 
 void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int partCount)
@@ -34,9 +34,8 @@ void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int par
 		vel[idx].z = 0;
 
 		//normalize speed
-		vel[idx] *= concurrency::fast_math::rsqrt(MathHelpers::SqrLength(vel[idx]));
+		vel[idx] *= concurrency::fast_math::rsqrt(MathHelpers::SqrLength(vel[idx].xy));
 	});
-
 
 	array_view<float_3, 1> posView = td.DataOld->pos.section(index<1>(begin), extent<1>(end));
 	copy(pos, posView);
@@ -51,16 +50,15 @@ void CVicsek2DIntegrator::PopulateTaskData(TaskData& td, float_2 domain, int par
 
 bool CVicsek2DIntegrator::RealIntegrate(float noise)
 {
-	
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
 	const int numTiles = numParticles / s_TileSize;
-	const float doubleIntR = 2* m_IntR;
+	const float doubleIntR = 2 * m_Stats.InterractionRadius;
 	const float dampingFactor = 0.9995f;
 	const float deltaTime = 0.1;
 
-	const float_2 domainSize = m_DomainSize;
-	const float intR2 = m_IntR*m_IntR;
+	const float_2 domainSize = m_Stats.DomainSize;
+	const float intR2 = m_Stats.InterractionRadius*m_Stats.InterractionRadius;
 	//initialization of random generator;
 	const ParticlesAmp& particlesIn = *m_Task->DataOld;
 	const ParticlesAmp& particlesOut = *m_Task->DataNew;

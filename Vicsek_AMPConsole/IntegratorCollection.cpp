@@ -17,7 +17,11 @@ CIntegratorCollection::CIntegratorCollection(std::vector<TaskData*> tds, float_2
 {
 	for (int i = 0; i < tds.size(); i++)
 	{
-		m_Integrators[i]->Init(*tds[i], domain);
+		SimulationStats s;
+		s.InterractionRadius = 1;
+		s.DomainSize = domain;
+		s.ParticleCount = tds[i]->DataNew->size();
+		m_Integrators[i]->Init(*tds[i], s);
 	}
 }
 

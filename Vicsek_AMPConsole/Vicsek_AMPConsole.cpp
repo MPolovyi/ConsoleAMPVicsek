@@ -19,7 +19,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	accelerator::set_default(accelerator::direct3d_warp);
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunManyIntegrators(100, 100, 2048);
+	RunManyIntegrators(100, 100, 10240);
 	char a;
 	std::cin >> a;
 	return 0;
@@ -290,7 +290,7 @@ void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particl
 
 	std::vector<float> averDispers;
 	std::vector<int> numStepsInIter = { 0 };
-	auto tmpNoise = noise - 10;
+	auto tmpNoise = noise - 1;
 	while (noise > tmpNoise)
 	{
 		bool iterate = true;
@@ -360,8 +360,11 @@ void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particl
 void RunIntegrator(int size)
 {
 	TaskData td(size*size, accelerator(accelerator::default_accelerator).default_view, accelerator(accelerator::default_accelerator));
-
-	CVicsek2DIntegrator Integrator(td, float_2(size, size));
+	SimulationStats s;
+	s.InterractionRadius = 1;
+	s.DomainSize = float_2(size, size);
+	s.ParticleCount = td.DataNew->size();
+	CVicsek2DIntegrator Integrator(td, s);
 
 	float s_Noise = 180;
 
@@ -436,7 +439,11 @@ int StepsToEq(int size)
 	float incAver = 0;
 
 	TaskData td(size*size, accelerator(accelerator::default_accelerator).default_view, accelerator(accelerator::default_accelerator));
-	CVicsek2DIntegrator Integrator(td, float_2(size, size));
+	SimulationStats s;
+	s.InterractionRadius = 1;
+	s.DomainSize = float_2(size, size);
+	s.ParticleCount = td.DataNew->size();
+	CVicsek2DIntegrator Integrator(td, s);
 
 	float noise = 20;
 	std::cout << "Start";

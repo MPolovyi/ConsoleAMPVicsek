@@ -8,9 +8,9 @@ class CVicsek2DChepizhkoIntegrator : public CVicsek2DIntegrator
 public:
 	CVicsek2DChepizhkoIntegrator() : CVicsek2DIntegrator() {};
 
-	CVicsek2DChepizhkoIntegrator(TaskData& td, float_2 domain) : CVicsek2DIntegrator(td, domain)
+	CVicsek2DChepizhkoIntegrator(TaskData& td, SimulationStats s) : CVicsek2DIntegrator(td, s)
 	{
-		PopulateTaskData(td, domain, td.DataNew->size());
+		PopulateTaskData(td, s.DomainSize, td.DataNew->size());
 	};
 	~CVicsek2DChepizhkoIntegrator() {};
 

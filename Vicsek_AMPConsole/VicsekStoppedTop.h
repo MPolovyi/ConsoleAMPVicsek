@@ -5,9 +5,9 @@ class CVicsekStoppedTop : public CVicsek2DIntegrator
 public:
 	CVicsekStoppedTop() : CVicsek2DIntegrator() {};
 
-	CVicsekStoppedTop(TaskData& td, float_2 domain) : CVicsek2DIntegrator(td, domain)
+	CVicsekStoppedTop(TaskData& td, SimulationStats s) : CVicsek2DIntegrator(td, s)
 	{
-		PopulateTaskData(td, domain, td.DataNew->size());
+		PopulateTaskData(td, s.DomainSize, td.DataNew->size());
 	};
 	~CVicsekStoppedTop() {};
 
