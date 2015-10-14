@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "cvmarkersobj.h"
 #include "Viscek2DKulinskIntegrator.h"
-
+#include "rapidjson/"
 
 void RunTestCollectionIntegrator(float domainSize, int collSize, int particleSize)
 {
@@ -168,7 +168,7 @@ void RunCollectionIntegrator(float domainSize, int collSize, int particleSize)
 			}
 			currAverSpd = std::accumulate(averSpd.begin(), averSpd.end(), 0.0f) / averSpd.size();
 			averSpd.clear();
-			if (!(abs(currAverSpd - prevAverSpd) < (1 / sqrParticleCount)))
+			if (abs(currAverSpd - prevAverSpd) >= 1 / sqrParticleCount)
 			{
 				prevAverSpd = currAverSpd;
 				numSteps *= 2;
@@ -347,62 +347,6 @@ int StepsToEq(int size)
 		a++;
 	}
 	return a;
-}
-
-
-int TestReductions()
-{
-	accelerator default_device;
-	std::wcout << "Using device : " << default_device.get_description() << std::endl;
-	if (default_device == accelerator(accelerator::direct3d_ref))
-		std::cout << "WARNING!! Running on very slow emulator! Only use this accelerator for debugging." << std::endl;
-
-	// Make sure that elements can be split into tiles so the number of
-	// tiles in any dimension is less than 65536. Here we we have
-	// element_count == 16777216 so the number of tiles:
-	// tile_count = element_count / tile_size == 32768 < 65536
-	unsigned element_count = 16 * 1024 * 1024;
-
-		std::vector<float_3> source(element_count);
-	for (unsigned i = 0; i < element_count; ++i)
-	{
-		// Element range is limited to avoid overflow or underflow
-		source[i] = float_3((i & 0xf) * 0.01f);
-	}
-
-	// The data is generated in a pattern and its sum can be computed by the following formula
-	const float expected_result = ((element_count / 16) * ((15 * 16) / 2)) * 0.01f;
-
-	std::cout << "Running kernels..." << std::endl;
-
-	const unsigned tile_size = 512;
-
-	typedef float_3(*ReductionFunction)(array<float_3, 1>&, size_t);
-
-	typedef std::pair<ReductionFunction, std::string> user_pair;
-
-	std::vector<user_pair> functions;
-	functions.push_back(user_pair(MathHelpers::CReduction::reduction_simple_1, "reduction_simple_1"));
-	functions.push_back(user_pair(MathHelpers::CReduction::reduction_simple_2, "reduction_simple_2"));
-	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_1<tile_size>, "reduction_tiled_1"));
-	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_2<tile_size>, "reduction_tiled_2"));
-	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_3<tile_size>, "reduction_tiled_3"));
-	functions.push_back(user_pair(MathHelpers::CReduction::reduction_tiled_4<tile_size>, "reduction_tiled_4"));
-	
-	array<float_3, 1> arr_1(element_count, source.begin());
-
-	for (const auto& func : functions)
-	{
-		concurrency::diagnostic::marker_series series;
-		concurrency::diagnostic::span *flagSpan = new concurrency::diagnostic::span(series, 1, _T("Function span"));
-		series.write_flag(_T("Before function."));
-		float_3 result = func.first(arr_1, source.size());
-		series.write_flag(L"After function");
-		delete flagSpan;
-		
-		//std::cout << "SUCCESS: " << func.second << "." << "  " << result.x << std::endl;
-	}
-	return 1;
 }
 
 int _tmain(int argc, _TCHAR* argv[])

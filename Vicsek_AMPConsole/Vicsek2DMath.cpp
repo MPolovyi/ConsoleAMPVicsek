@@ -37,7 +37,7 @@ namespace Vicsek2DMath
 		}
 	}
 
-	void BorderCheckMoovingTopY(float_2& pos, float_2& vel, const float_2 domainSize) restrict(amp)
+	void BorderCheckMovingTopY(float_2 &pos, float_2 &vel, const float_2 domainSize) restrict(amp)
 	{
 		//domainSize.x < pos.x
 		if (concurrency::direct3d::step(domainSize.x, pos.x))

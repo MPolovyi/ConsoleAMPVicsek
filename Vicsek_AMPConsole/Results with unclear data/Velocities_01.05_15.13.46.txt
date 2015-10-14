@@ -1,7 +1,0 @@
-Particle count = 4096 Domain size = 32.00
-
-Velocity = 0.0131415 Noise = 360
-Velocity = 0.0129123 Noise = 359
-Velocity = 0.0133991 Noise = 358
-Velocity = 0.0135045 Noise = 357
-Velocity = 0.0143008 Noise = 356
