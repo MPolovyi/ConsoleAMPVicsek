@@ -22,6 +22,7 @@ namespace MathHelpers
 	void		RotateVector2D(float_3& vect, float ang) restrict(amp);
 	void		RotateVector2D(float_2& vect, float ang) restrict(amp);
 	void		RotateVector(float_3& vect, float_3& ax, float ang) restrict(amp);
+	inline void NormalizeVector(float_4& vect) restrict(amp)
 	void		NormalizeVector(float_3& vect) restrict(amp);
 	void		NormalizeVector(float_2& vect) restrict(amp);
 	float_3		CountAverageVector(std::vector<float_3>& vectors);

@@ -12,6 +12,8 @@
 
 class CSimulationController;
 
+void StartDataFlow(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer);
+
 void WriteData(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, CSimulationController& simContr);
 
 void WriteSimParams(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, CSimulationController&simContr);

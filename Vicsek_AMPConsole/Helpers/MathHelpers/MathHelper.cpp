@@ -63,46 +63,55 @@ inline void RotateVector(float_3& vect, float_3& ax, float ang) restrict(amp)
 		vect = ans;
 	}
 
-inline void NormalizeVector(float_3& vect) restrict(amp)
+	inline void NormalizeVector(float_4& vect) restrict(amp)
+	{
+		auto a = Length(vect);
+		if (a > 0.00001 && (a-1) <= 0.000001)
+		{
+			vect /= concurrency::fast_math::rsqrt(Length(vect));
+		}
+	}
+
+	inline void NormalizeVector(float_3& vect) restrict(amp)
+	{
+		auto a = Length(vect);
+		if (a > 0.00001 && (a-1) <= 0.000001)
+		{
+			vect /= concurrency::fast_math::rsqrt(Length(vect));
+		}
+	}
+
+	inline void NormalizeVector(float_2& vect) restrict(amp)
 	{
 		auto a = SqrLength(vect);
 		if (a > 0.00001)
 		{
-			vect *= concurrency::fast_math::rsqrt(SqrLength(vect));
+			vect /= concurrency::fast_math::rsqrt(Length(vect));
 		}
 	}
 
-inline void NormalizeVector(float_2& vect) restrict(amp)
-	{
-		auto a = SqrLength(vect);
-		if (a > 0.00001)
-		{
-			vect *= concurrency::fast_math::rsqrt(SqrLength(vect));
-		}
-	}
-
-inline const float SqrLength(const float_4& r) restrict(amp, cpu)
+	inline const float SqrLength(const float_4& r) restrict(amp, cpu)
 	{
 		return r.x * r.x + r.y * r.y + r.z * r.z + r.w * r.w;
 	}
-inline const float SqrLength(const float_3& r) restrict(amp, cpu)
+	inline const float SqrLength(const float_3& r) restrict(amp, cpu)
 	{
 		return r.x * r.x + r.y * r.y + r.z * r.z;
 	}
-inline const float SqrLength(const float_2& r) restrict(amp, cpu)
+	inline const float SqrLength(const float_2& r) restrict(amp, cpu)
 	{
 		return r.x * r.x + r.y * r.y;
 	}
 
-inline const float Length(const float_4& r) restrict(amp, cpu)
+	inline const float Length(const float_4& r) restrict(amp, cpu)
 	{
 		return fast_math::sqrt(SqrLength(r));
 	}
-inline const float Length(const float_3& r) restrict(amp, cpu)
+	inline const float Length(const float_3& r) restrict(amp, cpu)
 	{
 		return fast_math::sqrt(SqrLength(r));
 	}
-inline const float Length(const float_2& r) restrict(amp, cpu)
+	inline const float Length(const float_2& r) restrict(amp, cpu)
 	{
 		return fast_math::sqrt(SqrLength(r));
 	}
