@@ -1,24 +1,23 @@
 #include "MathHelper.h"
-#include "cvmarkersobj.h"
 
 namespace MathHelpers
 {
-	inline float_3 CrossProduct(float_3 A, float_3 B) restrict(amp)
+	float_3 CrossProduct(float_3 A, float_3 B) restrict(amp)
 	{
 		return float_3(A.y * B.z - A.z * B.y, A.z*B.x - A.x * B.z, A.x*B.y - A.y*B.x);
 	}
 
-	inline float DotProduct(float_3 A, float_3 B) restrict(amp)
+	float DotProduct(float_3 A, float_3 B) restrict(amp)
 	{
 		return (A.x*B.x + A.y*B.y + A.z*B.z);
 	}
 
-	inline void RandRotation2D(float_3& vel, float_3 rndRot, int noize) restrict(amp)
+	void RandRotation2D(float_3& vel, float_3 rndRot, int noize) restrict(amp)
 	{
 		RotateVector2D(vel, noize);
 	}
 
-inline void RotateVector2D(float_3& vect, float ang) restrict(amp)
+	void RotateVector2D(float_3& vect, float ang) restrict(amp)
 	{
 		ang = concurrency::direct3d::radians(ang);
 		float_3 rot(
@@ -29,7 +28,7 @@ inline void RotateVector2D(float_3& vect, float ang) restrict(amp)
 		vect = rot;
 	}
 
-inline void RotateVector2D(float_2& vect, float ang) restrict(amp)
+	void RotateVector2D(float_2& vect, float ang) restrict(amp)
 	{
 		ang = concurrency::direct3d::radians(ang);
 		float_2 rot(
@@ -38,7 +37,7 @@ inline void RotateVector2D(float_2& vect, float ang) restrict(amp)
 		vect = rot;
 	}
 
-inline void RotateVector(float_3& vect, float_3& ax, float ang) restrict(amp)
+	void RotateVector(float_3& vect, float_3& ax, float ang) restrict(amp)
 	{
 		ang = concurrency::direct3d::radians(ang);
 
@@ -63,7 +62,7 @@ inline void RotateVector(float_3& vect, float_3& ax, float ang) restrict(amp)
 		vect = ans;
 	}
 
-	inline void NormalizeVector(float_4& vect) restrict(amp)
+	void NormalizeVector(float_4& vect) restrict(amp)
 	{
 		auto a = Length(vect);
 		if (a > 0.00001 && (a-1) <= 0.000001)
@@ -72,7 +71,7 @@ inline void RotateVector(float_3& vect, float_3& ax, float ang) restrict(amp)
 		}
 	}
 
-	inline void NormalizeVector(float_3& vect) restrict(amp)
+	void NormalizeVector(float_3& vect) restrict(amp)
 	{
 		auto a = Length(vect);
 		if (a > 0.00001 && (a-1) <= 0.000001)
@@ -81,7 +80,7 @@ inline void RotateVector(float_3& vect, float_3& ax, float ang) restrict(amp)
 		}
 	}
 
-	inline void NormalizeVector(float_2& vect) restrict(amp)
+	void NormalizeVector(float_2& vect) restrict(amp)
 	{
 		auto a = SqrLength(vect);
 		if (a > 0.00001)
@@ -90,28 +89,28 @@ inline void RotateVector(float_3& vect, float_3& ax, float ang) restrict(amp)
 		}
 	}
 
-	inline const float SqrLength(const float_4& r) restrict(amp, cpu)
+	float SqrLength(const float_4& r) restrict(amp, cpu)
 	{
 		return r.x * r.x + r.y * r.y + r.z * r.z + r.w * r.w;
 	}
-	inline const float SqrLength(const float_3& r) restrict(amp, cpu)
+	float SqrLength(const float_3& r) restrict(amp, cpu)
 	{
 		return r.x * r.x + r.y * r.y + r.z * r.z;
 	}
-	inline const float SqrLength(const float_2& r) restrict(amp, cpu)
+	float SqrLength(const float_2& r) restrict(amp, cpu)
 	{
 		return r.x * r.x + r.y * r.y;
 	}
 
-	inline const float Length(const float_4& r) restrict(amp, cpu)
+	float Length(const float_4& r) restrict(amp, cpu)
 	{
 		return fast_math::sqrt(SqrLength(r));
 	}
-	inline const float Length(const float_3& r) restrict(amp, cpu)
+	float Length(const float_3& r) restrict(amp, cpu)
 	{
 		return fast_math::sqrt(SqrLength(r));
 	}
-	inline const float Length(const float_2& r) restrict(amp, cpu)
+	float Length(const float_2& r) restrict(amp, cpu)
 	{
 		return fast_math::sqrt(SqrLength(r));
 	}

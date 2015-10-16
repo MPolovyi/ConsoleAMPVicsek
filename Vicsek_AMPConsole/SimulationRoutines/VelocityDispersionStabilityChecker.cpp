@@ -5,6 +5,7 @@
 #include "VelocityDispersionStabilityChecker.h"
 #include "Integrator2D.h"
 #include <math.h>
+#include "../Helpers/DataHelpers/DataStructures.h"
 
 bool VelocityDispersionStabilityChecker::Check(CIntegrator2D &integrator, SimulationData &data,
                                                StabilityCheckData &stData) {

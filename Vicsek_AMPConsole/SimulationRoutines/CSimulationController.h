@@ -61,14 +61,17 @@ protected:
     ~CSimulationController(){
         delete m_Data;
         delete m_Integrator;
-        if (m_stCheckerCount == 1)
-            delete m_StabilityChecker;
-        else if (m_stCheckerCount > 1)
+		if (m_stCheckerCount == 1)
+			delete m_StabilityChecker;
+		else if (m_stCheckerCount > 1)
+			for (int i = 0; i < m_stCheckerCount; i++)
+				delete m_StabilityChecker[i];
+
             delete [] m_StabilityChecker;
     }
     TaskData2D* m_Data;
     CIntegrator2D* m_Integrator;
-    StabilityChecker* m_StabilityChecker;
+    StabilityChecker** m_StabilityChecker;
     SimulationData* m_SimData;
 
     int m_stCheckerCount = 1;

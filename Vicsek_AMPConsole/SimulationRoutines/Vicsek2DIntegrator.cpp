@@ -63,8 +63,8 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 	const float_2 domainSize = m_DomainSize;
 	const float intR = m_IntR*m_IntR;
 	//initialization of random generator;
-	const ParticlesAmp& particlesIn = *m_Task->DataOld;
-	const ParticlesAmp& particlesOut = *m_Task->DataNew;
+	const ParticlesAmp2D& particlesIn = *m_Task->DataOld;
+	const ParticlesAmp2D& particlesOut = *m_Task->DataNew;
 	const tinymt_collection<1>& rnd = this->m_Rnd;
 
 	concurrency::parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
@@ -75,8 +75,8 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 		const int idxLocal = ti.local[0];
 		int idxGlobal = ti.global[0];
 
-		float_2 pos = particlesIn.pos[idxGlobal].xy;
-		float_2 vel = particlesIn.vel[idxGlobal].xy;
+		float_2 pos = particlesIn.pos[idxGlobal];
+		float_2 vel = particlesIn.vel[idxGlobal];
 		float_2 acc = 0.0f;
 
 		// Update current Particle using all other particles
@@ -94,10 +94,10 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 			// 4 is the sweet spot - increasing further adds no perf improvement while decreasing reduces perf
 			for (int j = 0; j < s_TileSize;)
 			{
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
 			}
 
 			// Wait for all threads to finish reading tile memory before allowing a new tile to start.
@@ -113,8 +113,8 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 		
 		Vicsek2DMath::BorderCheckTransitional(pos, vel, domainSize);
 
-		particlesOut.pos[idxGlobal].xy = pos;
-		particlesOut.vel[idxGlobal].xy = vel;
+		particlesOut.pos[idxGlobal] = pos;
+		particlesOut.vel[idxGlobal] = vel;
 	});
 	return true;
 }

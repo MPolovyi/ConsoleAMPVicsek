@@ -49,13 +49,13 @@ inline bool check_tiled_precondition(unsigned tile_size, unsigned element_count)
 //----------------------------------------------------------------------------
 // This is a simple sequential implementation.
 //----------------------------------------------------------------------------
-float CReduction::sequential_reduction(const std::vector<float>& source)
+float MathHelpers::CReduction::sequential_reduction(const std::vector<float>& source)
 {
 	return std::accumulate(source.begin(), source.end(), 0.f);
 }
 
 
-float CReduction::reduction_simple_1(array<float, 1>& a, size_t element_count)
+float  MathHelpers::CReduction::reduction_simple_1(array<float, 1>& a, size_t element_count)
 {
 	// Takes care of odd input elements – we could completely avoid tail sum
 	// if we would require source to have even number of elements.
@@ -89,7 +89,7 @@ float CReduction::reduction_simple_1(array<float, 1>& a, size_t element_count)
 // parallel_for_each. Multiple kernel launches are required to synchronize
 // memory access among threads in separate tiles.
 //----------------------------------------------------------------------------
-float CReduction::reduction_simple_1(const std::vector<float>& source)
+float  MathHelpers::CReduction::reduction_simple_1(const std::vector<float>& source)
 {
 	assert(source.size() <= UINT_MAX);
 	unsigned element_count = static_cast<unsigned>(source.size());
@@ -107,7 +107,7 @@ float CReduction::reduction_simple_1(const std::vector<float>& source)
 }
 
 
-float CReduction::reduction_simple_2(array<float, 1>& a, size_t element_count)
+float  MathHelpers::CReduction::reduction_simple_2(array<float, 1>& a, size_t element_count)
 {
 	const unsigned window_width = 8;
 	assert(element_count != 0); // Cannot reduce an empty sequence.
@@ -157,7 +157,7 @@ float CReduction::reduction_simple_2(array<float, 1>& a, size_t element_count)
 // a simple parallel_for_each. Each thread is reducing more elements,
 // decreasing the total number of memory accesses.
 //----------------------------------------------------------------------------
-float CReduction::reduction_simple_2(const std::vector<float>& source)
+float  MathHelpers::CReduction::reduction_simple_2(const std::vector<float>& source)
 {
 	const unsigned window_width = 8;
 	assert(source.size() <= UINT_MAX);
@@ -175,7 +175,7 @@ float CReduction::reduction_simple_2(const std::vector<float>& source)
 // the shared memory.
 //----------------------------------------------------------------------------
 template <unsigned _tile_size>
-float CReduction::reduction_tiled_1(array<float, 1>& arr_1, size_t element_count)
+float  MathHelpers::CReduction::reduction_tiled_1(array<float, 1>& arr_1, size_t element_count)
 {
 	static_assert(IS_POWER_OF_2(_tile_size), "Tile size must be a positive integer power of two!");
 
@@ -238,7 +238,7 @@ float CReduction::reduction_tiled_1(array<float, 1>& arr_1, size_t element_count
 
 
 template <unsigned _tile_size>
-float CReduction::reduction_tiled_1(const std::vector<float>& source)
+float  MathHelpers::CReduction::reduction_tiled_1(const std::vector<float>& source)
 {
 	unsigned element_count = static_cast<unsigned>(source.size());
 
@@ -316,7 +316,7 @@ float CReduction::reduction_tiled_2(array<float, 1>& arr_1, size_t element_count
 }
 
 template <unsigned _tile_size>
-float CReduction::reduction_tiled_2(const std::vector<float>& source)
+float  MathHelpers::CReduction::reduction_tiled_2(const std::vector<float>& source)
 {
 	assert(source.size() <= UINT_MAX);
 	unsigned element_count = static_cast<unsigned>(source.size());
@@ -331,7 +331,7 @@ float CReduction::reduction_tiled_2(const std::vector<float>& source)
 // This is a version without bank conflicts issue.
 //----------------------------------------------------------------------------
 template <unsigned _tile_size>
-float CReduction::reduction_tiled_3(array<float, 1>& arr_1, size_t element_count)
+float  MathHelpers::CReduction::reduction_tiled_3(array<float, 1>& arr_1, size_t element_count)
 {
 	static_assert(IS_POWER_OF_2(_tile_size), "Tile size must be a positive integer power of two!");
 
@@ -394,7 +394,7 @@ float CReduction::reduction_tiled_3(array<float, 1>& arr_1, size_t element_count
 }
 
 template <unsigned _tile_size>
-float CReduction::reduction_tiled_3(const std::vector<float>& source)
+float  MathHelpers::CReduction::reduction_tiled_3(const std::vector<float>& source)
 {
 	assert(source.size() <= UINT_MAX);
 	unsigned element_count = static_cast<unsigned>(source.size());
@@ -411,7 +411,7 @@ float CReduction::reduction_tiled_3(const std::vector<float>& source)
 // iteration.
 //----------------------------------------------------------------------------
 template <unsigned _tile_size>
-float CReduction::reduction_tiled_4(array<float, 1>& arr_1, size_t element_count)
+float  MathHelpers::CReduction::reduction_tiled_4(array<float, 1>& arr_1, size_t element_count)
 {
 	static_assert(IS_POWER_OF_2(_tile_size), "Tile size must be a positive integer power of two!");
 
@@ -479,7 +479,7 @@ float CReduction::reduction_tiled_4(array<float, 1>& arr_1, size_t element_count
 }
 
 template <unsigned _tile_size>
-float CReduction::reduction_tiled_4(const std::vector<float>& source)
+float  MathHelpers::CReduction::reduction_tiled_4(const std::vector<float>& source)
 {
 	assert(source.size() <= UINT_MAX);
 	unsigned element_count = static_cast<unsigned>(source.size());
@@ -496,7 +496,7 @@ float CReduction::reduction_tiled_4(const std::vector<float>& source)
 // by combining sequential and parallel reduction.
 //----------------------------------------------------------------------------
 template <unsigned _tile_size, unsigned _tile_count>
-float CReduction::reduction_cascade(const std::vector<float>& source)
+float  MathHelpers::CReduction::reduction_cascade(const std::vector<float>& source)
 {
 	static_assert(_tile_count > 0, "Tile count must be positive!");
 	static_assert(IS_POWER_OF_2(_tile_size), "Tile size must be a positive integer power of two!");
@@ -569,7 +569,7 @@ float CReduction::reduction_cascade(const std::vector<float>& source)
 // Helper function comparing floating point numbers within a given relative
 // difference.
 //----------------------------------------------------------------------------
-bool CReduction::fp_equal(float a, float b, float max_rel_diff)
+bool  MathHelpers::CReduction::fp_equal(float a, float b, float max_rel_diff)
 {
 	float diff = std::fabs(a - b);
 	a = std::fabs(a);

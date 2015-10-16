@@ -23,7 +23,6 @@ public:
 		m_Task = &td;
 		m_DomainSize = domain;
 	};
-	std::string WriteComment();
 
 	void IntegrateFor(int steps, float noise);
 	void IntegrateWithAveragingFor(int steps, float noise);
@@ -36,7 +35,6 @@ public:
 	int Steps;
 protected:
 	TaskData2D* m_Task;
-	virtual std::string GetComment() { return ""; };
 
 	virtual bool RealIntegrate(float noise)
 	{

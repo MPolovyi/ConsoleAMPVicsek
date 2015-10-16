@@ -1,4 +1,4 @@
-
+#pragma once
 #include <amp.h>
 #include <amprt.h>
 #include <amp_graphics.h>

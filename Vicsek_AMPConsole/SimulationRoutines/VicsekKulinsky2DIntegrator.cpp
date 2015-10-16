@@ -17,19 +17,19 @@ bool CVicsekKulinsky2DIntegrator::RealIntegrate(float noise)
 
 	tinymt_collection<1> rnd(computeDomain, std::rand());
 
-	const ParticlesAmp& particlesIn = *m_Task->DataOld;
-	const ParticlesAmp& particlesOut = *m_Task->DataNew;
+	const ParticlesAmp2D& particlesIn = *m_Task->DataOld;
+	const ParticlesAmp2D& particlesOut = *m_Task->DataNew;
 
 	concurrency::parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
 
-		tile_static float_3 tilePosMemory[s_TileSize];
-		tile_static float_3 tileVelMemory[s_TileSize];
+		tile_static float_2 tilePosMemory[s_TileSize];
+		tile_static float_2 tileVelMemory[s_TileSize];
 
 		const int idxLocal = ti.local[0];
 		int idxGlobal = ti.global[0];
 
-		float_2 pos = particlesIn.pos[idxGlobal].xy;
-		float_2 vel = particlesIn.vel[idxGlobal].xy;
+		float_2 pos = particlesIn.pos[idxGlobal];
+		float_2 vel = particlesIn.vel[idxGlobal];
 		float_2 acc = 0.0f;
 
 		// Update current Particle using all other particles
@@ -47,10 +47,10 @@ bool CVicsekKulinsky2DIntegrator::RealIntegrate(float noise)
 			// 4 is the sweet spot - increasing further adds no perf improvement while decreasing reduces perf
 			for (int j = 0; j < s_TileSize;)
 			{
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++].xy, pos, tilePosMemory[j++].xy, softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
 			}
 
 			// Wait for all threads to finish reading tile memory before allowing a new tile to start.
@@ -63,10 +63,10 @@ bool CVicsekKulinsky2DIntegrator::RealIntegrate(float noise)
 		MathHelpers::NormalizeVector(vel);
 
 		pos += vel * deltaTime;
-		Vicsek2DMath::BorderCheckMoovingTopY(pos, vel, domainSize);
+		Vicsek2DMath::BorderCheckMovingTopY(pos, vel, domainSize);
 
-		particlesOut.pos[idxGlobal].xy = pos;
-		particlesOut.vel[idxGlobal].xy = vel;
+		particlesOut.pos[idxGlobal] = pos;
+		particlesOut.vel[idxGlobal] = vel;
 	});
 	return true;
 }

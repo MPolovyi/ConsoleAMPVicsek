@@ -17,7 +17,7 @@ std::vector<float_2> CIntegrator2D::GetAverVelocityDistributionY(int sliceCount)
 	const float_2 domainSize = m_DomainSize;
 	//initialization of random generator;
 
-	const ParticlesAmp& particlesIn = *m_Task->DataOld;
+	const ParticlesAmp2D& particlesIn = *m_Task->DataOld;
 
 	parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
 
@@ -51,7 +51,7 @@ std::vector<float> CIntegrator2D::GetAverDensityDistributionY(int splits)
 	const float_2 domainSize = m_DomainSize;
 	//initialization of random generator;
 
-	const ParticlesAmp& particlesIn = *m_Task->DataOld;
+	const ParticlesAmp2D& particlesIn = *m_Task->DataOld;
 
 	parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
 
@@ -70,13 +70,6 @@ std::vector<float> CIntegrator2D::GetAverDensityDistributionY(int splits)
 	return dens;
 }
 
-std::string CIntegrator2D::WriteComment()
-{
-	std::ostringstream oss;
-	oss << "; Particle count = " << m_Task->DataNew->size() << "; Domain size = " << m_DomainSize.x << " " << GetComment();
-	return oss.str();
-}
-
 float_2 CIntegrator2D::GetAverageVelocity()
 {
 	return MathHelpers::CountAverageVector(m_Task->DataOld->vel, m_Task->DataOld->size()).xy;
@@ -91,11 +84,23 @@ void CIntegrator2D::IntegrateFor(int steps, float noise) {
 void CIntegrator2D::IntegrateWithAveragingFor(int steps, float noise) {
 	for(int i=0; i < steps; i++){
 		RealIntegrate(noise);
-		auto tmp = GetAverVelocityDistributionY(10);
+		auto tmpVelocity = GetAverVelocityDistributionY(10);
+		auto tmpDensity = GetAverDensityDistributionY(10);
+		if (AverVelocityModuleDistribution.size() == 0)
+			for (int j = 0; j < tmpVelocity.size(); j++)
+				AverVelocityModuleDistribution.push_back(0);
 
-		for (int j = 0; j < tmp.size(); j++){
-			AverVelocityModuleDistribution[j] += MathHelpers::Length(tmp[j]);
-		}
+
+		if (AverDensityDistribution.size() == 0)
+			for (int j = 0; j < tmpDensity.size(); j++)
+				AverDensityDistribution.push_back(0);
+		
+		for (int j = 0; j < tmpVelocity.size(); j++)
+			AverVelocityModuleDistribution[j] += MathHelpers::Length(tmpVelocity[j]);
+		
+		for (int j = 0; j < tmpDensity.size(); j++)
+			AverDensityDistribution[j] += tmpDensity[j];
+
 	}
     for (int i = 0; i < AverVelocityModuleDistribution.size(); i++){
         AverVelocityModuleDistribution[i] /= steps;

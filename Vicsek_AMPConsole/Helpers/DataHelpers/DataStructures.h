@@ -31,7 +31,8 @@ struct SimulationData{
     int Slices;
 
     SimulationData(std::string fName){
-        FILE *fp = fopen(fName.c_str(), "r"); // non-Windows use "r"
+        FILE *fp = fopen(fName.c_str(), "rb"); // non-Windows use "r"
+		perror("Error");
         char readBuffer[65536];
         rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
         rapidjson::Document document;

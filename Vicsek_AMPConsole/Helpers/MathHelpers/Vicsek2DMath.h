@@ -16,5 +16,5 @@ namespace Vicsek2DMath
 
 	void BorderCheckTransitional(float_2& pos, float_2& vel, const float_2 domainSize) restrict(amp);
 
-	void BorderCheckMoovingTopY(float_2& pos, float_2& vel, const float_2 domainSize) restrict(amp);
+	void BorderCheckMovingTopY(float_2& pos, float_2& vel, const float_2 domainSize) restrict(amp);
 }

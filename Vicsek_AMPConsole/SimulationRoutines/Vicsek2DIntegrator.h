@@ -16,7 +16,6 @@ public:
 	
 	virtual void Init(TaskData2D& td, float_2 domain) override;
 protected:
-	virtual std::string GetComment() override;
 	virtual bool RealIntegrate(float noise) override;
 	virtual void PopulateTaskData(TaskData2D& td, float_2 domain, int partCount);
 

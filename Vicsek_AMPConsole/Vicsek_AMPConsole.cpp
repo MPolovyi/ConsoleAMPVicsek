@@ -25,7 +25,7 @@ void Simulate(std::string fname){
     CSimulationController::InitAndRun(writer, data);
 }
 
-int int main(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
