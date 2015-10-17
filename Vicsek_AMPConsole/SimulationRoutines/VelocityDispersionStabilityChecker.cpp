@@ -11,9 +11,9 @@ bool VelocityDispersionStabilityChecker::Check(CIntegrator2D &integrator, Simula
                                                StabilityCheckData &stData) {
     int testSteps = (int) round(data.FirstTestSteps*0.05);
 
-    integrator.IntegrateWithAveragingFor(testSteps, stData.Noise);
+    integrator.IntegrateWithAveragingFor(testSteps, stData.Noise, data.Slices);
     old_velocity_distribution = integrator.AverVelocityModuleDistribution;
-    integrator.IntegrateWithAveragingFor(testSteps, stData.Noise);
+    integrator.IntegrateWithAveragingFor(testSteps, stData.Noise, data.Slices);
     velocity_distribution = integrator.AverVelocityModuleDistribution;
 
     float aver_old = 0;
