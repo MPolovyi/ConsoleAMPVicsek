@@ -68,6 +68,24 @@ std::vector<float> CIntegratorCollection::GetAnsambleAveragedVeclocOnSlicesX(int
 	return ret;
 }
 
+std::vector<float> CIntegratorCollection::GetAnsambleAveragedXCompVeclocOnSlicesX(int splits)
+{
+	std::vector<float> ret(splits);
+	std::vector<std::vector<float_2>> tmp = GetAverVeclocOnSlicesX(splits);
+
+	for (int i = 0; i < splits; i++)
+	{
+		auto si = tmp.size();
+		for (int j = 0; j < si; j++)
+		{
+			ret[i] += tmp[j][i].x;
+		}
+		ret[i] /= si;
+	}
+
+	return ret;
+}
+
 std::vector<std::vector<float>> CIntegratorCollection::GetAverDencityOnSlicesX(int splits)
 {
 	std::vector<std::vector<float>> ret(m_Integrators.size());

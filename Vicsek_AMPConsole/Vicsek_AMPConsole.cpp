@@ -11,7 +11,7 @@ void RunIntegrator(int size);
 int StepsToEq(int size);
 int TestReductions();
 
-void RunManyIntegrators(float domainSize, int collSize, int particleSize);
+void RunManyIntegrators(float domainSize, int particleSize);
 void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particleSize, float noise);
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -19,17 +19,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	accelerator::set_default(accelerator::direct3d_warp);
 	std::wcout << accelerator(accelerator::default_accelerator).description << std::endl;
 
-	RunManyIntegrators(100, 100, 10240);
+	RunManyIntegrators(45, 4096);
 	char a;
 	std::cin >> a;
 	return 0;
 }
 
-void RunManyIntegrators(float domainSize, int collSize, int particleSize)
+void RunManyIntegrators(float domainSize, int particleSize)
 {
 	for (size_t i = 0; i < 100; i++)
 	{
-		RunCollectionIntegratorOneNoise(domainSize, 1, particleSize, 156);
+		RunCollectionIntegratorOneNoise(domainSize, 1, particleSize, 300);
 		std::cout << std::endl << "INTEGRATING "<<i<<" CONFIGURATION FINISHED, START NEXT" << std::endl;
 	}
 }
@@ -272,6 +272,7 @@ void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particl
 	char buffer2[256];
 	char buffer3[256];
 	char buffer4[256];
+	char buffer5[256];
 	std::string bufferComment = "";
 	time(&rawtime);
 	localtime_s(&timeinfo, &rawtime);
@@ -279,7 +280,7 @@ void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particl
 	strftime(buffer2, 256, "SplitsVelocities_%d.%m_%H.%M.%S.txt", &timeinfo);
 	strftime(buffer3, 256, "SplitsDensities_%d.%m_%H.%M.%S.txt", &timeinfo);
 	strftime(buffer4, 256, "ParticleData_%d.%m_%H.%M.%S.txt", &timeinfo);
-
+	strftime(buffer5, 256, "SplitsVelocitiesXcomp_%d.%m_%H.%M.%S.txt", &timeinfo);
 
 	IntegratorCollection.WriteComment(bufferComment);
 
@@ -291,7 +292,7 @@ void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particl
 	std::vector<float> averDispers;
 	std::vector<int> numStepsInIter = { 0 };
 	auto tmpNoise = noise - 1;
-	while (noise > tmpNoise)
+	while (noise >= 220)
 	{
 		bool iterate = true;
 		float prevAverSpd = 0;
@@ -346,13 +347,14 @@ void RunCollectionIntegratorOneNoise(float domainSize, int collSize, int particl
 		dataCollection.AddAverSpeedOnSlices(IntegratorCollection.GetAnsambleAveragedVeclocOnSlicesX(15), noise);
 		IntegratorCollection.Integrate(noise);
 		dataCollection.AddAverRhoOnSlices(IntegratorCollection.GetAnsambleAveragedDencityOnSlicesX(15), noise);
+		dataCollection.AddAverSpeedXCompOnSlices(IntegratorCollection.GetAnsambleAveragedXCompVeclocOnSlicesX(15), noise);
 		IntegratorCollection.Integrate(noise);
 		IntegratorCollection.WriteParticleDataOnDisc(buffer4);
 		IntegratorCollection.Integrate(noise);
 
-		noise -= 1;
+		noise -= 10;
 	}
-	dataCollection.WriteOnDisk(buffer, buffer2, buffer3, IntegratorCollection.WriteComment(bufferComment));
+	dataCollection.WriteOnDisk(buffer, buffer2, buffer3, buffer5, IntegratorCollection.WriteComment(bufferComment));
 	std::cout << "Computation finished." << std::endl;
 	std::wcout << L"AverageSteps: " << std::accumulate(numStepsInIter.begin(), numStepsInIter.end(), 0.0f) / numStepsInIter.size();
 }

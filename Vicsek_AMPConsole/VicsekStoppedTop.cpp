@@ -63,7 +63,7 @@ bool CVicsekStoppedTop::RealIntegrate(float noise)
 
 		pos += vel * deltaTime;
 
-		Vicsek2DMath::BorderCheckStoppedBottomMovingTopY(pos, vel, domainSize, rnd[ti.local].next_single(), rnd[ti.local].next_single());
+		Vicsek2DMath::BorderCheckMoveTopMoveBottom(pos, vel, domainSize, rnd[ti.local].next_single(), rnd[ti.local].next_single());
 
 		particlesOut.pos[idxGlobal].xy = pos;
 		particlesOut.vel[idxGlobal].xy = vel;
@@ -73,5 +73,5 @@ bool CVicsekStoppedTop::RealIntegrate(float noise)
 
 std::string CVicsekStoppedTop::GetComment()
 {
-	return "Top moves 1, Bottom slovers particles in x direction";
+	return "Top moves 1, Bottom moves -1";
 }

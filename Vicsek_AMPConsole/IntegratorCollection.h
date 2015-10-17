@@ -20,6 +20,8 @@ public:
 	float GetAnsambleAveragedABSVeloc();
 	std::vector<float_2> GetAverageVeloc();
 
+	std::vector<float> GetAnsambleAveragedXCompVeclocOnSlicesX(int splits);
+
 	std::vector<float> GetAnsambleAveragedVeclocOnSlicesX(int splits);
 	std::vector<std::vector<float_2>> GetAverVeclocOnSlicesX(int splits);
 

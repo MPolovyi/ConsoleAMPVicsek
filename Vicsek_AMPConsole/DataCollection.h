@@ -15,7 +15,7 @@ protected:
 	vector<pair<float, float>> m_AverSpd;
 	vector<pair<vector<float>, float>> m_SliceXAverSpd;
 	vector<pair<vector<float>, float>> m_SliceXAverRho;
-	
+	vector<pair<vector<float>, float>> m_SliceXAverSpdXComp;
 	vector<pair<vector<float>, int>> m_MultyCollData;
 
 public:
@@ -54,6 +54,11 @@ public:
 	{
 		m_SliceXAverRho.push_back(std::make_pair(SliceAverRho, noise));
 	};
+
+	void AddAverSpeedXCompOnSlices(vector<float> SlicesAverSpdXComp, float noise)
+	{
+		m_SliceXAverSpdXComp.push_back(std::make_pair(SlicesAverSpdXComp, noise));
+	}
 
 	void WriteOnDisk(char* SpeedFileName, char* SlicesFileName, std::string Comment)
 	{
@@ -112,7 +117,7 @@ public:
 			wr.StartArray();
 			for (int j = 0; j < m_SliceXAverSpd[0].first.size(); j++)
 			{
-				wr.Double(m_SliceXAverSpd[j].first[i]);
+				wr.Double(m_SliceXAverSpd[i].first[j]);
 			}
 			wr.EndArray();
 
@@ -154,14 +159,14 @@ public:
 			wr.StartObject();
 			wr.String("Noise");
 			wr.Double(m_SliceXAverSpd[i].second);
-			wr.String("Dencity_vs_Height");
+			wr.String("Velocity_vs_Height");
 
 			wr.StartObject();
-			wr.String("Dencity");
+			wr.String("Velocity");
 			wr.StartArray();
 			for (int j = 0; j < m_SliceXAverRho[0].first.size(); j++)
 			{
-				wr.Double(m_SliceXAverRho[j].first[i]);
+				wr.Double(m_SliceXAverRho[i].first[j]);
 			}
 			wr.EndArray();
 
@@ -182,6 +187,55 @@ public:
 		file << s.GetString();
 		file.close();
 	};
+
+	void WriteOnDisk(char* SpeedFileName, char* SlicesFileName, char* SlicesRhoFilename, char* SlicesVelXcompFilename, std::string Comment)
+	{
+		WriteOnDisk(SpeedFileName, SlicesFileName, SlicesRhoFilename, Comment);
+
+		std::fstream file;
+		rapidjson::StringBuffer s;
+		rapidjson::PrettyWriter<rapidjson::StringBuffer> wr(s);
+
+		wr.StartObject();
+
+		wr.String("Comment");
+		wr.String(Comment.c_str());
+		wr.String("Data");
+
+		wr.StartArray();
+		for (int i = 0; i < m_SliceXAverSpdXComp.size(); i++)
+		{
+			wr.StartObject();
+			wr.String("Noise");
+			wr.Double(m_SliceXAverSpd[i].second);
+			wr.String("Dencity_vs_Height");
+
+			wr.StartObject();
+			wr.String("Dencity");
+			wr.StartArray();
+			for (int j = 0; j < m_SliceXAverSpdXComp[0].first.size(); j++)
+			{
+				wr.Double(m_SliceXAverSpdXComp[i].first[j]);
+			}
+			wr.EndArray();
+
+			wr.String("Height");
+			wr.StartArray();
+			for (int j = 0; j < m_SliceXAverSpdXComp[0].first.size(); j++)
+			{
+				wr.Double(m_SliceXAverSpdXComp[i].second);
+			}
+			wr.EndArray();
+			wr.EndObject();
+			wr.EndObject();
+		}
+		wr.EndArray();
+		wr.EndObject();
+
+		file.open(SlicesVelXcompFilename, std::ios::app);
+		file << s.GetString();
+		file.close();
+	}
 
 	CDataCollection() {};
 	~CDataCollection() {};
