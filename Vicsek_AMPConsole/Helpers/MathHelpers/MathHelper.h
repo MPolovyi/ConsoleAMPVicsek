@@ -34,4 +34,5 @@ namespace MathHelpers
 	float		CountAverageVector(std::vector<float>& vectors);
 	float		CountAverageVector(array<float>& src, uint count);
 	float		AccumulateValue(array<float>& src, uint count);
+	float		Dispercion(std::vector<float>& src);
 }
