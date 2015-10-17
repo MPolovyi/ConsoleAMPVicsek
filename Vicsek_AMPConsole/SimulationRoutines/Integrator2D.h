@@ -9,6 +9,7 @@ public:
 	CIntegrator2D(TaskData2D& td, float_2 domain) {
 		m_Task = &td;
 		m_DomainSize = domain;
+		Steps = 0;
 	};
 
 	~CIntegrator2D() {};

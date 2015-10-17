@@ -38,21 +38,16 @@ void CVicsek2DIntegrator::PopulateTaskData(TaskData2D& td, float_2 domain, int p
 		MathHelpers::NormalizeVector(vel[idx]);
 	});
 
-
 	array_view<float_2, 1> posView = td.DataOld->pos.section(index<1>(begin), extent<1>(end));
 	copy(pos, posView);
 	array_view<float_2, 1> velView = td.DataOld->vel.section(index<1>(begin), extent<1>(end));
 	copy(vel, velView);
 
 	auto particlesOut = *td.DataOld;
-
-	//Swap becouse we swap data before fist Integration.
-	td.Swap();
 }
 
 bool CVicsek2DIntegrator::RealIntegrate(float noise)
 {
-	
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
 	const int numTiles = numParticles / s_TileSize;
@@ -118,5 +113,8 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 		particlesOut.pos[idxGlobal] = pos;
 		particlesOut.vel[idxGlobal] = vel;
 	});
+
+	m_Task->Swap();
+
 	return true;
 }

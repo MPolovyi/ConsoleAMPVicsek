@@ -18,20 +18,14 @@ std::vector<float_2> CIntegrator2D::GetAverVelocityDistributionY(int sliceCount)
 	//initialization of random generator;
 
 	const ParticlesAmp2D& particlesIn = *m_Task->DataOld;
-        const float sliceHeight = domainSize.y / splits;
-	parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
-
-		tile_static float_2 tilePosMemory[s_TileSize];
-		tile_static float_2 tileVelMemory[s_TileSize];
-
-		int idxGlobal = ti.global[0];
-
-		float_2 pos = particlesIn.pos[idxGlobal];
-		float_2 vel = particlesIn.vel[idxGlobal];
+    const float sliceHeight = domainSize.y / sliceCount;
+	parallel_for_each(acc_veloc.extent, [=](index<1> pt_idx) restrict(amp) {
+		float_2 pos = particlesIn.pos[pt_idx];
+		float_2 vel = particlesIn.vel[pt_idx];
 
 		int partSlice = int(pos.y / sliceHeight);
 		
-		if (partSlice > splits)
+		if (partSlice > sliceCount)
 			partSlice--;
 		if (partSlice < 0)
 			partSlice++;
@@ -61,13 +55,8 @@ std::vector<float> CIntegrator2D::GetAverDensityDistributionY(int splits)
 
 	const ParticlesAmp2D& particlesIn = *m_Task->DataOld;
 	const float sliceHeight = domainSize.y / splits;
-	parallel_for_each(computeDomain.tile<s_TileSize>(), [=](tiled_index<s_TileSize> ti) restrict(amp) {
-
-		tile_static float_3 tilePosMemory[s_TileSize];
-		
-		int idxGlobal = ti.global[0];
-
-		float_2 pos = particlesIn.pos[idxGlobal];
+	parallel_for_each(acc_dens.extent, [=](index<1> pt_idx) restrict(amp) {
+		float_2 pos = particlesIn.pos[pt_idx];
 		int partSlice = int(pos.y / sliceHeight);
 
 		if (partSlice > splits)
@@ -79,8 +68,8 @@ std::vector<float> CIntegrator2D::GetAverDensityDistributionY(int splits)
 
 		acc_count[idx] += 1;
 	});
-	const float sliceVolume = sliceHeight * domainSize.x;
-	
+	const float sliceVolume = sliceHeight * domainSize.x;	
+
 	parallel_for_each(acc_dens.extent, [=](index<1> idx) restrict(amp) {
 		acc_dens[idx] = acc_count[idx] /  sliceVolume;
 	});
@@ -93,12 +82,14 @@ float_2 CIntegrator2D::GetAverageVelocity()
 }
 
 void CIntegrator2D::IntegrateFor(int steps, float noise) {
+	Steps += steps;
 	for(int i=0; i < steps; i++){
         RealIntegrate(noise);
     }
 }
 
 void CIntegrator2D::IntegrateWithAveragingFor(int steps, float noise) {
+	Steps += steps;
 	for(int i=0; i < steps; i++){
 		RealIntegrate(noise);
 		auto tmpVelocity = GetAverVelocityDistributionY(10);

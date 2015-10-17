@@ -15,10 +15,13 @@ void WriteData(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, CSim
         WriteSimParams(writer, simContr);
         writer.String("Noise");
         writer.Double(simContr.Noise);
-        writer.String("AverageVelocityDistribution");
-        writer.StartArray();
+		writer.String("Steps");
+		writer.Int(simContr.GetSteps());
+		writer.String("AverageVelocityDistribution");
+		writer.StartArray();
         {
-            for(auto vel: simContr.GetVelocityDistribution())
+			auto tmp = simContr.GetVelocityDistribution();
+            for(auto vel : tmp)
                 writer.Double(vel);
         }
         writer.EndArray();
@@ -29,6 +32,14 @@ void WriteData(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, CSim
                 writer.Double(dens);
         }
         writer.EndArray();
+		writer.String("ParticleCoordinatesX");
+		writer.StartArray(); 
+		{
+			for (auto x : simContr.GetParticleCoordinates())
+				writer.Double(x);
+		}
+		writer.EndArray();
+
     }
     writer.EndObject();
 }

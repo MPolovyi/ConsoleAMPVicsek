@@ -49,10 +49,15 @@ public:
     float GetStepNoise(){
         return m_SimData->StepNoise;
     };
+	int GetSteps() {
+		return m_Integrator->Steps;
+	}
 
-    std::vector<float>& GetVelocityDistribution();
+	const std::vector<float> GetVelocityDistribution();
 
-    std::vector<float>& GetDensityDistribution();
+	const std::vector<float> GetDensityDistribution();
+
+	const std::vector<float> GetParticleCoordinates();
 
 protected:
     CSimulationController(){

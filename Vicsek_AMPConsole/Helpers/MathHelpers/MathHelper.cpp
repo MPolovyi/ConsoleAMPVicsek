@@ -67,7 +67,7 @@ namespace MathHelpers
 		auto a = Length(vect);
 		if (a > 0.00001 && (a-1) <= 0.000001)
 		{
-			vect /= concurrency::fast_math::rsqrt(Length(vect));
+			vect *= concurrency::fast_math::rsqrt(SqrLength(vect));
 		}
 	}
 
@@ -76,7 +76,7 @@ namespace MathHelpers
 		auto a = Length(vect);
 		if (a > 0.00001 && (a-1) <= 0.000001)
 		{
-			vect /= concurrency::fast_math::rsqrt(Length(vect));
+			vect *= concurrency::fast_math::rsqrt(SqrLength(vect));
 		}
 	}
 
@@ -85,7 +85,7 @@ namespace MathHelpers
 		auto a = SqrLength(vect);
 		if (a > 0.00001)
 		{
-			vect /= concurrency::fast_math::rsqrt(Length(vect));
+			vect *= concurrency::fast_math::rsqrt(SqrLength(vect));
 		}
 	}
 

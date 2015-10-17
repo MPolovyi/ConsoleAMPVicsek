@@ -44,6 +44,7 @@ void CSimulationController::InitAndRun(rapidjson::PrettyWriter<rapidjson::FileWr
     stCheckData.dispTest = 0.000001;
     stCheckData.testStepsCount = (int) round(simData.FirstTestSteps*0.05);
 
+	WriteData(writer, *sim);
     for (auto noise = simData.MaxNoise; noise > simData.MinNoise; noise+=simData.StepNoise){
 		bool isStable = false;
 		std::cout << "Simulating noise " << noise << std::endl;
@@ -58,17 +59,17 @@ void CSimulationController::InitAndRun(rapidjson::PrettyWriter<rapidjson::FileWr
 			WriteData(writer, *sim);
 			std::cout << "Sim steps = " << (*sim->m_Integrator).Steps << std::endl;
 		}
+		sim->m_Integrator->Steps = 0;
     }
     EndDataFlow(writer);
 
     delete sim;
 }
 
-std::vector<float> &CSimulationController::GetVelocityDistribution() {
+const std::vector<float> CSimulationController::GetVelocityDistribution() {
     auto tmp = m_Integrator->GetAverVelocityDistributionY(10);
 
     std::vector<float> ret;
-    ret.resize(tmp.size());
 
     for(auto vel : tmp){
         ret.push_back(MathHelpers::Length(vel));
@@ -77,6 +78,16 @@ std::vector<float> &CSimulationController::GetVelocityDistribution() {
     return ret;
 }
 
-std::vector<float> &CSimulationController::GetDensityDistribution() {
+const std::vector<float> CSimulationController::GetDensityDistribution() {
 	return m_Integrator->GetAverDensityDistributionY(10);
+}
+
+const std::vector<float> CSimulationController::GetParticleCoordinates() {
+	std::vector<float> ret;
+
+	for (int i = 0; i < m_Data->DataOld->size(); i++) {
+		ret.push_back(m_Data->DataOld->pos[i].x);
+	}
+
+	return ret;
 }
