@@ -44,7 +44,6 @@ namespace Vicsek.Classes
             }
             else
             {
-                
                 m_CoordinatesNew = m_Coordinates + m_Speed;
             }
         }
@@ -68,8 +67,16 @@ namespace Vicsek.Classes
 
         public virtual double CalkDistance(IParticle _particle)
         {
-            double dist = (CoordinatesInDouble - _particle.CoordinatesInDouble).ABS();
-            return dist;
+            var diff = CoordinatesInDouble - _particle.CoordinatesInDouble;
+            if (diff.First > (Miscelaneous.Width - 2 * Miscelaneous.InterractionR))
+            {
+                diff.First -= Miscelaneous.Width;
+            }
+            if (!Miscelaneous.RestrictingBoards && diff.Second > Miscelaneous.Height - Miscelaneous.InterractionR)
+            {
+                diff.Second -= Miscelaneous.Height;
+            }
+            return diff.ABS();
         }
 
         public virtual void Interract()

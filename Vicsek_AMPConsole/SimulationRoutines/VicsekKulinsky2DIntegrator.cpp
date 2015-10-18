@@ -7,12 +7,12 @@ bool CVicsekKulinsky2DIntegrator::RealIntegrate(float noise)
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
 	const int numTiles = numParticles / s_TileSize;
-	const float softeningSquared = 0.0000015625f;
+	const float doubleIntR = 2* m_IntR;
 	const float dampingFactor = 0.9995f;
 	const float deltaTime = 0.1;
 
 	const float_2 domainSize = m_DomainSize;
-	const float intR = m_IntR*m_IntR;
+	const float intR2 = m_IntR*m_IntR;
 	//initialization of random generator;
 
 	tinymt_collection<1> rnd(computeDomain, std::rand());
@@ -47,10 +47,10 @@ bool CVicsekKulinsky2DIntegrator::RealIntegrate(float noise)
 			// 4 is the sweet spot - increasing further adds no perf improvement while decreasing reduces perf
 			for (int j = 0; j < s_TileSize;)
 			{
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
-				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], softeningSquared, intR);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], doubleIntR, intR2, domainSize);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], doubleIntR, intR2, domainSize);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], doubleIntR, intR2, domainSize);
+				Vicsek2DMath::BodyBodyInteraction(vel, tileVelMemory[j++], pos, tilePosMemory[j++], doubleIntR, intR2, domainSize);
 			}
 
 			// Wait for all threads to finish reading tile memory before allowing a new tile to start.
