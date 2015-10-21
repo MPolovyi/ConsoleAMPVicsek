@@ -23,7 +23,7 @@ std::vector<float_2> CIntegrator2D::GetAverVelocityDistributionY(int sliceCount)
 		float_2 pos = particlesIn.pos[pt_idx];
 		float_2 vel = particlesIn.vel[pt_idx];
 
-		int partSlice = int(pos.y / sliceHeight);
+		int partSlice = concurrency::fast_math::round(pos.y / sliceHeight);
 		
 		if (partSlice > sliceCount)
 			partSlice--;
@@ -57,7 +57,8 @@ std::vector<float> CIntegrator2D::GetAverDensityDistributionY(int splits)
 	const float sliceHeight = domainSize.y / splits;
 	parallel_for_each(acc_dens.extent, [=](index<1> pt_idx) restrict(amp) {
 		float_2 pos = particlesIn.pos[pt_idx];
-		int partSlice = int(pos.y / sliceHeight);
+
+		int partSlice = concurrency::fast_math::round(pos.y / sliceHeight);
 
 		if (partSlice > splits)
 			partSlice--;
@@ -88,12 +89,12 @@ void CIntegrator2D::IntegrateFor(int steps, float noise) {
     }
 }
 
-void CIntegrator2D::IntegrateWithAveragingFor(int steps, float noise) {
+void CIntegrator2D::IntegrateWithAveragingFor(int steps, float noise, int sliceCount) {
 	Steps += steps;
 	for(int i=0; i < steps; i++){
 		RealIntegrate(noise);
-		auto tmpVelocity = GetAverVelocityDistributionY(10);
-		auto tmpDensity = GetAverDensityDistributionY(10);
+		auto tmpVelocity = GetAverVelocityDistributionY(sliceCount);
+		auto tmpDensity = GetAverDensityDistributionY(sliceCount);
 		if (AverVelocityModuleDistribution.size() == 0)
 			for (int j = 0; j < tmpVelocity.size(); j++)
 				AverVelocityModuleDistribution.push_back(0);

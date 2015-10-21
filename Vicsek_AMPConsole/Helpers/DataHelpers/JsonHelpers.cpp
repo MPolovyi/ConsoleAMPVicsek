@@ -35,7 +35,28 @@ void WriteData(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, CSim
 		writer.String("ParticleCoordinatesX");
 		writer.StartArray(); 
 		{
-			for (auto x : simContr.GetParticleCoordinates())
+			for (auto x : simContr.GetParticleCoordinatesX())
+				writer.Double(x);
+		}
+		writer.EndArray();
+		writer.String("ParticleCoordinatesY");
+		writer.StartArray();
+		{
+			for (auto x : simContr.GetParticleCoordinatesY())
+				writer.Double(x);
+		}
+		writer.EndArray();
+		writer.String("ParticleVelocitiesX");
+		writer.StartArray();
+		{
+			for (auto x : simContr.GetParticleVelocitiesX())
+				writer.Double(x);
+		}
+		writer.EndArray();
+		writer.String("ParticleVelocitiesY");
+		writer.StartArray();
+		{
+			for (auto x : simContr.GetParticleVelocitiesY())
 				writer.Double(x);
 		}
 		writer.EndArray();

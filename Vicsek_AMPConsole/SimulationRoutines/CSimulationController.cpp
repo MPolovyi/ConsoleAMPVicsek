@@ -67,7 +67,7 @@ void CSimulationController::InitAndRun(rapidjson::PrettyWriter<rapidjson::FileWr
 }
 
 const std::vector<float> CSimulationController::GetVelocityDistribution() {
-    auto tmp = m_Integrator->GetAverVelocityDistributionY(10);
+    auto tmp = m_Integrator->GetAverVelocityDistributionY(m_SimData->Slices);
 
     std::vector<float> ret;
 
@@ -79,14 +79,44 @@ const std::vector<float> CSimulationController::GetVelocityDistribution() {
 }
 
 const std::vector<float> CSimulationController::GetDensityDistribution() {
-	return m_Integrator->GetAverDensityDistributionY(10);
+	return m_Integrator->GetAverDensityDistributionY(m_SimData->Slices);
 }
 
-const std::vector<float> CSimulationController::GetParticleCoordinates() {
+const std::vector<float> CSimulationController::GetParticleCoordinatesX() {
 	std::vector<float> ret;
 
 	for (int i = 0; i < m_Data->DataOld->size(); i++) {
 		ret.push_back(m_Data->DataOld->pos[i].x);
+	}
+
+	return ret;
+}
+
+const std::vector<float> CSimulationController::GetParticleCoordinatesY() {
+	std::vector<float> ret;
+
+	for (int i = 0; i < m_Data->DataOld->size(); i++) {
+		ret.push_back(m_Data->DataOld->pos[i].y);
+	}
+
+	return ret;
+}
+
+const std::vector<float> CSimulationController::GetParticleVelocitiesX() {
+	std::vector<float> ret;
+
+	for (int i = 0; i < m_Data->DataOld->size(); i++) {
+		ret.push_back(m_Data->DataOld->vel[i].x);
+	}
+
+	return ret;
+}
+
+const std::vector<float> CSimulationController::GetParticleVelocitiesY() {
+	std::vector<float> ret;
+
+	for (int i = 0; i < m_Data->DataOld->size(); i++) {
+		ret.push_back(m_Data->DataOld->vel[i].y);
 	}
 
 	return ret;

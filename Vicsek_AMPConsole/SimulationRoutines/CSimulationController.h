@@ -57,7 +57,10 @@ public:
 
 	const std::vector<float> GetDensityDistribution();
 
-	const std::vector<float> GetParticleCoordinates();
+	const std::vector<float> GetParticleCoordinatesX();
+	const std::vector<float> GetParticleCoordinatesY();
+	const std::vector<float> GetParticleVelocitiesX();
+	const std::vector<float> GetParticleVelocitiesY();
 
 protected:
     CSimulationController(){

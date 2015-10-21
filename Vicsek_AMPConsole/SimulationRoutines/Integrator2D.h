@@ -14,7 +14,7 @@ public:
 
 	~CIntegrator2D() {};
 
-	std::vector<float> GetAverDensityDistributionY(int splits);
+	std::vector<float> GetAverDensityDistributionY(int sliceCount);
 	std::vector<float_2> GetAverVelocityDistributionY(int sliceCount);
 	float_2 GetAverageVelocity();
 
@@ -26,7 +26,7 @@ public:
 	};
 
 	void IntegrateFor(int steps, float noise);
-	void IntegrateWithAveragingFor(int steps, float noise);
+	void IntegrateWithAveragingFor(int steps, float noise, int sliceCount);
 
 	std::vector<float> AverVelocityModuleDistribution;
 	std::vector<float> AverDensityDistribution;

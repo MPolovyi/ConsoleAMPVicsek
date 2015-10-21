@@ -8,9 +8,9 @@
 #include <math.h>
 
 bool VelocityDistributionStabilityChecker::Check(CIntegrator2D &integrator, SimulationData& data, StabilityCheckData& stData) {
-    integrator.IntegrateWithAveragingFor(stData.testStepsCount, stData.Noise);
+    integrator.IntegrateWithAveragingFor(stData.testStepsCount, stData.Noise, data.Slices);
     old_velocity_distribution = integrator.AverVelocityModuleDistribution;
-    integrator.IntegrateWithAveragingFor(stData.testStepsCount, stData.Noise);
+    integrator.IntegrateWithAveragingFor(stData.testStepsCount, stData.Noise, data.Slices);
     velocity_distribution = integrator.AverVelocityModuleDistribution;
 
     bool ret = true;
