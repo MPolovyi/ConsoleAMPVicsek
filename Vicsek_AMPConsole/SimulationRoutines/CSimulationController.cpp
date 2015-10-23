@@ -81,8 +81,8 @@ const std::vector<float> CSimulationController::GetVelocityDistribution() {
     for(auto vel : tmp){
         ret.push_back(MathHelpers::Length(vel));
     }
-
-    return ret;
+	
+	return ret;
 }
 
 const std::vector<float> CSimulationController::GetDensityDistribution() {
@@ -90,40 +90,48 @@ const std::vector<float> CSimulationController::GetDensityDistribution() {
 }
 
 const std::vector<float> CSimulationController::GetParticleCoordinatesX() {
+	std::vector<float_2> tmp(m_Data->DataOld->size());
 	std::vector<float> ret;
+	concurrency::copy(m_Data->DataOld->pos, tmp.begin());
 
 	for (int i = 0; i < m_Data->DataOld->size(); i++) {
-		ret.push_back(m_Data->DataOld->pos[i].x);
+		ret.push_back(tmp[i].x);
 	}
 
 	return ret;
 }
 
 const std::vector<float> CSimulationController::GetParticleCoordinatesY() {
+	std::vector<float_2> tmp(m_Data->DataOld->size());
 	std::vector<float> ret;
+	concurrency::copy(m_Data->DataOld->pos, tmp.begin());
 
 	for (int i = 0; i < m_Data->DataOld->size(); i++) {
-		ret.push_back(m_Data->DataOld->pos[i].y);
+		ret.push_back(tmp[i].y);
 	}
 
 	return ret;
 }
 
 const std::vector<float> CSimulationController::GetParticleVelocitiesX() {
+	std::vector<float_2> tmp(m_Data->DataOld->size());
 	std::vector<float> ret;
+	concurrency::copy(m_Data->DataOld->vel, tmp.begin());
 
 	for (int i = 0; i < m_Data->DataOld->size(); i++) {
-		ret.push_back(m_Data->DataOld->vel[i].x);
+		ret.push_back(tmp[i].x);
 	}
 
 	return ret;
 }
 
 const std::vector<float> CSimulationController::GetParticleVelocitiesY() {
+	std::vector<float_2> tmp(m_Data->DataOld->size());
 	std::vector<float> ret;
+	concurrency::copy(m_Data->DataOld->vel, tmp.begin());
 
 	for (int i = 0; i < m_Data->DataOld->size(); i++) {
-		ret.push_back(m_Data->DataOld->vel[i].y);
+		ret.push_back(tmp[i].y);
 	}
 
 	return ret;
