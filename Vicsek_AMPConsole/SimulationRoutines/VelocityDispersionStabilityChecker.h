@@ -11,6 +11,7 @@ class VelocityDispersionStabilityChecker :
         public VelocityDistributionStabilityChecker {
 public:
     virtual bool Check(CIntegrator2D& integrator, SimulationData& data, StabilityCheckData& stData);
+
 };
 
 

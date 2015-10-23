@@ -50,7 +50,7 @@ void CSimulationController::InitAndRun(cereal::JSONOutputArchive &writer, Simula
 		int firstSteps = simData.FirstTestSteps;
 		StabilityCheckData stCheckData;
 		stCheckData.dispTest = 0.0001;
-		
+		bool secondTest = false;
 		while (!isStable)
 		{
 			stCheckData.testStepsCount = (int)round(firstSteps*0.05);
@@ -63,8 +63,13 @@ void CSimulationController::InitAndRun(cereal::JSONOutputArchive &writer, Simula
 			}
 			WriteData(writer, *sim);
 			std::cout << "Sim steps = " << (*sim->m_Integrator).Steps << std::endl;
-			firstSteps *= 2;
-			
+			if (secondTest) {
+				firstSteps *= 2;
+				secondTest = false;
+			}
+			else {
+				secondTest = true;
+			}
 		}
 		sim->m_Integrator->Steps = 0;
     }

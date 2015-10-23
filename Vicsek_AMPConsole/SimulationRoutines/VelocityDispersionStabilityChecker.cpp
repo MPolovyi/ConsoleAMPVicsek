@@ -9,12 +9,14 @@
 
 bool VelocityDispersionStabilityChecker::Check(CIntegrator2D &integrator, SimulationData &data,
                                                StabilityCheckData &stData) {
-    int testSteps = (int) round(data.FirstTestSteps*0.05);
+	if (firstCall) {
+		integrator.IntegrateWithAveragingFor(stData.testStepsCount, stData.Noise, data.Slices);
+		old_velocity_distribution = integrator.AverVelocityModuleDistribution;
+		return false;
+	}
 
-    integrator.IntegrateWithAveragingFor(testSteps, stData.Noise, data.Slices);
-    old_velocity_distribution = integrator.AverVelocityModuleDistribution;
-    integrator.IntegrateWithAveragingFor(testSteps, stData.Noise, data.Slices);
-    velocity_distribution = integrator.AverVelocityModuleDistribution;
+	integrator.IntegrateWithAveragingFor(stData.testStepsCount, stData.Noise, data.Slices);
+	velocity_distribution = integrator.AverVelocityModuleDistribution;
 
     float aver_old = 0;
     float aver_new = 0;
@@ -26,7 +28,13 @@ bool VelocityDispersionStabilityChecker::Check(CIntegrator2D &integrator, Simula
 
         averSq_old += old_velocity_distribution[i]*old_velocity_distribution[i];
         averSq_new += velocity_distribution[i]*velocity_distribution[i];
+		old_velocity_distribution[i] = velocity_distribution[i];
     }
 
-    return std::abs(sqrt(aver_old*aver_old - averSq_old) - sqrt(aver_new*aver_new - averSq_new)) <= stData.dispTest;
+	aver_old /= data.ParticleCount;
+	aver_new /= data.ParticleCount;
+	averSq_old /= data.ParticleCount;
+	averSq_new /= data.ParticleCount;
+
+    return std::abs(sqrt(aver_old*aver_old - averSq_old) - sqrt(aver_new*aver_new - averSq_new)) <= 1/sqrt(data.ParticleCount);
 }

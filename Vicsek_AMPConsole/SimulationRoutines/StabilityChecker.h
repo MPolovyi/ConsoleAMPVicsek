@@ -13,9 +13,12 @@ struct StabilityCheckData;
 
 class StabilityChecker {
 public:
-    StabilityChecker(){};
+	StabilityChecker() { firstCall = true; };
     ~StabilityChecker(){};
     virtual bool Check(CIntegrator2D& integrator, SimulationData& data, StabilityCheckData& stData);
+
+protected:
+	bool firstCall;
 };
 
 
