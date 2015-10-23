@@ -57,9 +57,7 @@ void WriteData(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, CSim
 			oarchive(simContr.GetParticleCoordinatesX());
 			auto len = ss.str().length();
 			auto tmp = ss.str();
-			std::cout << ss.str();
 			auto cstr = tmp.c_str();
-			std::cout << cstr;
 			writer.String(cstr, tmp.length());
 			ss.clear();
 		}
