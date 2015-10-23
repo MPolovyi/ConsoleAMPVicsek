@@ -15,7 +15,7 @@
 
 class CSimulationController {
 public:
-    static void InitAndRun(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, SimulationData simData);
+    static void InitAndRun(cereal::JSONOutputArchive &writer, SimulationData simData);
 
     float Noise;
 

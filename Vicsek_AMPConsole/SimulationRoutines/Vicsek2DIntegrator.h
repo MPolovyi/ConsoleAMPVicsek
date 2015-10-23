@@ -12,12 +12,12 @@ public:
 	CVicsek2DIntegrator(TaskData2D& td, SimulationData data) : CIntegrator2D(td, data)
 	{
 		PopulateTaskData(td, float_2(data.SystemSizeX, data.SystemSizeY), td.DataNew->size());
-		
+		m_ParticleVelocity = 0.1;
 	};
 	~CVicsek2DIntegrator() {};
 	
 protected:
-	double m_ParticleVelocity;
+	float m_ParticleVelocity;
 	virtual bool RealIntegrate(float noise) override;
 	virtual void PopulateTaskData(TaskData2D& td, float_2 domain, int partCount);
 

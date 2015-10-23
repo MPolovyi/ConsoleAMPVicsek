@@ -17,10 +17,8 @@ void Simulate(std::string fname){
 
     std::stringstream s;
     s << name << std::to_string(i) << "_" << fname << ".json";
-    FILE* fp = fopen(s.str().c_str(), "w");
-    char buffer[65536];
-    rapidjson::FileWriteStream stream(fp, buffer, 65536);
-    rapidjson::PrettyWriter<rapidjson::FileWriteStream> writer(stream);
+	std::fstream stream(s.str().c_str(), std::fstream::out);
+	cereal::JSONOutputArchive writer(stream);
 
     CSimulationController::InitAndRun(writer, data);
 }

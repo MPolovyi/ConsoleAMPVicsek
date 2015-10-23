@@ -4,10 +4,11 @@
 #ifndef VICSEK_AMPCONSOLE_DATASTRUCTURE_H
 #define VICSEK_AMPCONSOLE_DATASTRUCTURE_H
 
-#include "../../rapidjson/filereadstream.h"
-#include "../../rapidjson/document.h"
 #include <string>
 #include <stdio.h>
+#include <fstream>
+#include <cereal\archives\json.hpp>
+#include <cereal\types\string.hpp>
 
 enum BorderConditions{
     Transitional,
@@ -30,26 +31,45 @@ struct SimulationData{
     int Slices;
 
     SimulationData(std::string fName){
-        FILE *fp = fopen(fName.c_str(), "rb"); // non-Windows use "r"
-		perror("Error");
-        char readBuffer[65536];
-        rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
-        rapidjson::Document document;
-        document.ParseStream(is);
+		
+		std::ifstream istream(fName);
+		cereal::JSONInputArchive iarchieve(istream);
 
-        ParticleCount = document["ParticleCount"].GetInt();
-        MaxSteps = document["MaxSteps"].GetInt();
-        FirstTestSteps = document["FirstTestSteps"].GetInt();
-        BorderVelocity = (float) document["BorderVelocity"].GetDouble();
-        SystemSizeX = (float) document["SystemSizeX"].GetDouble();
-        SystemSizeY = (float) document["SystemSizeY"].GetDouble();
-        MinNoise = (float) document["MinNoise"].GetDouble();
-        MaxNoise = (float) document["MaxNoise"].GetDouble();
-        StepNoise = (float) document["StepNoise"].GetDouble();
-        Slices = document["Slices"].GetInt();
-        std::string bc = document["BorderConditions"].GetString();
+		if (strcmp(iarchieve.getNodeName(), "ParticleCount") == 0)
+			iarchieve.loadValue(ParticleCount);
 
-        if (bc == "Transitional"){
+		if (strcmp(iarchieve.getNodeName(), "MaxSteps") == 0)
+			iarchieve.loadValue(MaxSteps);
+
+		if (strcmp(iarchieve.getNodeName(), "FirstTestSteps") == 0)
+			iarchieve.loadValue(FirstTestSteps);
+
+		if (strcmp(iarchieve.getNodeName(), "BorderVelocity") == 0)
+			iarchieve.loadValue(BorderVelocity);
+
+		if (strcmp(iarchieve.getNodeName(), "SystemSizeX") == 0)
+			iarchieve.loadValue(SystemSizeX);
+
+		if (strcmp(iarchieve.getNodeName(), "SystemSizeY") == 0)
+			iarchieve.loadValue(SystemSizeY);
+
+		if (strcmp(iarchieve.getNodeName(), "MinNoise") == 0)
+			iarchieve.loadValue(MinNoise);
+
+		if (strcmp(iarchieve.getNodeName(), "MaxNoise") == 0)
+			iarchieve.loadValue(MaxNoise);
+
+		if (strcmp(iarchieve.getNodeName(), "StepNoise") == 0)
+			iarchieve.loadValue(StepNoise);
+
+		if (strcmp(iarchieve.getNodeName(), "Slices") == 0)
+			iarchieve.loadValue(Slices);
+
+		std::string bc;
+		if (strcmp(iarchieve.getNodeName(), "BorderConditions") == 0)
+			iarchieve.loadValue(bc);
+		
+		if (bc == "Transitional"){
             BCond = BorderConditions::Transitional;
         }
         if (bc == "Reflective"){

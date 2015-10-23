@@ -5,19 +5,16 @@
 #ifndef VICSEK_AMPCONSOLE_JSONHELPERS_H
 #define VICSEK_AMPCONSOLE_JSONHELPERS_H
 
-#include "../../rapidjson/stringbuffer.h"
-
-#include "../../rapidjson/filewritestream.h"
-#include "../../rapidjson/prettywriter.h"
+#include <cereal\archives\json.hpp>
 
 class CSimulationController;
 
-void StartDataFlow(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer);
+void StartDataFlow(cereal::JSONOutputArchive &writer);
 
-void WriteData(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, CSimulationController& simContr);
+void WriteData(cereal::JSONOutputArchive &writer, CSimulationController& simContr);
 
-void WriteSimParams(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, CSimulationController&simContr);
+void WriteSimParams(cereal::JSONOutputArchive &writer, CSimulationController&simContr);
 
-void EndDataFlow(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer);
+void EndDataFlow(cereal::JSONOutputArchive &writer);
 
 #endif //VICSEK_AMPCONSOLE_JSONHELPERS_H

@@ -67,5 +67,6 @@ bool CVicsekKulinsky2DIntegrator::RealIntegrate(float noise)
 		particlesOut.pos[idxGlobal] = pos;
 		particlesOut.vel[idxGlobal] = vel;
 	});
+	m_Task->Swap();
 	return true;
 }

@@ -16,7 +16,7 @@
 
 using concurrency::graphics::float_2;
 
-void CSimulationController::InitAndRun(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, SimulationData simData) {
+void CSimulationController::InitAndRun(cereal::JSONOutputArchive &writer, SimulationData simData) {
     CSimulationController* sim = new CSimulationController();
     sim->m_SimData = &simData;
     sim->m_Data = new TaskData2D(simData.ParticleCount, accelerator(accelerator::default_accelerator).default_view, accelerator(accelerator::default_accelerator));

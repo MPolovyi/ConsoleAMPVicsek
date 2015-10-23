@@ -8,5 +8,5 @@
         "MaxNoise" : 180,
         "StepNoise" : -60,
         "Slices" : 10,
-        "BorderConditions": "Kuette"
+        "BorderConditions": "Transitional"
 }
