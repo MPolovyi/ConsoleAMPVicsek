@@ -6,13 +6,13 @@ set(INCLUDE_DIRECTORIES
 
 message(STATUS "INCLUDE_DIRECTORIES:         " ${INCLUDE_DIRECTORIES})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GL")
+set(CMAKE_LINK_FLAGS "${CMAKE_LINK_FLAGS} /LTCG:incremental")
 
 set(SOURCE_FILES
         Helpers/DataHelpers/JsonHelpers.cpp
         Helpers/DataHelpers/JsonHelpers.h
         Helpers/DataHelpers/DataStructures.h
-        Helpers/MathHelpers/Reduction.cpp
         Helpers/MathHelpers/Reduction.h
         Helpers/MathHelpers/MathHelper.cpp
         Helpers/MathHelpers/MathHelper.h
