@@ -2,14 +2,14 @@
 #include <string>
 #include <vector>
 #include "CommonStructs.h"
+#include "../Helpers/DataHelpers/DataStructures.h"
 
 class CIntegrator2D
 {
 public:
-	CIntegrator2D(TaskData2D& td, float_2 domain) {
+	CIntegrator2D(TaskData2D& td, SimulationData data) {
 		m_Task = &td;
-		m_DomainSize = domain;
-		Steps = 0;
+		m_DomainSize = float_2(data.SystemSizeX, data.SystemSizeY);
 	};
 
 	~CIntegrator2D() {};
@@ -19,11 +19,6 @@ public:
 	float_2 GetAverageVelocity();
 
 	static float s_Noise;
-	virtual void Init(TaskData2D& td, float_2 domain)
-	{
-		m_Task = &td;
-		m_DomainSize = domain;
-	};
 
 	void IntegrateFor(int steps, float noise);
 	void IntegrateWithAveragingFor(int steps, float noise, int sliceCount);

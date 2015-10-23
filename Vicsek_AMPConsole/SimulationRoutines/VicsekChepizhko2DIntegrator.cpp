@@ -1,14 +1,15 @@
-#include "VicsekStoppedTop.h"
+#include "VicsekChepizhko2DIntegrator.h"
+#include "../Rand/amp_tinymt_rng.h"
+#include "../Helpers/MathHelpers/Vicsek2DMath.h"
 
-
-bool CVicsekStoppedTop::RealIntegrate(float noise)
+bool CVicsekChepizhko2DIntegrator::RealIntegrate(float noise)
 {
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
 	const int numTiles = numParticles / s_TileSize;
+	const float deltaTime = m_ParticleVelocity;
+	const float borderVel = m_BorderVelocity;
 	const float doubleIntR = 2* m_IntR;
-	const float dampingFactor = 0.9995f;
-	const float deltaTime = 0.1;
 
 	const float_2 domainSize = m_DomainSize;
 	const float intR2 = m_IntR*m_IntR;
@@ -58,12 +59,10 @@ bool CVicsekStoppedTop::RealIntegrate(float noise)
 
 		MathHelpers::RotateVector2D(vel, noise * (0.5 - rnd[ti.local].next_single()));
 
-		vel *= dampingFactor;
 		MathHelpers::NormalizeVector(vel);
 
 		pos += vel * deltaTime;
-
-		Vicsek2DMath::BorderCheckMoveTopMoveBottom(pos, vel, domainSize, rnd[ti.local].next_single(), rnd[ti.local].next_single());
+		Vicsek2DMath::BorderCheckMoveTopMoveBottom(pos, vel, domainSize, borderVel);
 
 		particlesOut.pos[idxGlobal] = pos;
 		particlesOut.vel[idxGlobal] = vel;

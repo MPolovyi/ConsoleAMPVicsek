@@ -1,4 +1,4 @@
-{"ParticleCount" : 10,
+{		"ParticleCount" : 1024,
         "MaxSteps" : 100,
         "FirstTestSteps" : 10,
         "Density" : 1,
@@ -6,7 +6,8 @@
         "SystemSizeX" : 10,
         "SystemSizeY" : 10,
         "MinNoise" : 0,
-        "MaxNoise" : 1,
-        "StepNoise" : 0.1,
+        "MaxNoise" : 180,
+        "StepNoise" : 60,
         "Slices" : 10,
-        "BorderConditions": "Transitional"}
+        "BorderConditions": "Kuette"
+}

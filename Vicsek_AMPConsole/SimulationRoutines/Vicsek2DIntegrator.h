@@ -2,20 +2,22 @@
 #include "Integrator2D.h"
 #include "../Rand/amp_tinymt_rng.h"
 #include <string>
-
+#include "CommonStructs.h"
+#include "../Helpers/DataHelpers/DataStructures.h"
 
 class CVicsek2DIntegrator :
 	public CIntegrator2D
 {
 public:
-	CVicsek2DIntegrator(TaskData2D& td, float_2 domain) : CIntegrator2D(td, domain)
+	CVicsek2DIntegrator(TaskData2D& td, SimulationData data) : CIntegrator2D(td, data)
 	{
-		PopulateTaskData(td, domain, td.DataNew->size());
+		PopulateTaskData(td, float_2(data.SystemSizeX, data.SystemSizeY), td.DataNew->size());
+		
 	};
 	~CVicsek2DIntegrator() {};
 	
-	virtual void Init(TaskData2D& td, float_2 domain) override;
 protected:
+	double m_ParticleVelocity;
 	virtual bool RealIntegrate(float noise) override;
 	virtual void PopulateTaskData(TaskData2D& td, float_2 domain, int partCount);
 

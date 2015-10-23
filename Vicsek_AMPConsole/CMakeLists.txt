@@ -1,11 +1,6 @@
 cmake_minimum_required(VERSION 3.3)
 project(Vicsek_AMPConsole)
 
-set(INCLUDE_DIRECTORIES
-        /opt/kalmar/include/)
-
-message(STATUS "INCLUDE_DIRECTORIES:         " ${INCLUDE_DIRECTORIES})
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GL")
 set(CMAKE_LINK_FLAGS "${CMAKE_LINK_FLAGS} /LTCG:incremental")
 
@@ -35,6 +30,8 @@ set(SOURCE_FILES
         SimulationRoutines/VelocityDispersionStabilityChecker.cpp
         SimulationRoutines/Vicsek2DIntegrator.h
         SimulationRoutines/Vicsek2DIntegrator.cpp
+	SimulationRoutines/VicsekChepizhko2DIntegrator.h
+	SimulationRoutines/VicsekChepizhko2DIntegrator.cpp
         SimulationRoutines/VicsekKulinsky2DIntegrator.h
         SimulationRoutines/VicsekKulinsky2DIntegrator.cpp
         Vicsek_AMPConsole.cpp
