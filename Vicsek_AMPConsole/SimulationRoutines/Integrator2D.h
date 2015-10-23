@@ -10,6 +10,7 @@ public:
 	CIntegrator2D(TaskData2D& td, SimulationData data) {
 		m_Task = &td;
 		m_DomainSize = float_2(data.SystemSizeX, data.SystemSizeY);
+		Steps = 0;
 	};
 
 	~CIntegrator2D() {};

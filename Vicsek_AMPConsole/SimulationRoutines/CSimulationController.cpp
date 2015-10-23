@@ -42,25 +42,29 @@ void CSimulationController::InitAndRun(rapidjson::PrettyWriter<rapidjson::FileWr
     sim->m_StabilityChecker[0] = new VelocityDispersionStabilityChecker();
 	sim->m_StabilityChecker[1] = new StabilityChecker();
 
-    int firstSteps = simData.FirstTestSteps;
-    StabilityCheckData stCheckData;
-    stCheckData.dispTest = 0.0001;
-    stCheckData.testStepsCount = (int) round(simData.FirstTestSteps*0.05);
-
 	WriteData(writer, *sim);
     for (auto noise = simData.MaxNoise; noise > simData.MinNoise; noise+=simData.StepNoise){
 		bool isStable = false;
 		std::cout << "Simulating noise " << noise << std::endl;
+
+		int firstSteps = simData.FirstTestSteps;
+		StabilityCheckData stCheckData;
+		stCheckData.dispTest = 0.0001;
+		
 		while (!isStable)
 		{
+			stCheckData.testStepsCount = (int)round(firstSteps*0.05);
 			sim->Noise = noise;
 			sim->m_Integrator->IntegrateFor(firstSteps, sim->Noise);
 			stCheckData.Noise = sim->Noise;
 			for (int i = 0; i < sim->m_stCheckerCount; i++) {
-				isStable = isStable || sim->m_StabilityChecker[i]->Check(*sim->m_Integrator, simData, stCheckData);
+				auto tmp = sim->m_StabilityChecker[i]->Check(*sim->m_Integrator, simData, stCheckData);
+				isStable = isStable || tmp;
 			}
 			WriteData(writer, *sim);
 			std::cout << "Sim steps = " << (*sim->m_Integrator).Steps << std::endl;
+			firstSteps *= 2;
+			
 		}
 		sim->m_Integrator->Steps = 0;
     }

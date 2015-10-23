@@ -4,6 +4,22 @@
 
 #include "JsonHelpers.h"
 #include "../../SimulationRoutines/CSimulationController.h"
+#include <cereal/types/vector.hpp>
+#include <cereal/archives/binary.hpp>
+#include <sstream>
+
+struct SaveData {
+	std::vector<float> CoorsX;
+	std::vector<float> CoorsY;
+	std::vector<float> VelocX;
+	std::vector<float> VelocY;
+
+	template<class Archive>
+	void serialize(Archive & archive)
+	{
+		archive(CoorsX, CoorsY, VelocX, VelocY); // serialize things by passing them to the archive
+	}
+};
 
 void StartDataFlow(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer){
     writer.StartArray();
@@ -32,35 +48,47 @@ void WriteData(rapidjson::PrettyWriter<rapidjson::FileWriteStream> &writer, CSim
                 writer.Double(dens);
         }
         writer.EndArray();
-		writer.String("ParticleCoordinatesX");
-		writer.StartArray(); 
+		
+		std::stringstream ss;
+		cereal::BinaryOutputArchive oarchive(ss);
+		
 		{
-			for (auto x : simContr.GetParticleCoordinatesX())
-				writer.Double(x);
+			writer.String("ParticleCoordinatesX");
+			oarchive(simContr.GetParticleCoordinatesX());
+			auto len = ss.str().length();
+			auto tmp = ss.str();
+			std::cout << ss.str();
+			auto cstr = tmp.c_str();
+			std::cout << cstr;
+			writer.String(cstr, tmp.length());
+			ss.clear();
 		}
-		writer.EndArray();
-		writer.String("ParticleCoordinatesY");
-		writer.StartArray();
-		{
-			for (auto x : simContr.GetParticleCoordinatesY())
-				writer.Double(x);
-		}
-		writer.EndArray();
-		writer.String("ParticleVelocitiesX");
-		writer.StartArray();
-		{
-			for (auto x : simContr.GetParticleVelocitiesX())
-				writer.Double(x);
-		}
-		writer.EndArray();
-		writer.String("ParticleVelocitiesY");
-		writer.StartArray();
-		{
-			for (auto x : simContr.GetParticleVelocitiesY())
-				writer.Double(x);
-		}
-		writer.EndArray();
 
+		{
+			writer.String("ParticleCoordinatesY");
+			const std::string tmp = ss.str();
+			const char* cstr = tmp.c_str();
+			writer.String(cstr, tmp.length());
+			ss.clear();
+		}
+
+		{
+			writer.String("ParticleVelocitiesX");
+			oarchive(simContr.GetParticleVelocitiesX());
+			const std::string tmp = ss.str();
+			const char* cstr = tmp.c_str();
+			writer.String(cstr, tmp.length());
+			ss.clear();
+		}
+
+		{
+			writer.String("ParticleVelocitiesY");
+			oarchive(simContr.GetParticleVelocitiesY());
+			const std::string tmp = ss.str();
+			const char* cstr = tmp.c_str();
+			writer.String(cstr, tmp.length());
+			ss.clear();
+		}
     }
     writer.EndObject();
 }

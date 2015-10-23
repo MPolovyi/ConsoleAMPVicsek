@@ -1,5 +1,5 @@
 {		"ParticleCount" : 1024,
-        "MaxSteps" : 100,
+        "MaxSteps" : 10,
         "FirstTestSteps" : 10,
         "Density" : 1,
         "BorderVelocity" : 1,
