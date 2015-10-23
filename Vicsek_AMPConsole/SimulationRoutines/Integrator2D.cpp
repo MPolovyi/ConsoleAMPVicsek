@@ -3,6 +3,17 @@
 #include <sstream>
 #include "../Helpers/MathHelpers/MathHelper.h"
 
+float atomic_fetch_add(float *_Dest, float _Value) restrict(amp)
+{
+	float oldVal = *_Dest;
+	float newVal;
+	do
+	{
+		newVal = oldVal + _Value;
+	} while (!atomic_compare_exchange(reinterpret_cast<unsigned int*>(_Dest), reinterpret_cast<unsigned int*>(&oldVal), (*(reinterpret_cast<unsigned int*>(&newVal)))));
+
+	return newVal;
+}
 
 //Splits computation domain on <splits> areas, parallel to X axis, and computes average velocity on each.
 std::vector<float_2> CIntegrator2D::GetAverVelocityDistributionY(int sliceCount)
@@ -19,25 +30,28 @@ std::vector<float_2> CIntegrator2D::GetAverVelocityDistributionY(int sliceCount)
 
 	const ParticlesAmp2D& particlesIn = *m_Task->DataOld;
     const float sliceHeight = domainSize.y / sliceCount;
-	parallel_for_each(acc_veloc.extent, [=](index<1> pt_idx) restrict(amp) {
-		float_2 pos = particlesIn.pos[pt_idx];
-		float_2 vel = particlesIn.vel[pt_idx];
+	parallel_for_each(extent<1>(particlesIn.size()).tile<s_TileSize>(), [=](tiled_index<s_TileSize> pt_idx) restrict(amp) {
+		float_2 pos = particlesIn.pos[pt_idx.global];
+		float_2 vel = particlesIn.vel[pt_idx.global];
 
-		int partSlice = concurrency::fast_math::round(pos.y / sliceHeight);
-		
+		int partSlice = concurrency::fast_math::floor(pos.y / sliceHeight);
+
 		if (partSlice > sliceCount)
 			partSlice--;
 		if (partSlice < 0)
 			partSlice++;
 
 		auto idx = index<1>(partSlice);
-		acc_veloc[idx] += vel;
-		acc_count[idx] += 1;
+
+		atomic_fetch_add(reinterpret_cast<float*>(&acc_veloc[idx]), vel.x);
+		atomic_fetch_add(reinterpret_cast<float*>(&acc_veloc[idx]) + 1, vel.y);
+		concurrency::atomic_fetch_add(&acc_count[idx], 1);
 	});
 
 	parallel_for_each(acc_veloc.extent, [=](index<1> idx) restrict(amp) {
 		acc_veloc[idx] /= (acc_count[idx] > 0 ? acc_count[idx] : 1);
 	});
+	acc_veloc.synchronize();
 	return veloc;
 }
 
@@ -55,10 +69,10 @@ std::vector<float> CIntegrator2D::GetAverDensityDistributionY(int splits)
 
 	const ParticlesAmp2D& particlesIn = *m_Task->DataOld;
 	const float sliceHeight = domainSize.y / splits;
-	parallel_for_each(acc_dens.extent, [=](index<1> pt_idx) restrict(amp) {
-		float_2 pos = particlesIn.pos[pt_idx];
+	parallel_for_each(extent<1>(particlesIn.size()).tile<s_TileSize>(), [=](tiled_index<s_TileSize> pt_idx) restrict(amp) {
+		float_2 pos = particlesIn.pos[pt_idx.global];
 
-		int partSlice = concurrency::fast_math::round(pos.y / sliceHeight);
+		int partSlice = concurrency::fast_math::floor(pos.y / sliceHeight);
 
 		if (partSlice > splits)
 			partSlice--;
@@ -67,13 +81,14 @@ std::vector<float> CIntegrator2D::GetAverDensityDistributionY(int splits)
 
 		auto idx = index<1>(partSlice);
 
-		acc_count[idx] += 1;
+		concurrency::atomic_fetch_add(&acc_count[idx], 1);
 	});
 	const float sliceVolume = sliceHeight * domainSize.x;	
 
 	parallel_for_each(acc_dens.extent, [=](index<1> idx) restrict(amp) {
-		acc_dens[idx] = acc_count[idx] /  sliceVolume;
+		acc_dens[idx] = acc_count[idx] / sliceVolume;
 	});
+	acc_dens.synchronize();
 	return dens;
 }
 

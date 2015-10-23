@@ -67,7 +67,7 @@ void CSimulationController::InitAndRun(rapidjson::PrettyWriter<rapidjson::FileWr
 }
 
 const std::vector<float> CSimulationController::GetVelocityDistribution() {
-    auto tmp = m_Integrator->GetAverVelocityDistributionY(m_SimData->Slices);
+	auto tmp = m_Integrator->GetAverVelocityDistributionY(m_SimData->Slices);
 
     std::vector<float> ret;
 
