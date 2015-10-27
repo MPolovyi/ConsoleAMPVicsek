@@ -23,23 +23,43 @@ namespace Vicsek.Classes
             var ptBordFirst = Borders[_index].First;
             var ptBordSecond = Borders[_index].Second;
 
-            var ang = Miscelaneous.GetDegreeBetveen(ptPos, ptPosNext, (PairDouble)ptBordFirst, (PairDouble)ptBordSecond);
+            var ang = Miscelaneous.GetDegreeBetveen(ptPos, ptPosNext, ptBordFirst, ptBordSecond);
+            var intersectionPt = Miscelaneous.IntersectionPoint(ptPos, ptPosNext, ptBordFirst, ptBordSecond);
 
-            var intersectionPt = Miscelaneous.IntersectionPoint(ptPos, ptPosNext, (PairDouble)ptBordFirst,
-                                                                (PairDouble)ptBordSecond);
-
-            if (ang > 90)
+            PairDouble newPos;
+            if (_index == 0)
             {
-                ang = -2 * (180 - ang);
+                newPos = _particle.CoordinatesInDouble + new PairDouble(m_SizeX, 0);
+                _particle.UpdCoordinates(newPos + _particle.SpeedInDouble);
             }
-            else
+            if (_index == 1)
             {
                 ang = -2 * ang;
+
+                _particle.UpdCoordinates(Miscelaneous.Rotate(intersectionPt, ptPosNext, ang));
+                _particle.UpdSpeed(Miscelaneous.Rotate(ptSpeed, ang));
             }
+            if (_index == 2)
+            {
+                newPos = _particle.CoordinatesInDouble - new PairDouble(m_SizeX, 0);
+                _particle.UpdCoordinates(newPos + _particle.SpeedInDouble);
+            }
+            if (_index == 3)
+            {
+                if (ang > 90)
+                {
+                    ang = 2 * (180 - ang);
+                }
+                else
+                {
+                    ang = -2 * ang;
+                }
+                _particle.UpdCoordinates(Miscelaneous.Rotate(intersectionPt, ptPosNext, ang));
 
-            _particle.UpdCoordinates(Miscelaneous.Rotate(intersectionPt, ptPosNext, ang));
+                _particle.UpdSpeed(Miscelaneous.Rotate(ptSpeed, ang));
 
-            _particle.UpdSpeed(Miscelaneous.Rotate(ptSpeed, ang));
+            }
+            
         }
     }
 }

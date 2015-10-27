@@ -9,6 +9,8 @@ namespace Vicsek.Classes
 {
     class Border : IBorder
     {
+        protected double m_SizeX, m_SizeY;
+
         public List<IPair<PairDouble>> Borders { get; private set; }
 
         public Border(List<PairDouble> _corners)
@@ -19,6 +21,8 @@ namespace Vicsek.Classes
                 Borders.Add(new Pair<PairDouble>(_corners[i], _corners[i+1]));
             }
             Borders.Add(new Pair<PairDouble>(_corners.Last(), _corners.First()));
+            m_SizeX = _corners[2].First;
+            m_SizeY = _corners[2].Second;
         }
         
         public int? Check(IParticle _particle)
