@@ -21,7 +21,6 @@ struct SimulationData{
     int ParticleCount;
     int MaxSteps;
     int FirstTestSteps;
-    float Density;
     float BorderVelocity;
     float SystemSizeX;
     float SystemSizeY;
@@ -41,7 +40,6 @@ struct SimulationData{
         ParticleCount = document["ParticleCount"].GetInt();
         MaxSteps = document["MaxSteps"].GetInt();
         FirstTestSteps = document["FirstTestSteps"].GetInt();
-        Density = (float) document["Density"].GetDouble();
         BorderVelocity = (float) document["BorderVelocity"].GetDouble();
         SystemSizeX = (float) document["SystemSizeX"].GetDouble();
         SystemSizeY = (float) document["SystemSizeY"].GetDouble();

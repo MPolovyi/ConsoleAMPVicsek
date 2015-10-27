@@ -6,12 +6,6 @@
 #include "../Helpers/MathHelpers/Vicsek2DMath.h"
 
 
-void CVicsek2DIntegrator::Init(TaskData2D& td, float_2 domain)
-{
-	CIntegrator2D::Init(td, domain);
-	PopulateTaskData(td, domain, td.DataNew->size());
-};
-
 void CVicsek2DIntegrator::PopulateTaskData(TaskData2D& td, float_2 domain, int partCount)
 {
 	index<1> begin(0);
@@ -51,12 +45,11 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 	int numParticles = m_Task->DataNew->size();
 	extent<1> computeDomain(numParticles);
 	const int numTiles = numParticles / s_TileSize;
-	const float doubleIntR = 2* m_IntR;
-	const float dampingFactor = 0.9995f;
-	const float deltaTime = 0.1;
+	const float deltaTime = m_ParticleVelocity;
 
 	const float_2 domainSize = m_DomainSize;
 	const float intR2 = m_IntR*m_IntR;
+	const float doubleIntR = 2 * m_IntR;
 	//initialization of random generator;
 
 	tinymt_collection<1> rnd(computeDomain, std::rand());
@@ -103,7 +96,6 @@ bool CVicsek2DIntegrator::RealIntegrate(float noise)
 
 		MathHelpers::RotateVector2D(vel, noise * (0.5 - rnd[ti.local].next_single()));
 
-		vel *= dampingFactor;
 		MathHelpers::NormalizeVector(vel);
 
 		pos += vel * deltaTime;
