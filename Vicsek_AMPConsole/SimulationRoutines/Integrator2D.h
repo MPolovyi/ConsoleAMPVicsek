@@ -19,11 +19,6 @@ public:
 	float_2 GetAverageVelocity();
 
 	static float s_Noise;
-	virtual void Init(TaskData2D& td, float_2 domain)
-	{
-		m_Task = &td;
-		m_DomainSize = domain;
-	};
 
 	void IntegrateFor(int steps, float noise);
 	void IntegrateWithAveragingFor(int steps, float noise, int sliceCount);
